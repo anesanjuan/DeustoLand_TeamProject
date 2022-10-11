@@ -23,7 +23,7 @@ public class VentanaInicioSesion extends JFrame {
 	
 	private final JPanel panel = new JPanel();
 	private JTextField txtCorreo;
-	private JPasswordField passwordFieldContraseña;
+	private JPasswordField passwordFieldContrasena;
 
 	private GestorLN gestor;
 
@@ -32,11 +32,11 @@ public class VentanaInicioSesion extends JFrame {
 		this.gestor = gestor;
 
 		
-		//etiquetas para los campos de correo y contraseña
+		//etiquetas para los campos de correo y contraseï¿½a
 		JLabel labelCorreo = new JLabel("Email:");
 		labelCorreo.setBounds(29, 37, 89, 14);
-		JLabel labelContraseña = new JLabel("Contrasena:");
-		labelContraseña.setBounds(29, 108, 89, 14);
+		JLabel labelContrasena = new JLabel("Contrasena:");
+		labelContrasena.setBounds(29, 108, 89, 14);
 		
 		//campo editable para introducir el correo
 		txtCorreo = new JTextField();
@@ -44,32 +44,32 @@ public class VentanaInicioSesion extends JFrame {
 		txtCorreo.setBounds(141, 34, 120, 20);
 		txtCorreo.setColumns(10);
 		
-		//campo editable para introducir la contraseña
-		passwordFieldContraseña = new JPasswordField();
+		//campo editable para introducir la contraseï¿½a
+		passwordFieldContrasena = new JPasswordField();
 		//ubi
-		passwordFieldContraseña.setBounds(141, 105, 120, 20);
+		passwordFieldContrasena.setBounds(141, 105, 120, 20);
 		
 		
-		//añadimos los componentes al panel
+		//aï¿½adimos los componentes al panel
 		panel.setLayout(null);
 		panel.add(labelCorreo);
-		panel.add(labelContraseña);
+		panel.add(labelContrasena);
 		panel.add(txtCorreo);
-		panel.add(passwordFieldContraseña);
+		panel.add(passwordFieldContrasena);
 		
 		//botones
 		
 		//boton login
 		JButton btnLogin = new JButton("Iniciar Sesion");
-		//ubi y tamaño
+		//ubi y tamaï¿½o
 		btnLogin.setBounds(155, 150, 156, 20);
 		//eventos
 		btnLogin.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {				
-				//se recuperan el correo y contraseña introducidos
+				//se recuperan el correo y contraseï¿½a introducidos
 				String correo = txtCorreo.getText();
-				String contrasena = new String(passwordFieldContraseña.getPassword());
+				String contrasena = new String(passwordFieldContrasena.getPassword());
 				
 				//habria q hacer un gestorNL y comprobar q existen y son correctos para pasar a la siguiente ventana
 				boolean r = gestor.comprobarUsuario(correo, contrasena);
@@ -81,7 +81,7 @@ public class VentanaInicioSesion extends JFrame {
 			}
 			
 		});
-		//se añade
+		//se aï¿½ade
 		panel.add(btnLogin);
 		
 		//boton registrarse
@@ -98,7 +98,7 @@ public class VentanaInicioSesion extends JFrame {
 				//vr.setModal(true);
 			}
 		});
-		//se añade
+		//se aï¿½ade
 		panel.add(btnRegistrarse);
 		
 		//evento de la venta: cerrar al asalor
@@ -114,7 +114,7 @@ public class VentanaInicioSesion extends JFrame {
 		//
 		getContentPane().setLayout(new BorderLayout());
 		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		//añadir el panel a la ventana
+		//aï¿½adir el panel a la ventana
 		getContentPane().add(panel, BorderLayout.CENTER);
 	}
 	

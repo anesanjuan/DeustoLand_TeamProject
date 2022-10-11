@@ -20,8 +20,8 @@ public class GestorLN {
 		//CargarClientes();
 	}
 
-	public void insertarCliente(String nombre, String apellido, String dni, String correo, TipoCliente tipocliente, String contraseña) throws ClienteRepetidoException {
-		Cliente c = new Cliente(nombre, apellido, dni, correo, tipocliente, contraseña);
+	public void insertarCliente(String nombre, String apellido, String dni, String correo, TipoCliente tipocliente, String contrasena) throws ClienteRepetidoException {
+		Cliente c = new Cliente(nombre, apellido, dni, correo, tipocliente, contrasena);
 		if (aClientes.contains(c) == false) {
 			aClientes.add(c);
 		} else {

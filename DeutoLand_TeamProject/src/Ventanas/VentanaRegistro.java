@@ -25,7 +25,7 @@ public class VentanaRegistro extends JFrame {
 	private JTextField txtDNI;
 	private JTextField txtEmail;
 	private JTextField txtTipocliente;
-	private JTextField txtContraseña;
+	private JTextField txtContrasena;
 
 	private GestorLN gestor;
 	
@@ -61,10 +61,10 @@ public class VentanaRegistro extends JFrame {
 		txtTipocliente.setColumns(10);
 		//
 		
-		txtContraseña = new JTextField();
-		txtContraseña.setBounds(184, 135, 96, 20);
-		panel.add(txtContraseña);
-		txtContraseña.setColumns(10);
+		txtContrasena = new JTextField();
+		txtContrasena.setBounds(184, 135, 96, 20);
+		panel.add(txtContrasena);
+		txtContrasena.setColumns(10);
 		
 		
 		//inicializar las etiquetas
@@ -90,9 +90,9 @@ public class VentanaRegistro extends JFrame {
 		panel.add(lblTipoCliente);
 		 
 		
-		JLabel lblContraseña = new JLabel("Contrasena:");
-		lblContraseña.setBounds(61, 135, 96, 14);
-		panel.add(lblContraseña);
+		JLabel lblContrasena = new JLabel("Contrasena:");
+		lblContrasena.setBounds(61, 135, 96, 14);
+		panel.add(lblContrasena);
 		
 		//botones
 		
@@ -105,7 +105,7 @@ public class VentanaRegistro extends JFrame {
 				String dni = txtDNI.getText();
 				String email = txtEmail.getText();
 				//String nombre = txtNombre.getText();
-				String contrasena = txtContraseña.getText();
+				String contrasena = txtContrasena.getText();
 				
 				//no me deja por lo del tipo de Cliente
 
