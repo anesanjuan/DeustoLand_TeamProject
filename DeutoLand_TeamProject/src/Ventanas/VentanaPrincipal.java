@@ -1,6 +1,10 @@
 package Ventanas;
 
-public class VentanaPrincipal {
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-	private int kdslgf;
+public class VentanaPrincipal extends JFrame{
+
+	private final JPanel panel = new JPanel();
+	
 }

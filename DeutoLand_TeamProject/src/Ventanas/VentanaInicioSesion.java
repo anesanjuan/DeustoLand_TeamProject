@@ -18,7 +18,6 @@ import javax.swing.border.EmptyBorder;
 import DeustoLand.GestorLN;
 
 
-
 public class VentanaInicioSesion extends JFrame {
 	
 	private final JPanel panel = new JPanel();
