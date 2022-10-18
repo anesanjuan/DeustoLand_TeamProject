@@ -6,17 +6,15 @@ public class Cliente {
 	private String apellido;
 	private String dni;
 	private String correo;
-	private TipoCliente tipocliente;
 	private String contrasena;
 	
 	
-	public Cliente(String nombre, String apellido, String dni, String correo, TipoCliente tipocliente, String contrasena) {
+	public Cliente(String nombre, String apellido, String dni, String correo, String contrasena) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
 		this.correo = correo;
-		this.tipocliente = tipocliente;
 		this.contrasena = contrasena;
 
 	}
@@ -62,16 +60,6 @@ public class Cliente {
 	}
 
 
-	public TipoCliente getTipocliente() {
-		return tipocliente;
-	}
-
-
-	public void setTipocliente(TipoCliente tipocliente) {
-		this.tipocliente = tipocliente;
-	}
-
-
 	public String getContrasena() {
 		return contrasena;
 	}
@@ -85,7 +73,7 @@ public class Cliente {
 	@Override
 	public String toString() {
 		return "Cliente [nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", correo=" + correo
-				+ ", tipocliente=" + tipocliente + ", contrasena=" + contrasena + "]";
+				+  ", contrasena=" + contrasena + "]";
 	}
 
 

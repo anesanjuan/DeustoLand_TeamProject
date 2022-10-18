@@ -7,9 +7,9 @@ public class Entrada extends Cliente{ //No se como hacer que la clase extienda d
 	
 	
 
-	public Entrada(String nombre, String apellido, String dni, String correo, TipoCliente tipocliente,
+	public Entrada(String nombre, String apellido, String dni, String correo,
 			String contrasena, Cliente cliente, int numeroEntrada) {
-		super(nombre, apellido, dni, correo, tipocliente, contrasena);
+		super(nombre, apellido, dni, correo, contrasena);
 		this.cliente = cliente;
 		this.numeroEntrada = numeroEntrada;
 	}
