@@ -20,6 +20,11 @@ public class GestorLN {
 		//CargarClientes();
 	}
 
+	public void comprobarFestival(String nombre, double fecha, ArrayList<Concierto> conciertos, ArrayList<Artista> Artistas,  double precio) {
+		
+		
+	}
+ 	
 	public void insertarCliente(String nombre, String apellido, String dni, String correo, String contrasena) throws ClienteRepetidoException {
 		Cliente c = new Cliente(nombre, apellido, dni, correo, contrasena);
 		if (aClientes.contains(c) == false) {

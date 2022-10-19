@@ -120,6 +120,7 @@ public class VentanaFestival extends JFrame{
 		partePrincipal3.add(precio);
 		partePrincipal4.add(bComprarEntradas);
 		
+		parteArriba.setBounds(1050, 200, 1050, 600);
 		getContentPane().add(parteArriba);
 		getContentPane().add(partePrincipal);
 		
