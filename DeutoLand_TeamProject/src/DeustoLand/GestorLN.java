@@ -2,13 +2,26 @@ package DeustoLand;
 
 import java.util.ArrayList;
 
+import DeustoLand.Artista;
+import DeustoLand.Cliente;
+import DeustoLand.Concierto;
 import Excepciones.ClienteRepetidoException;
 
 
 public class GestorLN {
 	
-	
+	private GestorFichero gficheros = new GestorFichero();
+
 	private ArrayList<Cliente> aClientes = new ArrayList<>();
+	
+	public void CargarClientes() {
+		
+		aClientes = gficheros.cargarClientes();		
+	}
+
+	public void GuardarClientes() {
+		gficheros.guardarClientes(aClientes);
+	}
 
 	public GestorLN() {
 

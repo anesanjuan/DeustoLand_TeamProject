@@ -18,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 import DeustoLand.GestorLN;
 
 
+
 public class VentanaInicioSesion extends JFrame {
 	
 	private final JPanel panel = new JPanel();
@@ -73,7 +74,9 @@ public class VentanaInicioSesion extends JFrame {
 				//habria q hacer un gestorNL y comprobar q existen y son correctos para pasar a la siguiente ventana
 				boolean r = gestor.comprobarUsuario(correo, contrasena);
 				if (r == true) {
-					//se abre otra ventana
+					VentanaPrincipal vp = new VentanaPrincipal(gestor);
+					vp.setVisible(true);
+					dispose();
 				} else {
 					JOptionPane.showMessageDialog(null, "El usuario o la contrasena son incorrectos.");
 				}

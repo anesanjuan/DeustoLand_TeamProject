@@ -34,91 +34,76 @@ public class VentanaRegistro extends JFrame {
 		
 		//inicializar los campos editables
 		txtNombre = new JTextField();
-		txtNombre.setBounds(184, 73, 96, 20);
+		txtNombre.setBounds(190, 33, 96, 20);
 		panel.add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		txtApellido = new JTextField();
-		txtApellido.setBounds(184, 73, 96, 20);
+		txtApellido.setBounds(190, 79, 96, 20);
 		panel.add(txtApellido);
 		txtApellido.setColumns(10);
 		
 		txtDNI = new JTextField();
-		txtDNI.setBounds(184, 73, 96, 20);
+		txtDNI.setBounds(190, 125, 96, 20);
 		panel.add(txtDNI);
 		txtDNI.setColumns(10);
 		
 		txtEmail = new JTextField();
-		txtEmail.setBounds(184, 104, 96, 20);
+		txtEmail.setBounds(190, 172, 96, 20);
 		panel.add(txtEmail);
 		txtEmail.setColumns(10);
 		
 		
-		//esto no tiene sentido
-		txtTipocliente = new JTextField();
-		txtTipocliente.setBounds(184, 104, 96, 20);
-		panel.add(txtTipocliente);
-		txtTipocliente.setColumns(10);
-		//
-		
 		txtContrasena = new JTextField();
-		txtContrasena.setBounds(184, 135, 96, 20);
+		txtContrasena.setBounds(190, 219, 96, 20);
 		panel.add(txtContrasena);
 		txtContrasena.setColumns(10);
 		
 		
 		//inicializar las etiquetas
 		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(61, 73, 89, 14);
+		lblNombre.setBounds(68, 35, 49, 14);
 		panel.add(lblNombre);
 		
-		JLabel lblApellido = new JLabel("Nombre:");
-		lblApellido.setBounds(61, 73, 89, 14);
+		JLabel lblApellido = new JLabel("Apellido:");
+		lblApellido.setBounds(68, 82, 49, 14);
 		panel.add(lblApellido);
 		
-		JLabel lblDNI = new JLabel("Nombre:");
-		lblDNI.setBounds(61, 73, 89, 14);
+		JLabel lblDNI = new JLabel("DNI:");
+		lblDNI.setBounds(68, 128, 49, 14);
 		panel.add(lblDNI);
 		
 		JLabel lblCorreo = new JLabel("Correo:");
-		lblCorreo.setBounds(61, 104, 96, 14);
+		lblCorreo.setBounds(68, 175, 49, 14);
 		panel.add(lblCorreo);
 		
 		
-		JLabel lblTipoCliente = new JLabel("TipoCliente:"); 
-		lblTipoCliente.setBounds(61, 104, 96, 14); 
-		panel.add(lblTipoCliente);
-		 
-		
 		JLabel lblContrasena = new JLabel("Contrasena:");
-		lblContrasena.setBounds(61, 135, 96, 14);
+		lblContrasena.setBounds(68, 222, 49, 14);
 		panel.add(lblContrasena);
 		
 		//botones
 		
 		JButton btnRegistro = new JButton("Registro");
-		btnRegistro.setBounds(158, 202, 89, 23);
+		btnRegistro.setBounds(337, 229, 89, 23);
 		btnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String nombre = txtNombre.getText();
 				String apellido = txtApellido.getText();
 				String dni = txtDNI.getText();
 				String email = txtEmail.getText();
-				//String nombre = txtNombre.getText();
 				String contrasena = txtContrasena.getText();
 				
-				//no me deja por lo del tipo de Cliente
-
-				/*
-				 * try { gestor.insertarCliente( nombre,apellido, dni, email, tipocliente,
-				 * contrasena);
-				 * 
-				 * gestor.GuardarClientes();
-				 * 
-				 * dispose(); } catch( ClienteRepetidoException ex ) {
-				 * JOptionPane.showMessageDialog(null,"Ese usuario ya esta registrado!",
-				 * "ALERTA!", JOptionPane.INFORMATION_MESSAGE); System.exit(0); }
-				 */
+				
+				try { 
+					gestor.insertarCliente( nombre,apellido, dni, email,contrasena);
+					//gestor.GuardarClientes();
+					VentanaPrincipal vp = new VentanaPrincipal(gestor);
+					vp.setVisible(true);
+					dispose();					
+				} catch( ClienteRepetidoException ex ) {
+				  JOptionPane.showMessageDialog(null,"Ese usuario ya esta registrado!",
+				  "ALERTA!", JOptionPane.INFORMATION_MESSAGE); System.exit(0); }
 				
 			}
 			
