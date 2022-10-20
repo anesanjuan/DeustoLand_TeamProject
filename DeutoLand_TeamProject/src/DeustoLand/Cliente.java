@@ -1,82 +1,65 @@
 package DeustoLand;
 
-public class Cliente {
+public class Cliente extends User{
 	
-	private String nombre;
-	private String apellido;
-	private String dni;
+	private String direccion;
+	private int edad;
 	private String correo;
 	private String contrasena;
 	
-	
-	public Cliente(String nombre, String apellido, String dni, String correo, String contrasena) {
-		super();
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.dni = dni;
+	public Cliente(String nombre, String apellido, String dni, String direccion, int edad, String correo,
+			String contrasena) {
+		super(nombre, apellido, dni);
+		this.direccion = direccion;
+		this.edad = edad;
 		this.correo = correo;
 		this.contrasena = contrasena;
-
 	}
 
-
-	public String getNombre() {
-		return nombre;
+	public Cliente(String nombre, String apellido, String dni) {
+		super(nombre, apellido, dni);
 	}
 
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public String getDireccion() {
+		return direccion;
 	}
 
-
-	public String getApellido() {
-		return apellido;
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
 
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
+	public int getEdad() {
+		return edad;
 	}
 
-
-	public String getDni() {
-		return dni;
+	public void setEdad(int edad) {
+		this.edad = edad;
 	}
-
-
-	public void setDni(String dni) {
-		this.dni = dni;
-	}
-
 
 	public String getCorreo() {
 		return correo;
 	}
 
-
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-
 
 	public String getContrasena() {
 		return contrasena;
 	}
 
-
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Cliente [nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", correo=" + correo
-				+  ", contrasena=" + contrasena + "]";
+		return "Cliente [direccion=" + direccion + ", edad=" + edad + ", correo=" + correo + ", contrasena="
+				+ contrasena + "]";
 	}
-
-
+	
+	
+	
 	
 
 	

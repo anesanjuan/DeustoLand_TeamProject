@@ -1,39 +1,57 @@
 package DeustoLand;
 
-public class Entrada extends Cliente{ //No se como hacer que la clase extienda de dos clases, porque en teoria tambien extenderia de festival, para datos tipo hora , dia y asi
+public class Entrada { 
 
 	private Cliente cliente;
 	private int numeroEntrada;
+	private Festival festival;
 	
-	
-
-	public Entrada(String nombre, String apellido, String dni, String correo,
-			String contrasena, Cliente cliente, int numeroEntrada) {
-		super(nombre, apellido, dni, correo, contrasena);
+	public Entrada(Cliente cliente, int numeroEntrada, Festival festival) {
+		super();
 		this.cliente = cliente;
 		this.numeroEntrada = numeroEntrada;
+		this.festival = festival;
 	}
+
+
+	public Entrada() {
+		super();
+	}
+
 
 	public Cliente getCliente() {
 		return cliente;
 	}
 
+
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+
 
 	public int getNumeroEntrada() {
 		return numeroEntrada;
 	}
 
+
 	public void setNumeroEntrada(int numeroEntrada) {
 		this.numeroEntrada = numeroEntrada;
 	}
 
+	public Festival getFestival() {
+		return festival;
+	}
+
+
+	public void setFestival(Festival festival) {
+		this.festival = festival;
+	}
+
 	@Override
 	public String toString() {
-		return "Entrada [cliente=" + cliente + ", numeroEntrada=" + numeroEntrada + "]";
+		return "Entrada [cliente=" + cliente + ", numeroEntrada=" + numeroEntrada + ", festival=" + festival + "]";
 	}
+	
 	
 	
 	
