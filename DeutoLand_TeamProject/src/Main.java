@@ -1,6 +1,8 @@
 import DeustoLand.GestorLN;
+import Ventanas.VentanaFestival;
 import Ventanas.VentanaInicioSesion;
 import Ventanas.VentanaPrincipal;
+import Ventanas.VentanaRegistro;
 
 public class Main {
 
