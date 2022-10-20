@@ -84,8 +84,8 @@ public class VentanaFestival extends JFrame{
 		setVisible(true);
 		parteArriba.setSize(1050, 200);
 		partePrincipal.setSize(1050,600);
-		parteArriba.setLayout(new FlowLayout());
-		partePrincipal.setLayout(new FlowLayout());
+		//parteArriba.setLayout(new FlowLayout());
+		//partePrincipal.setLayout(new FlowLayout());
 		
 		parteArriba.add(titulo);
 		parteArriba.add(bAtras);
