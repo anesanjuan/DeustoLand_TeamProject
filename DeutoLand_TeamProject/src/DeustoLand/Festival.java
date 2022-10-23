@@ -31,7 +31,7 @@ public class Festival {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
+	
 	public double getFecha() {
 		return fecha;
 	}
