@@ -91,7 +91,9 @@ public class VentanaCompra extends JFrame {
 		partePrincipal.add(partePrincipal2);
 		
 		partePrincipal1.add(nombre);
+		partePrincipal1.add(textnombre);
 		partePrincipal1.add(mail);
+		partePrincipal1.add(textmail);
 		partePrincipal1.add(entradaVip);
 		partePrincipal1.add(esEntradaVip);
 		partePrincipal1.add(precioTotal);
