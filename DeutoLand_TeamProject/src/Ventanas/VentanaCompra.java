@@ -9,6 +9,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import DeustoLand.Cliente;
+
 public class VentanaCompra extends JFrame {
 	
 	/**
@@ -28,7 +30,9 @@ public class VentanaCompra extends JFrame {
 	
 	//Componentes del panel principal1
 	private  JLabel nombre;
+	private  JLabel textnombre;
 	private  JLabel mail;
+	private  JLabel textmail;
 	private  JLabel entradaVip;
 	private JComboBox<String> esEntradaVip;
 	private  JLabel precioTotal;
@@ -44,7 +48,7 @@ public class VentanaCompra extends JFrame {
 	private  JButton comprar;
 	
 
-	public VentanaCompra() {
+	public VentanaCompra(Cliente cliente) {
 		
 		parteArriba = new JPanel();
 		partePrincipal = new JPanel();
@@ -55,7 +59,9 @@ public class VentanaCompra extends JFrame {
 		titulo = new JLabel("COMPRA ENTRADA FESTIVAL");
 		
 		nombre = new JLabel("Nombre: ");
+		textnombre = new JLabel (cliente.getNombre());
 		mail = new JLabel("Mail :");
+		textmail =  new JLabel (cliente.getCorreo());
 		entradaVip = new JLabel("Entrada VIP :");
 		esEntradaVip = new JComboBox<String>();
 		precioTotal = new JLabel("Precio total :");
