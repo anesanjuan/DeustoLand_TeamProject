@@ -39,7 +39,7 @@ public class GestorLN {
 	}
  	
 	public void insertarCliente(String nombre, String apellido, String dni, String correo, String contrasena) throws ClienteRepetidoException {
-		Cliente c = new Cliente(nombre, apellido, dni, correo, contrasena);
+		Cliente c = new Cliente(nombre, apellido, dni, correo, 0, contrasena, contrasena);
 		if (aClientes.contains(c) == false) {
 			aClientes.add(c);
 		} else {
@@ -48,7 +48,7 @@ public class GestorLN {
 	}
 
 	private void insertarClientes() {
-		Cliente c1 = new Cliente("Maria", "Perales ", "343534546W", "maria@gmail.com", "1111");
+		Cliente c1 = new Cliente("Maria", "Perales ", "343534546W", "maria@gmail.com", 0, "1111", null);
 		aClientes.add(c1);
 		
 		
