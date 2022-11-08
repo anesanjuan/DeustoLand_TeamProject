@@ -20,12 +20,12 @@ public class Main {
 		//VentanaRegistro vr = new VentanaRegistro(gln);
 		//vr.setVisible(true);
 		
-		//VentanaPrincipal vp = new VentanaPrincipal( gln );
-		//vp.setVisible(true);
+		VentanaPrincipal vp = new VentanaPrincipal( gln );
+		vp.setVisible(true);
 		
-		Cliente cliente = new Cliente("nujdjdbhfl", "nunsnjdnll", "nunianjll", "nuakmidall", 0, "nspdifull", "nullsjnsoj");
-		VentanaCompra vc = new VentanaCompra(cliente);
-		vc.setVisible(true);
+		//Cliente cliente = new Cliente("nujdjdbhfl", "nunsnjdnll", "nunianjll", "nuakmidall", 0, "nspdifull", "nullsjnsoj");
+		//VentanaCompra vc = new VentanaCompra(cliente);
+		//vc.setVisible(true);
 	}
 
 }
