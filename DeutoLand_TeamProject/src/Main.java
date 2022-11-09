@@ -15,14 +15,14 @@ public class Main {
 		//VentanaInicioSesion vi = new VentanaInicioSesion( gln );
 		//vi.setVisible(true);
 		
-		//VentanaFestival vf = new VentanaFestival();
-		//vf.setVisible(true);
+		VentanaFestival vf = new VentanaFestival();
+		vf.setVisible(true);
 		
 		//VentanaRegistro vr = new VentanaRegistro(gln);
 		//vr.setVisible(true);
 		
-		VentanaPrincipal vp = new VentanaPrincipal( gln );
-		vp.frame.setVisible(true);
+		//VentanaPrincipal vp = new VentanaPrincipal( gln );
+		//vp.frame.setVisible(true);
 		
 		//Cliente cliente = new Cliente("nujdjdbhfl", "nunsnjdnll", "nunianjll", "nuakmidall", 0, "nspdifull", "nullsjnsoj");
 		//VentanaCompra vc = new VentanaCompra(cliente);
