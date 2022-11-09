@@ -3,6 +3,8 @@ package Ventanas;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,396 +20,252 @@ public class VentanaPrincipal extends JFrame{
 	private final JPanel panel = new JPanel();
 	private GestorLN gestor;
 
+	private static final long serialVersionUID = 1L;
+
+	public JFrame frame;
+	
+	//en el panel de arriba
+	private JPanel panelArriba;
+	private JLabel lblTitulo;
+	private JButton btnEstadisticas;
+	private JButton btnInicioSesion;
+	private JButton btnRegistro;
+	
+	
+	//en el panel principal
+	private JPanel panelPrincipal;
+		//en el panel 1
+	private JPanel panelFestv1;
+	private JButton btnFestv1;
+	private JLabel lblLugarFestv1;
+	private JLabel lblFechaFestv1;
+	private JLabel lblFotoFestv1;
+		//en el panel 2
+	private JPanel panelFestv2;
+	private JButton btnFestv2;
+	private JLabel lblLugarFestv2;
+	private JLabel lblFechaFestv2;
+	private JLabel lblFotoFestv2;
+		//en el panel 3
+	private JPanel panelFestv3;	
+	private JButton btnFestv3;
+	private JLabel lblLugarFestv3;
+	private JLabel lblFechaFestv3;
+	private JLabel lblFotoFestv3;
+		//en el panel 4
+	private JPanel panelFestv4;
+	private JButton btnFestv4;
+	private JLabel lblLugarFestv4;
+	private JLabel lblFechaFestv4;
+	private JLabel lblFotoFestv4;
+		//en el panel 5
+	private JPanel panelFestv5;
+	private JButton btnFestv5;
+	private JLabel lblLugarFestv5;
+	private JLabel lblFechaFestv5;
+	private JLabel lblFotoFestv5;
+		//en el panel 6
+	private JPanel panelFestv6;
+	private JButton btnFestv6;
+	private JLabel lblLugarFestv6;
+	private JLabel lblFechaFestv6;
+	private JLabel lblFotoFestv6;
+
+	
+	
 	//esto es como inicializar: mete todo dentro
 	public VentanaPrincipal(GestorLN gestor) {
-		//setTitle("Inicio de Sesion:");
-		this.gestor = gestor;
+		frame = new JFrame();
+		frame.setBounds(100, 100, 901, 615);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
 		
-		//setSize(800,850);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		//setTitle("DEUSTOLAND");
-		//setLocation(100,200);
-		//engloba setSize y setLocation
-		//setBounds(1 y 2 setLocation3 y 4, ancho y largo)
-		//setSize(800,850);
-		setBounds(800, 850,1200,800);
-		//para centrar la ventansa
-		setLocationRelativeTo(null);
-				
-		//this.getContentPane().setBackground(Color.GRAY);
-				
-				
-		//iniciarComponentes();
-		JPanel panelA = new JPanel();
-		panelA.setBackground(Color.LIGHT_GRAY);
-		this.getContentPane().add(panelA);
+		//panel de arriba
+		panelArriba = new JPanel();
+		panelArriba.setBounds(6, 6, 889, 47);
+		frame.getContentPane().add(panelArriba);
+		panelArriba.setLayout(null);
 		
-		panelA.setLayout(null);
-		//(separacionmargenizq, separacion con lo de arriba, anchura hacia la derecha, altura )
-		panelA.setBounds(0,0,1200,95);
+		//en el panel de arriba
+		lblTitulo = new JLabel("DEUSTOLAND");
+		lblTitulo.setBounds(24, 9, 272, 29);
+		lblTitulo.setFont(new Font("Palatino", Font.PLAIN, 29));
+		panelArriba.add(lblTitulo);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(800, 850,1200,800);
-
-		//panel.setBackground(Color.BLUE);
-		this.getContentPane().add(panel);
+		btnEstadisticas = new JButton("Estadisticas");
+		btnEstadisticas.setBounds(378, 9, 117, 29);
+		btnEstadisticas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		panelArriba.add(btnEstadisticas);
 		
-		panel.setLayout(null);
+		btnRegistro = new JButton("Registrarse");
+		btnRegistro.setBounds(766, 9, 117, 29);
+		panelArriba.add(btnRegistro);
 		
-		//TITULO
-		JLabel lblTitulo = new JLabel("DEUSTOLAND");
-		lblTitulo.setBounds(30,0, 300, 90);
-		panelA.add(lblTitulo);
-		lblTitulo.setFont(new Font("Times New Roman", Font.PLAIN, 36));
+		btnInicioSesion = new JButton("Iniciar Sesion");
+		btnInicioSesion.setBounds(636, 9, 117, 29);
+		btnInicioSesion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		panelArriba.add(btnInicioSesion);
 		
 		
-		//BOTON ESTADISTICAS
-		JButton btnEstadistica = new JButton("Estadisticas");
-		btnEstadistica.setBounds(525, 22, 140, 37);
-		panelA.add(btnEstadistica);
-		btnEstadistica.setFont(new Font("arial", Font.PLAIN, 18));
-		//btnEstadistica.setBackground(Color.GRAY);
+//PANEL PRINCIAPAL EN EL QUE HAY 6 PANELES
+		panelPrincipal = new JPanel();
+		panelPrincipal.setBounds(6, 54, 889, 527);
+		frame.getContentPane().add(panelPrincipal);
+		panelPrincipal.setLayout(null);
+		
+//dentro del panel principal
+	//panel del primer festival
+		panelFestv1 = new JPanel();
+		panelFestv1.setBounds(0, 0, 295, 264);
+		panelPrincipal.add(panelFestv1);
+		panelFestv1.setLayout(null);
+		
+		lblFotoFestv1 = new JLabel("JLabelFoto1");
+		lblFotoFestv1.setBounds(6, 6, 283, 195);
+		panelFestv1.add(lblFotoFestv1);
+		
+		btnFestv1 = new JButton("Tomorrowland");
+		btnFestv1.setBounds(6, 213, 117, 29);
+		btnFestv1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		panelFestv1.add(btnFestv1);
+		
+		lblLugarFestv1 = new JLabel("Belgica");
+		lblLugarFestv1.setBounds(156, 213, 61, 16);
+		panelFestv1.add(lblLugarFestv1);
 	
-		
-		//BOTON REGISTRO
-		JButton btnRegsitro = new JButton("Registrarme");
-		btnRegsitro.setBounds(900, 22, 140, 37);
-		panelA.add(btnRegsitro);
-		btnRegsitro.setFont(new Font("arial", Font.PLAIN, 18));
-		//btnRegsitro.setBackground(Color.GRAY);
-
-		
-		//BOTON INICIO SESION
-		JButton btnInicioSesion = new JButton("Iniciar Sesion");
-		btnInicioSesion.setBounds(1040, 22, 140, 37);
-		panelA.add(btnInicioSesion);
-		btnInicioSesion.setFont(new Font("arial", Font.PLAIN, 18));
-		//btnInicioSesion.setBackground(Color.GRAY);
-
-		
-	
+		lblFechaFestv1 = new JLabel("23 Julio");
+		lblFechaFestv1.setBounds(156, 241, 61, 16);
+		panelFestv1.add(lblFechaFestv1);
 		
 		
-		//FESTIVAL 1
-		JButton btnFestv1Name = new JButton("Tomorrowland");
-		btnFestv1Name.setBounds(90,370, 100, 40);
-		panel.add(btnFestv1Name);
-		btnFestv1Name.setFont(new Font("arial", Font.PLAIN, 13));
-		//btnFestv1Name.setBackground(Color.BLUE);
+	//panel del segundo festival
+		panelFestv2 = new JPanel();
+		panelFestv2.setBounds(296, 0, 295, 264);
+		panelPrincipal.add(panelFestv2);
+		panelFestv2.setLayout(null);
 		
-		JLabel lblFestv1Fecha = new JLabel("23 JULIO");
-		lblFestv1Fecha.setBounds(200,365, 90, 45);
-		panel.add(lblFestv1Fecha);
-		lblFestv1Fecha.setFont(new Font("arial", Font.PLAIN, 13));
+		lblFotoFestv2 = new JLabel("JLabelFoto2");
+		lblFotoFestv2.setBounds(6, 6, 283, 196);
+		panelFestv2.add(lblFotoFestv2);
 		
-		JLabel lblFestv1Lugar = new JLabel("Asturias");
-		lblFestv1Lugar.setBounds(200,379, 90, 45);
-		panel.add(lblFestv1Lugar);
-		lblFestv1Lugar.setFont(new Font("arial", Font.PLAIN, 13));
-
-		//ETIQUETA 2- TIPO IMAGEN
-		ImageIcon fotofestv1  = new ImageIcon("festv1.jpg");
-		JLabel fotoetiqueta1  = new JLabel();
-		fotoetiqueta1.setBounds(44,0,370,470);
-		fotoetiqueta1.setIcon(new ImageIcon(fotofestv1.getImage().getScaledInstance(320, 260, Image.SCALE_SMOOTH)));
-		panel.add(fotoetiqueta1);
+		btnFestv2 = new JButton("Coachella");
+		btnFestv2.setBounds(6, 213, 117, 29);
+		panelFestv2.add(btnFestv2);
 		
-
-		//FESTIVAL 2
-		JButton btnFestv2Name = new JButton("Coachella");
-		btnFestv2Name.setBounds(500,370, 100, 40);
-		panel.add(btnFestv2Name);
-		btnFestv2Name.setFont(new Font("arial", Font.PLAIN, 13));
-		//btnFestv1Name.setBackground(Color.BLUE);
+		lblLugarFestv2 = new JLabel("EEUU");
+		lblLugarFestv2.setBounds(156, 213, 61, 16);
+		panelFestv2.add(lblLugarFestv2);
 		
-		JLabel lblFestv2Fecha = new JLabel("23 JULIO");
-		lblFestv2Fecha.setBounds(610,365, 90, 45);
-		panel.add(lblFestv2Fecha);
-		lblFestv2Fecha.setFont(new Font("arial", Font.PLAIN, 13));
-		
-		JLabel lblFestv2Lugar = new JLabel("Asturias");
-		lblFestv2Lugar.setBounds(610,379, 90, 45);
-		panel.add(lblFestv2Lugar);
-		lblFestv2Lugar.setFont(new Font("arial", Font.PLAIN, 13));
-
-		//ARREGLAR
-		ImageIcon fotofestv2  = new ImageIcon("festv2.jpg");
-		JLabel fotoetiqueta2  = new JLabel();
-		fotoetiqueta2.setBounds(450,0,370,470);
-		fotoetiqueta2.setIcon(new ImageIcon(fotofestv2.getImage().getScaledInstance(320, 260, Image.SCALE_SMOOTH)));
-		panel.add(fotoetiqueta2);
+		lblFechaFestv2 = new JLabel("14 al 24 Abril");
+		lblFechaFestv2.setBounds(156, 241, 94, 16);
+		panelFestv2.add(lblFechaFestv2);
 		
 		
+	//panel del tercer festival 
+		panelFestv3 = new JPanel();
+		panelFestv3.setBounds(594, 0, 295, 264);
+		panelPrincipal.add(panelFestv3);
+		panelFestv3.setLayout(null);
 		
+		lblFotoFestv3 = new JLabel("JLabelFoto3");
+		lblFotoFestv3.setBounds(6, 6, 283, 197);
+		panelFestv3.add(lblFotoFestv3);
 		
-		//FESTIVAL 3
-		JButton btnFestv3Name = new JButton("Arenal Sound");
-		btnFestv3Name.setBounds(890,370, 100, 40);
-		panel.add(btnFestv3Name);
-		btnFestv3Name.setFont(new Font("arial", Font.PLAIN, 13));
-		//btnFestv1Name.setBackground(Color.BLUE);
+		btnFestv3 = new JButton("Arenal Sound");
+		btnFestv3.setBounds(6, 213, 117, 29);
+		btnFestv3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		panelFestv3.add(btnFestv3);
 		
-		JLabel lblFestv3Fecha = new JLabel("23 JULIO");
-		lblFestv3Fecha.setBounds(1000,365, 90, 45);
-		panel.add(lblFestv3Fecha);
-		lblFestv3Fecha.setFont(new Font("arial", Font.PLAIN, 13));
+		lblLugarFestv3 = new JLabel("Burriana");
+		lblLugarFestv3.setBounds(156, 213, 61, 16);
+		panelFestv3.add(lblLugarFestv3);
 		
-		JLabel lblFestv3Lugar = new JLabel("Asturias");
-		lblFestv3Lugar.setBounds(1000,379, 90, 45);
-		panel.add(lblFestv3Lugar);
-		lblFestv3Lugar.setFont(new Font("arial", Font.PLAIN, 13));
-
-		//ARREGLAR
-		ImageIcon fotofestv3  = new ImageIcon("festv3.jpg");
-		JLabel fotoetiqueta3  = new JLabel();
-		fotoetiqueta3.setBounds(840,0,370,470);
-		fotoetiqueta3.setIcon(new ImageIcon(fotofestv3.getImage().getScaledInstance(320, 260, Image.SCALE_SMOOTH)));
-		panel.add(fotoetiqueta3);
+		lblFechaFestv3 = new JLabel("2 al 6 Agosto");
+		lblFechaFestv3.setBounds(156, 241, 94, 16);
+		panelFestv3.add(lblFechaFestv3);
 		
+	//panel del cuarto festival
+		panelFestv4 = new JPanel();
+		panelFestv4.setBounds(0, 263, 295, 264);
+		panelPrincipal.add(panelFestv4);
+		panelFestv4.setLayout(null);
 		
-		//FESTIVAL 4
-		JButton btnFestv4Name = new JButton("MadCool");
-		btnFestv4Name.setBounds(90,714, 100, 40);
-		panel.add(btnFestv4Name);
-		btnFestv4Name.setFont(new Font("arial", Font.PLAIN, 13));
-		//btnFestv1Name.setBackground(Color.BLUE);
+		lblFotoFestv4 = new JLabel("JLabelFoto4");
+		lblFotoFestv4.setBounds(6, 6, 283, 195);
+		panelFestv4.add(lblFotoFestv4);
 		
-				
-		JLabel lblFestv4Fecha = new JLabel("6-10 JULIO");
-		lblFestv4Fecha.setBounds(200,706, 100, 40);
-		panel.add(lblFestv4Fecha);
-		lblFestv4Fecha.setFont(new Font("arial", Font.PLAIN, 13));
-				
-		JLabel lblFestv4Lugar = new JLabel("Madrid");
-		lblFestv4Lugar.setBounds(200,720, 100, 40);
-		panel.add(lblFestv4Lugar);
-		lblFestv4Lugar.setFont(new Font("arial", Font.PLAIN, 13));
-
-		//ARREGLAR
-		ImageIcon fotofestv4  = new ImageIcon("festv4.jpg");
-		JLabel fotoetiqueta4  = new JLabel();
-		fotoetiqueta4.setBounds(44,340,370,470);
-		fotoetiqueta4.setIcon(new ImageIcon(fotofestv4.getImage().getScaledInstance(320, 260, Image.SCALE_SMOOTH)));
-		panel.add(fotoetiqueta4);
-				
+		btnFestv4 = new JButton("Mad Cool");
+		btnFestv4.setBounds(6, 213, 117, 29);
+		btnFestv4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		panelFestv4.add(btnFestv4);
 		
-		//FESTIVAL 5
-		JButton btnFestv5Name = new JButton("Hollika");
-		btnFestv5Name.setBounds(500,714, 100, 40);
-		panel.add(btnFestv5Name);
-		btnFestv5Name.setFont(new Font("arial", Font.PLAIN, 13));
-		//btnFestv1Name.setBackground(Color.BLUE);
+		lblLugarFestv4 = new JLabel("Belgica");
+		lblLugarFestv4.setBounds(156, 213, 61, 16);
+		panelFestv4.add(lblLugarFestv4);
 		
-		JLabel lblFestv5Fecha = new JLabel("28-30 JUNIO");
-		lblFestv5Fecha.setBounds(610,706, 100, 40);
-		panel.add(lblFestv5Fecha);
-		lblFestv5Fecha.setFont(new Font("arial", Font.PLAIN, 13));
-						
-		JLabel lblFestv5Lugar = new JLabel("Asturias");
-		lblFestv5Lugar.setBounds(610,720, 100, 40);
-		panel.add(lblFestv5Lugar);
-		lblFestv5Lugar.setFont(new Font("arial", Font.PLAIN, 13));
-						
-		//ARREGLAR
-		ImageIcon fotofestv5  = new ImageIcon("festv5.jpg");
-		JLabel fotoetiqueta5  = new JLabel();
-		fotoetiqueta5.setBounds(450,340,370,470);
-		fotoetiqueta5.setIcon(new ImageIcon(fotofestv5.getImage().getScaledInstance(320, 260, Image.SCALE_SMOOTH)));
-		panel.add(fotoetiqueta5);		
+		lblFechaFestv4 = new JLabel("6 al 8 Septiembre");
+		lblFechaFestv4.setBounds(156, 241, 109, 16);
+		panelFestv4.add(lblFechaFestv4);
 		
-		//FESTIVAL 6
-		JButton btnFestv6Name = new JButton("Bombastic");
-		btnFestv6Name.setBounds(890,714, 100, 40);
-		panel.add(btnFestv6Name);
-		btnFestv6Name.setFont(new Font("arial", Font.PLAIN, 13));
-		//btnFestv1Name.setBackground(Color.BLUE);
-				
-						
-		JLabel lblFestv6Fecha = new JLabel("23 JULIO");
-		lblFestv6Fecha.setBounds(1000,706, 100, 40);
-		panel.add(lblFestv6Fecha);
-		lblFestv6Fecha.setFont(new Font("arial", Font.PLAIN, 13));
-						
-		JLabel lblFestv6Lugar = new JLabel("Asturias");
-		lblFestv6Lugar.setBounds(1000,720, 100, 40);
-		panel.add(lblFestv6Lugar);
-		lblFestv6Lugar.setFont(new Font("arial", Font.PLAIN, 13));
-
-						
-		//ARREGLAR
-		ImageIcon fotofestv6  = new ImageIcon("festv6.jpg");
-		JLabel fotoetiqueta6  = new JLabel();
-		fotoetiqueta6.setBounds(840,340,370,470);
-		fotoetiqueta6.setIcon(new ImageIcon(fotofestv6.getImage().getScaledInstance(320, 260, Image.SCALE_SMOOTH)));
-		panel.add(fotoetiqueta6);
+	//panel del quinto festival
+		panelFestv5 = new JPanel();
+		panelFestv5.setBounds(296, 263, 295, 264);
+		panelPrincipal.add(panelFestv5);
+		panelFestv5.setLayout(null);
+		
+		lblFotoFestv5 = new JLabel("JLabelFoto5");
+		lblFotoFestv5.setBounds(6, 6, 283, 195);
+		panelFestv5.add(lblFotoFestv5);
+		
+		btnFestv5 = new JButton("Hollika");
+		btnFestv5.setBounds(6, 213, 117, 29);
+		panelFestv5.add(btnFestv5);
+		
+		lblLugarFestv5 = new JLabel("La Rioja");
+		lblLugarFestv5.setBounds(156, 213, 122, 16);
+		panelFestv5.add(lblLugarFestv5);
+		
+		lblFechaFestv5 = new JLabel("6 al 10 Julio");
+		lblFechaFestv5.setBounds(156, 241, 109, 16);
+		panelFestv5.add(lblFechaFestv5);
+		
+	//panel del sexto festival
+		panelFestv6 = new JPanel();
+		panelFestv6.setBounds(594, 263, 295, 264);
+		panelPrincipal.add(panelFestv6);
+		panelFestv6.setLayout(null);
+		
+		lblFotoFestv6 = new JLabel("JLabelFoto6");
+		lblFotoFestv6.setBounds(6, 6, 283, 195);
+		panelFestv6.add(lblFotoFestv6);
+		
+		btnFestv6 = new JButton("Bombastic");
+		btnFestv6.setBounds(6, 213, 117, 29);
+		panelFestv6.add(btnFestv6);
+		
+		lblLugarFestv6 = new JLabel("Marbella");
+		lblLugarFestv6.setBounds(156, 213, 61, 16);
+		panelFestv6.add(lblLugarFestv6);
+		
+		lblFechaFestv6 = new JLabel("21,22 Junio");
+		lblFechaFestv6.setBounds(156, 241, 109, 16);
+		panelFestv6.add(lblFechaFestv6);
 		
 	}
-	
-//	public void iniciarComponentes() {
-		
-		/*
-		 * JPanel panelA = new JPanel(); panelA.setBackground(Color.LIGHT_GRAY);
-		 * this.getContentPane().add(panelA);
-		 * 
-		 * panelA.setLayout(null); //(separacionmargenizq, separacion con lo de arriba,
-		 * anchura hacia la derecha, altura ) panelA.setBounds(0,0,1200,95);
-		 * 
-		 * JPanel panel = new JPanel(); panel.setBounds(800, 850,1200,800);
-		 * 
-		 * //panel.setBackground(Color.BLUE); this.getContentPane().add(panel);
-		 * 
-		 * panel.setLayout(null);
-		 * 
-		 * //TITULO JLabel lblTitulo = new JLabel("DEUSTOLAND");
-		 * lblTitulo.setBounds(30,0, 300, 90); panelA.add(lblTitulo);
-		 * lblTitulo.setFont(new Font("Times New Roman", Font.PLAIN, 36));
-		 * 
-		 * 
-		 * //BOTON ESTADISTICAS JButton btnEstadistica = new JButton("Estadisticas");
-		 * btnEstadistica.setBounds(525, 22, 140, 37); panelA.add(btnEstadistica);
-		 * btnEstadistica.setFont(new Font("arial", Font.PLAIN, 18));
-		 * //btnEstadistica.setBackground(Color.GRAY);
-		 * 
-		 * 
-		 * //BOTON REGISTRO JButton btnRegsitro = new JButton("Registrarme");
-		 * btnRegsitro.setBounds(900, 22, 140, 37); panelA.add(btnRegsitro);
-		 * btnRegsitro.setFont(new Font("arial", Font.PLAIN, 18));
-		 * //btnRegsitro.setBackground(Color.GRAY);
-		 * 
-		 * 
-		 * //BOTON INICIO SESION JButton btnInicioSesion = new
-		 * JButton("Iniciar Sesion"); btnInicioSesion.setBounds(1040, 22, 140, 37);
-		 * panelA.add(btnInicioSesion); btnInicioSesion.setFont(new Font("arial",
-		 * Font.PLAIN, 18)); //btnInicioSesion.setBackground(Color.GRAY);
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * //FESTIVAL 1 JButton btnFestv1Name = new JButton("Tomorrowland");
-		 * btnFestv1Name.setBounds(90,370, 100, 40); panel.add(btnFestv1Name);
-		 * btnFestv1Name.setFont(new Font("arial", Font.PLAIN, 13));
-		 * //btnFestv1Name.setBackground(Color.BLUE);
-		 * 
-		 * JLabel lblFestv1Fecha = new JLabel("23 JULIO");
-		 * lblFestv1Fecha.setBounds(200,365, 90, 45); panel.add(lblFestv1Fecha);
-		 * lblFestv1Fecha.setFont(new Font("arial", Font.PLAIN, 13));
-		 * 
-		 * JLabel lblFestv1Lugar = new JLabel("Asturias");
-		 * lblFestv1Lugar.setBounds(200,379, 90, 45); panel.add(lblFestv1Lugar);
-		 * lblFestv1Lugar.setFont(new Font("arial", Font.PLAIN, 13));
-		 * 
-		 * //ETIQUETA 2- TIPO IMAGEN ImageIcon fotofestv1 = new ImageIcon("festv1.jpg");
-		 * JLabel fotoetiqueta1 = new JLabel(); fotoetiqueta1.setBounds(44,0,370,470);
-		 * fotoetiqueta1.setIcon(new
-		 * ImageIcon(fotofestv1.getImage().getScaledInstance(320, 260,
-		 * Image.SCALE_SMOOTH))); panel.add(fotoetiqueta1);
-		 * 
-		 * 
-		 * //FESTIVAL 2 JButton btnFestv2Name = new JButton("Coachella");
-		 * btnFestv2Name.setBounds(500,370, 100, 40); panel.add(btnFestv2Name);
-		 * btnFestv2Name.setFont(new Font("arial", Font.PLAIN, 13));
-		 * //btnFestv1Name.setBackground(Color.BLUE);
-		 * 
-		 * JLabel lblFestv2Fecha = new JLabel("23 JULIO");
-		 * lblFestv2Fecha.setBounds(610,365, 90, 45); panel.add(lblFestv2Fecha);
-		 * lblFestv2Fecha.setFont(new Font("arial", Font.PLAIN, 13));
-		 * 
-		 * JLabel lblFestv2Lugar = new JLabel("Asturias");
-		 * lblFestv2Lugar.setBounds(610,379, 90, 45); panel.add(lblFestv2Lugar);
-		 * lblFestv2Lugar.setFont(new Font("arial", Font.PLAIN, 13));
-		 * 
-		 * //ARREGLAR ImageIcon fotofestv2 = new ImageIcon("festv2.jpg"); JLabel
-		 * fotoetiqueta2 = new JLabel(); fotoetiqueta2.setBounds(450,0,370,470);
-		 * fotoetiqueta2.setIcon(new
-		 * ImageIcon(fotofestv2.getImage().getScaledInstance(320, 260,
-		 * Image.SCALE_SMOOTH))); panel.add(fotoetiqueta2);
-		 * 
-		 * 
-		 * 
-		 * 
-		 * //FESTIVAL 3 JButton btnFestv3Name = new JButton("Arenal Sound");
-		 * btnFestv3Name.setBounds(890,370, 100, 40); panel.add(btnFestv3Name);
-		 * btnFestv3Name.setFont(new Font("arial", Font.PLAIN, 13));
-		 * //btnFestv1Name.setBackground(Color.BLUE);
-		 * 
-		 * JLabel lblFestv3Fecha = new JLabel("23 JULIO");
-		 * lblFestv3Fecha.setBounds(1000,365, 90, 45); panel.add(lblFestv3Fecha);
-		 * lblFestv3Fecha.setFont(new Font("arial", Font.PLAIN, 13));
-		 * 
-		 * JLabel lblFestv3Lugar = new JLabel("Asturias");
-		 * lblFestv3Lugar.setBounds(1000,379, 90, 45); panel.add(lblFestv3Lugar);
-		 * lblFestv3Lugar.setFont(new Font("arial", Font.PLAIN, 13));
-		 * 
-		 * //ARREGLAR ImageIcon fotofestv3 = new ImageIcon("festv3.jpg"); JLabel
-		 * fotoetiqueta3 = new JLabel(); fotoetiqueta3.setBounds(840,0,370,470);
-		 * fotoetiqueta3.setIcon(new
-		 * ImageIcon(fotofestv3.getImage().getScaledInstance(320, 260,
-		 * Image.SCALE_SMOOTH))); panel.add(fotoetiqueta3);
-		 * 
-		 * 
-		 * //FESTIVAL 4 JButton btnFestv4Name = new JButton("MadCool");
-		 * btnFestv4Name.setBounds(90,714, 100, 40); panel.add(btnFestv4Name);
-		 * btnFestv4Name.setFont(new Font("arial", Font.PLAIN, 13));
-		 * //btnFestv1Name.setBackground(Color.BLUE);
-		 * 
-		 * 
-		 * JLabel lblFestv4Fecha = new JLabel("6-10 JULIO");
-		 * lblFestv4Fecha.setBounds(200,706, 100, 40); panel.add(lblFestv4Fecha);
-		 * lblFestv4Fecha.setFont(new Font("arial", Font.PLAIN, 13));
-		 * 
-		 * JLabel lblFestv4Lugar = new JLabel("Madrid");
-		 * lblFestv4Lugar.setBounds(200,720, 100, 40); panel.add(lblFestv4Lugar);
-		 * lblFestv4Lugar.setFont(new Font("arial", Font.PLAIN, 13));
-		 * 
-		 * //ARREGLAR ImageIcon fotofestv4 = new ImageIcon("festv4.jpg"); JLabel
-		 * fotoetiqueta4 = new JLabel(); fotoetiqueta4.setBounds(44,340,370,470);
-		 * fotoetiqueta4.setIcon(new
-		 * ImageIcon(fotofestv4.getImage().getScaledInstance(320, 260,
-		 * Image.SCALE_SMOOTH))); panel.add(fotoetiqueta4);
-		 * 
-		 * 
-		 * //FESTIVAL 5 JButton btnFestv5Name = new JButton("Hollika");
-		 * btnFestv5Name.setBounds(500,714, 100, 40); panel.add(btnFestv5Name);
-		 * btnFestv5Name.setFont(new Font("arial", Font.PLAIN, 13));
-		 * //btnFestv1Name.setBackground(Color.BLUE);
-		 * 
-		 * JLabel lblFestv5Fecha = new JLabel("28-30 JUNIO");
-		 * lblFestv5Fecha.setBounds(610,706, 100, 40); panel.add(lblFestv5Fecha);
-		 * lblFestv5Fecha.setFont(new Font("arial", Font.PLAIN, 13));
-		 * 
-		 * JLabel lblFestv5Lugar = new JLabel("Asturias");
-		 * lblFestv5Lugar.setBounds(610,720, 100, 40); panel.add(lblFestv5Lugar);
-		 * lblFestv5Lugar.setFont(new Font("arial", Font.PLAIN, 13));
-		 * 
-		 * //ARREGLAR ImageIcon fotofestv5 = new ImageIcon("festv5.jpg"); JLabel
-		 * fotoetiqueta5 = new JLabel(); fotoetiqueta5.setBounds(450,340,370,470);
-		 * fotoetiqueta5.setIcon(new
-		 * ImageIcon(fotofestv5.getImage().getScaledInstance(320, 260,
-		 * Image.SCALE_SMOOTH))); panel.add(fotoetiqueta5);
-		 * 
-		 * //FESTIVAL 6 JButton btnFestv6Name = new JButton("Bombastic");
-		 * btnFestv6Name.setBounds(890,714, 100, 40); panel.add(btnFestv6Name);
-		 * btnFestv6Name.setFont(new Font("arial", Font.PLAIN, 13));
-		 * //btnFestv1Name.setBackground(Color.BLUE);
-		 * 
-		 * 
-		 * JLabel lblFestv6Fecha = new JLabel("23 JULIO");
-		 * lblFestv6Fecha.setBounds(1000,706, 100, 40); panel.add(lblFestv6Fecha);
-		 * lblFestv6Fecha.setFont(new Font("arial", Font.PLAIN, 13));
-		 * 
-		 * JLabel lblFestv6Lugar = new JLabel("Asturias");
-		 * lblFestv6Lugar.setBounds(1000,720, 100, 40); panel.add(lblFestv6Lugar);
-		 * lblFestv6Lugar.setFont(new Font("arial", Font.PLAIN, 13));
-		 * 
-		 * 
-		 * //ARREGLAR ImageIcon fotofestv6 = new ImageIcon("festv6.jpg"); JLabel
-		 * fotoetiqueta6 = new JLabel(); fotoetiqueta6.setBounds(840,340,370,470);
-		 * fotoetiqueta6.setIcon(new
-		 * ImageIcon(fotofestv6.getImage().getScaledInstance(320, 260,
-		 * Image.SCALE_SMOOTH))); panel.add(fotoetiqueta6);
-		 */
-	
-	//}
 	
 }

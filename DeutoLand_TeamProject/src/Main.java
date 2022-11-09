@@ -1,4 +1,5 @@
 import DeustoLand.Cliente;
+
 import DeustoLand.GestorLN;
 import Ventanas.VentanaCompra;
 import Ventanas.VentanaFestival;
@@ -21,7 +22,7 @@ public class Main {
 		//vr.setVisible(true);
 		
 		VentanaPrincipal vp = new VentanaPrincipal( gln );
-		vp.setVisible(true);
+		vp.frame.setVisible(true);
 		
 		//Cliente cliente = new Cliente("nujdjdbhfl", "nunsnjdnll", "nunianjll", "nuakmidall", 0, "nspdifull", "nullsjnsoj");
 		//VentanaCompra vc = new VentanaCompra(cliente);
