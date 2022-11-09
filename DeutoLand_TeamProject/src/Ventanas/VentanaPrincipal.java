@@ -129,7 +129,8 @@ public class VentanaPrincipal extends JFrame{
 		lblFotoFestv1 = new JLabel("JLabelFoto1");
 		lblFotoFestv1.setBounds(6, 6, 283, 195);
 		panelFestv1.add(lblFotoFestv1);
-		
+		lblFotoFestv1.setIcon(new ImageIcon("/Users/mariaperaleseguiluz/Desktop/Captura de Pantalla 2022-11-09 a las 15.52.42.png"));
+
 		btnFestv1 = new JButton("Tomorrowland");
 		btnFestv1.setBounds(6, 213, 117, 29);
 		btnFestv1.addActionListener(new ActionListener() {
@@ -156,7 +157,8 @@ public class VentanaPrincipal extends JFrame{
 		lblFotoFestv2 = new JLabel("JLabelFoto2");
 		lblFotoFestv2.setBounds(6, 6, 283, 196);
 		panelFestv2.add(lblFotoFestv2);
-		
+		lblFotoFestv2.setIcon(new ImageIcon("/Users/mariaperaleseguiluz/Desktop/Captura de Pantalla 2022-11-09 a las 15.48.18.png"));
+
 		btnFestv2 = new JButton("Coachella");
 		btnFestv2.setBounds(6, 213, 117, 29);
 		panelFestv2.add(btnFestv2);
@@ -179,7 +181,8 @@ public class VentanaPrincipal extends JFrame{
 		lblFotoFestv3 = new JLabel("JLabelFoto3");
 		lblFotoFestv3.setBounds(6, 6, 283, 197);
 		panelFestv3.add(lblFotoFestv3);
-		
+		lblFotoFestv3.setIcon(new ImageIcon("/Users/mariaperaleseguiluz/Desktop/Captura de Pantalla 2022-11-09 a las 15.42.18.png"));
+
 		btnFestv3 = new JButton("Arenal Sound");
 		btnFestv3.setBounds(6, 213, 117, 29);
 		btnFestv3.addActionListener(new ActionListener() {
@@ -205,7 +208,8 @@ public class VentanaPrincipal extends JFrame{
 		lblFotoFestv4 = new JLabel("JLabelFoto4");
 		lblFotoFestv4.setBounds(6, 6, 283, 195);
 		panelFestv4.add(lblFotoFestv4);
-		
+		lblFotoFestv4.setIcon(new ImageIcon("/Users/mariaperaleseguiluz/Desktop/Captura de Pantalla 2022-11-09 a las 15.56.54.png"));
+
 		btnFestv4 = new JButton("Mad Cool");
 		btnFestv4.setBounds(6, 213, 117, 29);
 		btnFestv4.addActionListener(new ActionListener() {
@@ -231,7 +235,8 @@ public class VentanaPrincipal extends JFrame{
 		lblFotoFestv5 = new JLabel("JLabelFoto5");
 		lblFotoFestv5.setBounds(6, 6, 283, 195);
 		panelFestv5.add(lblFotoFestv5);
-		
+		lblFotoFestv5.setIcon(new ImageIcon("/Users/mariaperaleseguiluz/Desktop/Captura de Pantalla 2022-11-09 a las 16.02.07.png"));
+
 		btnFestv5 = new JButton("Hollika");
 		btnFestv5.setBounds(6, 213, 117, 29);
 		panelFestv5.add(btnFestv5);
@@ -253,7 +258,8 @@ public class VentanaPrincipal extends JFrame{
 		lblFotoFestv6 = new JLabel("JLabelFoto6");
 		lblFotoFestv6.setBounds(6, 6, 283, 195);
 		panelFestv6.add(lblFotoFestv6);
-		
+		lblFotoFestv6.setIcon(new ImageIcon("/Users/mariaperaleseguiluz/Desktop/Captura de Pantalla 2022-11-09 a las 16.05.50.png"));
+
 		btnFestv6 = new JButton("Bombastic");
 		btnFestv6.setBounds(6, 213, 117, 29);
 		panelFestv6.add(btnFestv6);
