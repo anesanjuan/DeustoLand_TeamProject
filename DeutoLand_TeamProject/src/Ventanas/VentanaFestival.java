@@ -26,7 +26,6 @@ public class VentanaFestival extends JFrame{
 	private JFrame frame;
 	
 	
-	
 	public VentanaFestival(Festival festival) {
 		
 		frame = new JFrame();
