@@ -2,131 +2,150 @@ package Ventanas;
 
 import java.awt.Component;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
+import DeustoLand.Artista;
+import DeustoLand.Concierto;
+import DeustoLand.Festival;
 
 public class VentanaFestival extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	
-	private JPanel parteArriba;
-	private JPanel partePrincipal;
-	private JPanel partePrincipal1;
-	private JPanel partePrincipal2;
-	private JPanel partePrincipal21;
-	private JPanel partePrincipal22;
-	private JPanel partePrincipal23;
-	private JPanel partePrincipal3;
-	private JPanel partePrincipal4;
-	
-	//componentes del panel de arriba
-	private JButton bInicioSesion;
-	private JButton bRegistro;
-	private JButton bAtras;
-	private JLabel titulo;
-	
-	//componentes del panel principal
-	private JLabel tituloFecha;
-	private JLabel fecha;
-	private JLabel tituloLugar;
-	private JLabel lugar;
-	private JLabel tituloArtistasInv;
-	private JLabel artistasInv;
-	private JLabel tituloDescripcion;
-	private JLabel descripcion;
-	private JLabel tituloPrecio;
-	private JLabel precio;
-	private JButton bComprarEntradas;
-	private JLabel fotoFestival; //NO ES LABEL ES FOTO
+	private JFrame frame;
 	
 	
-	public VentanaFestival() {
+	
+	public VentanaFestival(Festival festival) {
 		
-		parteArriba = new JPanel();
-		partePrincipal = new JPanel();
-		partePrincipal1 = new JPanel();
-		partePrincipal2 = new JPanel();
-		partePrincipal21 = new JPanel();
-		partePrincipal22 = new JPanel();
-		partePrincipal23 = new JPanel();
-		partePrincipal3 = new JPanel();
-		partePrincipal4 = new JPanel();
+		frame = new JFrame();
+		frame.setBounds(100, 100, 901, 615);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
 		
-		bInicioSesion = new JButton("Iniciar Sesión");
-		bRegistro = new JButton("Regstrarse");
-		bAtras = new JButton("Atrás");
-		titulo = new JLabel("Festival x"); //CAMBIAR ESTO DESPUES!!!!!
+		JPanel parteArriba = new JPanel();
+		parteArriba.setBounds(0, 0, 890, 47);
+		frame.getContentPane().add(parteArriba);
+		parteArriba.setLayout(null);
 		
-		tituloFecha = new JLabel("Fecha:");
-		tituloLugar = new JLabel("Lugar:");
-		tituloArtistasInv = new JLabel("Artistas invitados:");
-		tituloDescripcion = new JLabel("Descripción:");
-		tituloPrecio = new JLabel("Precio:");
-		bComprarEntradas = new JButton("Comprar Entradas");
+		JLabel nomFest = new JLabel("Festival" + festival.getNombre());
+		nomFest.setFont(new Font("Georgia", Font.PLAIN, 30));
+		nomFest.setBounds(10, 11, 299, 36);
+		parteArriba.add(nomFest);
 		
-		//COMP0NENTES QUE VARIAN
-		fecha = new JLabel("x");
-		lugar = new JLabel("x");
-		artistasInv = new JLabel("x");
-		descripcion = new JLabel("x");
-		precio = new JLabel("x");
-		fotoFestival = new JLabel(); 
-		
-		
-		
-		setSize(1050,800);
-		getContentPane().setLayout(new GridLayout(2,1));
-		setVisible(true);
-		parteArriba.setSize(1050, 200);
-		partePrincipal.setSize(1050,600);
-		//parteArriba.setLayout(new FlowLayout());
-		//partePrincipal.setLayout(new FlowLayout());
-		
-		parteArriba.add(titulo);
+		JButton bAtras = new JButton("volver atrás");
+		bAtras.setFont(new Font("Georgia", Font.PLAIN, 16));
+		bAtras.setBounds(387, 11, 133, 36);
 		parteArriba.add(bAtras);
+		
+		JButton bRegistro = new JButton("registrarme");
+		bRegistro.setFont(new Font("Georgia", Font.PLAIN, 16));
+		bRegistro.setBounds(545, 11, 144, 36);
 		parteArriba.add(bRegistro);
+		
+		JButton bInicioSesion = new JButton("iniciar sesión");
+		bInicioSesion.setFont(new Font("Georgia", Font.PLAIN, 16));
+		bInicioSesion.setBounds(716, 11, 144, 36);
 		parteArriba.add(bInicioSesion);
 		
-		partePrincipal.setLayout(new GridLayout(2,2));
-		partePrincipal.add(partePrincipal1);
-		partePrincipal.add(partePrincipal2);
-		partePrincipal.add(partePrincipal3);
-		partePrincipal.add(partePrincipal4);
+		JPanel panelPrincipal = new JPanel();
+		panelPrincipal.setBounds(0, 51, 890, 527);
+		frame.getContentPane().add(panelPrincipal);
+		panelPrincipal.setLayout(null);
 		
-		partePrincipal1.add(fotoFestival);
+		JPanel principalIzq = new JPanel();
+		principalIzq.setBounds(0, 5, 375, 522);
+		panelPrincipal.add(principalIzq);
+		principalIzq.setLayout(null);
 		
-		partePrincipal2.setLayout(new GridLayout(3,1));
-		partePrincipal2.add(partePrincipal21);
-		partePrincipal2.add(partePrincipal22);
-		partePrincipal2.add(partePrincipal23);
+		JLabel tituloPrecio = new JLabel("Precio:");
+		tituloPrecio.setFont(new Font("Georgia", Font.PLAIN, 20));
+		tituloPrecio.setBounds(22, 270, 75, 42);
+		principalIzq.add(tituloPrecio);
 		
-		partePrincipal21.add(tituloFecha);
-		partePrincipal21.add(fecha);
-		partePrincipal21.add(tituloLugar);
-		partePrincipal21.add(lugar);
+		JButton bComprarEnt = new JButton("Comprar Entrada");
+		bComprarEnt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		bComprarEnt.setFont(new Font("Georgia", Font.PLAIN, 16));
+		bComprarEnt.setBounds(101, 380, 167, 36);
+		principalIzq.add(bComprarEnt);
 		
-		partePrincipal22.add(tituloArtistasInv);
-		partePrincipal22.add(artistasInv);
+		JLabel precio = new JLabel(festival.getPrecio() + "€");
+		precio.setFont(new Font("Georgia", Font.PLAIN, 20));
+		precio.setBounds(114, 270, 128, 42);
+		principalIzq.add(precio);
 		
-		partePrincipal23.add(tituloDescripcion);
-		partePrincipal23.add(descripcion);
+		JPanel principalDrch = new JPanel();
+		principalDrch.setBounds(379, 5, 511, 522);
+		panelPrincipal.add(principalDrch);
+		principalDrch.setLayout(null);
 		
-		partePrincipal3.add(tituloPrecio);
-		partePrincipal3.add(precio);
-		partePrincipal4.add(bComprarEntradas);
+		JLabel tituloFecha = new JLabel("Fecha:");
+		tituloFecha.setFont(new Font("Georgia", Font.PLAIN, 20));
+		tituloFecha.setBounds(61, 78, 75, 42);
+		principalDrch.add(tituloFecha);
 		
-		//parteArriba.setBounds(1050, 200, 1050, 600);
-		getContentPane().add(parteArriba );
-		getContentPane().add(partePrincipal);
+		JLabel tituloLugar = new JLabel("Lugar:");
+		tituloLugar.setFont(new Font("Georgia", Font.PLAIN, 20));
+		tituloLugar.setBounds(61, 132, 75, 42);
+		principalDrch.add(tituloLugar);
 		
+		JLabel tituloArtistasInv = new JLabel("Aristas Invitados:");
+		tituloArtistasInv.setFont(new Font("Georgia", Font.PLAIN, 20));
+		tituloArtistasInv.setBounds(61, 185, 164, 42);
+		principalDrch.add(tituloArtistasInv);
+		
+		JLabel tituloDescripcion = new JLabel("Descripción:");
+		tituloDescripcion.setFont(new Font("Georgia", Font.PLAIN, 20));
+		tituloDescripcion.setBounds(61, 307, 121, 42);
+		principalDrch.add(tituloDescripcion);
+		
+		JLabel fecha = new JLabel(festival.getFecha());
+		fecha.setFont(new Font("Georgia", Font.PLAIN, 20));
+		fecha.setBounds(146, 78, 327, 42);
+		principalDrch.add(fecha);
+		
+		JLabel lugar = new JLabel(festival.getLugar());
+		lugar.setFont(new Font("Georgia", Font.PLAIN, 20));
+		lugar.setBounds(150, 132, 323, 42);
+		principalDrch.add(lugar);
+		
+		String listaA = "";
+		for (Artista art: festival.getListaArtistas()) {
+			String artista = art.getNombre();
+			listaA = listaA + "," + artista;
+		}
+		
+		JLabel artistasInv = new JLabel(listaA);
+		artistasInv.setVerticalAlignment(SwingConstants.TOP);
+		artistasInv.setFont(new Font("Georgia", Font.PLAIN, 20));
+		artistasInv.setBounds(61, 225, 412, 78);
+		principalDrch.add(artistasInv);
+		
+		JLabel descripcion = new JLabel(festival.getDescripcion());
+		descripcion.setVerticalAlignment(SwingConstants.TOP);
+		descripcion.setFont(new Font("Georgia", Font.PLAIN, 20));
+		descripcion.setBounds(61, 361, 412, 131);
+		principalDrch.add(descripcion);
 		setVisible(true);
 		
+		
+		
 	}
+	
 	
 
 	

@@ -1,5 +1,9 @@
-import DeustoLand.Cliente;
+import java.util.ArrayList;
 
+import DeustoLand.Artista;
+import DeustoLand.Cliente;
+import DeustoLand.Concierto;
+import DeustoLand.Festival;
 import DeustoLand.GestorLN;
 import Ventanas.VentanaCompra;
 import Ventanas.VentanaFestival;
@@ -15,14 +19,17 @@ public class Main {
 		//VentanaInicioSesion vi = new VentanaInicioSesion( gln );
 		//vi.setVisible(true);
 		
-		//VentanaFestival vf = new VentanaFestival();
-		//vf.setVisible(true);
+		ArrayList<Concierto> conciertofest1 = new ArrayList<>();
+		ArrayList<Artista> artistfest1 = new ArrayList<>();
+		Festival fest1 = new Festival("TomorrowLand", "21-07-2023", "Dubai", "bla bla", conciertofest1, artistfest1, 150.7);
+		VentanaFestival vf = new VentanaFestival(fest1);
+		vf.setVisible(true);
 		
 		//VentanaRegistro vr = new VentanaRegistro(gln);
 		//vr.setVisible(true);
 		
-		VentanaPrincipal vp = new VentanaPrincipal( gln );
-		vp.frame.setVisible(true);
+		//VentanaPrincipal vp = new VentanaPrincipal( gln );
+		//vp.frame.setVisible(true);
 		
 		//Cliente cliente = new Cliente("nujdjdbhfl", "nunsnjdnll", "nunianjll", "nuakmidall", 0, "nspdifull", "nullsjnsoj");
 		//VentanaCompra vc = new VentanaCompra(cliente);

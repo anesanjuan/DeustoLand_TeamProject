@@ -9,10 +9,10 @@ public class Concierto extends Festival{
 	private double hora;
 	private double duracion;
 	
-	public Concierto(String nombre, double fecha, ArrayList<Concierto> listaConciertos,
+	public Concierto(String nombre, String fecha, String lugar, String descripcion, ArrayList<Concierto> listaConciertos,
 			ArrayList<Artista> listaArtistas, double precio, Artista artista, Festival festival, double hora,
 			double duracion) {
-		super(nombre, fecha, listaConciertos, listaArtistas, precio);
+		super(nombre, fecha, lugar, descripcion, listaConciertos, listaArtistas, precio);
 		this.artista = artista;
 		this.festival = festival;
 		this.hora = hora;
@@ -20,9 +20,9 @@ public class Concierto extends Festival{
 	}
 
 	
-	public Concierto(String nombre, double fecha, ArrayList<Concierto> listaConciertos,
+	public Concierto(String nombre, String fecha, String lugar, String descripcion, ArrayList<Concierto> listaConciertos,
 			ArrayList<Artista> listaArtistas, double precio) {
-		super(nombre, fecha, listaConciertos, listaArtistas, precio);
+		super(nombre, fecha, lugar, descripcion, listaConciertos, listaArtistas, precio);
 	}
 
 
