@@ -23,19 +23,17 @@ public class VentanaFestival extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	
-	private JFrame frame;
 	
 	
 	public VentanaFestival(Festival festival) {
 		
-		frame = new JFrame();
-		frame.setBounds(100, 100, 901, 615);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		setBounds(100, 100, 901, 615);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getContentPane().setLayout(null);
 		
 		JPanel parteArriba = new JPanel();
 		parteArriba.setBounds(0, 0, 890, 47);
-		frame.getContentPane().add(parteArriba);
+		getContentPane().add(parteArriba);
 		parteArriba.setLayout(null);
 		
 		JLabel nomFest = new JLabel("Festival" + festival.getNombre());
@@ -60,7 +58,7 @@ public class VentanaFestival extends JFrame{
 		
 		JPanel panelPrincipal = new JPanel();
 		panelPrincipal.setBounds(0, 51, 890, 527);
-		frame.getContentPane().add(panelPrincipal);
+		getContentPane().add(panelPrincipal);
 		panelPrincipal.setLayout(null);
 		
 		JPanel principalIzq = new JPanel();
@@ -140,7 +138,7 @@ public class VentanaFestival extends JFrame{
 		descripcion.setBounds(61, 361, 412, 131);
 		principalDrch.add(descripcion);
 		setVisible(true);
-		
+		setSize(1000,1000);
 		
 		
 	}
