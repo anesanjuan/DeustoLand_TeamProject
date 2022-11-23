@@ -49,28 +49,6 @@ public class BaseDeDatos {
 				sent = "CREATE TABLE concierto (codC INTEGER PRIMARY KEY AUTOINCREMENT, codA int(3) REFERENCES artista (codA), codF int(3) REFERENCES festival (codF), horaC date, duracionC dec(3,2));";
 				logger.log( Level.INFO, "Statement: " + sent );
 				statement.executeUpdate( sent );
-				try {
-					Scanner scanner = new Scanner( BaseDeDatos.class.getResourceAsStream("productos-inic.txt") );
-					while (scanner.hasNextLine()) {
-						String linea = scanner.nextLine();
-						String[] datos = linea.split( "\t" );
-						sent = "insert into producto (id, nombre, precio) values (" + datos[0] + ",'" + datos[1] + "'," + datos[2] + ");";
-						logger.log( Level.INFO, "Statement: " + sent );
-						statement.executeUpdate( sent );
-					}
-					scanner.close();
-					scanner = new Scanner( BaseDeDatos.class.getResourceAsStream("compras-inic.txt") );
-					while (scanner.hasNextLine()) {
-						String linea = scanner.nextLine();
-						String[] datos = linea.split( "\t" );
-						sent = "insert into compra (id, idProducto, cliente, fecha, cantidad) values (" + datos[0] + "," + datos[1] + ",'" + datos[2] + "'," + datos[3] + "," + datos[4] + ");";
-						logger.log( Level.INFO, "Statement: " + sent );
-						statement.executeUpdate( sent );
-					}
-					scanner.close();
-				} catch(Exception e) {
-					logger.log( Level.SEVERE, "Excepción", e );
-				}
 			}
 			return true;
 		} catch(Exception e) {
