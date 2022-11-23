@@ -9,8 +9,7 @@ public class Concierto {
 	private double hora;
 	private double duracion;
 	
-	public Concierto( Artista artista, Festival festival, double hora,
-			double duracion) {
+	public Concierto( Artista artista, Festival festival, double hora, double duracion) {
 		super();
 		this.artista = artista;
 		this.festival = festival;
