@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import DeustoLand.Festival;
 import DeustoLand.GestorLN;
 
 
@@ -281,6 +283,7 @@ public class VentanaPrincipal extends JFrame{
 		
 		panelPrincipal.addMouseListener(new MouseAdapter() {
 			
+			ArrayList<Festival> festivales = new ArrayList<>();
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -298,6 +301,11 @@ public class VentanaPrincipal extends JFrame{
 					} else if (e.getX() < (largoP / 3) * 2 && e.getX() > (largoP / 3)+1 ) {
 						posx = 2;
 					}
+					
+				}
+				int festivalSelec = posy + posx;
+				if (festivalSelec == 2) {
+					
 					
 				}
 				
