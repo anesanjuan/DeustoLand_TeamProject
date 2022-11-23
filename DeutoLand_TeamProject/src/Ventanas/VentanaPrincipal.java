@@ -1,10 +1,15 @@
 package Ventanas;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -12,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import DeustoLand.Festival;
 import DeustoLand.GestorLN;
 
 
@@ -126,7 +132,8 @@ public class VentanaPrincipal extends JFrame{
 		panelPrincipal.add(panelFestv1);
 		panelFestv1.setLayout(null);
 		
-		lblFotoFestv1 = new JLabel("JLabelFoto1");
+		lblFotoFestv1 = new JLabel(new ImageIcon("src/Ventanas/festv2.jpg"));
+		lblFotoFestv1.setPreferredSize(new Dimension(100, 100));
 		lblFotoFestv1.setBounds(6, 6, 283, 195);
 		panelFestv1.add(lblFotoFestv1);
 		lblFotoFestv1.setIcon(new ImageIcon("/Users/mariaperaleseguiluz/Desktop/Captura de Pantalla 2022-11-09 a las 15.52.42.png"));
@@ -271,6 +278,39 @@ public class VentanaPrincipal extends JFrame{
 		lblFechaFestv6 = new JLabel("21,22 Junio");
 		lblFechaFestv6.setBounds(156, 241, 109, 16);
 		panelFestv6.add(lblFechaFestv6);
+		
+		
+		
+		panelPrincipal.addMouseListener(new MouseAdapter() {
+			
+			ArrayList<Festival> festivales = new ArrayList<>();
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int anchoP = panelPrincipal.getPreferredSize().width;
+				int largoP = panelPrincipal.getPreferredSize().height;
+				int posy=1;
+				int posx=1;
+				if ( e.getX() > 0 && e.getX() < anchoP && e.getY()>0 && e.getY()<largoP ) {
+					if (e.getY() < largoP && e.getY()>(largoP/2)+1) {
+						posy = 2;
+					} 
+					if (e.getX() < largoP && e.getX() > (largoP / 3) * 2) {
+						posx = 3;
+						
+					} else if (e.getX() < (largoP / 3) * 2 && e.getX() > (largoP / 3)+1 ) {
+						posx = 2;
+					}
+					
+				}
+				int festivalSelec = posy + posx;
+				if (festivalSelec == 2) {
+					
+					
+				}
+				
+			}
+		});
 		
 	}
 	

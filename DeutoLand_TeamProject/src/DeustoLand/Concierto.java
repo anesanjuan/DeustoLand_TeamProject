@@ -2,17 +2,15 @@ package DeustoLand;
 
 import java.util.ArrayList;
 
-public class Concierto extends Festival{
+public class Concierto {
 	
 	private Artista artista;
 	private Festival festival;
 	private double hora;
 	private double duracion;
 	
-	public Concierto(String nombre, double fecha, ArrayList<Concierto> listaConciertos,
-			ArrayList<Artista> listaArtistas, double precio, Artista artista, Festival festival, double hora,
-			double duracion) {
-		super(nombre, fecha, listaConciertos, listaArtistas, precio);
+	public Concierto( Artista artista, Festival festival, double hora, double duracion) {
+		super();
 		this.artista = artista;
 		this.festival = festival;
 		this.hora = hora;
@@ -20,9 +18,8 @@ public class Concierto extends Festival{
 	}
 
 	
-	public Concierto(String nombre, double fecha, ArrayList<Concierto> listaConciertos,
-			ArrayList<Artista> listaArtistas, double precio) {
-		super(nombre, fecha, listaConciertos, listaArtistas, precio);
+	public Concierto() {
+		super();
 	}
 
 

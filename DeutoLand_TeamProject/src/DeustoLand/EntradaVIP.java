@@ -1,3 +1,4 @@
+
 package DeustoLand;
 
 public class EntradaVIP extends Entrada{

@@ -5,16 +5,20 @@ import java.util.ArrayList;
 public class Festival {
 
 	private String nombre;
-	private double fecha;
+	private String fecha;
+	private String lugar;
+	private String descripcion;
 	private ArrayList<Concierto> listaConciertos;
 	private ArrayList<Artista> listaArtistas; // esto no estoy segura porque en el concierto ya saldra no????
 	private double precio;
 	
-	public Festival(String nombre, double fecha, ArrayList<Concierto> listaConciertos, ArrayList<Artista> listaArtistas,
+	public Festival(String nombre, String fecha, String lugar, String descripcion, ArrayList<Concierto> listaConciertos, ArrayList<Artista> listaArtistas,
 			double precio) {
 		super();
 		this.nombre = nombre;
 		this.fecha = fecha;
+		this.lugar = lugar;
+		this.descripcion = descripcion;
 		this.listaConciertos = listaConciertos;
 		this.listaArtistas = listaArtistas;
 		this.precio = precio;
@@ -32,13 +36,30 @@ public class Festival {
 		this.nombre = nombre;
 	}
 	
-	public double getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
-
-	public void setFecha(double fecha) {
+	
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
+	
+	public String getLugar() {
+		return lugar;
+	}
+
+	public void setLugar(String lugar) {
+		this.lugar = lugar;
+	}
+	
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
 
 	public ArrayList<Concierto> getListaConciertos() {
 		return listaConciertos;
@@ -66,7 +87,7 @@ public class Festival {
 
 	@Override
 	public String toString() {
-		return "Festival [nombre=" + nombre + ", fecha=" + fecha + ", listaConciertos=" + listaConciertos
+		return "Festival [nombre=" + nombre + ", fecha=" + fecha + ", lugar=" + lugar + ", descripción=" + descripcion + ", listaConciertos=" + listaConciertos
 				+ ", listaArtistas=" + listaArtistas + ", precio=" + precio + "]";
 	}
 	
