@@ -280,10 +280,10 @@ public class VentanaPrincipal extends JFrame{
 		panelFestv6.add(lblFechaFestv6);
 		
 		
+		ArrayList<Festival> festivales = new ArrayList<>();
+
 		
 		panelPrincipal.addMouseListener(new MouseAdapter() {
-			
-			ArrayList<Festival> festivales = new ArrayList<>();
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
