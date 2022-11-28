@@ -15,7 +15,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import DeustoLand.GestorLN;
+import DeustoLand.Gestor;
+import logicaDePresentacion.VentanaStock;
 
 
 
@@ -25,9 +26,9 @@ public class VentanaInicioSesion extends JFrame {
 	private JTextField txtCorreo;
 	private JPasswordField passwordFieldContrasena;
 
-	private GestorLN gestor;
+	private Gestor gestor;
 
-	public VentanaInicioSesion(GestorLN gestor) {
+	public VentanaInicioSesion(Gestor gestor) {
 		setTitle("Inicio de Sesion:");
 		this.gestor = gestor;
 
@@ -71,15 +72,21 @@ public class VentanaInicioSesion extends JFrame {
 				String correo = txtCorreo.getText();
 				String contrasena = new String(passwordFieldContrasena.getPassword());
 				
-				//habria q hacer un gestorNL y comprobar q existen y son correctos para pasar a la siguiente ventana
-				boolean r = gestor.comprobarUsuario(correo, contrasena);
-				if (r == true) {
-					VentanaPrincipal vp = new VentanaPrincipal(gestor);
-					vp.setVisible(true);
-					dispose();
+			
+				if (correo.equalsIgnoreCase("admin") && contrasena.equalsIgnoreCase("admin")) {
+					VentanaEstadisticas vE = new VentanaEstadisticas();
+					vE.setVisible(true);
 				} else {
-					JOptionPane.showMessageDialog(null, "El usuario o la contrasena son incorrectos.");
+					boolean r = gestor.comprobarUsuario(correo, contrasena);
+					if (r == true) {
+						VentanaPrincipal vp = new VentanaPrincipal();
+						vp.setVisible(true);
+						dispose();
+					} else {
+						JOptionPane.showMessageDialog(null, "El usuario o la contrasena son incorrectos.");
+					}
 				}
+				
 			}
 			
 		});

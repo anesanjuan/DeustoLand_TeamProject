@@ -5,7 +5,7 @@ import DeustoLand.BaseDeDatos;
 import DeustoLand.Cliente;
 import DeustoLand.Concierto;
 import DeustoLand.Festival;
-import DeustoLand.GestorLN;
+import DeustoLand.Gestor;
 import Ventanas.VentanaCompra;
 import Ventanas.VentanaFestival;
 import Ventanas.VentanaInicioSesion;
@@ -16,7 +16,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		GestorLN gln = new GestorLN(); 	
+		Gestor gln = new Gestor(); 	
 		//VentanaInicioSesion vi = new VentanaInicioSesion( gln );
 		//vi.setVisible(true);
 		

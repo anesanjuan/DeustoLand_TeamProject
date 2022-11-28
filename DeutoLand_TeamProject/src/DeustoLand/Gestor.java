@@ -8,22 +8,20 @@ import DeustoLand.Concierto;
 import Excepciones.ClienteRepetidoException;
 
 
-public class GestorLN {
+public class Gestor {
 	
-	private GestorFichero gficheros = new GestorFichero();
 
 	private ArrayList<Cliente> aClientes = new ArrayList<>();
 	
 	public void CargarClientes() {
 		
-		aClientes = gficheros.cargarClientes();		
+		
 	}
 
 	public void GuardarClientes() {
-		gficheros.guardarClientes(aClientes);
 	}
 
-	public GestorLN() {
+	public Gestor() {
 
 		//datos iniciales
 		//insertarClientes();
