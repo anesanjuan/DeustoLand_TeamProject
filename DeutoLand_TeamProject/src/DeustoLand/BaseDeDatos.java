@@ -1,4 +1,4 @@
-package Ventanas;
+package DeustoLand;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -67,6 +67,9 @@ public class BaseDeDatos {
 			logger.log( Level.SEVERE, "Excepción", e );
 		}
 	}
+	
+	
+	
 	
 	
 
