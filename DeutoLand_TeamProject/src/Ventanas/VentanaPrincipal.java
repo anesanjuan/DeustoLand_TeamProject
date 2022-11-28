@@ -24,6 +24,8 @@ import DeustoLand.Gestor;
 public class VentanaPrincipal extends JFrame{
 
 	private final JPanel panel = new JPanel();
+	private Gestor gestor;
+
 
 	private static final long serialVersionUID = 1L;
 
@@ -79,7 +81,7 @@ public class VentanaPrincipal extends JFrame{
 	
 	
 	//esto es como inicializar: mete todo dentro
-	public VentanaPrincipal() {
+	public VentanaPrincipal(Gestor gestor) {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 901, 615);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -101,11 +103,21 @@ public class VentanaPrincipal extends JFrame{
 		btnEstadisticas.setBounds(378, 9, 117, 29);
 		btnEstadisticas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
+				VentanaEstadisticas ve = new VentanaEstadisticas();
+				ve.setVisible(true);
 			}
 		});
 		panelArriba.add(btnEstadisticas);
 		
 		btnRegistro = new JButton("Registrarse");
+		btnRegistro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				VentanaRegistro vr = new VentanaRegistro(gestor);
+				vr.setVisible(true);
+			}
+		});
 		btnRegistro.setBounds(766, 9, 117, 29);
 		panelArriba.add(btnRegistro);
 		
@@ -113,6 +125,9 @@ public class VentanaPrincipal extends JFrame{
 		btnInicioSesion.setBounds(636, 9, 117, 29);
 		btnInicioSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
+				VentanaInicioSesion vs = new VentanaInicioSesion(gestor);
+				vs.setVisible(true);
 			}
 		});
 		panelArriba.add(btnInicioSesion);
@@ -141,6 +156,8 @@ public class VentanaPrincipal extends JFrame{
 		btnFestv1.setBounds(6, 213, 117, 29);
 		btnFestv1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
+				
 			}
 		});
 		panelFestv1.add(btnFestv1);

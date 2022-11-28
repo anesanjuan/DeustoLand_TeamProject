@@ -1,6 +1,7 @@
 package Ventanas;
 
 import java.awt.BorderLayout;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -16,7 +17,6 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import DeustoLand.Gestor;
-import logicaDePresentacion.VentanaStock;
 
 
 
