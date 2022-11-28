@@ -15,7 +15,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import DeustoLand.GestorLN;
+import DeustoLand.Gestor;
 
 
 
@@ -25,9 +25,9 @@ public class VentanaInicioSesion extends JFrame {
 	private JTextField txtCorreo;
 	private JPasswordField passwordFieldContrasena;
 
-	private GestorLN gestor;
+	private Gestor gestor;
 
-	public VentanaInicioSesion(GestorLN gestor) {
+	public VentanaInicioSesion(Gestor gestor) {
 		setTitle("Inicio de Sesion:");
 		this.gestor = gestor;
 

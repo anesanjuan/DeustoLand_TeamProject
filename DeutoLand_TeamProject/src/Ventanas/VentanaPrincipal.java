@@ -18,13 +18,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import DeustoLand.Festival;
-import DeustoLand.GestorLN;
+import DeustoLand.Gestor;
 
 
 public class VentanaPrincipal extends JFrame{
 
 	private final JPanel panel = new JPanel();
-	private GestorLN gestor;
+	private Gestor gestor;
 
 	private static final long serialVersionUID = 1L;
 
@@ -80,7 +80,7 @@ public class VentanaPrincipal extends JFrame{
 	
 	
 	//esto es como inicializar: mete todo dentro
-	public VentanaPrincipal(GestorLN gestor) {
+	public VentanaPrincipal(Gestor gestor) {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 901, 615);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import DeustoLand.GestorLN;
+import DeustoLand.Gestor;
 import Excepciones.ClienteRepetidoException;
 
 
@@ -27,9 +27,9 @@ public class VentanaRegistro extends JFrame {
 	private JTextField txtTipocliente;
 	private JTextField txtContrasena;
 
-	private GestorLN gestor;
+	private Gestor gestor;
 	
-	public VentanaRegistro(GestorLN gestor ) {
+	public VentanaRegistro(Gestor gestor ) {
 		setTitle("Registrarse:");
 		
 		//inicializar los campos editables
