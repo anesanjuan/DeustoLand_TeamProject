@@ -9,7 +9,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -17,6 +20,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import DeustoLand.BaseDeDatos;
 import DeustoLand.Festival;
 import DeustoLand.Gestor;
 
@@ -322,6 +326,7 @@ public class VentanaPrincipal extends JFrame{
 				int festivalSelec = posy + posx;
 				if (festivalSelec == 2) {
 					
+
 					
 				}
 				

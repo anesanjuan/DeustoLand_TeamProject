@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Festival {
 
+	private int codigoF;
 	private String nombre;
 	private String fecha;
 	private String lugar;
@@ -12,9 +13,10 @@ public class Festival {
 	private ArrayList<Artista> listaArtistas; // esto no estoy segura porque en el concierto ya saldra no????
 	private double precio;
 	
-	public Festival(String nombre, String fecha, String lugar, String descripcion, ArrayList<Concierto> listaConciertos, ArrayList<Artista> listaArtistas,
+	public Festival(int codigoF,String nombre, String fecha, String lugar, String descripcion, ArrayList<Concierto> listaConciertos, ArrayList<Artista> listaArtistas,
 			double precio) {
 		super();
+		this.codigoF = codigoF;
 		this.nombre = nombre;
 		this.fecha = fecha;
 		this.lugar = lugar;
@@ -26,6 +28,16 @@ public class Festival {
 
 	public Festival() {
 		super();
+	}
+
+	
+	
+	public int getCodigoF() {
+		return codigoF;
+	}
+
+	public void setCodigoF(int codigoF) {
+		this.codigoF = codigoF;
 	}
 
 	public String getNombre() {
@@ -87,7 +99,7 @@ public class Festival {
 
 	@Override
 	public String toString() {
-		return "Festival [nombre=" + nombre + ", fecha=" + fecha + ", lugar=" + lugar + ", descripción=" + descripcion + ", listaConciertos=" + listaConciertos
+		return "Festival [codigo=" + codigoF + ", nombre=" + nombre +", fecha=" + fecha + ", lugar=" + lugar + ", descripción=" + descripcion + ", listaConciertos=" + listaConciertos
 				+ ", listaArtistas=" + listaArtistas + ", precio=" + precio + "]";
 	}
 	

@@ -10,6 +10,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 public class BaseDeDatos {
 	
 	
@@ -32,7 +33,7 @@ public class BaseDeDatos {
 				String sent = "DROP TABLE IF EXISTS festival";
 				logger.log( Level.INFO, "Statement: " + sent );
 				statement.executeUpdate( sent );
-				sent = "CREATE TABLE festival (codF INTEGER PRIMARY KEY AUTOINCREMENT, nombreF char(30), fechaF date, lugarF char(30), descripcionF char(250), precioF dec(3,2));";
+				sent = "CREATE TABLE festival (codF INTEGER PRIMARY KEY AUTOINCREMENT, nombreF char(30), fechaF date, lugarF char(30), descripcionF char(250), conciertos char(250), artistas char(250), precioF dec(3,2));";
 				logger.log( Level.INFO, "Statement: " + sent );
 				statement.executeUpdate( sent );
 				
@@ -69,7 +70,25 @@ public class BaseDeDatos {
 	}
 	
 	
-	
+	public static boolean insertarFestival( Festival festival ) {
+		try (Statement statement = conexion.createStatement()) {
+			String sent = "insert into festival values ( '" + festival.getNombre() + "' , '" + festival.getFecha() + "' , '" + festival.getLugar() + "' , '" + festival.getDescripcion() + "' + '" + festival.getListaConciertos() + "' + '" + festival.getListaArtistas() + "' , " + festival.getPrecio() +");";
+			logger.log( Level.INFO, "Statement: " + sent );
+			int insertados = statement.executeUpdate( sent );
+			
+			if (insertados!=1) return false;  // Error en inserción
+			// Búsqueda de la fila insertada - para ello hay que recuperar la clave autogenerada. Hay varias maneras, vemos dos diferentes:
+			// Se hace utilizando método del propio objeto statement
+			ResultSet rrss = statement.getGeneratedKeys();  // Genera un resultset ficticio con las claves generadas del último comando
+			rrss.next();  // Avanza a la única fila 
+			int pk = rrss.getInt( 1 );  // Coge la única columna (la primary key autogenerada)
+			festival.setCodigoF(pk );
+			return true;
+		} catch (Exception e) {
+			logger.log( Level.SEVERE, "Excepción", e );
+			return false;
+		}
+	}
 	
 	
 
