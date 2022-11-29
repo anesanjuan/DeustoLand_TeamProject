@@ -1,5 +1,6 @@
 package DeustoLand;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -14,15 +15,69 @@ import java.util.logging.Logger;
 public class BaseDeDatos {
 	
 	
-	private static Connection conexion;
+	private static Connection con;
 	private static Logger logger = Logger.getLogger( "BaseDatos" );
+	private static Exception lastError;
+	
+	
+	public static Statement abrirConex (String nombreBD) throws SQLException {
+		
+		try {
+			Class.forName("org.sqlite.JDBC");
+			con = DriverManager.getConnection("jdbc:sqlite:" + nombreBD );
+			Statement statement = con.createStatement();
+			logger.log(Level.INFO, "Conectada base de datos" + nombreBD);
+			return statement;
+		} catch (Exception e) {
+			lastError = e;
+			logger.log( Level.SEVERE, "Excepción", e );
+			e.printStackTrace();
+			return null;
+			
+		}
+	}
+	
+	public static boolean abrirConexion() {
+		try {
+			abrirConex("BaseDatos.db");
+	
+				Statement statement = con.createStatement();
+				String sent = "DROP TABLE IF EXISTS festival";
+				logger.log( Level.INFO, "Statement: " + sent );
+				statement.executeUpdate( sent );
+				sent = "CREATE TABLE festival (codF INTEGER PRIMARY KEY AUTOINCREMENT, nombreF char(30), fechaF date, lugarF char(30), descripcionF char(250), conciertos char(250), artistas char(250), precioF dec(3,2), foto char(250))";
+				logger.log( Level.INFO, "Statement: " + sent );
+				statement.executeUpdate( sent );
+				
+				sent = "DROP TABLE IF EXISTS artista";
+				logger.log( Level.INFO, "Statement: " + sent );
+				statement.executeUpdate( sent );
+				sent = "CREATE TABLE artista (codA INTEGER PRIMARY KEY AUTOINCREMENT, nombreA char(25), codF int(3) REFERENCES festival (codF), generoA char(25))";
+				logger.log( Level.INFO, "Statement: " + sent );
+				statement.executeUpdate( sent );
+				
+				sent = "DROP TABLE IF EXISTS concierto";
+				logger.log( Level.INFO, "Statement: " + sent );
+				statement.executeUpdate( sent );
+				sent = "CREATE TABLE concierto (codC INTEGER PRIMARY KEY AUTOINCREMENT, codA int(3) REFERENCES artista (codA), codF int(3) REFERENCES festival (codF), horaC date, duracionC dec(3,2))";
+				logger.log( Level.INFO, "Statement: " + sent );
+				statement.executeUpdate( sent );
+			
+			return true;
+		} catch(Exception e) {
+			logger.log( Level.SEVERE, "Excepción", e );
+			return false;
+		}
+	}	
+	
+	
 	
 	/** Abre conexión con la base de datos
 	 * @param nombreBD	Nombre del fichero de base de datos
 	 * @param reiniciaBD	true si se quiere reiniciar la base de datos (se borran sus contenidos si los tuviera y se crean datos por defecto)
 	 * @return	true si la conexión ha sido correcta, false en caso contrario
 	 */
-	public static boolean abrirConexion( String nombreBD, boolean reiniciaBD ) {
+	/*public static boolean abrirConexion( String nombreBD, boolean reiniciaBD ) {
 		try {
 			logger.log( Level.INFO, "Carga de librería org.sqlite.JDBC" );
 			Class.forName("org.sqlite.JDBC");  // Carga la clase de BD para sqlite
@@ -57,21 +112,25 @@ public class BaseDeDatos {
 			return false;
 		}
 	}	
-	
+	*/
 	/** Cierra la conexión abierta de base de datos ({@link #abrirConexion(String)})
 	 */
 	public static void cerrarConexion() {
 		try {
 			logger.log( Level.INFO, "Cerrando conexión" );
-			conexion.close();
+			con.close();
 		} catch (SQLException e) {
 			logger.log( Level.SEVERE, "Excepción", e );
 		}
 	}
 	
 	
+	
+	
+	
 	public static boolean insertarFestival( Festival festival ) {
-		try (Statement statement = conexion.createStatement()) {
+		try (Statement statement = con.createStatement()) {
+			abrirConex("BaseDatos.db");
 			String sent = "insert into festival values ( " + festival.getCodigoF() + ", '" + festival.getNombre() + "' , '" + festival.getFecha() + "' , '" + festival.getLugar() + "' , '" + festival.getDescripcion() + "' + '" + festival.getListaConciertos() + "' + '" + festival.getListaArtistas() + "' , " + festival.getPrecio() + ", '" + festival.getFoto() + "');";
 			logger.log( Level.INFO, "Statement: " + sent );
 			int insertados = statement.executeUpdate( sent );
@@ -92,7 +151,8 @@ public class BaseDeDatos {
 	
 	
 	public static ArrayList<Festival> getFestivales(){
-		try(Statement statement = conexion.createStatement() ){
+		try(Statement statement = con.createStatement() ){
+			abrirConex("BaseDatos.db");
 			ArrayList<Festival> ret = new ArrayList<>();
 			String sent = "select * from festival";
 			logger.log(Level.INFO, "Statement: " + sent);

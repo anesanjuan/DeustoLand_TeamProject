@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import DeustoLand.Artista;
@@ -14,13 +15,14 @@ import Ventanas.VentanaRegistro;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		
 		Gestor gln = new Gestor(); 	
 		//VentanaInicioSesion vi = new VentanaInicioSesion( gln );
 		//vi.setVisible(true);
 		
-		BaseDeDatos.abrirConexion("BaseDatos.db", false);
+		BaseDeDatos.abrirConex("BaseDatos.db");
+		
 		ArrayList<Concierto> conciertofest = new ArrayList<>(); //esto no se muy bien como seria ñe
 		ArrayList<Artista> artistfest = new ArrayList<>();
 		Festival fest1 = new Festival(01, "TomorrowLand", "21-07-2023", "Dubai", "bla bla", conciertofest, artistfest, 150.7, "Fest1Tomorrowland.png");
@@ -30,7 +32,7 @@ public class Main {
 		//Festival fest5 = new Festival(05, "hollika", "21-07-2023", "Dubai", "bla bla", conciertofest, artistfest, 150.7);
 		//Festival fest6 = new Festival(06, "boombastic", "21-07-2023", "Dubai", "bla bla", conciertofest, artistfest, 150.7);
 		
-		BaseDeDatos.insertarFestival(fest1);
+		//BaseDeDatos.insertarFestival(fest1);
 		//BaseDeDatos.insertarFestival(fest2);
 		//BaseDeDatos.insertarFestival(fest3);
 		//BaseDeDatos.insertarFestival(fest4);
