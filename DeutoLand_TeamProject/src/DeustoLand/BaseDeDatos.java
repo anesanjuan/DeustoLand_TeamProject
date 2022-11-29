@@ -33,7 +33,7 @@ public class BaseDeDatos {
 				String sent = "DROP TABLE IF EXISTS festival";
 				logger.log( Level.INFO, "Statement: " + sent );
 				statement.executeUpdate( sent );
-				sent = "CREATE TABLE festival (codF INTEGER PRIMARY KEY AUTOINCREMENT, nombreF char(30), fechaF date, lugarF char(30), descripcionF char(250), conciertos char(250), artistas char(250), precioF dec(3,2));";
+				sent = "CREATE TABLE festival (codF INTEGER PRIMARY KEY AUTOINCREMENT, nombreF char(30), fechaF date, lugarF char(30), descripcionF char(250), conciertos char(250), artistas char(250), precioF dec(3,2), foto char(250));";
 				logger.log( Level.INFO, "Statement: " + sent );
 				statement.executeUpdate( sent );
 				
@@ -72,7 +72,7 @@ public class BaseDeDatos {
 	
 	public static boolean insertarFestival( Festival festival ) {
 		try (Statement statement = conexion.createStatement()) {
-			String sent = "insert into festival values ( '" + festival.getNombre() + "' , '" + festival.getFecha() + "' , '" + festival.getLugar() + "' , '" + festival.getDescripcion() + "' + '" + festival.getListaConciertos() + "' + '" + festival.getListaArtistas() + "' , " + festival.getPrecio() +");";
+			String sent = "insert into festival values ( " + festival.getCodigoF() + ", '" + festival.getNombre() + "' , '" + festival.getFecha() + "' , '" + festival.getLugar() + "' , '" + festival.getDescripcion() + "' + '" + festival.getListaConciertos() + "' + '" + festival.getListaArtistas() + "' , " + festival.getPrecio() + ", '" + festival.getFoto() + "');";
 			logger.log( Level.INFO, "Statement: " + sent );
 			int insertados = statement.executeUpdate( sent );
 			
