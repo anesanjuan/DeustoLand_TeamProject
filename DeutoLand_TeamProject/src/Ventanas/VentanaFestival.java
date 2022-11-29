@@ -120,13 +120,14 @@ public class VentanaFestival extends JFrame{
 		lugar.setBounds(150, 132, 323, 42);
 		principalDrch.add(lugar);
 		
-		String listaA = "";
+		/*String listaA = "";
 		for (Artista art: festival.getListaArtistas()) {
 			String artista = art.getNombre();
 			listaA = listaA + "," + artista;
-		}
+		}*/
 		
-		JLabel artistasInv = new JLabel(listaA);
+		//JLabel artistasInv = new JLabel(listaA);
+		JLabel artistasInv = new JLabel("prueba");
 		artistasInv.setVerticalAlignment(SwingConstants.TOP);
 		artistasInv.setFont(new Font("Georgia", Font.PLAIN, 20));
 		artistasInv.setBounds(61, 225, 412, 78);
