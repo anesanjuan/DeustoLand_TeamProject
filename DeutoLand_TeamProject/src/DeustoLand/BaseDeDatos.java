@@ -146,6 +146,51 @@ public class BaseDeDatos {
 	}
 	
 	
+	public static boolean insertarArtista(Artista artista) {
+		try(Statement statement = con.createStatement() ){
+			abrirConexion("BaseDatos.db", false);
+			String sent = "insert into artista values ( " + artista.getCodigoA() + ", '"+ artista.getNombre() + "', '" + artista.getFestival() + "' , '" + artista.getTipogenero() + "' );" ;
+			logger.log( Level.INFO, "Statement: " + sent );
+			int insertados = statement.executeUpdate( sent );
+		
+			if (insertados!=1) return false;  // Error en inserción
+			// Búsqueda de la fila insertada - para ello hay que recuperar la clave autogenerada. Hay varias maneras, vemos dos diferentes:
+			// Se hace utilizando método del propio objeto statement
+			ResultSet rrss = statement.getGeneratedKeys();  // Genera un resultset ficticio con las claves generadas del último comando
+			rrss.next();  // Avanza a la única fila 
+			int pk = rrss.getInt( 1 );  // Coge la única columna (la primary key autogenerada)
+			artista.setCodigoA(pk );
+			return true;
+			
+		}catch(Exception e) {
+			logger.log( Level.SEVERE, "Excepción", e );
+			return false;
+		}
+		
+	}
+	
+	public static boolean insertarConcierto(Concierto concierto) {
+		try(Statement statement = con.createStatement() ){
+			abrirConexion("BaseDatos.db", false);
+			String sent = "insert into concierto values ( " + concierto.getCodigoC() + ", '"+ concierto.getArtista() + "', '" + concierto.getFestival() + "' , '" + concierto.getHora() +"' , '" + concierto.getDuracion() + "' );" ;
+			logger.log( Level.INFO, "Statement: " + sent );
+			int insertados = statement.executeUpdate( sent );
+		
+			if (insertados!=1) return false;  // Error en inserción
+			// Búsqueda de la fila insertada - para ello hay que recuperar la clave autogenerada. Hay varias maneras, vemos dos diferentes:
+			// Se hace utilizando método del propio objeto statement
+			ResultSet rrss = statement.getGeneratedKeys();  // Genera un resultset ficticio con las claves generadas del último comando
+			rrss.next();  // Avanza a la única fila 
+			int pk = rrss.getInt( 1 );  // Coge la única columna (la primary key autogenerada)
+			concierto.setCodigoC(pk );
+			return true;
+			
+		}catch(Exception e) {
+			logger.log( Level.SEVERE, "Excepción", e );
+			return false;
+		}
+		
+	}
 	public static ArrayList<Festival> getFestivales(){
 		try(Statement statement = con.createStatement() ){
 			abrirConexion("BaseDatos.db", false);

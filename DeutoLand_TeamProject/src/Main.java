@@ -7,6 +7,7 @@ import DeustoLand.Cliente;
 import DeustoLand.Concierto;
 import DeustoLand.Festival;
 import DeustoLand.Gestor;
+import DeustoLand.TipoGenero;
 import Ventanas.VentanaCompra;
 import Ventanas.VentanaFestival;
 import Ventanas.VentanaInicioSesion;
@@ -29,6 +30,9 @@ public class Main {
 		
 		ArrayList<Concierto> conciertofest = new ArrayList<>(); //esto no se muy bien como seria ñe
 		ArrayList<Artista> artistfest = new ArrayList<>();
+		
+		
+		//solo se añade el primer festival
 		Festival fest1 = new Festival(01, "TomorrowLand", "21-07-2023", "Dubai", "bla bla", 150.7, "Fest1Tomorrowland.png");
 		Festival fest2 = new Festival(02, "Coachella", "21-07-2023", "Dubai", "bla bla", 150.7, "");
 		Festival fest3 = new Festival(03, "Arenal Sound", "21-07-2023", "Dubai", "bla bla", 150.7, "");
@@ -42,6 +46,15 @@ public class Main {
 		BaseDeDatos.insertarFestival(fest4);
 		BaseDeDatos.insertarFestival(fest5);
 		BaseDeDatos.insertarFestival(fest6);
+		
+		//no se añaden, algo mal en las funciones
+		Artista art1 = new Artista(11,"David Guetta", fest1 , TipoGenero.POP);
+		BaseDeDatos.insertarArtista(art1);
+		
+		Concierto con1 = new Concierto(123, art1,fest1, 23.30, 2.00);
+		BaseDeDatos.insertarConcierto(con1);
+		
+		
 		
 		//VentanaFestival vf = new VentanaFestival(fest1);
 		//vf.setVisible(true);

@@ -1,13 +1,16 @@
 package DeustoLand;
 
 public class Artista {
+	
+	private int codigoA;
 	private String nombre;
 	private Festival festival;
 	private TipoGenero tipogenero;
 	
 	
-	public Artista(String nombre, Festival festival, TipoGenero tipogenero) {
+	public Artista(int codigoA, String nombre, Festival festival, TipoGenero tipogenero) {
 		super();
+		this.codigoA = codigoA;
 		this.nombre = nombre;
 		this.festival = festival;
 		this.tipogenero = tipogenero;
@@ -16,6 +19,15 @@ public class Artista {
 
 	public Artista() {
 		super();
+	}
+
+	public int getCodigoA() {
+		return codigoA;
+	}
+
+
+	public void setCodigoA(int codigoA) {
+		this.codigoA = codigoA;
 	}
 
 
@@ -51,11 +63,7 @@ public class Artista {
 
 	@Override
 	public String toString() {
-		return "Artista [nombre=" + nombre + ", festival=" + festival + ", tipogenero=" + tipogenero + "]";
-	}
-	
-	
-	
-	
-	
+		return "Artista [codigoA=" + codigoA + ", nombre=" + nombre + ", festival=" + festival + ", tipogenero="
+				+ tipogenero + "]";
+	}	
 }
