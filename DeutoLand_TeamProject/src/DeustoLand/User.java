@@ -5,14 +5,20 @@ public class User {
 	private String nombre;
 	private String apellido;
 	private String dni;
+	private String contrasena;
 	
-	public User(String nombre, String apellido, String dni) {
+	public User(String nombre, String apellido, String dni, String contrasena) {
 		super();
 		this.nombre = nombre;
+		this.dni = dni;
 		this.apellido = apellido;
-
+		this.contrasena = contrasena;
 	}
 
+	public String getContrasena()
+	{
+		return contrasena;
+	}
 
 	public String getNombre() {
 		return nombre;

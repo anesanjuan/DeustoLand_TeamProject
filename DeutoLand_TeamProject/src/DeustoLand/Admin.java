@@ -3,16 +3,15 @@ package DeustoLand;
 public class Admin extends User{
 	
 	private String identificador;
-
 	
-	public Admin(String nombre, String apellido, String dni, String identificador) {
-		super(nombre, apellido, dni);
+	public Admin(String nombre, String apellido, String dni, String contrasena , String identificador) {
+		super(nombre, apellido, dni, contrasena );
 		this.identificador = identificador;
 	}
 
 
-	public Admin(String nombre, String apellido, String dni) {
-		super(nombre, apellido, dni);
+	public Admin(String nombre, String apellido, String dni, String contrasena ) {
+		super(nombre, apellido, dni, contrasena);
 	}
 
 

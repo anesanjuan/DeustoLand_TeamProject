@@ -32,8 +32,6 @@ import DeustoLand.Gestor;
 public class VentanaPrincipal extends JFrame{
 
 	private final JPanel panel = new JPanel();
-	private Gestor gestor;
-
 
 	private static final long serialVersionUID = 1L;
 
@@ -90,7 +88,7 @@ public class VentanaPrincipal extends JFrame{
 	
 	
 	//esto es como inicializar: mete todo dentro
-	public VentanaPrincipal(Gestor gestor) {
+	public VentanaPrincipal() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 901, 615);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -123,7 +121,7 @@ public class VentanaPrincipal extends JFrame{
 		btnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				VentanaRegistro vr = new VentanaRegistro(gestor);
+				VentanaRegistro vr = new VentanaRegistro();
 				vr.setVisible(true);
 			}
 		});
@@ -135,7 +133,7 @@ public class VentanaPrincipal extends JFrame{
 		btnInicioSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				VentanaInicioSesion vs = new VentanaInicioSesion(gestor);
+				VentanaInicioSesion vs = new VentanaInicioSesion();
 				vs.setVisible(true);
 			}
 		});

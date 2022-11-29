@@ -5,19 +5,18 @@ public class Cliente extends User{
 	private String direccion;
 	private int edad;
 	private String correo;
-	private String contrasena;
+	
 	
 	public Cliente(String nombre, String apellido, String dni, String direccion, int edad, String correo,
 			String contrasena) {
-		super(nombre, apellido, dni);
+		super(nombre, apellido, dni, contrasena );
 		this.direccion = direccion;
 		this.edad = edad;
 		this.correo = correo;
-		this.contrasena = contrasena;
 	}
 
-	public Cliente(String nombre, String apellido, String dni) {
-		super(nombre, apellido, dni);
+	public Cliente(String nombre, String apellido, String dni, String contrasena ) {
+		super(nombre, apellido, dni, contrasena);
 	}
 
 	public String getDireccion() {
@@ -44,20 +43,7 @@ public class Cliente extends User{
 		this.correo = correo;
 	}
 
-	public String getContrasena() {
-		return contrasena;
-	}
 
-	public void setContrasena(String contrasena) {
-		this.contrasena = contrasena;
-	}
-
-	@Override
-	public String toString() {
-		return "Cliente [direccion=" + direccion + ", edad=" + edad + ", correo=" + correo + ", contrasena="
-				+ contrasena + "]";
-	}
-	
 	
 	
 	

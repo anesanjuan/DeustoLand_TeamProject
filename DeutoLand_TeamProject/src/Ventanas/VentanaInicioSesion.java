@@ -26,9 +26,7 @@ public class VentanaInicioSesion extends JFrame {
 	private JTextField txtCorreo;
 	private JPasswordField passwordFieldContrasena;
 
-	private Gestor gestor;
-
-	public VentanaInicioSesion(Gestor gestor) {
+	public VentanaInicioSesion() {
 		setTitle("Inicio de Sesion:");
 		this.gestor = gestor;
 
