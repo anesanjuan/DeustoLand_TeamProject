@@ -20,7 +20,7 @@ public class Main {
 		//VentanaInicioSesion vi = new VentanaInicioSesion( gln );
 		//vi.setVisible(true);
 		
-		BaseDeDatos.abrirConexion("BaseDatos.db", false);
+		/*BaseDeDatos.abrirConexion("BaseDatos.db", false);
 		ArrayList<Concierto> conciertofest = new ArrayList<>(); //esto no se muy bien como seria ñe
 		ArrayList<Artista> artistfest = new ArrayList<>();
 		Festival fest1 = new Festival(01, "TomorrowLand", "21-07-2023", "Dubai", "bla bla", conciertofest, artistfest, 150.7);
@@ -35,10 +35,10 @@ public class Main {
 		BaseDeDatos.insertarFestival(fest3);
 		BaseDeDatos.insertarFestival(fest4);
 		BaseDeDatos.insertarFestival(fest5);
-		BaseDeDatos.insertarFestival(fest6);
+		BaseDeDatos.insertarFestival(fest6);*/
 		
-		VentanaFestival vf = new VentanaFestival(fest1);
-		vf.setVisible(true);
+		//VentanaFestival vf = new VentanaFestival(fest1);
+		//vf.setVisible(true);
 		
 		//VentanaRegistro vr = new VentanaRegistro(gln);
 		//vr.setVisible(true);

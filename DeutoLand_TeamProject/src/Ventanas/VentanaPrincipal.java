@@ -3,7 +3,10 @@ package Ventanas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -25,6 +28,7 @@ import DeustoLand.Festival;
 import DeustoLand.Gestor;
 
 
+
 public class VentanaPrincipal extends JFrame{
 
 	private final JPanel panel = new JPanel();
@@ -34,6 +38,7 @@ public class VentanaPrincipal extends JFrame{
 	private static final long serialVersionUID = 1L;
 
 	public JFrame frame;
+	private JLabelAjustado lFoto = new JLabelAjustado( null );
 	
 	//en el panel de arriba
 	private JPanel panelArriba;
@@ -159,12 +164,12 @@ public class VentanaPrincipal extends JFrame{
 		panelPrincipal.add(panelFestv1);
 		panelFestv1.setLayout(null);
 		
-		lblFotoFestv1 = new JLabel(new ImageIcon("src/Ventanas/festv2.jpg"));
-		lblFotoFestv1.setPreferredSize(new Dimension(100, 100));
 		//lblFotoFestv1.setBounds(6, 6, 283, 195);
-		panelFestv1.add(lblFotoFestv1);
-		ImageIcon foto1 = new ImageIcon((String) fotosFestv.get(0) );
-		JLabelAjustado lfoto =  new JLabelAjustado(foto);
+		//panelFestv1.add(lblFotoFestv1);
+		ImageIcon foto1 = new ImageIcon((String) fotosFestv.get(0));
+		JLabelAjustado lfoto =  new JLabelAjustado(foto1);
+		lFoto.setBounds(6, 6, 283, 195);
+		panelFestv1.add(lFoto);
 		//lblFotoFestv1.setIcon(new ImageIcon("/Users/mariaperaleseguiluz/Desktop/Captura de Pantalla 2022-11-09 a las 15.52.42.png"));
 
 		btnFestv1 = new JButton("Tomorrowland");
@@ -346,4 +351,55 @@ public class VentanaPrincipal extends JFrame{
 		
 	}
 	
+	
+	
+	private static class JLabelAjustado extends JLabel {
+		private ImageIcon imagen; 
+		private int tamX;
+		private int tamY;
+		/** Crea un jlabel que ajusta una imagen cualquiera con fondo blanco a su tamaño (a la que ajuste más de las dos escalas, horizontal o vertical)
+		 * @param imagen	Imagen a visualizar en el label
+		 */
+		public JLabelAjustado( ImageIcon imagen ) {
+			setImagen( imagen );
+		}
+		/** Modifica la imagen
+		 * @param imagen	Nueva imagen a visualizar en el label
+		 */
+		public void setImagen( ImageIcon imagen ) {
+			this.imagen = imagen;
+			if (imagen==null) {
+				tamX = 0;
+				tamY = 0;
+			} else {
+				this.tamX = imagen.getIconWidth();
+				this.tamY = imagen.getIconHeight();
+			}
+		}
+		protected void paintComponent(Graphics g) {
+			Graphics2D g2 = (Graphics2D) g;  // El Graphics realmente es Graphics2D
+			g2.setColor( Color.WHITE );
+			g2.fillRect( 0, 0, getWidth(), getHeight() );
+			if (imagen!=null && tamX>0 && tamY>0) {
+				g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+				g2.setRenderingHint(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY);
+				g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);	
+				double escalaX = 1.0 * getWidth() / tamX;
+				double escalaY = 1.0 * getHeight() / tamY;
+				double escala = escalaX;
+				int x = 0;
+				int y = 0;
+				if (escalaY < escala) {
+					escala = escalaY;
+					x = (int) ((getWidth() - (tamX * escala)) / 2);
+				} else {
+					y = (int) ((getHeight() - (tamY * escala)) / 2);
+				}
+		        g2.drawImage( imagen.getImage(), x, y, (int) (tamX*escala), (int) (tamY*escala), null );
+			}
+		}
+	}
+	
 }
+
+
