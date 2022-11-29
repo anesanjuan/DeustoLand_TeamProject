@@ -18,21 +18,18 @@ public class Main {
 
 	public static void main(String[] args) throws SQLException {
 		
-		//Gestor gln = new Gestor(); 	
+		Gestor gln = new Gestor(); 	
 		//VentanaInicioSesion vi = new VentanaInicioSesion( gln );
 		//vi.setVisible(true);
-		
 		
 		BaseDeDatos.abrirConexion("BaseDatos.db", false);
 		BaseDeDatos.insertarFestivales();
 		BaseDeDatos.insertarConciertos();
 		BaseDeDatos.insertarArtistas();
 		BaseDeDatos.insertarUsuarios();
-		BaseDeDatos.cerrarConexion();
+		//BaseDeDatos.cerrarConexion();
 		
-		
-		
-		
+		VentanaPrincipal vp = new VentanaPrincipal( gln );
 		
 		
 		//VentanaFestival vf = new VentanaFestival(fest1);

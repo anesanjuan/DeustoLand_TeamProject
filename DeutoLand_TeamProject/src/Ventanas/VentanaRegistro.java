@@ -27,7 +27,12 @@ public class VentanaRegistro extends JFrame {
 	private JTextField txtTipocliente;
 	private JTextField txtContrasena;
 	
-	public VentanaRegistro() {
+	private Gestor gestor;
+	
+	public VentanaRegistro( Gestor gestor ) {
+		
+		this.gestor = gestor;
+		
 		setTitle("Registrarse:");
 		
 		//inicializar los campos editables
@@ -96,7 +101,7 @@ public class VentanaRegistro extends JFrame {
 				try { 
 					gestor.insertarCliente( nombre,apellido, dni, email,contrasena);
 					//gestor.GuardarClientes();
-					VentanaPrincipal vp = new VentanaPrincipal();
+					VentanaPrincipal vp = new VentanaPrincipal( gestor );
 					vp.setVisible(true);
 					dispose();					
 				} catch( ClienteRepetidoException ex ) {

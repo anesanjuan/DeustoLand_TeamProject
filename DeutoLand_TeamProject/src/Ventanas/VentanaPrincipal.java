@@ -85,10 +85,10 @@ public class VentanaPrincipal extends JFrame{
 	private JLabel lblFechaFestv6;
 	private JLabel lblFotoFestv6;
 
-	
+	private Gestor gestor;
 	
 	//esto es como inicializar: mete todo dentro
-	public VentanaPrincipal() {
+	public VentanaPrincipal(Gestor gestor) {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 901, 615);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -121,7 +121,7 @@ public class VentanaPrincipal extends JFrame{
 		btnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				VentanaRegistro vr = new VentanaRegistro();
+				VentanaRegistro vr = new VentanaRegistro( gestor );
 				vr.setVisible(true);
 			}
 		});
@@ -133,7 +133,7 @@ public class VentanaPrincipal extends JFrame{
 		btnInicioSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				VentanaInicioSesion vs = new VentanaInicioSesion();
+				VentanaInicioSesion vs = new VentanaInicioSesion(gestor);
 				vs.setVisible(true);
 			}
 		});
@@ -353,6 +353,8 @@ public class VentanaPrincipal extends JFrame{
 			}
 		});
 		
+		
+		setVisible(true);
 	}
 	
 	

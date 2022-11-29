@@ -214,12 +214,12 @@ public class BaseDeDatos {
 			logger.log(Level.INFO, "Statement: " + sent);
 			ResultSet rs = statement.executeQuery(sent);
 			while (rs.next()) {
-				int cod = rs.getInt("codigo");
-				String nombre = rs.getString("nombre");
-				String fecha = rs.getString("fecha");
-				String lugar = rs.getString("lugar");
-				String descripcion = rs.getString("descripcion");
-				double precio = rs.getDouble("precio");
+				int cod = rs.getInt("codF");
+				String nombre = rs.getString("nombreF");
+				String fecha = rs.getString("fechaF");
+				String lugar = rs.getString("lugarF");
+				String descripcion = rs.getString("descripcionF");
+				double precio = rs.getDouble("precioF");
 				String foto = rs.getString("foto");
 				ret.add(new Festival(cod, nombre, fecha, lugar, descripcion, precio, foto));
 
@@ -232,6 +232,8 @@ public class BaseDeDatos {
 
 	}
 
+	
+	////////////////////////////////////////////
 	public static void insertarConciertos() {
 		// TODO Lo hace Mar en su casa
 
@@ -261,6 +263,8 @@ public class BaseDeDatos {
 			logger.log(Level.SEVERE, "Excepción", e);
 
 		}
+		
+		//insertarclientes
 	}
 
 	// este esz para insertar caundo se abre la app

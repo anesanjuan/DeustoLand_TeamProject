@@ -25,9 +25,11 @@ public class VentanaInicioSesion extends JFrame {
 	private final JPanel panel = new JPanel();
 	private JTextField txtCorreo;
 	private JPasswordField passwordFieldContrasena;
+	private Gestor gestor;
 
-	public VentanaInicioSesion() {
+	public VentanaInicioSesion( Gestor gestor ) {
 		setTitle("Inicio de Sesion:");
+		
 		this.gestor = gestor;
 
 		
@@ -77,7 +79,7 @@ public class VentanaInicioSesion extends JFrame {
 				} else {
 					boolean r = gestor.comprobarUsuario(correo, contrasena);
 					if (r == true) {
-						VentanaPrincipal vp = new VentanaPrincipal();
+						VentanaPrincipal vp = new VentanaPrincipal( gestor );
 						vp.setVisible(true);
 						dispose();
 					} else {
