@@ -21,8 +21,11 @@ public class Main {
 		//VentanaInicioSesion vi = new VentanaInicioSesion( gln );
 		//vi.setVisible(true);
 		
-		BaseDeDatos.abrirConex("BaseDatos.db");
-		BaseDeDatos.init();
+		
+		BaseDeDatos.abrirConexion("BaseDatos.db", false);
+		
+		//BaseDeDatos.abrirConex("BaseDatos.db");
+		//BaseDeDatos.init();
 		
 		ArrayList<Concierto> conciertofest = new ArrayList<>(); //esto no se muy bien como seria ñe
 		ArrayList<Artista> artistfest = new ArrayList<>();
@@ -33,7 +36,7 @@ public class Main {
 		//Festival fest5 = new Festival(05, "hollika", "21-07-2023", "Dubai", "bla bla", conciertofest, artistfest, 150.7);
 		//Festival fest6 = new Festival(06, "boombastic", "21-07-2023", "Dubai", "bla bla", conciertofest, artistfest, 150.7);
 		
-		BaseDeDatos.insertarFestival(fest1);
+		//BaseDeDatos.insertarFestival(fest1);
 		//BaseDeDatos.insertarFestival(fest2);
 		//BaseDeDatos.insertarFestival(fest3);
 		//BaseDeDatos.insertarFestival(fest4);
@@ -46,8 +49,8 @@ public class Main {
 		//VentanaRegistro vr = new VentanaRegistro(gln);
 		//vr.setVisible(true);
 		
-		//VentanaPrincipal vp = new VentanaPrincipal( gln );
-		//vp.frame.setVisible(true);
+		VentanaPrincipal vp = new VentanaPrincipal( gln );
+		vp.frame.setVisible(true);
 		
 		//Cliente cliente = new Cliente("nujdjdbhfl", "nunsnjdnll", "nunianjll", "nuakmidall", 0, "nspdifull", "nullsjnsoj");
 		//VentanaCompra vc = new VentanaCompra(cliente);
