@@ -91,5 +91,29 @@ public class BaseDeDatos {
 	}
 	
 	
+	public static ArrayList<Festival> getFestivales(){
+		try(Statement statement = conexion.createStatement() ){
+			ArrayList<Festival> ret = new ArrayList<>();
+			String sent = "select * from festival";
+			logger.log(Level.INFO, "Statement: " + sent);
+			ResultSet rs = statement.executeQuery(sent);
+			while(rs.next() ) {
+				int cod = rs.getInt("codigo");
+				String nombre = rs.getString("nombre");
+				String fecha = rs.getString("fecha");
+				String lugar = rs.getString("lugar");
+				String descripcion = rs.getString("descripcion");				
+				double precio = rs.getDouble("precio");
+				String foto = rs.getString("foto");
+				ret.add(new Festival(cod, nombre, fecha, lugar, descripcion, new ArrayList<Concierto>(), new ArrayList<Artista>(), precio, foto ));
+			}
+			return ret;
+		}catch(Exception e) {
+			logger.log(Level.SEVERE, "Excepcion", e);
+			return null;
+		}
+		
+	}
+	
 
 }

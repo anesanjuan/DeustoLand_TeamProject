@@ -143,6 +143,15 @@ public class VentanaPrincipal extends JFrame{
 		frame.getContentPane().add(panelPrincipal);
 		panelPrincipal.setLayout(null);
 		
+		
+		
+		
+		ArrayList<String> fotosFestv = new ArrayList<String>();
+		for(Festival festv : BaseDeDatos.getFestivales()) {
+			//ImageIcon foto = new ImageIcon((String) festv.getFoto() );
+			fotosFestv.add(festv.getFoto() );
+		}
+		
 //dentro del panel principal
 	//panel del primer festival
 		panelFestv1 = new JPanel();
@@ -152,9 +161,11 @@ public class VentanaPrincipal extends JFrame{
 		
 		lblFotoFestv1 = new JLabel(new ImageIcon("src/Ventanas/festv2.jpg"));
 		lblFotoFestv1.setPreferredSize(new Dimension(100, 100));
-		lblFotoFestv1.setBounds(6, 6, 283, 195);
+		//lblFotoFestv1.setBounds(6, 6, 283, 195);
 		panelFestv1.add(lblFotoFestv1);
-		lblFotoFestv1.setIcon(new ImageIcon("/Users/mariaperaleseguiluz/Desktop/Captura de Pantalla 2022-11-09 a las 15.52.42.png"));
+		ImageIcon foto1 = new ImageIcon((String) fotosFestv.get(0) );
+		JLabelAjustado lfoto =  new JLabelAjustado(foto);
+		//lblFotoFestv1.setIcon(new ImageIcon("/Users/mariaperaleseguiluz/Desktop/Captura de Pantalla 2022-11-09 a las 15.52.42.png"));
 
 		btnFestv1 = new JButton("Tomorrowland");
 		btnFestv1.setBounds(6, 213, 117, 29);

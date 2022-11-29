@@ -12,9 +12,10 @@ public class Festival {
 	private ArrayList<Concierto> listaConciertos;
 	private ArrayList<Artista> listaArtistas; // esto no estoy segura porque en el concierto ya saldra no????
 	private double precio;
+	private String foto;
 	
 	public Festival(int codigoF,String nombre, String fecha, String lugar, String descripcion, ArrayList<Concierto> listaConciertos, ArrayList<Artista> listaArtistas,
-			double precio) {
+			double precio, String foto) {
 		super();
 		this.codigoF = codigoF;
 		this.nombre = nombre;
@@ -24,6 +25,7 @@ public class Festival {
 		this.listaConciertos = listaConciertos;
 		this.listaArtistas = listaArtistas;
 		this.precio = precio;
+		this.foto = foto;
 	}
 
 	public Festival() {
@@ -97,13 +99,20 @@ public class Festival {
 		this.precio = precio;
 	}
 
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
 	@Override
 	public String toString() {
-		return "Festival [codigo=" + codigoF + ", nombre=" + nombre +", fecha=" + fecha + ", lugar=" + lugar + ", descripción=" + descripcion + ", listaConciertos=" + listaConciertos
-				+ ", listaArtistas=" + listaArtistas + ", precio=" + precio + "]";
+		return "Festival [codigoF=" + codigoF + ", nombre=" + nombre + ", fecha=" + fecha + ", lugar=" + lugar
+				+ ", descripcion=" + descripcion + ", listaConciertos=" + listaConciertos + ", listaArtistas="
+				+ listaArtistas + ", precio=" + precio + ", foto=" + foto + "]";
 	}
-	
-	
-	
+
 	
 }
