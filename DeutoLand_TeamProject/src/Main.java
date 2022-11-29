@@ -31,7 +31,6 @@ public class Main {
 		
 		VentanaPrincipal vp = new VentanaPrincipal( gln );
 		
-		
 		//VentanaFestival vf = new VentanaFestival(fest1);
 		//vf.setVisible(true);
 		
