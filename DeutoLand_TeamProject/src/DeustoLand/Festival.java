@@ -9,6 +9,7 @@ public class Festival {
 	private String fecha;
 	private String lugar;
 	private String descripcion;
+	private Concierto conicerto;
 	private ArrayList<Concierto> listaConciertos;
 	private ArrayList<Artista> listaArtistas; // esto no estoy segura porque en el concierto ya saldra no????
 	private double precio;

@@ -37,7 +37,7 @@ public class BaseDeDatos {
 		}
 	}
 	
-	public static boolean abrirConexion() {
+	public static boolean init() {
 		try {
 			abrirConex("BaseDatos.db");
 	
