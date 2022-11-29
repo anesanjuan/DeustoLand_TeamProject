@@ -166,7 +166,13 @@ public class VentanaPrincipal extends JFrame{
 		
 		//lblFotoFestv1.setBounds(6, 6, 283, 195);
 		//panelFestv1.add(lblFotoFestv1);
-		ImageIcon foto1 = new ImageIcon((String) fotosFestv.get(0));
+		String fotoFestival = "";
+		for (Festival festival: BaseDeDatos.getFestivales()) {
+			if (festival.getNombre() == "TomorrowLand") {
+				fotoFestival = festival.getFoto();
+			}
+		}
+		ImageIcon foto1 = new ImageIcon(fotoFestival);
 		JLabelAjustado lfoto =  new JLabelAjustado(foto1);
 		lFoto.setBounds(6, 6, 283, 195);
 		panelFestv1.add(lFoto);
