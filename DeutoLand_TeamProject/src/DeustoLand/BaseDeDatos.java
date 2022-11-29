@@ -124,10 +124,6 @@ public class BaseDeDatos {
 		}
 	}
 	
-	
-	
-	
-	
 	public static boolean insertarFestival( Festival festival ) {
 		try (Statement statement = con.createStatement()) {
 			abrirConex("BaseDatos.db");
