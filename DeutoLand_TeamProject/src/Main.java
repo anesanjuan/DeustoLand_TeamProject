@@ -30,7 +30,7 @@ public class Main {
 		//BaseDeDatos.cerrarConexion();
 		
 		VentanaPrincipal vp = new VentanaPrincipal( gln );
-		
+		vp.frame.setVisible(true);
 		
 		//VentanaFestival vf = new VentanaFestival(fest1);
 		//vf.setVisible(true);
