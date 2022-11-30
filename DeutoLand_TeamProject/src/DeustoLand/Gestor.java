@@ -23,16 +23,10 @@ public class Gestor {
 
 	public Gestor() {
 
-		//datos iniciales
-		//insertarClientes();
-		//GuardarClientes();
-		
-		//#################################
-		//CargarClientes();
+	
 	}
 
-	public void comprobarFestival(String nombre, double fecha, ArrayList<Concierto> conciertos, ArrayList<Artista> Artistas,  double precio) {
-		
+	public void comprobarFestival(String nombre, double fecha, ArrayList<Concierto> conciertos, ArrayList<Artista> Artistas,  double precio) {	
 		
 	}
  	
@@ -44,12 +38,9 @@ public class Gestor {
 			throw new ClienteRepetidoException("Este cliente ya existe");
 		}
 	}
-
 	private void insertarClientes() {
 		Cliente c1 = new Cliente("Maria", "Perales ", "343534546W", "maria@gmail.com", 0, "1111", null);
-		aClientes.add(c1);
-		
-		
+		aClientes.add(c1);	
 	}
 
 	//al iniciar sesion

@@ -17,43 +17,7 @@ public class BaseDeDatos {
 	private static Logger logger = Logger.getLogger("BaseDatos");
 	private static Exception lastError;
 
-	/*
-	 * public static Statement abrirConex (String nombreBD) throws SQLException {
-	 * 
-	 * try { Class.forName("org.sqlite.JDBC"); con =
-	 * DriverManager.getConnection("jdbc:sqlite:" + nombreBD ); Statement statement
-	 * = con.createStatement(); logger.log(Level.INFO, "Conectada base de datos" +
-	 * nombreBD); return statement; } catch (Exception e) { lastError = e;
-	 * logger.log( Level.SEVERE, "Excepción", e ); e.printStackTrace(); return
-	 * null;
-	 * 
-	 * } }
-	 * 
-	 * public static boolean init() { try { abrirConex("BaseDatos.db");
-	 * 
-	 * Statement statement = con.createStatement(); String sent =
-	 * "DROP TABLE IF EXISTS festival"; logger.log( Level.INFO, "Statement: " + sent
-	 * ); statement.executeUpdate( sent ); sent =
-	 * "CREATE TABLE festival (codF INTEGER PRIMARY KEY AUTOINCREMENT, nombreF char(30), fechaF date, lugarF char(30), descripcionF char(250), precioF dec(3,2), foto char(250))"
-	 * ; logger.log( Level.INFO, "Statement: " + sent ); statement.executeUpdate(
-	 * sent );
-	 * 
-	 * sent = "DROP TABLE IF EXISTS artista"; logger.log( Level.INFO, "Statement: "
-	 * + sent ); statement.executeUpdate( sent ); sent =
-	 * "CREATE TABLE artista (codA INTEGER PRIMARY KEY AUTOINCREMENT, nombreA char(25), codF int(3) REFERENCES festival (codF), generoA char(25))"
-	 * ; logger.log( Level.INFO, "Statement: " + sent ); statement.executeUpdate(
-	 * sent );
-	 * 
-	 * sent = "DROP TABLE IF EXISTS concierto"; logger.log( Level.INFO,
-	 * "Statement: " + sent ); statement.executeUpdate( sent ); sent =
-	 * "CREATE TABLE concierto (codC INTEGER PRIMARY KEY AUTOINCREMENT, codA int(3) REFERENCES artista (codA), codF int(3) REFERENCES festival (codF), horaC date, duracionC dec(3,2))"
-	 * ; logger.log( Level.INFO, "Statement: " + sent ); statement.executeUpdate(
-	 * sent );
-	 * 
-	 * return true; } catch(Exception e) { logger.log( Level.SEVERE, "Excepción", e
-	 * ); return false; } }
-	 * 
-	 */
+
 
 	/**
 	 * Abre conexión con la base de datos
@@ -99,7 +63,6 @@ public class BaseDeDatos {
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
 
-				// public User(String nombre, String apellido, String dni, String contrasena) {
 
 				sent = "DROP TABLE IF EXISTS admins";
 				logger.log(Level.INFO, "Statement: " + sent);
@@ -109,6 +72,13 @@ public class BaseDeDatos {
 				statement.executeUpdate(sent);
 
 				// clientes
+				
+				sent = "DROP TABLE IF EXISTS clientes";
+				logger.log(Level.INFO, "Statement: " + sent);
+				statement.executeUpdate(sent);
+				sent = "CREATE TABLE clientes (codC INTEGER PRIMARY KEY AUTOINCREMENT, nombre char(25), apellido char(25) , dni char(25) , direccion char(25), edad int(3), correo char(25), contrasena char(25) );";
+				logger.log(Level.INFO, "Statement: " + sent);
+				statement.executeUpdate(sent);
 
 			}
 			return true;
@@ -130,6 +100,7 @@ public class BaseDeDatos {
 		}
 	}
 
+	///////////////////////////////////////////////////////////////7
 	// operacion para insertar festivales desde la app
 
 	public static boolean insertarFestival(Festival festival) {
@@ -267,69 +238,7 @@ public class BaseDeDatos {
 
 	
 	////////////////////////////////////////////
-	public static void insertarConciertos() {
-		// TODO Lo hace Mar en su casa
-
-	}
-
-	public static void insertarArtistas() {
-		// TODO Lo hace Mar en su casa
-
-	}
-
-	
-	
-	public static void insertarUsuarios() {
-		// TODO Auto-generated method stub
-
-		Admin admin = new Admin("admin", "admin", "admin", "admin");
-
-		try (Statement statement = con.createStatement()) {
-			abrirConexion("BaseDatos.db", false);
-
-			String sent = "insert into admins values ( 1 , '" + admin.getNombre() + "', '" + admin.getApellido() + "' , '"
-					+ admin.getDni() + "' , '" + admin.getContrasena() + "');";
-
-			logger.log(Level.INFO, "Statement: " + sent);
-
-			statement.executeUpdate(sent);
-
-		} catch (Exception e) {
-			logger.log(Level.SEVERE, "Excepción", e);
-
-		}
-		
-		//insertarclientes
-	}
-
-	public static Festival getFestival(Festival festival) {
-		
-		try (Statement statement = con.createStatement()) {
-			abrirConexion("BaseDatos.db", false);
-			Festival f = new Festival();
-			for (Festival fest: BaseDeDatos.getFestivales() ) {
-				if (fest.getCodigoF() == festival.getCodigoF() ) {
-					f.setCodigoF(festival.getCodigoF());
-					f.setNombre(festival.getNombre());
-					f.setLugar(festival.getLugar());
-					f.setDescripcion(festival.getDescripcion());
-					f.setPrecio(festival.getPrecio());
-					f.setFoto(festival.getFoto());
-					for (Artista artista: BaseDeDatos.getArtistas()) {
-						//for (int codArtista: BaseDeDatos.get )
-					}
-					
-				}
-			}
-			return f;
-		} catch (Exception e) {
-			logger.log(Level.SEVERE, "Excepcion", e);
-			return null;
-		}
-		
-	}
-	
-	
+	///DATOS DE INICIO PARA LA BASE DE DATOS
 	
 	
 	// este esz para insertar caundo se abre la app
@@ -371,5 +280,149 @@ public class BaseDeDatos {
 
 		}
 	}
+	
+	
+	public static void insertarConciertos() {
+		
+		Concierto conc1 = new Concierto(1, new Artista(0, null, null), new Festival(0, null, null, null, null, 0, null), 0, 0);
+		ArrayList<Concierto> conciertos = new ArrayList<>();
+		conciertos.add(conc1);
+		
+		try (Statement statement = con.createStatement()) {
+			abrirConexion("BaseDatos.db", false);
+
+			for (Concierto conc : conciertos) {
+				String sent = "insert into concierto values ( " + conc.getCodigoC() + ", '" + conc.getArtista()
+						+ "' , '" + conc.getHora() + "' , '" + conc.getDuracion() + "');";
+
+				logger.log(Level.INFO, "Statement: " + sent);
+
+				statement.executeUpdate(sent);
+
+			}
+
+		} catch (Exception e) {
+			logger.log(Level.SEVERE, "Excepción", e);
+
+		}
+		
+		
+
+	}
+
+	public static void insertarArtistas() {
+		Artista art1 = new Artista(0, null, null);
+		ArrayList<Artista> artistas = new ArrayList<>();
+		artistas.add(art1);
+		
+		try (Statement statement = con.createStatement()) {
+			abrirConexion("BaseDatos.db", false);
+
+			for (Artista art : artistas) {
+				String sent = "insert into artista values ( " + art.getCodigoA() + ", '" + art.getNombre()
+						+ "' , '" + art.getTipogenero() +  "');";
+
+				logger.log(Level.INFO, "Statement: " + sent);
+
+				statement.executeUpdate(sent);
+
+			}
+
+		} catch (Exception e) {
+			logger.log(Level.SEVERE, "Excepción", e);
+
+		}
+
+	}
+
+	
+	
+	public static void insertarUsuarios() {
+		// TODO Auto-generated method stub
+
+		Admin admin = new Admin("admin", "admin", "admin", "admin");
+		ArrayList<Admin> admins = new ArrayList<>();
+		admins.add(admin);
+
+
+		try (Statement statement = con.createStatement()) {
+			abrirConexion("BaseDatos.db", false);
+
+			for (Admin ad : admins) {
+				String sent = "insert into admins values ( 1 , '" + ad.getNombre() + "', '" + ad.getApellido() + "' , '"
+						+ ad.getDni() + "' , '" + ad.getContrasena() + "');";
+
+				logger.log(Level.INFO, "Statement: " + sent);
+
+				statement.executeUpdate(sent);
+			}
+
+
+		} catch (Exception e) {
+			logger.log(Level.SEVERE, "Excepción", e);
+
+		}
+		
+		//insertarclientes
+		
+		Cliente cliente = new Cliente("Juan", "Gonzalez", "567899", "Vitoria", 27, "juan@gmail.com", "0000");
+		ArrayList<Cliente> clientes = new ArrayList<>();
+		clientes.add(cliente);
+
+		try (Statement statement = con.createStatement()) {
+			abrirConexion("BaseDatos.db", false);
+
+			for (Cliente cl : clientes) {
+				String sent = "insert into clientes values ( 1 , '" + cl.getNombre() + "', '" + cl.getApellido() + "' , '"
+						+ cl.getDni() + "' , '" + cl.getDireccion()+ "' , '" + cl.getEdad()+ "' , '" + cl.getCorreo() + "' , '" + cl.getContrasena() + "');";
+
+				logger.log(Level.INFO, "Statement: " + sent);
+
+				statement.executeUpdate(sent);
+			}
+
+			
+			
+
+		} catch (Exception e) {
+			logger.log(Level.SEVERE, "Excepción", e);
+
+		}
+	}
+	
+	
+	///////////////////////////////////////////////////
+
+	public static Festival getFestival(Festival festival) {
+		
+		try (Statement statement = con.createStatement()) {
+			abrirConexion("BaseDatos.db", false);
+			Festival f = new Festival();
+			for (Festival fest: BaseDeDatos.getFestivales() ) {
+				if (fest.getCodigoF() == festival.getCodigoF() ) {
+					f.setCodigoF(festival.getCodigoF());
+					f.setNombre(festival.getNombre());
+					f.setLugar(festival.getLugar());
+					f.setDescripcion(festival.getDescripcion());
+					f.setPrecio(festival.getPrecio());
+					f.setFoto(festival.getFoto());
+					for (Artista artista: BaseDeDatos.getArtistas()) {
+						//for (int codArtista: BaseDeDatos.get )
+					}
+					
+				}
+			}
+			return f;
+		} catch (Exception e) {
+			logger.log(Level.SEVERE, "Excepcion", e);
+			return null;
+		}
+		
+	}
+	
+	
+	
+	
+
 
 }

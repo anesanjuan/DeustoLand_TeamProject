@@ -4,15 +4,13 @@ public class Artista {
 	
 	private int codigoA;
 	private String nombre;
-	private Festival festival;
 	private TipoGenero tipogenero;
 	
 	
-	public Artista(int codigoA, String nombre, Festival festival, TipoGenero tipogenero) {
+	public Artista(int codigoA, String nombre, TipoGenero tipogenero) {
 		super();
 		this.codigoA = codigoA;
 		this.nombre = nombre;
-		this.festival = festival;
 		this.tipogenero = tipogenero;
 	}
 
@@ -22,12 +20,7 @@ public class Artista {
 	}
 
 	
-	public Artista(int codigoA, String nombre, TipoGenero tipogenero) {
-		super();
-		this.codigoA = codigoA;
-		this.nombre = nombre;
-		this.tipogenero = tipogenero;
-	}
+
 
 
 	public int getCodigoA() {
@@ -50,14 +43,6 @@ public class Artista {
 	}
 
 
-	public Festival getFestival() {
-		return festival;
-	}
-
-
-	public void setFestival(Festival festival) {
-		this.festival = festival;
-	}
 
 
 	public TipoGenero getTipogenero() {
@@ -72,7 +57,7 @@ public class Artista {
 
 	@Override
 	public String toString() {
-		return "Artista [codigoA=" + codigoA + ", nombre=" + nombre + ", festival=" + festival + ", tipogenero="
+		return "Artista [codigoA=" + codigoA + ", nombre=" + nombre + ", tipogenero="
 				+ tipogenero + "]";
 	}	
 }
