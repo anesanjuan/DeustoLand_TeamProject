@@ -91,6 +91,13 @@ public class BaseDeDatos {
 				sent = "CREATE TABLE concierto (codC INTEGER PRIMARY KEY AUTOINCREMENT, codA int(3) REFERENCES artista (codA), codF int(3) REFERENCES festival (codF), horaC date, duracionC dec(3,2));";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
+				
+				sent = "DROP TABLE IF EXISTS relacion";
+				logger.log(Level.INFO, "Statement: " + sent);
+				statement.executeUpdate(sent);
+				sent = "CREATE TABLE relacion (codF INTEGER PRIMARY KEY AUTOINCREMENT REFERENCES festival (codF), codA INTEGER PRIMARY KEY AUTOINCREMENT REFERENCES artista (codA), codC INTEGER PRIMARY KEY AUTOINCREMENT REFERENCES concierto (codC))";
+				logger.log(Level.INFO, "Statement: " + sent);
+				statement.executeUpdate(sent);
 
 				// public User(String nombre, String apellido, String dni, String contrasena) {
 
@@ -231,6 +238,32 @@ public class BaseDeDatos {
 		}
 
 	}
+	
+	
+	public static ArrayList<Artista> getArtistas() {
+		try (Statement statement = con.createStatement()) {
+			abrirConexion("BaseDatos.db", false);
+			ArrayList<Artista> ret = new ArrayList<>();
+			String sent = "select * from artista";
+			logger.log(Level.INFO, "Statement: " + sent);
+			ResultSet rs = statement.executeQuery(sent);
+			while (rs.next()) {
+				int cod = rs.getInt("codA");
+				String nombre = rs.getString("nombreA");
+				String genero = rs.getString("generoA");
+				ret.add(new Artista(cod, nombre, genero)); 
+
+			}
+			return ret;
+		} catch (Exception e) {
+			logger.log(Level.SEVERE, "Excepcion", e);
+			return null;
+		}
+
+	}
+	
+	
+	
 
 	
 	////////////////////////////////////////////
@@ -244,6 +277,8 @@ public class BaseDeDatos {
 
 	}
 
+	
+	
 	public static void insertarUsuarios() {
 		// TODO Auto-generated method stub
 
@@ -267,6 +302,36 @@ public class BaseDeDatos {
 		//insertarclientes
 	}
 
+	public static Festival getFestival(Festival festival) {
+		
+		try (Statement statement = con.createStatement()) {
+			abrirConexion("BaseDatos.db", false);
+			Festival f = new Festival();
+			for (Festival fest: BaseDeDatos.getFestivales() ) {
+				if (fest.getCodigoF() == festival.getCodigoF() ) {
+					f.setCodigoF(festival.getCodigoF());
+					f.setNombre(festival.getNombre());
+					f.setLugar(festival.getLugar());
+					f.setDescripcion(festival.getDescripcion());
+					f.setPrecio(festival.getPrecio());
+					f.setFoto(festival.getFoto());
+					for (Artista artista: BaseDeDatos.getArtistas()) {
+						//for (int codArtista: BaseDeDatos.get )
+					}
+					
+				}
+			}
+			return f;
+		} catch (Exception e) {
+			logger.log(Level.SEVERE, "Excepcion", e);
+			return null;
+		}
+		
+	}
+	
+	
+	
+	
 	// este esz para insertar caundo se abre la app
 	public static void insertarFestivales() {
 

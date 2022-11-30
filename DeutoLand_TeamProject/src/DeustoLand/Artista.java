@@ -21,6 +21,15 @@ public class Artista {
 		super();
 	}
 
+	
+	public Artista(int codigoA, String nombre, TipoGenero tipogenero) {
+		super();
+		this.codigoA = codigoA;
+		this.nombre = nombre;
+		this.tipogenero = tipogenero;
+	}
+
+
 	public int getCodigoA() {
 		return codigoA;
 	}
