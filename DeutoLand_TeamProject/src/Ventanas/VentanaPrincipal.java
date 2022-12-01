@@ -320,6 +320,8 @@ public class VentanaPrincipal extends JFrame{
 		panelFestv6.add(lblFechaFestv6);
 		
 		
+		frame.setVisible(true);
+		
 		ArrayList<Festival> festivales = new ArrayList<>();
 
 		

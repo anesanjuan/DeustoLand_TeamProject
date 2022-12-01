@@ -300,12 +300,13 @@ public class BaseDeDatos {
 	public static void insertarFestivales() {
 
 		//falta este por meter
-		Festival fest1 = new Festival(01, "Tomorrowland" , "21-07-2023", "Dubai","bla bla", 150.7, "");
 		Festival fest2 = new Festival(02, "Coachella", "21-07-2023", "Dubai", "bla bla", 150.7, "");
 		Festival fest3 = new Festival(03, "Arenal Sound", "21-07-2023", "Dubai", "bla bla", 150.7, "");
 		Festival fest4 = new Festival(04, "Mad Cool", "21-07-2023", "Dubai", "bla bla", 150.7, "");
 		Festival fest5 = new Festival(05, "hollika", "21-07-2023", "Dubai", "bla bla", 150.7, "");
 		Festival fest6 = new Festival(06, "boombastic", "21-07-2023", "Dubai", "bla bla", 150.7, "");
+		Festival fest1 = new Festival(07, "Tomorrowland" , "21-07-2023", "Dubai","bla bla", 150.7, "");
+
 
 		ArrayList<Festival> fests = new ArrayList<>();
 		fests.add(fest1);

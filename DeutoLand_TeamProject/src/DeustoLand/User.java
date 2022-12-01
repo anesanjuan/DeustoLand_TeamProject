@@ -1,11 +1,12 @@
 package DeustoLand;
 
-public class User {
+public abstract class User {
 	
 	private String nombre;
 	private String apellido;
 	private String dni;
 	private String contrasena;
+	//id
 	
 	public User(String nombre, String apellido, String dni, String contrasena) {
 		super();

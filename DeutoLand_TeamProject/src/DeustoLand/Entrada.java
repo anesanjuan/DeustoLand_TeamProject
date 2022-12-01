@@ -2,6 +2,9 @@ package DeustoLand;
 
 public class Entrada { 
 
+	
+	//tbala entrada con lo comun + columna tipo (boolean, string.. para diferenciar), + columnas especificas de cada clase
+
 	private Cliente cliente;
 	private int numeroEntrada;
 	private Festival festival;

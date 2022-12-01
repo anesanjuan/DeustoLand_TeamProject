@@ -5,6 +5,7 @@ public class Cliente extends User{
 	private String direccion;
 	private int edad;
 	private String correo;
+	//id
 	
 	
 	public Cliente(String nombre, String apellido, String dni, String direccion, int edad, String correo,
