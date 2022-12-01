@@ -23,14 +23,14 @@ public class Main {
 		//vi.setVisible(true);
 		
 		BaseDeDatos.abrirConexion("BaseDatos.db", true);
-		//BaseDeDatos.insertarFestivales();
-		//BaseDeDatos.insertarConciertos();
-		//BaseDeDatos.insertarArtistas();
-		//BaseDeDatos.insertarUsuarios();
-		//BaseDeDatos.cerrarConexion();
+		BaseDeDatos.insertarFestivales();
+		BaseDeDatos.insertarConciertos();
+		BaseDeDatos.insertarArtistas();
+		BaseDeDatos.insertarUsuarios();
+		BaseDeDatos.cerrarConexion();
 		
 		VentanaPrincipal vp = new VentanaPrincipal( gln );
-		vp.frame.setVisible(true);
+		//vp.frame.setVisible(true);
 		
 		//VentanaFestival vf = new VentanaFestival(fest1);
 		//vf.setVisible(true);
