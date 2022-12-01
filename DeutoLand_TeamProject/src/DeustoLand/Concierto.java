@@ -6,15 +6,13 @@ public class Concierto {
 	
 	private int codigoC;
 	private Artista artista;
-	private Festival festival;
-	private double hora;
+	private long hora; //cambiar tipo de variable
 	private double duracion;
 	
-	public Concierto( int codigoC, Artista artista, Festival festival, double hora, double duracion) {
+	public Concierto( int codigoC, Artista artista, long hora, double duracion) {
 		super();
 		this.codigoC = codigoC;
 		this.artista = artista;
-		this.festival = festival;
 		this.hora = hora;
 		this.duracion = duracion;
 	}
@@ -42,19 +40,12 @@ public class Concierto {
 		this.artista = artista;
 	}
 
-	public Festival getFestival() {
-		return festival;
-	}
 
-	public void setFestival(Festival festival) {
-		this.festival = festival;
-	}
-
-	public double getHora() {
+	public long getHora() {
 		return hora;
 	}
 
-	public void setHora(double hora) {
+	public void setHora(long hora) {
 		this.hora = hora;
 	}
 
@@ -69,7 +60,7 @@ public class Concierto {
 
 	@Override
 	public String toString() {
-		return "Concierto [codigoC=" + codigoC + ", artista=" + artista + ", festival=" + festival + ", hora=" + hora
+		return "Concierto [codigoC=" + codigoC + ", artista=" + artista + ", hora=" + hora
 				+ ", duracion=" + duracion + "]";
 	}
 }

@@ -4,6 +4,8 @@ public class EntradaConCamping extends Entrada{
 	
 	private int suplementoCamping;
 	private int parcela;
+	
+	
 	public EntradaConCamping(Cliente cliente, int numeroEntrada, Festival festival, int suplementoCamping,
 			int parcela) {
 		super(cliente, numeroEntrada, festival);

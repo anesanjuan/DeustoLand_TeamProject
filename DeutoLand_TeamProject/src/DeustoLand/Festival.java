@@ -6,15 +6,14 @@ public class Festival {
 
 	private int codigoF;
 	private String nombre;
-	private String fecha;
+	private String fecha; //date
 	private String lugar;
 	private String descripcion;
 	private ArrayList<Concierto> listaConciertos;
-	private ArrayList<Artista> listaArtistas; // esto no estoy segura porque en el concierto ya saldra no????
 	private double precio;
 	private String foto;
 	
-	public Festival(int codigoF,String nombre, String fecha, String lugar, String descripcion, ArrayList<Concierto> listaConciertos, ArrayList<Artista> listaArtistas,
+	public Festival(int codigoF,String nombre, String fecha, String lugar, String descripcion, ArrayList<Concierto> listaConciertos,
 			double precio, String foto) {
 		super();
 		this.codigoF = codigoF;
@@ -23,7 +22,6 @@ public class Festival {
 		this.lugar = lugar;
 		this.descripcion = descripcion;
 		this.listaConciertos = listaConciertos;
-		this.listaArtistas = listaArtistas;
 		this.precio = precio;
 		this.foto = foto;
 	}
@@ -95,13 +93,6 @@ public class Festival {
 		this.listaConciertos = listaConciertos;
 	}
 
-	public ArrayList<Artista> getListaArtistas() {
-		return listaArtistas;
-	}
-
-	public void setListaArtistas(ArrayList<Artista> listaArtistas) {
-		this.listaArtistas = listaArtistas;
-	}
 
 	public double getPrecio() {
 		return precio;
@@ -122,8 +113,7 @@ public class Festival {
 	@Override
 	public String toString() {
 		return "Festival [codigoF=" + codigoF + ", nombre=" + nombre + ", fecha=" + fecha + ", lugar=" + lugar
-				+ ", descripcion=" + descripcion + ", listaConciertos=" + listaConciertos + ", listaArtistas="
-				+ listaArtistas + ", precio=" + precio + ", foto=" + foto + "]";
+				+ ", descripcion=" + descripcion + ", listaConciertos=" + listaConciertos + ", precio=" + precio + ", foto=" + foto + "]";
 	}
 
 	

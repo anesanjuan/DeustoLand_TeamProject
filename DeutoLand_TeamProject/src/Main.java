@@ -23,10 +23,10 @@ public class Main {
 		//vi.setVisible(true);
 		
 		BaseDeDatos.abrirConexion("BaseDatos.db", true);
-		BaseDeDatos.insertarFestivales();
-		BaseDeDatos.insertarConciertos();
-		BaseDeDatos.insertarArtistas();
-		BaseDeDatos.insertarUsuarios();
+		//BaseDeDatos.insertarFestivales();
+		//BaseDeDatos.insertarConciertos();
+		//BaseDeDatos.insertarArtistas();
+		//BaseDeDatos.insertarUsuarios();
 		//BaseDeDatos.cerrarConexion();
 		
 		VentanaPrincipal vp = new VentanaPrincipal( gln );
