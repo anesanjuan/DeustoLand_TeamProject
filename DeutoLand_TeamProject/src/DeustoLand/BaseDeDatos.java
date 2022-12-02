@@ -1,5 +1,6 @@
 package DeustoLand;
 
+import java.beans.beancontext.BeanContextContainerProxy;
 import java.io.File;
 import java.math.BigDecimal;
 import java.sql.Connection;
@@ -53,14 +54,7 @@ public class BaseDeDatos {
 				sent = "DROP TABLE IF EXISTS concierto";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
-				sent = "CREATE TABLE concierto (codC INTEGER PRIMARY KEY AUTOINCREMENT, codA int(3) REFERENCES artista (codA), horaC date, duracionC dec(3,2));";
-				logger.log(Level.INFO, "Statement: " + sent);
-				statement.executeUpdate(sent);
-				
-				sent = "DROP TABLE IF EXISTS relacion";
-				logger.log(Level.INFO, "Statement: " + sent);
-				statement.executeUpdate(sent);
-				sent = "CREATE TABLE relacion (codF INTEGER PRIMARY KEY REFERENCES festival (codF), codC INTEGER PRIMARY KEY REFERENCES concierto (codC))";
+				sent = "CREATE TABLE concierto (codC INTEGER PRIMARY KEY AUTOINCREMENT, codA int(3) REFERENCES artista (codA), horaC date, duracionC dec(3,2), codF int(3) REFERENCES festival (codF));";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
 
@@ -157,10 +151,10 @@ public class BaseDeDatos {
 
 	public static boolean insertarConcierto(Concierto concierto) {
 		try (Statement statement = con.createStatement()) {
-			abrirConexion("BaseDatos.db", false);
 			String sent = "insert into concierto values ( " + concierto.getArtista()
 					+ ", " + concierto.getHora() + " , "
-					+ concierto.getDuracion() + " );";
+					+ concierto.getDuracion() +  " , "
+							+ concierto.getFestival() + " );";
 			logger.log(Level.INFO, "Statement: " + sent);
 			int insertados = statement.executeUpdate(sent);
 
@@ -248,6 +242,8 @@ public class BaseDeDatos {
 				int codA = rs.getInt("codA");
 				Long hora = rs.getLong("horaC");
 				double duracion = rs.getDouble("duracionC");
+				int codF = rs.getInt("codF");
+				
 				Artista art = new Artista();
 				for (Artista artista: BaseDeDatos.getArtistas()) {
 					if (artista.getCodigoA() == codA) {
@@ -256,7 +252,20 @@ public class BaseDeDatos {
 						art.setTipogenero(artista.getTipogenero());
 					}
 				}
-				ret.add(new Concierto(codC, art, hora, duracion)); 
+				Festival fest = new Festival();
+				for (Festival festival: BaseDeDatos.getFestivales()) {
+					if (festival.getCodigoF() == codF) {
+						fest.setCodigoF(festival.getCodigoF());
+						fest.setNombre(festival.getNombre());
+						fest.setFecha(festival.getFecha());
+						fest.setLugar(festival.getLugar());
+						fest.setDescripcion(festival.getDescripcion());
+						fest.setPrecio(festival.getPrecio());
+						fest.setFoto(festival.getFoto());
+					}
+				}
+				
+				ret.add(new Concierto(codC, art, hora, duracion, fest)); 
 
 			}
 			return ret;
@@ -266,30 +275,6 @@ public class BaseDeDatos {
 		}
 
 	}
-	
-	public static ArrayList<Relacion> getRelaciones() {
-		try (Statement statement = con.createStatement()) {
-			abrirConexion("BaseDatos.db", false);
-			ArrayList<Relacion> ret = new ArrayList<>();
-			String sent = "select * from relacion";
-			logger.log(Level.INFO, "Statement: " + sent);
-			ResultSet rs = statement.executeQuery(sent);
-			while (rs.next()) {
-				int codF = rs.getInt("codF");
-				int codC = rs.getInt("codC");
-	
-				ret.add(new Relacion(codF,codC)); 
-			}
-			return ret;
-		} catch (Exception e) {
-			logger.log(Level.SEVERE, "Excepcion", e);
-			return null;
-		}
-
-	}
-	
-	
-	
 
 	
 	////////////////////////////////////////////
@@ -340,7 +325,7 @@ public class BaseDeDatos {
 	
 	public static void insertarConciertos() {
 		
-		Concierto conc1 = new Concierto(1, new Artista(0, null, null), 0, 0);
+		Concierto conc1 = new Concierto(1, new Artista(0, null, null), 0, 0, new Festival(0, null, null, null, null, null, 0, null));
 		ArrayList<Concierto> conciertos = new ArrayList<>();
 		conciertos.add(conc1);
 		
@@ -450,7 +435,7 @@ public class BaseDeDatos {
 	
 	///////////////////////////////////////////////////
 
-	/*public static Festival getFestival(Festival festival) {
+	public static Festival getFestival(Festival festival) {
 		
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
@@ -464,31 +449,13 @@ public class BaseDeDatos {
 					f.setPrecio(festival.getPrecio());
 					f.setFoto(festival.getFoto());
 					ArrayList<Concierto> conciertos = new ArrayList<>();
-					Concierto conc = new Concierto();
-					for (Relacion relacion: BaseDeDatos.getRelaciones()) {
-						if (relacion.getCodF() == f.getCodigoF()) {
-							for (Concierto concierto: BaseDeDatos.getConciertos()) {
-								if (concierto.getCodigoC() == relacion.getCodC()) {
-									int codA = concierto.getCodigoC("codA");
-									Long hora = rs.getLong("horaC");
-									double duracion = rs.getDouble("duracionC");
-									Artista art = new Artista();
-									for (Artista artista: BaseDeDatos.getArtistas()) {
-										if (artista.getCodigoA() == codA) {
-											art.setCodigoA(codA);
-											art.setNombre(artista.getNombre());
-											art.setTipogenero(artista.getTipogenero());
-										}
-									}
-									ret.add(new Concierto(codC, art, hora, duracion)); 
-								}
-							}
-							conciertos.add(relaci)
-							
-						}
+					for (Concierto concierto: BaseDeDatos.getConciertos()) {
+						if (concierto.getFestival().getCodigoF() == f.getCodigoF()) {
+						conciertos.add(concierto);
 					}
 					
 				}
+					f.setListaConciertos(conciertos);
 			}
 			return f;
 		} catch (Exception e) {
@@ -496,7 +463,7 @@ public class BaseDeDatos {
 			return null;
 		}
 		
-	}*/
+	}
 	
 	
 	
