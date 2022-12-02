@@ -1,6 +1,7 @@
 package Ventanas;
 
 import java.awt.Color;
+
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -155,6 +156,8 @@ public class VentanaPrincipal extends JFrame{
 			fotosFestv.add(festv.getFoto() );
 		}
 		
+		
+		
 //dentro del panel principal
 	//panel del primer festival
 		panelFestv1 = new JPanel();
@@ -174,8 +177,9 @@ public class VentanaPrincipal extends JFrame{
 		JLabelAjustado lfoto =  new JLabelAjustado(foto1);
 		lFoto.setBounds(6, 6, 283, 195);
 		panelFestv1.add(lFoto);
-		//lblFotoFestv1.setIcon(new ImageIcon("/Users/mariaperaleseguiluz/Desktop/Captura de Pantalla 2022-11-09 a las 15.52.42.png"));
-
+		//lblFotoFestv1.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/fotos/tomorrowland.png")));
+		fotosFestv.get(0);
+		
 		btnFestv1 = new JButton("Tomorrowland");
 		btnFestv1.setBounds(6, 213, 117, 29);
 		btnFestv1.addActionListener(new ActionListener() {

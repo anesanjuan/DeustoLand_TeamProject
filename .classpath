@@ -7,5 +7,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/mariaperaleseguiluz/eclipse-workspace/Practica3D.zip_expanded/Practica3D/lib/sqlite-jdbc-3.39.3.0.jar"/>
+	<classpathentry kind="lib" path="/Users/mariaperaleseguiluz/Desktop/jdk-8u351-docs-all.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

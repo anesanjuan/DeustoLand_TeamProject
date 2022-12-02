@@ -6,7 +6,12 @@ public class Artista {
 	private String nombre;
 	private TipoGenero tipogenero;
 	
-	
+	/**
+	 * Creacion de un nuevo artista
+	 * @param codigoA  Codigo del artista
+	 * @param nombre   Nombre del artista
+	 * @param tipogenero  Genero de las canciones del artista
+	 */
 	public Artista(int codigoA, String nombre, TipoGenero tipogenero) {
 		super();
 		this.codigoA = codigoA;
@@ -18,10 +23,6 @@ public class Artista {
 	public Artista() {
 		super();
 	}
-
-	
-
-
 
 	public int getCodigoA() {
 		return codigoA;
@@ -41,8 +42,6 @@ public class Artista {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-
 
 
 	public TipoGenero getTipogenero() {

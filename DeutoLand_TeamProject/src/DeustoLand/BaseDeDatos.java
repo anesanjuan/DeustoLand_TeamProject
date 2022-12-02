@@ -13,6 +13,11 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
+/**
+ * Clase de gestion de una base de datos del sistema de festivales???
+ * 
+ */
 public class BaseDeDatos {
 
 	private static Connection con;
@@ -20,10 +25,8 @@ public class BaseDeDatos {
 	private static Exception lastError;
 
 
-
 	/**
 	 * Abre conexión con la base de datos
-	 * 
 	 * @param nombreBD   Nombre del fichero de base de datos
 	 * @param reiniciaBD true si se quiere reiniciar la base de datos (se borran sus
 	 *                   contenidos si los tuviera y se crean datos por defecto)
@@ -97,6 +100,13 @@ public class BaseDeDatos {
 	///////////////////////////////////////////////////////////////7
 	// operacion para insertar festivales desde la app
 
+	/**
+	 * Insertar un festival en la base de datos abierta (debe abrirse previamente con 
+	 * 		{@link #abrirConexion(String, boolean)}
+	 * Actualiza el codigo del festival insertado(ESTO NO LO TENGO CLARO SI HAY Q PONER)
+	 * @param festival Festival a insertar
+	 * @return true si la insercion es correcta, false en caso contrario
+	 */
 	public static boolean insertarFestival(Festival festival) {
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
@@ -123,6 +133,12 @@ public class BaseDeDatos {
 		}
 	}
 
+	/**
+	 * Insertar un festival en la base de datos abierta (debe abrirse previamente con 
+	 * 		{@link #abrirConexion(String, boolean)}
+	 * @param artista Artista a insertar
+	 * @return true si la insercion es correcta, false en caso contrario
+	 */
 	public static boolean insertarArtista(Artista artista) {
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
@@ -148,7 +164,13 @@ public class BaseDeDatos {
 		}
 
 	}
-
+ 
+	/**
+	 * Inserta un concierto en la base de datos abierta (debe abrirse previamente con 
+	 * 		{@link #abrirConexion(String, boolean)}
+	 * @param concierto Concierto a insertar
+	 * @return true si la insercion es correcta, false en caso contrario
+	 */
 	public static boolean insertarConcierto(Concierto concierto) {
 		try (Statement statement = con.createStatement()) {
 			String sent = "insert into concierto values ( " + concierto.getArtista()
@@ -177,6 +199,11 @@ public class BaseDeDatos {
 
 	}
 
+	/**
+	 * Lee los festivales de la conexion de base de datos abierta (debe abrirse previamente con 
+	 * 		{@link #abrirConexion(String, boolean)}
+	 * @return Lista completa de festivales, vacia si no hay ninguna, null si existe algun error
+	 */
 	public static ArrayList<Festival> getFestivales() {
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
@@ -203,7 +230,11 @@ public class BaseDeDatos {
 
 	}
 	
-	
+	/**
+	 * Lee los festivales de la conexion de base de datos abierta (debe abrirse previamente con 
+	 * 		{@link #abrirConexion(String, boolean)}
+	 * @return Lista completa de artistas, vacia si no hay ninguno, null si hay error
+	 */
 	public static ArrayList<Artista> getArtistas() {
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
@@ -227,8 +258,9 @@ public class BaseDeDatos {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Lee los festivales de la conexion de base de datos abierta (debe abrirse previamente con 
+	 * 		{@link #abrirConexion(String, boolean)
+	 * @return Lista completa de conciertos,vacia si no hay ninguno, null si existe algun error
 	 */
 	public static ArrayList<Concierto> getConciertos() {
 		try (Statement statement = con.createStatement()) {
@@ -280,12 +312,14 @@ public class BaseDeDatos {
 	////////////////////////////////////////////
 	///DATOS DE INICIO PARA LA BASE DE DATOS
 	
-	
-	// este esz para insertar caundo se abre la app
+	// este es para insertar caundo se abre la app
+	/**
+	 * Festivales con sus datos ya establecidos una vez se abre el programa (?? redactarlo mejor)
+	 */
 	public static void insertarFestivales() {
 
 		//falta este por meter
-		Festival fest2 = new Festival(02, "Coachella", "21-07-2023", "Dubai", "bla bla", 150.7, "");
+		Festival fest2 = new Festival(02, "Coachella", "21-07-2023", "Dubai", "bla bla", 150.7, "tomorrowland.png");
 		Festival fest3 = new Festival(03, "Arenal Sound", "21-07-2023", "Dubai", "bla bla", 150.7, "");
 		Festival fest4 = new Festival(04, "Mad Cool", "21-07-2023", "Dubai", "bla bla", 150.7, "");
 		Festival fest5 = new Festival(05, "hollika", "21-07-2023", "Dubai", "bla bla", 150.7, "");
@@ -322,7 +356,9 @@ public class BaseDeDatos {
 		}
 	}
 	
-	
+	/**
+	 * Festivales ya establecidos una vez se abre el programa ?? redactarlo mejor
+	 */
 	public static void insertarConciertos() {
 		
 		Concierto conc1 = new Concierto(1, new Artista(0, null, null), 0, 0, new Festival(0, null, null, null, null, null, 0, null));
@@ -350,7 +386,10 @@ public class BaseDeDatos {
 		
 
 	}
-
+	
+	/**
+	 * Festivales ya establecidos una vez se abre el programa ?? redactarlo mejor
+	 */
 	public static void insertarArtistas() {
 		Artista art1 = new Artista(01, "Aitana", TipoGenero.POP);
 		ArrayList<Artista> artistas = new ArrayList<>();
@@ -376,11 +415,10 @@ public class BaseDeDatos {
 
 	}
 
-	
-	
-	
+	/**
+	 * Usuarios ya generados una vez se abre el programa ?? redactarlo mejor
+	 */	
 	public static void insertarUsuarios() {
-		// TODO Auto-generated method stub
 
 		Admin admin = new Admin("admin", "admin", "admin", "admin");
 		ArrayList<Admin> admins = new ArrayList<>();
@@ -468,6 +506,6 @@ public class BaseDeDatos {
 	
 	
 	
-
+	}
 
 }

@@ -44,11 +44,4 @@ public class Cliente extends User{
 		this.correo = correo;
 	}
 
-
-	
-	
-	
-
-	
-
 }

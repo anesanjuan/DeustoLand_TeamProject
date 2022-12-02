@@ -6,7 +6,14 @@ public class EntradaVIP extends Entrada{
 	private int suplementoVIP;
 	private int  numZonaVIP;
 	
-	
+	/**
+	 * Creacion de una nueva entrada
+	 * @param cliente
+	 * @param numeroEntrada
+	 * @param festival
+	 * @param suplementoVIP
+	 * @param numZonaVIP
+	 */
 	public EntradaVIP(Cliente cliente, int numeroEntrada, Festival festival, int suplementoVIP, int numZonaVIP) {
 		super(cliente, numeroEntrada, festival);
 		this.suplementoVIP = suplementoVIP;
