@@ -22,7 +22,7 @@ public class Main {
 		//VentanaInicioSesion vi = new VentanaInicioSesion( gln );
 		//vi.setVisible(true);
 		
-		BaseDeDatos.abrirConexion("BaseDatos.db", false);
+		BaseDeDatos.abrirConexion("BaseDatos.db", true);
 		BaseDeDatos.insertarFestivales();
 		BaseDeDatos.insertarConciertos();
 		BaseDeDatos.insertarArtistas();
@@ -31,7 +31,7 @@ public class Main {
 		VentanaPrincipal vp = new VentanaPrincipal( gln );
 		vp.setVisible(true);
 		
-		BaseDeDatos.cerrarConexion();
+		//BaseDeDatos.cerrarConexion();
 
 		
 		//VentanaFestival vf = new VentanaFestival(fest1);

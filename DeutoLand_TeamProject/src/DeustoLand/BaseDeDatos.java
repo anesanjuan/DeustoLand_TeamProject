@@ -43,7 +43,7 @@ public class BaseDeDatos {
 				String sent = "DROP TABLE IF EXISTS festival";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
-				sent = "CREATE TABLE festival (codF INTEGER PRIMARY KEY AUTOINCREMENT, nombreF char(30), fechaF date, lugarF char(30), descripcionF char(250), precioF dec(3,2), foto char(250));";
+				sent = "CREATE TABLE festival (codF INTEGER PRIMARY KEY, nombreF char(30), fechaF date, lugarF char(30), descripcionF char(250), precioF dec(3,2), foto char(250));";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
 
@@ -205,9 +205,9 @@ public class BaseDeDatos {
 	 * @return Lista completa de festivales, vacia si no hay ninguna, null si existe algun error
 	 */
 	public static ArrayList<Festival> getFestivales() {
+		ArrayList<Festival> ret = new ArrayList<>();
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
-			ArrayList<Festival> ret = new ArrayList<>();
 			String sent = "select * from festival";
 			logger.log(Level.INFO, "Statement: " + sent);
 			ResultSet rs = statement.executeQuery(sent);
@@ -222,11 +222,12 @@ public class BaseDeDatos {
 				ret.add(new Festival(cod, nombre, fecha, lugar, descripcion, precio, foto));
 
 			}
-			return ret;
+			//return ret;
 		} catch (Exception e) {
 			logger.log(Level.SEVERE, "Excepcion", e);
 			return null;
 		}
+		return ret;
 
 	}
 	
@@ -339,7 +340,7 @@ public class BaseDeDatos {
 			abrirConexion("BaseDatos.db", false);
 
 			for (Festival festival : fests) {
-				String sent = "insert into festival values ( " + festival.getNombre()
+				String sent = "insert into festival values ( " + festival.getCodigoF() + " , '" + festival.getNombre()
 						+ "' , '" + festival.getFecha() + "' , '" + festival.getLugar() + "' , '"
 						+ festival.getDescripcion() + "' , " + festival.getPrecio() + ", '" + festival.getFoto()
 						+ "');";
@@ -358,6 +359,7 @@ public class BaseDeDatos {
 	
 	/**
 	 * Festivales ya establecidos una vez se abre el programa ?? redactarlo mejor
+	 * 
 	 */
 	public static void insertarConciertos() {
 		
@@ -369,8 +371,8 @@ public class BaseDeDatos {
 			abrirConexion("BaseDatos.db", false);
 
 			for (Concierto conc : conciertos) {
-				String sent = "insert into concierto values ( " + conc.getCodigoC() + ", '" + conc.getArtista()
-						+ "' , '" + conc.getHora() + "' , '" + conc.getDuracion() + "');";
+				String sent = "insert into concierto values ( " + conc.getCodigoC() + ", " + conc.getArtista().getCodigoA()
+						+ " , '" + conc.getHora() + "' , '" + conc.getDuracion() + " ' , " + conc.getFestival().getCodigoF() + ");";
 
 				logger.log(Level.INFO, "Statement: " + sent);
 
@@ -399,7 +401,7 @@ public class BaseDeDatos {
 			abrirConexion("BaseDatos.db", false);
 
 			for (Artista art : artistas) {
-				String sent = "insert into artista values ( '" + art.getNombre()
+				String sent = "insert into artista values ( " + art.getCodigoA() + " , ' " + art.getNombre()
 						+ "' , '" + art.getTipogenero() +  "');";
 
 				logger.log(Level.INFO, "Statement: " + sent);

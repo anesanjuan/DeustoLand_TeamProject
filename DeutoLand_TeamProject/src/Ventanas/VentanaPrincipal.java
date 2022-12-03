@@ -187,7 +187,7 @@ public class VentanaPrincipal extends JFrame{
 				for (Festival festival : BaseDeDatos.getFestivales()) {
 					if (festival.getNombre() == btnFestv1.getText()) {
 						VentanaFestival vf = new VentanaFestival(festival);
-						setVisible(true);
+						vf.setVisible(true);
 					}
 				}
 				dispose();
