@@ -184,6 +184,12 @@ public class VentanaPrincipal extends JFrame{
 		btnFestv1.setBounds(6, 213, 117, 29);
 		btnFestv1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				for (Festival festival : BaseDeDatos.getFestivales()) {
+					if (festival.getNombre() == btnFestv1.getText()) {
+						VentanaFestival vf = new VentanaFestival(festival);
+						setVisible(true);
+					}
+				}
 				dispose();
 				
 			}
@@ -265,6 +271,8 @@ public class VentanaPrincipal extends JFrame{
 		btnFestv4.setBounds(6, 213, 117, 29);
 		btnFestv4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
 			}
 		});
 		panelFestv4.add(btnFestv4);

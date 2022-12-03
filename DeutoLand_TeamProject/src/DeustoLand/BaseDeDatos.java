@@ -472,12 +472,12 @@ public class BaseDeDatos {
 	
 	
 	///////////////////////////////////////////////////
-
+	
+	
 	public static Festival getFestival(Festival festival) {
-		
-		try (Statement statement = con.createStatement()) {
+		Festival f = new Festival();
+		try {
 			abrirConexion("BaseDatos.db", false);
-			Festival f = new Festival();
 			for (Festival fest: BaseDeDatos.getFestivales() ) {
 				if (fest.getCodigoF() == festival.getCodigoF() ) {
 					f.setCodigoF(festival.getCodigoF());
@@ -489,18 +489,18 @@ public class BaseDeDatos {
 					ArrayList<Concierto> conciertos = new ArrayList<>();
 					for (Concierto concierto: BaseDeDatos.getConciertos()) {
 						if (concierto.getFestival().getCodigoF() == f.getCodigoF()) {
-						conciertos.add(concierto);
+							conciertos.add(concierto);
+						}
 					}
-					
-				}
 					f.setListaConciertos(conciertos);
+				}
 			}
-			return f;
+
 		} catch (Exception e) {
 			logger.log(Level.SEVERE, "Excepcion", e);
 			return null;
 		}
-		
+		return f;
 	}
 	
 	
@@ -508,4 +508,4 @@ public class BaseDeDatos {
 	
 	}
 
-}
+
