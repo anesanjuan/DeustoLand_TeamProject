@@ -32,9 +32,7 @@ import DeustoLand.Gestor;
 
 public class VentanaPrincipal extends JFrame{
 
-
 	private static final long serialVersionUID = 1L;
-
 
 	private JLabelAjustado lFoto = new JLabelAjustado( null );
 	
@@ -146,14 +144,11 @@ public class VentanaPrincipal extends JFrame{
 		panelPrincipal.setLayout(null);
 		
 		
-		
-		
+	
 		ArrayList<String> fotosFestv = new ArrayList<String>();
 		for(Festival festv : BaseDeDatos.getFestivales()) {
 			fotosFestv.add(festv.getFoto() );
 		}
-		
-		
 		
 //dentro del panel principal
 	//panel del primer festival
@@ -164,8 +159,6 @@ public class VentanaPrincipal extends JFrame{
 		
 		//lblFotoFestv1.setBounds(6, 6, 283, 195);
 		//panelFestv1.add(lblFotoFestv1);
-		
-		
 		
 		//lblFotoFestv1.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/fotos/tomorrowland.png")));
 		//fotosFestv.get(5);
@@ -180,8 +173,7 @@ public class VentanaPrincipal extends JFrame{
 						vf.setVisible(true);
 					}
 				}
-				//dispose();
-				
+				//dispose();	
 			}
 		});
 		panelFestv1.add(btnFestv1);

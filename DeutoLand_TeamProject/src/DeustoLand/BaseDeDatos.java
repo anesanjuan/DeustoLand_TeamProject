@@ -309,7 +309,6 @@ public class BaseDeDatos {
 
 	}
 
-	
 	////////////////////////////////////////////
 	///DATOS DE INICIO PARA LA BASE DE DATOS
 	
