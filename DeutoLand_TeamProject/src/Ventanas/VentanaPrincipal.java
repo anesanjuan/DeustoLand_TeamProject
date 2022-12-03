@@ -32,11 +32,10 @@ import DeustoLand.Gestor;
 
 public class VentanaPrincipal extends JFrame{
 
-	private final JPanel panel = new JPanel();
 
 	private static final long serialVersionUID = 1L;
 
-	public JFrame frame;
+
 	private JLabelAjustado lFoto = new JLabelAjustado( null );
 	
 	//en el panel de arriba
@@ -90,15 +89,14 @@ public class VentanaPrincipal extends JFrame{
 	
 	//esto es como inicializar: mete todo dentro
 	public VentanaPrincipal(Gestor gestor) {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 901, 615);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		setBounds(100, 100, 901, 615);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getContentPane().setLayout(null);
 		
 		//panel de arriba
 		panelArriba = new JPanel();
 		panelArriba.setBounds(6, 6, 889, 47);
-		frame.getContentPane().add(panelArriba);
+		getContentPane().add(panelArriba);
 		panelArriba.setLayout(null);
 		
 		//en el panel de arriba
@@ -144,7 +142,7 @@ public class VentanaPrincipal extends JFrame{
 //PANEL PRINCIAPAL EN EL QUE HAY 6 PANELES
 		panelPrincipal = new JPanel();
 		panelPrincipal.setBounds(6, 54, 889, 527);
-		frame.getContentPane().add(panelPrincipal);
+		getContentPane().add(panelPrincipal);
 		panelPrincipal.setLayout(null);
 		
 		
@@ -152,7 +150,6 @@ public class VentanaPrincipal extends JFrame{
 		
 		ArrayList<String> fotosFestv = new ArrayList<String>();
 		for(Festival festv : BaseDeDatos.getFestivales()) {
-			//ImageIcon foto = new ImageIcon((String) festv.getFoto() );
 			fotosFestv.add(festv.getFoto() );
 		}
 		
@@ -167,18 +164,11 @@ public class VentanaPrincipal extends JFrame{
 		
 		//lblFotoFestv1.setBounds(6, 6, 283, 195);
 		//panelFestv1.add(lblFotoFestv1);
-		String fotoFestival = "";
-		for (Festival festival: BaseDeDatos.getFestivales()) {
-			if (festival.getNombre() == "TomorrowLand") {
-				fotoFestival = festival.getFoto();
-			}
-		}
-		ImageIcon foto1 = new ImageIcon(fotoFestival);
-		JLabelAjustado lfoto =  new JLabelAjustado(foto1);
-		lFoto.setBounds(6, 6, 283, 195);
-		panelFestv1.add(lFoto);
+		
+		
+		
 		//lblFotoFestv1.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/fotos/tomorrowland.png")));
-		fotosFestv.get(0);
+		//fotosFestv.get(5);
 		
 		btnFestv1 = new JButton("Tomorrowland");
 		btnFestv1.setBounds(6, 213, 117, 29);
@@ -190,11 +180,16 @@ public class VentanaPrincipal extends JFrame{
 						vf.setVisible(true);
 					}
 				}
-				dispose();
+				//dispose();
 				
 			}
 		});
 		panelFestv1.add(btnFestv1);
+		ImageIcon foto1 = new ImageIcon(BaseDeDatos.getFotoFest(btnFestv1.getText()));
+		JLabelAjustado lfoto =  new JLabelAjustado(foto1);
+		lFoto.setBounds(6, 6, 283, 195);
+		panelFestv1.add(lFoto);
+		
 		
 		lblLugarFestv1 = new JLabel("Belgica");
 		lblLugarFestv1.setBounds(156, 213, 61, 16);
@@ -332,7 +327,7 @@ public class VentanaPrincipal extends JFrame{
 		panelFestv6.add(lblFechaFestv6);
 		
 		
-		frame.setVisible(true);
+		setVisible(true);
 		
 		ArrayList<Festival> festivales = new ArrayList<>();
 
