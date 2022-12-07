@@ -168,9 +168,12 @@ public class VentanaPrincipal extends JFrame{
 		btnFestv1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				
 				for (Festival festival : BaseDeDatos.getFestivales()) {
-					if (festival.getNombre() == btnFestv1.getText()) {
-		
-						VentanaFestival vf = new VentanaFestival(festival);
+					//System.out.println(festival.getNombre());
+					//System.out.println(btnFestv1.getText());
+					//System.out.println(festival.getNombre().equals(btnFestv1.getText()));
+					if (festival.getNombre().equals(btnFestv1.getText()) ) {
+						Festival f = BaseDeDatos.getFestival(festival);
+						VentanaFestival vf = new VentanaFestival(f);
 						vf.setVisible(true);
 						setVisible(false);
 					}
