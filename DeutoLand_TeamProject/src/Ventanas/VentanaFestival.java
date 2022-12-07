@@ -18,6 +18,7 @@ import javax.swing.SwingConstants;
 import DeustoLand.Artista;
 import DeustoLand.Concierto;
 import DeustoLand.Festival;
+import DeustoLand.Gestor;
 
 public class VentanaFestival extends JFrame{
 
@@ -45,6 +46,17 @@ public class VentanaFestival extends JFrame{
 		bAtras.setFont(new Font("Georgia", Font.PLAIN, 16));
 		bAtras.setBounds(387, 11, 133, 36);
 		parteArriba.add(bAtras);
+		bAtras.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Gestor gn = new Gestor();
+				VentanaPrincipal vp = new VentanaPrincipal(gn);
+				vp.setVisible(true);
+				setVisible(false);
+				
+			}
+		});
 		
 		JButton bRegistro = new JButton("registrarme");
 		bRegistro.setFont(new Font("Georgia", Font.PLAIN, 16));
@@ -74,6 +86,7 @@ public class VentanaFestival extends JFrame{
 		JButton bComprarEnt = new JButton("Comprar Entrada");
 		bComprarEnt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		bComprarEnt.setFont(new Font("Georgia", Font.PLAIN, 16));
