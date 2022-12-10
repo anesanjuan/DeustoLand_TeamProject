@@ -319,12 +319,12 @@ public class BaseDeDatos {
 	public static void insertarFestivales() {
 
 		//falta este por meter
-		Festival fest1 = new Festival(01, "Tomorrowland" , "21-07-2023", "Dubai","bla bla", 150.7, "tomorrowland.png");
-		Festival fest2 = new Festival(02, "Coachella", "21-07-2023", "Dubai", "bla bla", 150.7, "");
-		Festival fest3 = new Festival(03, "Arenal Sound", "21-07-2023", "Dubai", "bla bla", 150.7, "arenalsound.png");
-		Festival fest4 = new Festival(04, "Mad Cool", "21-07-2023", "Dubai", "bla bla", 150.7, "");
-		Festival fest5 = new Festival(05, "hollika", "21-07-2023", "Dubai", "bla bla", 150.7, "");
-		Festival fest6 = new Festival(06, "boombastic", "21-07-2023", "Dubai", "bla bla", 150.7, "");
+		Festival fest1 = new Festival(01, "Tomorrowland" , "21-07-2023", "Boom, Bélgica","Tomorrowland es un festival de música electrónica de baile en el que lo pasarás en grande y difrutaras de 3 días increíbles con tus amigos y lleno de música. El festival tiene una duración de 3 días y cada día empezará sobre las 18:00 horas. Para más información consulte la página oficial del sitio: https://www.tomorrowland.com/", 150.00, "tomorrowland.png");
+		Festival fest2 = new Festival(02, "Coachella", "25-04-2023", "Colorado, California, EEUU", "Coachella es un gran festival de música que se lleva a cabo durante tres días en la última semana del mes de abril en California. Es uno de los festivales de música más grandes, famosos y rentables de Estados Unidos y del mundo. Para más información consulte la página oficial del sitio: https://www.coachella.com/", 300.00, "coachella.png");
+		Festival fest3 = new Festival(03, "Arenal Sound", "1-08-2023", "Burriana, Castellón, España", "Arenal Sound Festival es un festival de música que se caracteriza por su gran afluencia de jóvenes y se diferencia de otros festivales por su cercanía a la playa al tener uno de sus escenarios sobre la misma arena. Para más información consulte la página oficial del sitio: https://www.arenalsound.com/ ", 70.00, "arenalsound.png");
+		Festival fest4 = new Festival(04, "Mad Cool", "04-07-2023", "Madrid, España", "Mad Cool es un festival de música que se realiza en Madrid desde el año 2016. El arte, la moda, la gastronomía y el turismo se unen eclécticamente en este festival. Para más información consulte la página oficial del sitio: https://madcoolfestival.es/", 120.00, "madcool.jpg");
+		Festival fest5 = new Festival(05, "Hollika", "28-06-2023", "Calahorra, La Rioja, España", "El Holika Festival es un Festival de Música que incluye géneros de música electrónica, urbana y latina. Se caracteriza por su gran afluencia de jóvenes de todas las provincias españolas. La última edición (2023) se celebrará en Calahorra. Para más información consulte la página oficial del sitio: https://www.holika.es/ ", 45, "holika.jpg");
+		Festival fest6 = new Festival(06, "Boombastic", "20-07-2023", "Asturias, España", "Boombastic es un nuevo modelo de festival, adaptado a los tiempos que corren y con la intención de saciar las ganas de música, cultura y festivales de la gente joven. Tiene lugar en Asturias y tiene una duración de 4 días. Para más información consulte la página oficial del sitio: https://boombasticfestival.com/ ", 50.00, "boombastic.jpg");
 
 
 
