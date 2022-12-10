@@ -409,8 +409,23 @@ public class BaseDeDatos {
 	 */
 	public static void insertarArtistas() {
 		Artista art1 = new Artista(01, "Aitana", TipoGenero.POP);
+		Artista art2 = new Artista(02, "Mora", TipoGenero.URBANOLATINO);
+		Artista art3 = new Artista(03, "Taburete", TipoGenero.POP);
+		Artista art4 = new Artista(04, "Eladio Carrion", TipoGenero.URBANOLATINO);
+		Artista art5 = new Artista(05, "One Direction", TipoGenero.POP);
+		Artista art6 = new Artista(06, "La Oreja de Van Gogh", TipoGenero.POP);
+		Artista art7 = new Artista(07, "Tini", TipoGenero.POP);
+
 		ArrayList<Artista> artistas = new ArrayList<>();
 		artistas.add(art1);
+		artistas.add(art2);
+		artistas.add(art3);
+		artistas.add(art4);
+		artistas.add(art5);
+		artistas.add(art6);
+		artistas.add(art7);
+
+
 		
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
