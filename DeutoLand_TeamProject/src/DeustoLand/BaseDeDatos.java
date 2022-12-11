@@ -410,11 +410,25 @@ public class BaseDeDatos {
 	public static void insertarArtistas() {
 		Artista art1 = new Artista(01, "Aitana", TipoGenero.POP);
 		Artista art2 = new Artista(02, "Mora", TipoGenero.URBANOLATINO);
-		Artista art3 = new Artista(03, "Taburete", TipoGenero.POP);
+		Artista art3 = new Artista(03, "Taburete", TipoGenero.ROCKESP);
 		Artista art4 = new Artista(04, "Eladio Carrion", TipoGenero.URBANOLATINO);
 		Artista art5 = new Artista(05, "One Direction", TipoGenero.POP);
 		Artista art6 = new Artista(06, "La Oreja de Van Gogh", TipoGenero.POP);
 		Artista art7 = new Artista(07, "Tini", TipoGenero.POP);
+		Artista art8 = new Artista(8, "Rels B", TipoGenero.URBANOLATINO);
+		Artista art9 = new Artista(9, "Juan Magan", TipoGenero.REGGAETON);
+		Artista art10 = new Artista(10, "Myke Towers", TipoGenero.REGGAETON);
+		Artista art11 = new Artista(11, "Afro Jack", TipoGenero.TECHNO);
+		Artista art12 = new Artista(12, "La MODA", TipoGenero.ROCKESP);
+		Artista art13 = new Artista(13, "Morad", TipoGenero.REGGAETON);
+		Artista art14 = new Artista(14, "Belén Aguilera", TipoGenero.POP);
+		Artista art15 = new Artista(15, "Amber Broose", TipoGenero.TECHNO); 
+		Artista art16 = new Artista(16, "Dom Dolla", TipoGenero.TECHNO);
+		Artista art17 = new Artista(17, "Harry Styles", TipoGenero.POP);
+		Artista art18 = new Artista(18, "Billie Eilish", TipoGenero.POP);
+		Artista art19 = new Artista(19, "Taylor Swift", TipoGenero.POP);
+		Artista art20 = new Artista(20, "Daniel Caesar", TipoGenero.POP);
+		
 
 		ArrayList<Artista> artistas = new ArrayList<>();
 		artistas.add(art1);
@@ -424,6 +438,21 @@ public class BaseDeDatos {
 		artistas.add(art5);
 		artistas.add(art6);
 		artistas.add(art7);
+		artistas.add(art8);
+		artistas.add(art9);
+		artistas.add(art10);
+		artistas.add(art11);
+		artistas.add(art12);
+		artistas.add(art13);
+		artistas.add(art14);
+		artistas.add(art15);
+		artistas.add(art16);
+		artistas.add(art17);
+		artistas.add(art18);
+		artistas.add(art19);
+		artistas.add(art20);
+		
+		
 
 
 		

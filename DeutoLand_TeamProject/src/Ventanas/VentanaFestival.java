@@ -12,10 +12,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.text.html.Option;
 
 import DeustoLand.Artista;
+import DeustoLand.Cliente;
 import DeustoLand.Concierto;
 import DeustoLand.Festival;
 import DeustoLand.Gestor;
@@ -28,6 +31,9 @@ public class VentanaFestival extends JFrame{
 	
 	public VentanaFestival(Festival festival) {
 		
+		Cliente client;
+		client = null;
+		
 		setBounds(100, 100, 901, 615);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
@@ -35,10 +41,10 @@ public class VentanaFestival extends JFrame{
 		JPanel parteArriba = new JPanel();
 		parteArriba.setBounds(0, 0, 890, 47);
 		getContentPane().add(parteArriba);
-		parteArriba.setLayout(null);
+		//parteArriba.setLayout(new GridLayout(1,4));
 		
-		JLabel nomFest = new JLabel("Festival" + festival.getNombre());
-		nomFest.setFont(new Font("Georgia", Font.PLAIN, 30));
+		JLabel nomFest = new JLabel("Festival " + festival.getNombre());
+		nomFest.setFont(new Font("Georgia", Font.PLAIN, 25));
 		nomFest.setBounds(10, 11, 299, 36);
 		parteArriba.add(nomFest);
 		
@@ -62,21 +68,44 @@ public class VentanaFestival extends JFrame{
 		bRegistro.setFont(new Font("Georgia", Font.PLAIN, 16));
 		bRegistro.setBounds(545, 11, 144, 36);
 		parteArriba.add(bRegistro);
+		bRegistro.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Gestor gn = new Gestor();
+				VentanaRegistro vr = new VentanaRegistro(gn);
+				vr.setVisible(true);
+				setVisible(false);
+				
+			}
+		});
 		
 		JButton bInicioSesion = new JButton("iniciar sesión");
 		bInicioSesion.setFont(new Font("Georgia", Font.PLAIN, 16));
 		bInicioSesion.setBounds(716, 11, 144, 36);
 		parteArriba.add(bInicioSesion);
+		bInicioSesion.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Gestor gn = new Gestor();
+				VentanaInicioSesion vis = new VentanaInicioSesion(gn);
+				vis.setVisible(true);
+				setVisible(false);
+				
+			}
+		});
 		
 		JPanel panelPrincipal = new JPanel();
 		panelPrincipal.setBounds(0, 51, 890, 527);
 		getContentPane().add(panelPrincipal);
-		panelPrincipal.setLayout(null);
+		panelPrincipal.setLayout(new GridLayout(1,2));
 		
 		JPanel principalIzq = new JPanel();
 		principalIzq.setBounds(0, 5, 375, 522);
 		panelPrincipal.add(principalIzq);
 		principalIzq.setLayout(null);
+		
 		
 		JLabel tituloPrecio = new JLabel("Precio:");
 		tituloPrecio.setFont(new Font("Georgia", Font.PLAIN, 20));
@@ -85,7 +114,16 @@ public class VentanaFestival extends JFrame{
 		
 		JButton bComprarEnt = new JButton("Comprar Entrada");
 		bComprarEnt.addActionListener(new ActionListener() {
+			@SuppressWarnings("unused")
 			public void actionPerformed(ActionEvent e) {
+				if (client == null) {
+					JOptionPane.showMessageDialog(null, "Para poder acceder a la compra de entradas es necesario Registrarse o Iniciar Sesión");
+				} else {
+					VentanaCompra vc = new VentanaCompra(null);
+					vc.setVisible(true);
+					setVisible(false);
+				}
+				
 				
 			}
 		});
@@ -147,8 +185,8 @@ public class VentanaFestival extends JFrame{
 		
 		JLabel descripcion = new JLabel(festival.getDescripcion());
 		descripcion.setVerticalAlignment(SwingConstants.TOP);
-		descripcion.setFont(new Font("Georgia", Font.PLAIN, 20));
-		descripcion.setBounds(61, 361, 412, 131);
+		descripcion.setFont(new Font("Georgia", Font.PLAIN, 11));
+		descripcion.setBounds(10, 340, 491, 171);
 		principalDrch.add(descripcion);
 		setVisible(true);
 		setSize(1000,1000);
