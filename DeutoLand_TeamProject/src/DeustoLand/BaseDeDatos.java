@@ -50,14 +50,14 @@ public class BaseDeDatos {
 				sent = "DROP TABLE IF EXISTS artista";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
-				sent = "CREATE TABLE artista (codA INTEGER PRIMARY KEY AUTOINCREMENT, nombreA char(25), generoA char(25));";
+				sent = "CREATE TABLE artista (codA INTEGER PRIMARY KEY, nombreA char(25), generoA char(25));";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
 
 				sent = "DROP TABLE IF EXISTS concierto";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
-				sent = "CREATE TABLE concierto (codC INTEGER PRIMARY KEY AUTOINCREMENT, codA int(3) REFERENCES artista (codA), horaC date, duracionC dec(3,2), codF int(3) REFERENCES festival (codF));";
+				sent = "CREATE TABLE concierto (codC INTEGER PRIMARY KEY, codA int(3) REFERENCES artista (codA), horaC date, duracionC dec(3,2), codF int(3) REFERENCES festival (codF));";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
 
@@ -74,6 +74,13 @@ public class BaseDeDatos {
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
 				sent = "CREATE TABLE clientes (codC INTEGER PRIMARY KEY AUTOINCREMENT, nombre char(25), apellido char(25) , dni char(25) , direccion char(25), edad int(3), correo char(25), contrasena char(25) );";
+				logger.log(Level.INFO, "Statement: " + sent);
+				statement.executeUpdate(sent);
+				
+				sent = "DROP TABLE IF EXISTS entradas";
+				logger.log(Level.INFO, "Statement: " + sent);
+				statement.executeUpdate(sent);
+				sent = "CREATE TABLE clientes (codE INTEGER PRIMARY KEY AUTOINCREMENT, codC int(4) REFERENCES clientes(codC), codF int (3) REFERENCES festival(codF) , tipo int(1) , suplemento_c dec(4,2), parcela int(3), suplemento_v dec(4,2), num_zona int(2) );";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
 
