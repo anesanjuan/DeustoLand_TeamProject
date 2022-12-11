@@ -43,9 +43,10 @@ public class Main {
 		//VentanaPrincipal vp = new VentanaPrincipal( gln );
 		//vp.frame.setVisible(true);
 		
-		//Cliente cliente = new Cliente("nujdjdbhfl", "nunsnjdnll", "nunianjll", "nuakmidall", 0, "nspdifull", "nullsjnsoj");
-		//VentanaCompra vc = new VentanaCompra(cliente);
-		//vc.setVisible(true);
+		Cliente cliente = new Cliente("nujdjdbhfl", "nunsnjdnll", "nunianjll", "nuakmidall", 0, "nspdifull", "nullsjnsoj");
+		
+		VentanaCompra vc = new VentanaCompra(cliente);
+		vc.setVisible(true);
 		
 	}
 
