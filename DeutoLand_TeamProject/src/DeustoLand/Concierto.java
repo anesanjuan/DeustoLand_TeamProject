@@ -10,6 +10,14 @@ public class Concierto {
 	private double duracion;
 	private Festival festival;
 	
+	/**
+	 * 
+	 * @param codigoC
+	 * @param artista
+	 * @param hora
+	 * @param duracion
+	 * @param festival
+	 */
 	public Concierto( int codigoC, Artista artista, long hora, double duracion, Festival festival) {
 		super();
 		this.codigoC = codigoC;
@@ -19,10 +27,12 @@ public class Concierto {
 		this.festival = festival;
 	}
 
+	/**
+	 * Crea un concierto vacio
+	 */
 	public Concierto() {
 		super();
 	}
-
 
 	public int getCodigoC() {
 		return codigoC;

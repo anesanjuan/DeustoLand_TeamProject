@@ -13,11 +13,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -182,6 +185,8 @@ public class VentanaPrincipal extends JFrame{
 			}
 		});
 		panelFestv1.add(btnFestv1);
+	
+	
 		ImageIcon foto1 = new ImageIcon(BaseDeDatos.getFotoFest(btnFestv1.getText()));
 		JLabelAjustado lfoto =  new JLabelAjustado(foto1);
 		lFoto.setBounds(6, 6, 283, 195);
@@ -201,11 +206,6 @@ public class VentanaPrincipal extends JFrame{
 		panelPrincipal.add(panelFestv2);
 		panelFestv2.setLayout(null);
 		
-		lblFotoFestv2 = new JLabel("JLabelFoto2");
-		lblFotoFestv2.setBounds(6, 6, 283, 196);
-		panelFestv2.add(lblFotoFestv2);
-		lblFotoFestv2.setIcon(new ImageIcon("/Users/mariaperaleseguiluz/Desktop/Captura de Pantalla 2022-11-09 a las 15.48.18.png"));
-
 		btnFestv2 = new JButton("Coachella");
 		btnFestv2.setBounds(6, 213, 117, 29);
 		btnFestv2.addActionListener(new ActionListener() {
@@ -224,6 +224,19 @@ public class VentanaPrincipal extends JFrame{
 
 			}
 		});
+		
+		//ImageIcon foto2 = new ImageIcon(BaseDeDatos.getFotoFest(btnFestv2.getText()));
+		//JLabelAjustado lfoto2 =  new JLabelAjustado(foto2);
+		//lFoto.setBounds(6, 6, 283, 195);
+		//panelFestv2.add(lFoto);
+		
+		//lblFotoFestv2 = new JLabel("JLabelFoto2");
+		//lblFotoFestv2.setBounds(6, 6, 283, 196);
+		//panelFestv2.add(lblFotoFestv2);
+		//lblFotoFestv2.setIcon(new ImageIcon("/Users/mariaperaleseguiluz/Desktop/Captura de Pantalla 2022-11-09 a las 15.48.18.png"));
+
+		
+		
 		panelFestv2.add(btnFestv2);
 		lblLugarFestv2 = new JLabel("EEUU");
 		lblLugarFestv2.setBounds(156, 213, 61, 16);
