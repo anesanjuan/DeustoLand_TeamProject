@@ -43,7 +43,7 @@ public class Main {
 		//VentanaPrincipal vp = new VentanaPrincipal( gln );
 		//vp.frame.setVisible(true);
 		
-		Cliente cliente = new Cliente("Manuel", "Garcia", "hhh", "nuakmidall", 0, "nspdifull", "nullsjnsoj");
+		Cliente cliente = new Cliente("Manuel", "Garcia", "28881910", "8474929", 0, "84894", "86352");
 		
 		VentanaCompra vc = new VentanaCompra(cliente);
 		vc.setVisible(true);
