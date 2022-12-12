@@ -214,7 +214,7 @@ public class VentanaPrincipal extends JFrame{
 					//System.out.println(festival.getNombre());
 					//System.out.println(btnFestv1.getText());
 					//System.out.println(festival.getNombre().equals(btnFestv1.getText()));
-					if (festival.getNombre().equals(btnFestv1.getText()) ) {
+					if (festival.getNombre().equals(btnFestv2.getText()) ) {
 						Festival f = BaseDeDatos.getFestival(festival);
 						VentanaFestival vf = new VentanaFestival(f);
 						vf.setVisible(true);
@@ -253,7 +253,7 @@ public class VentanaPrincipal extends JFrame{
 					//System.out.println(festival.getNombre());
 					//System.out.println(btnFestv1.getText());
 					//System.out.println(festival.getNombre().equals(btnFestv1.getText()));
-					if (festival.getNombre().equals(btnFestv1.getText()) ) {
+					if (festival.getNombre().equals(btnFestv3.getText()) ) {
 						Festival f = BaseDeDatos.getFestival(festival);
 						VentanaFestival vf = new VentanaFestival(f);
 						vf.setVisible(true);
@@ -293,7 +293,7 @@ public class VentanaPrincipal extends JFrame{
 					//System.out.println(festival.getNombre());
 					//System.out.println(btnFestv1.getText());
 					//System.out.println(festival.getNombre().equals(btnFestv1.getText()));
-					if (festival.getNombre().equals(btnFestv1.getText()) ) {
+					if (festival.getNombre().equals(btnFestv4.getText()) ) {
 						Festival f = BaseDeDatos.getFestival(festival);
 						VentanaFestival vf = new VentanaFestival(f);
 						vf.setVisible(true);
@@ -332,7 +332,7 @@ public class VentanaPrincipal extends JFrame{
 					//System.out.println(festival.getNombre());
 					//System.out.println(btnFestv1.getText());
 					//System.out.println(festival.getNombre().equals(btnFestv1.getText()));
-					if (festival.getNombre().equals(btnFestv1.getText()) ) {
+					if (festival.getNombre().equals(btnFestv5.getText()) ) {
 						Festival f = BaseDeDatos.getFestival(festival);
 						VentanaFestival vf = new VentanaFestival(f);
 						vf.setVisible(true);
@@ -371,7 +371,7 @@ public class VentanaPrincipal extends JFrame{
 					//System.out.println(festival.getNombre());
 					//System.out.println(btnFestv1.getText());
 					//System.out.println(festival.getNombre().equals(btnFestv1.getText()));
-					if (festival.getNombre().equals(btnFestv1.getText()) ) {
+					if (festival.getNombre().equals(btnFestv6.getText()) ) {
 						Festival f = BaseDeDatos.getFestival(festival);
 						VentanaFestival vf = new VentanaFestival(f);
 						vf.setVisible(true);
