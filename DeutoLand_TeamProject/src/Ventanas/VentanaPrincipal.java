@@ -187,7 +187,6 @@ public class VentanaPrincipal extends JFrame{
 		lFoto.setBounds(6, 6, 283, 195);
 		panelFestv1.add(lFoto);
 		
-		
 		lblLugarFestv1 = new JLabel("Belgica");
 		lblLugarFestv1.setBounds(156, 213, 61, 16);
 		panelFestv1.add(lblLugarFestv1);
@@ -195,7 +194,6 @@ public class VentanaPrincipal extends JFrame{
 		lblFechaFestv1 = new JLabel("23 Julio");
 		lblFechaFestv1.setBounds(156, 241, 61, 16);
 		panelFestv1.add(lblFechaFestv1);
-		
 		
 	//panel del segundo festival
 		panelFestv2 = new JPanel();
@@ -210,8 +208,23 @@ public class VentanaPrincipal extends JFrame{
 
 		btnFestv2 = new JButton("Coachella");
 		btnFestv2.setBounds(6, 213, 117, 29);
+		btnFestv2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {				
+				for (Festival festival : BaseDeDatos.getFestivales()) {
+					//System.out.println(festival.getNombre());
+					//System.out.println(btnFestv1.getText());
+					//System.out.println(festival.getNombre().equals(btnFestv1.getText()));
+					if (festival.getNombre().equals(btnFestv1.getText()) ) {
+						Festival f = BaseDeDatos.getFestival(festival);
+						VentanaFestival vf = new VentanaFestival(f);
+						vf.setVisible(true);
+						setVisible(false);
+					}
+				}
+
+			}
+		});
 		panelFestv2.add(btnFestv2);
-		
 		lblLugarFestv2 = new JLabel("EEUU");
 		lblLugarFestv2.setBounds(156, 213, 61, 16);
 		panelFestv2.add(lblLugarFestv2);
@@ -235,9 +248,22 @@ public class VentanaPrincipal extends JFrame{
 		btnFestv3 = new JButton("Arenal Sound");
 		btnFestv3.setBounds(6, 213, 117, 29);
 		btnFestv3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {				
+				for (Festival festival : BaseDeDatos.getFestivales()) {
+					//System.out.println(festival.getNombre());
+					//System.out.println(btnFestv1.getText());
+					//System.out.println(festival.getNombre().equals(btnFestv1.getText()));
+					if (festival.getNombre().equals(btnFestv1.getText()) ) {
+						Festival f = BaseDeDatos.getFestival(festival);
+						VentanaFestival vf = new VentanaFestival(f);
+						vf.setVisible(true);
+						setVisible(false);
+					}
+				}
+
 			}
 		});
+		
 		panelFestv3.add(btnFestv3);
 		
 		lblLugarFestv3 = new JLabel("Burriana");
@@ -262,9 +288,19 @@ public class VentanaPrincipal extends JFrame{
 		btnFestv4 = new JButton("Mad Cool");
 		btnFestv4.setBounds(6, 213, 117, 29);
 		btnFestv4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				
+			public void actionPerformed(ActionEvent e) {				
+				for (Festival festival : BaseDeDatos.getFestivales()) {
+					//System.out.println(festival.getNombre());
+					//System.out.println(btnFestv1.getText());
+					//System.out.println(festival.getNombre().equals(btnFestv1.getText()));
+					if (festival.getNombre().equals(btnFestv1.getText()) ) {
+						Festival f = BaseDeDatos.getFestival(festival);
+						VentanaFestival vf = new VentanaFestival(f);
+						vf.setVisible(true);
+						setVisible(false);
+					}
+				}
+
 			}
 		});
 		panelFestv4.add(btnFestv4);
@@ -290,6 +326,22 @@ public class VentanaPrincipal extends JFrame{
 
 		btnFestv5 = new JButton("Hollika");
 		btnFestv5.setBounds(6, 213, 117, 29);
+		btnFestv5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {				
+				for (Festival festival : BaseDeDatos.getFestivales()) {
+					//System.out.println(festival.getNombre());
+					//System.out.println(btnFestv1.getText());
+					//System.out.println(festival.getNombre().equals(btnFestv1.getText()));
+					if (festival.getNombre().equals(btnFestv1.getText()) ) {
+						Festival f = BaseDeDatos.getFestival(festival);
+						VentanaFestival vf = new VentanaFestival(f);
+						vf.setVisible(true);
+						setVisible(false);
+					}
+				}
+
+			}
+		});
 		panelFestv5.add(btnFestv5);
 		
 		lblLugarFestv5 = new JLabel("La Rioja");
@@ -313,6 +365,22 @@ public class VentanaPrincipal extends JFrame{
 
 		btnFestv6 = new JButton("Bombastic");
 		btnFestv6.setBounds(6, 213, 117, 29);
+		btnFestv6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {				
+				for (Festival festival : BaseDeDatos.getFestivales()) {
+					//System.out.println(festival.getNombre());
+					//System.out.println(btnFestv1.getText());
+					//System.out.println(festival.getNombre().equals(btnFestv1.getText()));
+					if (festival.getNombre().equals(btnFestv1.getText()) ) {
+						Festival f = BaseDeDatos.getFestival(festival);
+						VentanaFestival vf = new VentanaFestival(f);
+						vf.setVisible(true);
+						setVisible(false);
+					}
+				}
+
+			}
+		});
 		panelFestv6.add(btnFestv6);
 		
 		lblLugarFestv6 = new JLabel("Marbella");
@@ -327,8 +395,6 @@ public class VentanaPrincipal extends JFrame{
 		setVisible(true);
 		
 		ArrayList<Festival> festivales = new ArrayList<>();
-
-		
 		panelPrincipal.addMouseListener(new MouseAdapter() {
 			
 			@Override
