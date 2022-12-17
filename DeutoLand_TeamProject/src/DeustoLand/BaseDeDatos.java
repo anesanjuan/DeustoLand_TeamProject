@@ -5,6 +5,7 @@ import java.beans.beancontext.BeanContextContainerProxy;
 import java.io.File;
 import java.math.BigDecimal;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -281,7 +282,7 @@ public class BaseDeDatos {
 			while (rs.next()) {
 				int codC = rs.getInt("codC");
 				int codA = rs.getInt("codA");
-				Long hora = rs.getLong("horaC");
+				long hora = rs.getLong("horaC");
 				double duracion = rs.getDouble("duracionC");
 				int codF = rs.getInt("codF");
 				
@@ -363,47 +364,19 @@ public class BaseDeDatos {
 		}
 	}
 	
-	/**
-	 * Festivales ya establecidos una vez se abre el programa ?? redactarlo mejor
-	 * 
-	 */
-	public static void insertarConciertos() {
 
-		//esta mal :((((((
-		Concierto conc1 = new Concierto(1, new Artista(15, "Amber Broose", TipoGenero.TECHNO), 23, 1.00, new Festival(01, "Tomorrowland" , "21-07-2023", "Boom, Bélgica","Tomorrowland es un festival de música electrónica de baile en el que lo pasarás en grande y difrutaras de 3 días increíbles con tus amigos y lleno de música. El festival tiene una duración de 3 días y cada día empezará sobre las 18:00 horas. Para más información consulte la página oficial del sitio: https://www.tomorrowland.com/", 150.00, "tomorrowland.png"));
-		ArrayList<Concierto> conciertos = new ArrayList<>();
-		conciertos.add(conc1);
-		
-		try (Statement statement = con.createStatement()) {
-			abrirConexion("BaseDatos.db", false);
-
-			for (Concierto conc : conciertos) {
-				String sent = "insert into concierto values ( " + conc.getCodigoC() + ", " + conc.getArtista().getCodigoA()
-						+ " , '" + conc.getHora() + "' , '" + conc.getDuracion() + " ' , " + conc.getFestival().getCodigoF() + ");";
-
-				logger.log(Level.INFO, "Statement: " + sent);
-
-				statement.executeUpdate(sent);
-
-			}
-
-		} catch (Exception e) {
-			logger.log(Level.SEVERE, "Excepción", e);
-
-		}
-		
-		
-
-	}
 	
 	public static String getFotoFest(String nombreF) {
 		String fotoFestival = "";
 		for (Festival festival: BaseDeDatos.getFestivales()) {
 			if (festival.getNombre() == nombreF) {
 				fotoFestival = festival.getFoto();
-			}
+				System.out.println(fotoFestival);
+			} 
 	}
 		return fotoFestival;
+
+		
 
 	
 	}
@@ -478,6 +451,52 @@ public class BaseDeDatos {
 		}
 
 	}
+	
+	
+	/**
+	 * Festivales ya establecidos una vez se abre el programa ?? redactarlo mejor
+	 * 
+	 */
+	public static void insertarConciertos() {
+
+		Concierto conc1 = new Concierto(01, new Artista(0, "", null), 0, 1.00, new Festival(0, "", null, null, null, null, 0, null));
+		//Concierto conc0 = new Concierto(01, BaseDeDatos.getArtistas().get(0), new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
+		//Concierto conc2 = new Concierto(02, BaseDeDatos.getArtistas().get(1),  new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
+		//Concierto conc3 = new Concierto(03, BaseDeDatos.getArtistas().get(3),  new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
+		//Concierto conc4 = new Concierto(04, BaseDeDatos.getArtistas().get(7),  new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
+		//Concierto conc5 = new Concierto(05, BaseDeDatos.getArtistas().get(8),  new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
+		//Concierto conc6 = new Concierto(06, BaseDeDatos.getArtistas().get(9),  new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
+		//Concierto conc7 = new Concierto(07, BaseDeDatos.getArtistas().get(10),  new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
+		//Concierto conc8 = new Concierto(8, BaseDeDatos.getArtistas().get(14),  new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
+		//Concierto conc9 = new Concierto(9, BaseDeDatos.getArtistas().get(15),  new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
+		//Concierto conc10 = new Concierto(10, BaseDeDatos.getArtistas().get(19),  new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
+		
+		ArrayList<Concierto> conciertos = new ArrayList<>();
+		conciertos.add(conc1);
+		
+		try (Statement statement = con.createStatement()) {
+			abrirConexion("BaseDatos.db", false);
+
+			for (Concierto conc : conciertos) {
+				String sent = "insert into concierto values ( " + conc.getCodigoC() + ", " + conc.getArtista().getCodigoA()
+						+ " , '" + conc.getHora() + "' , '" + conc.getDuracion() + " ' , " + conc.getFestival().getCodigoF() + ");";
+
+				logger.log(Level.INFO, "Statement: " + sent);
+
+				statement.executeUpdate(sent);
+
+			}
+
+		} catch (Exception e) {
+			logger.log(Level.SEVERE, "Excepción", e);
+
+		}
+		
+		
+
+	}
+	
+	
 
 	/**
 	 * Usuarios ya generados una vez se abre el programa ?? redactarlo mejor

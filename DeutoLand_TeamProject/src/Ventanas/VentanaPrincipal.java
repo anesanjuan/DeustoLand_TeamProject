@@ -171,9 +171,6 @@ public class VentanaPrincipal extends JFrame{
 		btnFestv1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				
 				for (Festival festival : BaseDeDatos.getFestivales()) {
-					//System.out.println(festival.getNombre());
-					//System.out.println(btnFestv1.getText());
-					//System.out.println(festival.getNombre().equals(btnFestv1.getText()));
 					if (festival.getNombre().equals(btnFestv1.getText()) ) {
 						Festival f = BaseDeDatos.getFestival(festival);
 						VentanaFestival vf = new VentanaFestival(f);
@@ -211,9 +208,6 @@ public class VentanaPrincipal extends JFrame{
 		btnFestv2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				
 				for (Festival festival : BaseDeDatos.getFestivales()) {
-					//System.out.println(festival.getNombre());
-					//System.out.println(btnFestv1.getText());
-					//System.out.println(festival.getNombre().equals(btnFestv1.getText()));
 					if (festival.getNombre().equals(btnFestv2.getText()) ) {
 						Festival f = BaseDeDatos.getFestival(festival);
 						VentanaFestival vf = new VentanaFestival(f);
@@ -263,9 +257,6 @@ public class VentanaPrincipal extends JFrame{
 		btnFestv3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				
 				for (Festival festival : BaseDeDatos.getFestivales()) {
-					//System.out.println(festival.getNombre());
-					//System.out.println(btnFestv1.getText());
-					//System.out.println(festival.getNombre().equals(btnFestv1.getText()));
 					if (festival.getNombre().equals(btnFestv3.getText()) ) {
 						Festival f = BaseDeDatos.getFestival(festival);
 						VentanaFestival vf = new VentanaFestival(f);
@@ -303,9 +294,6 @@ public class VentanaPrincipal extends JFrame{
 		btnFestv4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				
 				for (Festival festival : BaseDeDatos.getFestivales()) {
-					//System.out.println(festival.getNombre());
-					//System.out.println(btnFestv1.getText());
-					//System.out.println(festival.getNombre().equals(btnFestv1.getText()));
 					if (festival.getNombre().equals(btnFestv4.getText()) ) {
 						Festival f = BaseDeDatos.getFestival(festival);
 						VentanaFestival vf = new VentanaFestival(f);
@@ -342,9 +330,6 @@ public class VentanaPrincipal extends JFrame{
 		btnFestv5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				
 				for (Festival festival : BaseDeDatos.getFestivales()) {
-					//System.out.println(festival.getNombre());
-					//System.out.println(btnFestv1.getText());
-					//System.out.println(festival.getNombre().equals(btnFestv1.getText()));
 					if (festival.getNombre().equals(btnFestv5.getText()) ) {
 						Festival f = BaseDeDatos.getFestival(festival);
 						VentanaFestival vf = new VentanaFestival(f);
@@ -381,9 +366,6 @@ public class VentanaPrincipal extends JFrame{
 		btnFestv6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				
 				for (Festival festival : BaseDeDatos.getFestivales()) {
-					//System.out.println(festival.getNombre());
-					//System.out.println(btnFestv1.getText());
-					//System.out.println(festival.getNombre().equals(btnFestv1.getText()));
 					if (festival.getNombre().equals(btnFestv6.getText()) ) {
 						Festival f = BaseDeDatos.getFestival(festival);
 						VentanaFestival vf = new VentanaFestival(f);

@@ -1,12 +1,13 @@
 package DeustoLand;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class Concierto {
 	
 	private int codigoC;
 	private Artista artista;
-	private long hora; //cambiar tipo de variable
+	private long hora; 
 	private double duracion;
 	private Festival festival;
 	
