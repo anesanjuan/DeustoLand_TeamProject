@@ -460,7 +460,7 @@ public class BaseDeDatos {
 	public static void insertarConciertos() {
 
 		Concierto conc1 = new Concierto(01, new Artista(0, "", null), 0, 1.00, new Festival(0, "", null, null, null, null, 0, null));
-		//Concierto conc0 = new Concierto(01, BaseDeDatos.getArtistas().get(0), new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
+		//Concierto conc0 = new Concierto(01, BaseDeDatos.getArtistas().get(0), 2022-03-12, 1.00, BaseDeDatos.getFestivales().get(0));
 		//Concierto conc2 = new Concierto(02, BaseDeDatos.getArtistas().get(1),  new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
 		//Concierto conc3 = new Concierto(03, BaseDeDatos.getArtistas().get(3),  new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
 		//Concierto conc4 = new Concierto(04, BaseDeDatos.getArtistas().get(7),  new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
@@ -473,6 +473,22 @@ public class BaseDeDatos {
 		
 		ArrayList<Concierto> conciertos = new ArrayList<>();
 		conciertos.add(conc1);
+		//conciertos.add(conc0);
+		//conciertos.add(conc2);
+		//conciertos.add(conc3);
+		//conciertos.add(conc4);
+		//conciertos.add(conc5);
+		//conciertos.add(conc6);
+		//conciertos.add(conc7);
+		//conciertos.add(conc8);
+		//conciertos.add(conc9);
+		//conciertos.add(conc10);
+		
+		
+
+
+
+		
 		
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);

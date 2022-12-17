@@ -183,7 +183,6 @@ public class VentanaPrincipal extends JFrame{
 		});
 		panelFestv1.add(btnFestv1);
 	
-	
 		ImageIcon foto1 = new ImageIcon(BaseDeDatos.getFotoFest(btnFestv1.getText()));
 		JLabelAjustado lfoto =  new JLabelAjustado(foto1);
 		lFoto.setBounds(6, 6, 283, 195);
