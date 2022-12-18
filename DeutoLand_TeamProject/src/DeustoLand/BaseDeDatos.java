@@ -570,6 +570,11 @@ public class BaseDeDatos {
 	}
 	
 	
+	/*public static Cliente getClienteInicio() {
+		
+	}*/
+	
+	
 	///////////////////////////////////////////////////
 	
 	
