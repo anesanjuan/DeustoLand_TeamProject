@@ -27,9 +27,10 @@ public class VentanaFestival extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	
-	
+	//private JLabelAjustado lFoto = new JLabelAjustado( null );
 	
 	public VentanaFestival(Festival festival) {
+		
 		
 		Cliente client;
 		client = null;
@@ -188,8 +189,15 @@ public class VentanaFestival extends JFrame{
 		descripcion.setFont(new Font("Georgia", Font.PLAIN, 11));
 		descripcion.setBounds(10, 340, 491, 171);
 		principalDrch.add(descripcion);
+		
+		ImageIcon fotoFest = new ImageIcon(festival.getFoto());
+		//JLabelAjustado fotoFest1 =  new JLabelAjustado(fotoFest);
+		
+		
+		
 		setVisible(true);
 		setSize(1000,1000);
+		
 		
 		
 	}
