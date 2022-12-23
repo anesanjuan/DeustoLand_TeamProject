@@ -218,10 +218,10 @@ public class VentanaPrincipal extends JFrame{
 			}
 		});
 		
-		//ImageIcon foto2 = new ImageIcon(BaseDeDatos.getFotoFest(btnFestv2.getText()));
-		//JLabelAjustado lfoto2 =  new JLabelAjustado(foto2);
-		//lFoto.setBounds(6, 6, 283, 195);
-		//panelFestv2.add(lFoto);
+		ImageIcon foto2 = new ImageIcon(BaseDeDatos.getFotoFest(btnFestv2.getText()));
+		JLabelAjustado lfoto2 =  new JLabelAjustado(foto2);
+		lfoto2.setBounds(6, 6, 283, 195);
+		panelFestv2.add(lfoto2);
 		
 		//lblFotoFestv2 = new JLabel("JLabelFoto2");
 		//lblFotoFestv2.setBounds(6, 6, 283, 196);
@@ -246,10 +246,16 @@ public class VentanaPrincipal extends JFrame{
 		panelPrincipal.add(panelFestv3);
 		panelFestv3.setLayout(null);
 		
-		lblFotoFestv3 = new JLabel("JLabelFoto3");
-		lblFotoFestv3.setBounds(6, 6, 283, 197);
-		panelFestv3.add(lblFotoFestv3);
-		lblFotoFestv3.setIcon(new ImageIcon("/Users/mariaperaleseguiluz/Desktop/Captura de Pantalla 2022-11-09 a las 15.42.18.png"));
+		
+		//ImageIcon foto3 = new ImageIcon(BaseDeDatos.getFotoFest(btnFestv3.getText()));
+		//JLabelAjustado lfoto3 =  new JLabelAjustado(foto3);
+		//lfoto3.setBounds(6, 6, 283, 195);
+		//panelFestv3.add(lfoto3);
+		
+		//lblFotoFestv3 = new JLabel("JLabelFoto3");
+		//lblFotoFestv3.setBounds(6, 6, 283, 197);
+		//panelFestv3.add(lblFotoFestv3);
+		//lblFotoFestv3.setIcon(new ImageIcon("/Users/mariaperaleseguiluz/Desktop/Captura de Pantalla 2022-11-09 a las 15.42.18.png"));
 
 		btnFestv3 = new JButton("Arenal Sound");
 		btnFestv3.setBounds(6, 213, 117, 29);
