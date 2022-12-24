@@ -366,20 +366,7 @@ public class BaseDeDatos {
 	
 
 	
-	public static String getFotoFest(String nombreF) {
-		String fotoFestival = "";
-		for (Festival festival: BaseDeDatos.getFestivales()) {
-			if (festival.getNombre() == nombreF) {
-				fotoFestival = festival.getFoto();
-				System.out.println(fotoFestival);
-			} 
-	}
-		return fotoFestival;
 
-		
-
-	
-	}
 	
 	
 	
@@ -587,6 +574,7 @@ public class BaseDeDatos {
 					f.setCodigoF(festival.getCodigoF());
 					f.setNombre(festival.getNombre());
 					f.setLugar(festival.getLugar());
+					f.setFecha(festival.getFecha());
 					f.setDescripcion(festival.getDescripcion());
 					f.setPrecio(festival.getPrecio());
 					f.setFoto(festival.getFoto());
@@ -608,6 +596,26 @@ public class BaseDeDatos {
 	}
 	
 	
+	
+	
+	public static String getFotoFest(String nombreF) {
+		String fotoFestival = "";
+		
+		for (Festival festival: BaseDeDatos.getFestivales()) {
+			if (festival.getNombre() == nombreF) {
+				System.out.println(festival.getFoto());
+				fotoFestival.concat(festival.getFoto());
+				System.out.println(fotoFestival);
+			} 
+	}
+		System.out.println(fotoFestival);
+		return fotoFestival;
+
+
+		
+
+	
+	}
 	
 	
 	}
