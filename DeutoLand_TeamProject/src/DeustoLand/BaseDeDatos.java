@@ -64,20 +64,20 @@ public class BaseDeDatos {
 				statement.executeUpdate(sent);
 
 
-				sent = "DROP TABLE IF EXISTS admins";
+				sent = "DROP TABLE IF EXISTS user";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
-				sent = "CREATE TABLE admins (codA INTEGER PRIMARY KEY AUTOINCREMENT, nombre char(25), apellido char(25) , dni char(25) , contrasena char(25) );";
+				sent = "CREATE TABLE admins (codU INTEGER PRIMARY KEY AUTOINCREMENT, nombre char(25), apellido char(25) , dni char(25) , contrasena char(25), tipo int(1), direccion char(25), edad int(2), correo char(30), fechaU char(10) );";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
 
 				
-				sent = "DROP TABLE IF EXISTS clientes";
+				/*sent = "DROP TABLE IF EXISTS clientes";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
 				sent = "CREATE TABLE clientes (codC INTEGER PRIMARY KEY AUTOINCREMENT, nombre char(25), apellido char(25) , dni char(25) , direccion char(25), edad int(3), correo char(25), contrasena char(25) );";
 				logger.log(Level.INFO, "Statement: " + sent);
-				statement.executeUpdate(sent);
+				statement.executeUpdate(sent);*/
 				
 				sent = "DROP TABLE IF EXISTS entradas";
 				logger.log(Level.INFO, "Statement: " + sent);
@@ -173,6 +173,12 @@ public class BaseDeDatos {
 		}
 
 	}
+	
+	
+	
+	
+	
+	
  
 	/**
 	 * Inserta un concierto en la base de datos abierta (debe abrirse previamente con 
@@ -207,6 +213,41 @@ public class BaseDeDatos {
 		}
 
 	}
+	
+	
+	
+	public static boolean insertarCliente(Cliente cliente) {
+		try (Statement statement = con.createStatement()) {
+			String sent = "insert into User values ( '" + cliente.getNombre()
+					+ "' , '" + cliente.getApellido() + "' , '"
+					+ cliente.getDni() +  "' , '"
+					+ cliente.getContrasena() + "' , '" 
+					+ cliente.getDireccion() + "' , " 
+					+ cliente.getEdad() + ", '" 
+					+ cliente.getCorreo() + "' );";
+			logger.log(Level.INFO, "Statement: " + sent);
+			int insertados = statement.executeUpdate(sent);
+
+			if (insertados != 1)
+				return false; // Error en inserción
+			// Búsqueda de la fila insertada - para ello hay que recuperar la clave
+			// autogenerada. Hay varias maneras, vemos dos diferentes:
+			// Se hace utilizando método del propio objeto statement
+			ResultSet rrss = statement.getGeneratedKeys(); // Genera un resultset ficticio con las claves generadas del
+															// último comando
+			rrss.next(); // Avanza a la única fila
+			int pk = rrss.getInt(1); // Coge la única columna (la primary key autogenerada)
+			cliente.setCod(pk);
+			return true;
+
+		} catch (Exception e) {
+			logger.log(Level.SEVERE, "Excepción", e);
+			return false;
+		}
+
+	}
+	
+	
 
 	/**
 	 * Lee los festivales de la conexion de base de datos abierta (debe abrirse previamente con 
@@ -316,6 +357,61 @@ public class BaseDeDatos {
 			return null;
 		}
 
+	}
+	
+	
+	public static ArrayList<Cliente> getClientes() {
+		try (Statement statement = con.createStatement()) {
+			abrirConexion("BaseDatos.db", false);
+			ArrayList<Cliente> ret = new ArrayList<>();
+			String sent = "select * from user";
+			logger.log(Level.INFO, "Statement: " + sent);
+			ResultSet rs = statement.executeQuery(sent);
+			while (rs.next()) {
+				int codC = rs.getInt("codU");
+				String nombre = rs.getString("nombre");
+				String apellido = rs.getString("apellido");
+				String dni = rs.getString("dni");
+				String dir = rs.getString("direccion");
+				int edad = rs.getInt("edad");
+				String correo = rs.getString("correo");
+				String contraseña = rs.getString("contrasena");
+				ret.add(new Cliente(codC, nombre, apellido, dni, dir, edad, correo, contraseña)); 
+
+			}
+			return ret;
+		} catch (Exception e) {
+			logger.log(Level.SEVERE, "Excepcion", e);
+			return null;
+		}
+
+	}
+	
+	
+	public static Cliente getCliente(String correo, String contraseña) {
+
+		Cliente c = new Cliente();
+		try {
+			abrirConexion("BaseDatos.db", false);
+			for (Cliente cli: BaseDeDatos.getClientes() ) {
+				if (cli.getCorreo() ==  correo) {
+					c.setCod(cli.getCod());
+					c.setNombre(cli.getNombre());
+					c.setApellido(cli.getApellido());
+					c.setDni(cli.getDni());
+					c.setContrasena(cli.getContrasena());
+					c.setDireccion(cli.getDireccion());
+					c.setEdad(cli.getEdad());
+					c.setCorreo(cli.getCorreo());
+				}
+			}
+
+		} catch (Exception e) {
+			logger.log(Level.SEVERE, "Excepcion", e);
+			return null;
+		}
+		return c;
+	
 	}
 
 	////////////////////////////////////////////
@@ -504,7 +600,7 @@ public class BaseDeDatos {
 	/**
 	 * Usuarios ya generados una vez se abre el programa ?? redactarlo mejor
 	 */	
-	public static void insertarUsuarios() {
+	/*public static void insertarUsuarios() {
 
 		Admin admin = new Admin("admin", "admin", "admin", "admin");
 		ArrayList<Admin> admins = new ArrayList<>();
@@ -554,7 +650,7 @@ public class BaseDeDatos {
 			logger.log(Level.SEVERE, "Excepción", e);
 
 		}
-	}
+	}*/
 	
 	
 	/*public static Cliente getClienteInicio() {

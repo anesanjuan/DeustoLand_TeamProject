@@ -28,7 +28,7 @@ public class Main {
 		//BaseDeDatos.insertarArtistas();
 		//BaseDeDatos.insertarUsuarios();
 		
-		VentanaPrincipal vp = new VentanaPrincipal( gln );
+		VentanaPrincipal vp = new VentanaPrincipal( gln, null );
 		vp.setVisible(true);
 		
 		

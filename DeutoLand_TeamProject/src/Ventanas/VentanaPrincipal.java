@@ -28,6 +28,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import DeustoLand.BaseDeDatos;
+import DeustoLand.Cliente;
 import DeustoLand.Festival;
 import DeustoLand.Gestor;
 
@@ -54,42 +55,42 @@ public class VentanaPrincipal extends JFrame{
 	private JButton btnFestv1;
 	private JLabel lblLugarFestv1;
 	private JLabel lblFechaFestv1;
-	private JLabel lblFotoFestv1;
+
 		//en el panel 2
 	private JPanel panelFestv2;
 	private JButton btnFestv2;
 	private JLabel lblLugarFestv2;
 	private JLabel lblFechaFestv2;
-	private JLabel lblFotoFestv2;
+
 		//en el panel 3
 	private JPanel panelFestv3;	
 	private JButton btnFestv3;
 	private JLabel lblLugarFestv3;
 	private JLabel lblFechaFestv3;
-	private JLabel lblFotoFestv3;
+
 		//en el panel 4
 	private JPanel panelFestv4;
 	private JButton btnFestv4;
 	private JLabel lblLugarFestv4;
 	private JLabel lblFechaFestv4;
-	private JLabel lblFotoFestv4;
+
 		//en el panel 5
 	private JPanel panelFestv5;
 	private JButton btnFestv5;
 	private JLabel lblLugarFestv5;
 	private JLabel lblFechaFestv5;
-	private JLabel lblFotoFestv5;
+
 		//en el panel 6
 	private JPanel panelFestv6;
 	private JButton btnFestv6;
 	private JLabel lblLugarFestv6;
 	private JLabel lblFechaFestv6;
-	private JLabel lblFotoFestv6;
+
 
 	private Gestor gestor;
 	
 	//esto es como inicializar: mete todo dentro
-	public VentanaPrincipal(Gestor gestor) {
+	public VentanaPrincipal(Gestor gestor, Cliente c) {
 		setBounds(100, 100, 901, 615);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
@@ -167,7 +168,7 @@ public class VentanaPrincipal extends JFrame{
 				for (Festival festival : BaseDeDatos.getFestivales()) {
 					if (festival.getNombre().equals(btnFestv1.getText()) ) {
 						Festival f = BaseDeDatos.getFestival(festival);
-						VentanaFestival vf = new VentanaFestival(f);
+						VentanaFestival vf = new VentanaFestival(f, c);
 						vf.setVisible(true);
 						setVisible(false);
 					}
@@ -203,7 +204,7 @@ public class VentanaPrincipal extends JFrame{
 				for (Festival festival : BaseDeDatos.getFestivales()) {
 					if (festival.getNombre().equals(btnFestv2.getText()) ) {
 						Festival f = BaseDeDatos.getFestival(festival);
-						VentanaFestival vf = new VentanaFestival(f);
+						VentanaFestival vf = new VentanaFestival(f, c);
 						vf.setVisible(true);
 						setVisible(false);
 					}
@@ -241,7 +242,7 @@ public class VentanaPrincipal extends JFrame{
 				for (Festival festival : BaseDeDatos.getFestivales()) {
 					if (festival.getNombre().equals(btnFestv3.getText()) ) {
 						Festival f = BaseDeDatos.getFestival(festival);
-						VentanaFestival vf = new VentanaFestival(f);
+						VentanaFestival vf = new VentanaFestival(f, c);
 						vf.setVisible(true);
 						setVisible(false);
 					}
@@ -281,7 +282,7 @@ public class VentanaPrincipal extends JFrame{
 				for (Festival festival : BaseDeDatos.getFestivales()) {
 					if (festival.getNombre().equals(btnFestv4.getText()) ) {
 						Festival f = BaseDeDatos.getFestival(festival);
-						VentanaFestival vf = new VentanaFestival(f);
+						VentanaFestival vf = new VentanaFestival(f, c);
 						vf.setVisible(true);
 						setVisible(false);
 					}
@@ -318,7 +319,7 @@ public class VentanaPrincipal extends JFrame{
 				for (Festival festival : BaseDeDatos.getFestivales()) {
 					if (festival.getNombre().equals(btnFestv5.getText()) ) {
 						Festival f = BaseDeDatos.getFestival(festival);
-						VentanaFestival vf = new VentanaFestival(f);
+						VentanaFestival vf = new VentanaFestival(f, c);
 						vf.setVisible(true);
 						setVisible(false);
 					}
@@ -354,7 +355,7 @@ public class VentanaPrincipal extends JFrame{
 				for (Festival festival : BaseDeDatos.getFestivales()) {
 					if (festival.getNombre().equals(btnFestv6.getText()) ) {
 						Festival f = BaseDeDatos.getFestival(festival);
-						VentanaFestival vf = new VentanaFestival(f);
+						VentanaFestival vf = new VentanaFestival(f, c);
 						vf.setVisible(true);
 						setVisible(false);
 					}

@@ -5,9 +5,19 @@ public class Cliente extends User{
 	private String direccion;
 	private int edad;
 	private String correo;
-	//id
+
 	
 	
+	public Cliente(int cod, String nombre, String apellido, String dni, String direccion, int edad, String correo,
+			String contrasena) {
+		super(cod, nombre, apellido, dni, contrasena );
+		this.direccion = direccion;
+		this.edad = edad;
+		this.correo = correo;
+	}
+	
+	
+
 	public Cliente(String nombre, String apellido, String dni, String direccion, int edad, String correo,
 			String contrasena) {
 		super(nombre, apellido, dni, contrasena );
@@ -15,10 +25,17 @@ public class Cliente extends User{
 		this.edad = edad;
 		this.correo = correo;
 	}
+	
+	
 
-	public Cliente(String nombre, String apellido, String dni, String contrasena ) {
-		super(nombre, apellido, dni, contrasena);
+	public Cliente(int cod, String nombre, String apellido, String dni, String contrasena ) {
+		super(cod, nombre, apellido, dni, contrasena);
 	}
+	
+	public Cliente() {
+		super();
+	}
+
 
 	public String getDireccion() {
 		return direccion;

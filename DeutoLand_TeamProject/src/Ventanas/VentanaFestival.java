@@ -29,11 +29,8 @@ public class VentanaFestival extends JFrame{
 	
 	//private JLabelAjustado lFoto = new JLabelAjustado( null );
 	
-	public VentanaFestival(Festival festival) {
+	public VentanaFestival(Festival festival, Cliente cliente) {
 		
-		
-		Cliente client;
-		client = null;
 		
 		setBounds(100, 100, 901, 615);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -58,7 +55,7 @@ public class VentanaFestival extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Gestor gn = new Gestor();
-				VentanaPrincipal vp = new VentanaPrincipal(gn);
+				VentanaPrincipal vp = new VentanaPrincipal(gn, null);
 				vp.setVisible(true);
 				setVisible(false);
 				
@@ -117,7 +114,7 @@ public class VentanaFestival extends JFrame{
 		bComprarEnt.addActionListener(new ActionListener() {
 			@SuppressWarnings("unused")
 			public void actionPerformed(ActionEvent e) {
-				if (client == null) {
+				if (cliente == null) {
 					JOptionPane.showMessageDialog(null, "Para poder acceder a la compra de entradas es necesario Registrarse o Iniciar Sesión");
 				} else {
 					VentanaCompra vc = new VentanaCompra(null);

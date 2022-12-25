@@ -2,38 +2,31 @@ package DeustoLand;
 
 public class Admin extends User {
 	
-	private String identificador;
+	private String fechaUltimaMod;
 	
-	//fecha ultimo login
 	
 	//tbala usuario con lo comun + columna tipo (boolean, string.. para diferenciar), + columnas especificas de cada clase
 	
-	public Admin(String nombre, String apellido, String dni, String contrasena , String identificador) {
-		super(nombre, apellido, dni, contrasena );
-		this.identificador = identificador;
+	public Admin(int cod, String nombre, String apellido, String dni, String contrasena , String fechaUltimaMod) {
+		super(cod, nombre, apellido, dni, contrasena );
+		this.fechaUltimaMod = fechaUltimaMod;
 	}
 
-
-	public Admin(String nombre, String apellido, String dni, String contrasena ) {
-		super(nombre, apellido, dni, contrasena);
+	public String getFechaUltimaMod() {
+		return fechaUltimaMod;
 	}
 
-
-	public String getIdentificador() {
-		return identificador;
+	public void setFechaUltimaMod(String fechaUltimaMod) {
+		this.fechaUltimaMod = fechaUltimaMod;
 	}
-
-
-	public void setIdentificador(String identificador) {
-		this.identificador = identificador;
-	}
-
 
 	@Override
 	public String toString() {
-		return "Admin [identificador=" + identificador + "]";
+		return "Admin [fechaUltimaMod=" + fechaUltimaMod + "]";
 	}
 	
 	
+	
+
 
 }

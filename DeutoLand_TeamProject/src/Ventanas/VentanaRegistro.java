@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import DeustoLand.BaseDeDatos;
+import DeustoLand.Cliente;
 import DeustoLand.Gestor;
 import Excepciones.ClienteRepetidoException;
 
@@ -101,7 +103,8 @@ public class VentanaRegistro extends JFrame {
 				try { 
 					gestor.insertarCliente( nombre,apellido, dni, email,contrasena);
 					//gestor.GuardarClientes();
-					VentanaPrincipal vp = new VentanaPrincipal( gestor );
+					Cliente c = BaseDeDatos.getCliente(email, contrasena);
+					VentanaPrincipal vp = new VentanaPrincipal( gestor , c);
 					vp.setVisible(true);
 					dispose();					
 				} catch( ClienteRepetidoException ex ) {

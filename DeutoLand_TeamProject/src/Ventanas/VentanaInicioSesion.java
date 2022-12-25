@@ -16,6 +16,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import DeustoLand.BaseDeDatos;
+import DeustoLand.Cliente;
 import DeustoLand.Gestor;
 
 
@@ -79,7 +81,8 @@ public class VentanaInicioSesion extends JFrame {
 				} else {
 					boolean r = gestor.comprobarUsuario(correo, contrasena);
 					if (r == true) {
-						VentanaPrincipal vp = new VentanaPrincipal( gestor );
+						Cliente c = BaseDeDatos.getCliente(correo, contrasena);
+						VentanaPrincipal vp = new VentanaPrincipal( gestor, c);
 						vp.setVisible(true);
 						dispose();
 					} else {
