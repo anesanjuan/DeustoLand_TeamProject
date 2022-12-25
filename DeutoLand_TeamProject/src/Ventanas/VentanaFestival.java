@@ -117,7 +117,7 @@ public class VentanaFestival extends JFrame{
 				if (cliente == null) {
 					JOptionPane.showMessageDialog(null, "Para poder acceder a la compra de entradas es necesario Registrarse o Iniciar Sesión");
 				} else {
-					VentanaCompra vc = new VentanaCompra(null);
+					VentanaCompra vc = new VentanaCompra(cliente);
 					vc.setVisible(true);
 					setVisible(false);
 				}

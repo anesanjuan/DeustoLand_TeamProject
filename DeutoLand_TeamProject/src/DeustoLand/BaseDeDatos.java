@@ -67,7 +67,7 @@ public class BaseDeDatos {
 				sent = "DROP TABLE IF EXISTS user";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
-				sent = "CREATE TABLE admins (codU INTEGER PRIMARY KEY AUTOINCREMENT, nombre char(25), apellido char(25) , dni char(25) , contrasena char(25), tipo int(1), direccion char(25), edad int(2), correo char(30), fechaU char(10) );";
+				sent = "CREATE TABLE user (codU INTEGER PRIMARY KEY AUTOINCREMENT, nombre char(25), apellido char(25) , dni char(25) , contrasena char(25), tipo int(1), direccion char(25), edad int(2), correo char(30), fechaU char(10) );";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
 
@@ -82,7 +82,7 @@ public class BaseDeDatos {
 				sent = "DROP TABLE IF EXISTS entradas";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
-				sent = "CREATE TABLE clientes (codE INTEGER PRIMARY KEY AUTOINCREMENT, codC int(4) REFERENCES clientes(codC), codF int (3) REFERENCES festival(codF) , tipo int(1) , suplemento_c dec(4,2), parcela int(3), suplemento_v dec(4,2), num_zona int(2) );";
+				sent = "CREATE TABLE entradas (codE INTEGER PRIMARY KEY AUTOINCREMENT, codC int(4) REFERENCES clientes(codC), codF int (3) REFERENCES festival(codF) , tipo int(1) , suplemento_c dec(4,2), parcela int(3), suplemento_v dec(4,2), num_zona int(2) );";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
 
@@ -394,7 +394,7 @@ public class BaseDeDatos {
 		try {
 			abrirConexion("BaseDatos.db", false);
 			for (Cliente cli: BaseDeDatos.getClientes() ) {
-				if (cli.getCorreo() ==  correo) {
+				if (cli.getCorreo() ==  correo && cli.getContrasena() == contraseña) {
 					c.setCod(cli.getCod());
 					c.setNombre(cli.getNombre());
 					c.setApellido(cli.getApellido());
@@ -410,6 +410,7 @@ public class BaseDeDatos {
 			logger.log(Level.SEVERE, "Excepcion", e);
 			return null;
 		}
+		System.out.println(c);
 		return c;
 	
 	}

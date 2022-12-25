@@ -49,7 +49,7 @@ public class VentanaCompra extends JFrame {
 	
 
 	public VentanaCompra(Cliente cliente) {
-		
+		System.out.println(cliente);
 		parteArriba = new JPanel();
 		partePrincipal = new JPanel();
 		partePrincipal1 = new JPanel();
