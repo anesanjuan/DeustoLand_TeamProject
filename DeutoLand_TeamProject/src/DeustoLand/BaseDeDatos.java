@@ -15,7 +15,6 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 /**
  * Clase de gestion de una base de datos del sistema de festivales???
  * 
@@ -26,9 +25,9 @@ public class BaseDeDatos {
 	private static Logger logger = Logger.getLogger("BaseDatos");
 	private static Exception lastError;
 
-
 	/**
 	 * Abre conexión con la base de datos
+	 * 
 	 * @param nombreBD   Nombre del fichero de base de datos
 	 * @param reiniciaBD true si se quiere reiniciar la base de datos (se borran sus
 	 *                   contenidos si los tuviera y se crean datos por defecto)
@@ -63,7 +62,6 @@ public class BaseDeDatos {
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
 
-
 				sent = "DROP TABLE IF EXISTS user";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
@@ -71,14 +69,6 @@ public class BaseDeDatos {
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
 
-				
-				/*sent = "DROP TABLE IF EXISTS clientes";
-				logger.log(Level.INFO, "Statement: " + sent);
-				statement.executeUpdate(sent);
-				sent = "CREATE TABLE clientes (codC INTEGER PRIMARY KEY AUTOINCREMENT, nombre char(25), apellido char(25) , dni char(25) , direccion char(25), edad int(3), correo char(25), contrasena char(25) );";
-				logger.log(Level.INFO, "Statement: " + sent);
-				statement.executeUpdate(sent);*/
-				
 				sent = "DROP TABLE IF EXISTS entradas";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
@@ -106,22 +96,23 @@ public class BaseDeDatos {
 		}
 	}
 
-	///////////////////////////////////////////////////////////////7
+	/////////////////////////////////////////////////////////////// 7
 	// operacion para insertar festivales desde la app
 
 	/**
-	 * Insertar un festival en la base de datos abierta (debe abrirse previamente con 
-	 * 		{@link #abrirConexion(String, boolean)}
-	 * Actualiza el codigo del festival insertado(ESTO NO LO TENGO CLARO SI HAY Q PONER)
+	 * Insertar un festival en la base de datos abierta (debe abrirse previamente
+	 * con {@link #abrirConexion(String, boolean)} Actualiza el codigo del festival
+	 * insertado(ESTO NO LO TENGO CLARO SI HAY Q PONER)
+	 * 
 	 * @param festival Festival a insertar
 	 * @return true si la insercion es correcta, false en caso contrario
 	 */
 	public static boolean insertarFestival(Festival festival) {
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
-			String sent = "insert into festival values ( '" + festival.getNombre()
-					+ "' , '" + festival.getFecha() + "' , '" + festival.getLugar() + "' , '"
-					+ festival.getDescripcion() + "' , " + festival.getPrecio() + ", '" + festival.getFoto() + "');";
+			String sent = "insert into festival values ( '" + festival.getNombre() + "' , '" + festival.getFecha()
+					+ "' , '" + festival.getLugar() + "' , '" + festival.getDescripcion() + "' , "
+					+ festival.getPrecio() + ", '" + festival.getFoto() + "');";
 			logger.log(Level.INFO, "Statement: " + sent);
 			int insertados = statement.executeUpdate(sent);
 
@@ -143,15 +134,17 @@ public class BaseDeDatos {
 	}
 
 	/**
-	 * Insertar un festival en la base de datos abierta (debe abrirse previamente con 
-	 * 		{@link #abrirConexion(String, boolean)}
+	 * Insertar un festival en la base de datos abierta (debe abrirse previamente
+	 * con {@link #abrirConexion(String, boolean)}
+	 * 
 	 * @param artista Artista a insertar
 	 * @return true si la insercion es correcta, false en caso contrario
 	 */
 	public static boolean insertarArtista(Artista artista) {
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
-			String sent = "insert into artista values ( '" + artista.getNombre() + "', '" + artista.getTipogenero() + "' );";
+			String sent = "insert into artista values ( '" + artista.getNombre() + "', '" + artista.getTipogenero()
+					+ "' );";
 			logger.log(Level.INFO, "Statement: " + sent);
 			int insertados = statement.executeUpdate(sent);
 
@@ -173,25 +166,18 @@ public class BaseDeDatos {
 		}
 
 	}
-	
-	
-	
-	
-	
-	
- 
+
 	/**
-	 * Inserta un concierto en la base de datos abierta (debe abrirse previamente con 
-	 * 		{@link #abrirConexion(String, boolean)}
+	 * Inserta un concierto en la base de datos abierta (debe abrirse previamente
+	 * con {@link #abrirConexion(String, boolean)}
+	 * 
 	 * @param concierto Concierto a insertar
 	 * @return true si la insercion es correcta, false en caso contrario
 	 */
 	public static boolean insertarConcierto(Concierto concierto) {
 		try (Statement statement = con.createStatement()) {
-			String sent = "insert into concierto values ( " + concierto.getArtista()
-					+ ", " + concierto.getHora() + " , "
-					+ concierto.getDuracion() +  " , "
-							+ concierto.getFestival() + " );";
+			String sent = "insert into concierto values ( " + concierto.getArtista() + ", " + concierto.getHora()
+					+ " , " + concierto.getDuracion() + " , " + concierto.getFestival() + " );";
 			logger.log(Level.INFO, "Statement: " + sent);
 			int insertados = statement.executeUpdate(sent);
 
@@ -213,18 +199,12 @@ public class BaseDeDatos {
 		}
 
 	}
-	
-	
-	
+
 	public static boolean insertarCliente(Cliente cliente) {
 		try (Statement statement = con.createStatement()) {
-			String sent = "insert into User values ( '" + cliente.getNombre()
-					+ "' , '" + cliente.getApellido() + "' , '"
-					+ cliente.getDni() +  "' , '"
-					+ cliente.getContrasena() + "' , '" 
-					+ cliente.getDireccion() + "' , " 
-					+ cliente.getEdad() + ", '" 
-					+ cliente.getCorreo() + "' );";
+			String sent = "insert into User values ( '" + cliente.getNombre() + "' , '" + cliente.getApellido()
+					+ "' , '" + cliente.getDni() + "' , '" + cliente.getContrasena() + "' , '" + cliente.getDireccion()
+					+ "' , " + cliente.getEdad() + ", '" + cliente.getCorreo() + "' );";
 			logger.log(Level.INFO, "Statement: " + sent);
 			int insertados = statement.executeUpdate(sent);
 
@@ -246,13 +226,13 @@ public class BaseDeDatos {
 		}
 
 	}
-	
-	
 
 	/**
-	 * Lee los festivales de la conexion de base de datos abierta (debe abrirse previamente con 
-	 * 		{@link #abrirConexion(String, boolean)}
-	 * @return Lista completa de festivales, vacia si no hay ninguna, null si existe algun error
+	 * Lee los festivales de la conexion de base de datos abierta (debe abrirse
+	 * previamente con {@link #abrirConexion(String, boolean)}
+	 * 
+	 * @return Lista completa de festivales, vacia si no hay ninguna, null si existe
+	 *         algun error
 	 */
 	public static ArrayList<Festival> getFestivales() {
 		ArrayList<Festival> ret = new ArrayList<>();
@@ -272,7 +252,7 @@ public class BaseDeDatos {
 				ret.add(new Festival(cod, nombre, fecha, lugar, descripcion, precio, foto));
 
 			}
-			//return ret;
+			// return ret;
 		} catch (Exception e) {
 			logger.log(Level.SEVERE, "Excepcion", e);
 			return null;
@@ -280,11 +260,13 @@ public class BaseDeDatos {
 		return ret;
 
 	}
-	
+
 	/**
-	 * Lee los festivales de la conexion de base de datos abierta (debe abrirse previamente con 
-	 * 		{@link #abrirConexion(String, boolean)}
-	 * @return Lista completa de artistas, vacia si no hay ninguno, null si hay error
+	 * Lee los festivales de la conexion de base de datos abierta (debe abrirse
+	 * previamente con {@link #abrirConexion(String, boolean)}
+	 * 
+	 * @return Lista completa de artistas, vacia si no hay ninguno, null si hay
+	 *         error
 	 */
 	public static ArrayList<Artista> getArtistas() {
 		try (Statement statement = con.createStatement()) {
@@ -297,7 +279,7 @@ public class BaseDeDatos {
 				int cod = rs.getInt("codA");
 				String nombre = rs.getString("nombreA");
 				String genero = rs.getString("generoA");
-				ret.add(new Artista(cod, nombre, TipoGenero.valueOf(genero))); 
+				ret.add(new Artista(cod, nombre, TipoGenero.valueOf(genero)));
 
 			}
 			return ret;
@@ -307,11 +289,13 @@ public class BaseDeDatos {
 		}
 
 	}
-	
+
 	/**
-	 * Lee los festivales de la conexion de base de datos abierta (debe abrirse previamente con 
-	 * 		{@link #abrirConexion(String, boolean)
-	 * @return Lista completa de conciertos,vacia si no hay ninguno, null si existe algun error
+	 * Lee los festivales de la conexion de base de datos abierta (debe abrirse
+	 * previamente con {@link #abrirConexion(String, boolean)
+	 * 
+	 * @return Lista completa de conciertos,vacia si no hay ninguno, null si existe
+	 *         algun error
 	 */
 	public static ArrayList<Concierto> getConciertos() {
 		try (Statement statement = con.createStatement()) {
@@ -326,9 +310,9 @@ public class BaseDeDatos {
 				long hora = rs.getLong("horaC");
 				double duracion = rs.getDouble("duracionC");
 				int codF = rs.getInt("codF");
-				
+
 				Artista art = new Artista();
-				for (Artista artista: BaseDeDatos.getArtistas()) {
+				for (Artista artista : BaseDeDatos.getArtistas()) {
 					if (artista.getCodigoA() == codA) {
 						art.setCodigoA(codA);
 						art.setNombre(artista.getNombre());
@@ -336,7 +320,7 @@ public class BaseDeDatos {
 					}
 				}
 				Festival fest = new Festival();
-				for (Festival festival: BaseDeDatos.getFestivales()) {
+				for (Festival festival : BaseDeDatos.getFestivales()) {
 					if (festival.getCodigoF() == codF) {
 						fest.setCodigoF(festival.getCodigoF());
 						fest.setNombre(festival.getNombre());
@@ -347,8 +331,8 @@ public class BaseDeDatos {
 						fest.setFoto(festival.getFoto());
 					}
 				}
-				
-				ret.add(new Concierto(codC, art, hora, duracion, fest)); 
+
+				ret.add(new Concierto(codC, art, hora, duracion, fest));
 
 			}
 			return ret;
@@ -358,12 +342,11 @@ public class BaseDeDatos {
 		}
 
 	}
-	
-	
-	public static ArrayList<Cliente> getClientes() {
+
+	public static ArrayList<User> getUsers() {
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
-			ArrayList<Cliente> ret = new ArrayList<>();
+			ArrayList<User> ret = new ArrayList<>();
 			String sent = "select * from user";
 			logger.log(Level.INFO, "Statement: " + sent);
 			ResultSet rs = statement.executeQuery(sent);
@@ -372,11 +355,17 @@ public class BaseDeDatos {
 				String nombre = rs.getString("nombre");
 				String apellido = rs.getString("apellido");
 				String dni = rs.getString("dni");
+				String contraseña = rs.getString("contrasena");
+				int tipo = rs.getInt("tipo");
 				String dir = rs.getString("direccion");
 				int edad = rs.getInt("edad");
 				String correo = rs.getString("correo");
-				String contraseña = rs.getString("contrasena");
-				ret.add(new Cliente(codC, nombre, apellido, dni, dir, edad, correo, contraseña)); 
+				String fU = rs.getString("fechaU");
+				if (tipo==0) {
+					ret.add(new Cliente(codC, nombre, apellido, dni, dir, edad, correo, contraseña));
+				} else {
+					ret.add(new Admin(nombre, apellido, dni, contraseña, fU));
+				}
 
 			}
 			return ret;
@@ -386,15 +375,16 @@ public class BaseDeDatos {
 		}
 
 	}
+
 	
-	
-	public static Cliente getCliente(String correo, String contraseña) {
+	//////////////esto lo tengo q corregor MAR
+	public static User getUser(String correo, String contraseña) {
 
 		Cliente c = new Cliente();
 		try {
 			abrirConexion("BaseDatos.db", false);
-			for (Cliente cli: BaseDeDatos.getClientes() ) {
-				if (cli.getCorreo() ==  correo && cli.getContrasena() == contraseña) {
+			for (Cliente cli : BaseDeDatos.getUsers()) {
+				if (cli.getCorreo() == correo && cli.getContrasena() == contraseña) {
 					c.setCod(cli.getCod());
 					c.setNombre(cli.getNombre());
 					c.setApellido(cli.getApellido());
@@ -412,25 +402,37 @@ public class BaseDeDatos {
 		}
 		System.out.println(c);
 		return c;
-	
+
 	}
 
 	////////////////////////////////////////////
-	///DATOS DE INICIO PARA LA BASE DE DATOS
-	
+	/// DATOS DE INICIO PARA LA BASE DE DATOS
+
 	// este es para insertar caundo se abre la app
 	/**
-	 * Festivales con sus datos ya establecidos una vez se abre el programa (?? redactarlo mejor)
+	 * Festivales con sus datos ya establecidos una vez se abre el programa (??
+	 * redactarlo mejor)
 	 */
 	public static void insertarFestivales() {
 
-		
-		Festival fest1 = new Festival(01, "Tomorrowland" , "21-07-2023", "Boom, Bélgica","Tomorrowland es un festival de música electrónica de baile en el que lo pasarás en grande y difrutaras de 3 días increíbles con tus amigos y lleno de música. El festival tiene una duración de 3 días y cada día empezará sobre las 18:00 horas. Para más información consulte la página oficial del sitio: https://www.tomorrowland.com/", 150.00, "tomorrowland.png");
-		Festival fest2 = new Festival(02, "Coachella", "25-04-2023", "Colorado, California, EEUU", "Coachella es un gran festival de música que se lleva a cabo durante tres días en la última semana del mes de abril en California. Es uno de los festivales de música más grandes, famosos y rentables de Estados Unidos y del mundo. Para más información consulte la página oficial del sitio: https://www.coachella.com/", 300.00, "coachella.png");
-		Festival fest3 = new Festival(03, "Arenal Sound", "1-08-2023", "Burriana, Castellón, España", "Arenal Sound Festival es un festival de música que se caracteriza por su gran afluencia de jóvenes y se diferencia de otros festivales por su cercanía a la playa al tener uno de sus escenarios sobre la misma arena. Para más información consulte la página oficial del sitio: https://www.arenalsound.com/ ", 70.00, "arenalsound.png");
-		Festival fest4 = new Festival(04, "Mad Cool", "04-07-2023", "Madrid, España", "Mad Cool es un festival de música que se realiza en Madrid desde el año 2016. El arte, la moda, la gastronomía y el turismo se unen eclécticamente en este festival. Para más información consulte la página oficial del sitio: https://madcoolfestival.es/", 120.00, "madcool.jpg");
-		Festival fest5 = new Festival(05, "Hollika", "28-06-2023", "Calahorra, La Rioja, España", "El Holika Festival es un Festival de Música que incluye géneros de música electrónica, urbana y latina. Se caracteriza por su gran afluencia de jóvenes de todas las provincias españolas. La última edición (2023) se celebrará en Calahorra. Para más información consulte la página oficial del sitio: https://www.holika.es/ ", 45, "holika.jpg");
-		Festival fest6 = new Festival(06, "Boombastic", "20-07-2023", "Asturias, España", "Boombastic es un nuevo modelo de festival, adaptado a los tiempos que corren y con la intención de saciar las ganas de música, cultura y festivales de la gente joven. Tiene lugar en Asturias y tiene una duración de 4 días. Para más información consulte la página oficial del sitio: https://boombasticfestival.com/ ", 50.00, "boombastic.jpg");
+		Festival fest1 = new Festival(01, "Tomorrowland", "21-07-2023", "Boom, Bélgica",
+				"Tomorrowland es un festival de música electrónica de baile en el que lo pasarás en grande y difrutaras de 3 días increíbles con tus amigos y lleno de música. El festival tiene una duración de 3 días y cada día empezará sobre las 18:00 horas. Para más información consulte la página oficial del sitio: https://www.tomorrowland.com/",
+				150.00, "tomorrowland.png");
+		Festival fest2 = new Festival(02, "Coachella", "25-04-2023", "Colorado, California, EEUU",
+				"Coachella es un gran festival de música que se lleva a cabo durante tres días en la última semana del mes de abril en California. Es uno de los festivales de música más grandes, famosos y rentables de Estados Unidos y del mundo. Para más información consulte la página oficial del sitio: https://www.coachella.com/",
+				300.00, "coachella.png");
+		Festival fest3 = new Festival(03, "Arenal Sound", "1-08-2023", "Burriana, Castellón, España",
+				"Arenal Sound Festival es un festival de música que se caracteriza por su gran afluencia de jóvenes y se diferencia de otros festivales por su cercanía a la playa al tener uno de sus escenarios sobre la misma arena. Para más información consulte la página oficial del sitio: https://www.arenalsound.com/ ",
+				70.00, "arenalsound.png");
+		Festival fest4 = new Festival(04, "Mad Cool", "04-07-2023", "Madrid, España",
+				"Mad Cool es un festival de música que se realiza en Madrid desde el año 2016. El arte, la moda, la gastronomía y el turismo se unen eclécticamente en este festival. Para más información consulte la página oficial del sitio: https://madcoolfestival.es/",
+				120.00, "madcool.jpg");
+		Festival fest5 = new Festival(05, "Hollika", "28-06-2023", "Calahorra, La Rioja, España",
+				"El Holika Festival es un Festival de Música que incluye géneros de música electrónica, urbana y latina. Se caracteriza por su gran afluencia de jóvenes de todas las provincias españolas. La última edición (2023) se celebrará en Calahorra. Para más información consulte la página oficial del sitio: https://www.holika.es/ ",
+				45, "holika.jpg");
+		Festival fest6 = new Festival(06, "Boombastic", "20-07-2023", "Asturias, España",
+				"Boombastic es un nuevo modelo de festival, adaptado a los tiempos que corren y con la intención de saciar las ganas de música, cultura y festivales de la gente joven. Tiene lugar en Asturias y tiene una duración de 4 días. Para más información consulte la página oficial del sitio: https://boombasticfestival.com/ ",
+				50.00, "boombastic.jpg");
 
 		ArrayList<Festival> fests = new ArrayList<>();
 		fests.add(fest1);
@@ -460,13 +462,7 @@ public class BaseDeDatos {
 
 		}
 	}
-	
 
-	
-
-	
-	
-	
 	/**
 	 * Festivales ya establecidos una vez se abre el programa ?? redactarlo mejor
 	 */
@@ -485,13 +481,12 @@ public class BaseDeDatos {
 		Artista art12 = new Artista(12, "La MODA", TipoGenero.ROCKESP);
 		Artista art13 = new Artista(13, "Morad", TipoGenero.REGGAETON);
 		Artista art14 = new Artista(14, "Belén Aguilera", TipoGenero.POP);
-		Artista art15 = new Artista(15, "Amber Broose", TipoGenero.TECHNO); 
+		Artista art15 = new Artista(15, "Amber Broose", TipoGenero.TECHNO);
 		Artista art16 = new Artista(16, "Dom Dolla", TipoGenero.TECHNO);
 		Artista art17 = new Artista(17, "Harry Styles", TipoGenero.POP);
 		Artista art18 = new Artista(18, "Billie Eilish", TipoGenero.POP);
 		Artista art19 = new Artista(19, "Taylor Swift", TipoGenero.POP);
 		Artista art20 = new Artista(20, "Daniel Caesar", TipoGenero.POP);
-		
 
 		ArrayList<Artista> artistas = new ArrayList<>();
 		artistas.add(art1);
@@ -514,14 +509,13 @@ public class BaseDeDatos {
 		artistas.add(art18);
 		artistas.add(art19);
 		artistas.add(art20);
-		
-	
+
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
 
 			for (Artista art : artistas) {
-				String sent = "insert into artista values ( " + art.getCodigoA() + " , ' " + art.getNombre()
-						+ "' , '" + art.getTipogenero() +  "');";
+				String sent = "insert into artista values ( " + art.getCodigoA() + " , ' " + art.getNombre() + "' , '"
+						+ art.getTipogenero() + "');";
 
 				logger.log(Level.INFO, "Statement: " + sent);
 
@@ -535,51 +529,56 @@ public class BaseDeDatos {
 		}
 
 	}
-	
-	
+
 	/**
 	 * Festivales ya establecidos una vez se abre el programa ?? redactarlo mejor
 	 * 
 	 */
 	public static void insertarConciertos() {
 
-		Concierto conc1 = new Concierto(01, new Artista(0, "", null), 0, 1.00, new Festival(0, "", null, null, null, null, 0, null));
-		//Concierto conc0 = new Concierto(01, BaseDeDatos.getArtistas().get(0), 2022-03-12, 1.00, BaseDeDatos.getFestivales().get(0));
-		//Concierto conc2 = new Concierto(02, BaseDeDatos.getArtistas().get(1),  new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
-		//Concierto conc3 = new Concierto(03, BaseDeDatos.getArtistas().get(3),  new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
-		//Concierto conc4 = new Concierto(04, BaseDeDatos.getArtistas().get(7),  new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
-		//Concierto conc5 = new Concierto(05, BaseDeDatos.getArtistas().get(8),  new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
-		//Concierto conc6 = new Concierto(06, BaseDeDatos.getArtistas().get(9),  new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
-		//Concierto conc7 = new Concierto(07, BaseDeDatos.getArtistas().get(10),  new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
-		//Concierto conc8 = new Concierto(8, BaseDeDatos.getArtistas().get(14),  new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
-		//Concierto conc9 = new Concierto(9, BaseDeDatos.getArtistas().get(15),  new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
-		//Concierto conc10 = new Concierto(10, BaseDeDatos.getArtistas().get(19),  new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
-		
+		Concierto conc1 = new Concierto(01, new Artista(0, "", null), 0, 1.00,
+				new Festival(0, "", null, null, null, null, 0, null));
+		// Concierto conc0 = new Concierto(01, BaseDeDatos.getArtistas().get(0),
+		// 2022-03-12, 1.00, BaseDeDatos.getFestivales().get(0));
+		// Concierto conc2 = new Concierto(02, BaseDeDatos.getArtistas().get(1), new
+		// Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
+		// Concierto conc3 = new Concierto(03, BaseDeDatos.getArtistas().get(3), new
+		// Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
+		// Concierto conc4 = new Concierto(04, BaseDeDatos.getArtistas().get(7), new
+		// Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
+		// Concierto conc5 = new Concierto(05, BaseDeDatos.getArtistas().get(8), new
+		// Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
+		// Concierto conc6 = new Concierto(06, BaseDeDatos.getArtistas().get(9), new
+		// Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
+		// Concierto conc7 = new Concierto(07, BaseDeDatos.getArtistas().get(10), new
+		// Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
+		// Concierto conc8 = new Concierto(8, BaseDeDatos.getArtistas().get(14), new
+		// Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
+		// Concierto conc9 = new Concierto(9, BaseDeDatos.getArtistas().get(15), new
+		// Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
+		// Concierto conc10 = new Concierto(10, BaseDeDatos.getArtistas().get(19), new
+		// Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
+
 		ArrayList<Concierto> conciertos = new ArrayList<>();
 		conciertos.add(conc1);
-		//conciertos.add(conc0);
-		//conciertos.add(conc2);
-		//conciertos.add(conc3);
-		//conciertos.add(conc4);
-		//conciertos.add(conc5);
-		//conciertos.add(conc6);
-		//conciertos.add(conc7);
-		//conciertos.add(conc8);
-		//conciertos.add(conc9);
-		//conciertos.add(conc10);
-		
-		
+		// conciertos.add(conc0);
+		// conciertos.add(conc2);
+		// conciertos.add(conc3);
+		// conciertos.add(conc4);
+		// conciertos.add(conc5);
+		// conciertos.add(conc6);
+		// conciertos.add(conc7);
+		// conciertos.add(conc8);
+		// conciertos.add(conc9);
+		// conciertos.add(conc10);
 
-
-
-		
-		
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
 
 			for (Concierto conc : conciertos) {
-				String sent = "insert into concierto values ( " + conc.getCodigoC() + ", " + conc.getArtista().getCodigoA()
-						+ " , '" + conc.getHora() + "' , '" + conc.getDuracion() + " ' , " + conc.getFestival().getCodigoF() + ");";
+				String sent = "insert into concierto values ( " + conc.getCodigoC() + ", "
+						+ conc.getArtista().getCodigoA() + " , '" + conc.getHora() + "' , '" + conc.getDuracion()
+						+ " ' , " + conc.getFestival().getCodigoF() + ");";
 
 				logger.log(Level.INFO, "Statement: " + sent);
 
@@ -591,83 +590,88 @@ public class BaseDeDatos {
 			logger.log(Level.SEVERE, "Excepción", e);
 
 		}
-		
-		
 
 	}
-	
-	
 
 	/**
 	 * Usuarios ya generados una vez se abre el programa ?? redactarlo mejor
-	 */	
-	/*public static void insertarUsuarios() {
+	 */
+	public static void insertarUsuarios() {
 
-		Admin admin = new Admin("admin", "admin", "admin", "admin");
+		Admin admin = new Admin("admin", "admin", "admin", "admin", "27/12/2022");
 		ArrayList<Admin> admins = new ArrayList<>();
 		admins.add(admin);
-
 
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
 
 			for (Admin ad : admins) {
-				String sent = "insert into admins values ( 1 , '" + ad.getNombre() + "', '" + ad.getApellido() + "' , '"
-						+ ad.getDni() + "' , '" + ad.getContrasena() + "');";
+				
+				String nombre = ad.getNombre();
+				String apellido = ad.getApellido();
+				String dni = ad.getDni();
+				String contraseña = ad.getContrasena();
+				String fecha = ad.getFechaUltimaMod();
+				int tipo = 1;
+				
+				String sent = "INSERT INTO user (nombre, apellido, dni, contrasena, tipo , fechaU )"
+						+ " VALUES ( '" + nombre + "', '" + apellido + "', '" + dni + "','" + contraseña + "'," + tipo + ",'" + fecha +"');";
 
 				logger.log(Level.INFO, "Statement: " + sent);
 
 				statement.executeUpdate(sent);
 			}
 
-
 		} catch (Exception e) {
 			logger.log(Level.SEVERE, "Excepción", e);
 
 		}
-		
-		//insertarclientes
-		
+
+		// insertarclientes
+
 		Cliente cliente = new Cliente("Juan", "Gonzalez", "567899", "Vitoria", 27, "juan@gmail.com", "0000");
 		ArrayList<Cliente> clientes = new ArrayList<>();
 		clientes.add(cliente);
 
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
+			
+		
 
 			for (Cliente cl : clientes) {
-				String sent = "insert into clientes values ( 1 , '" + cl.getNombre() + "', '" + cl.getApellido() + "' , '"
-						+ cl.getDni() + "' , '" + cl.getDireccion()+ "' , '" + cl.getEdad()+ "' , '" + cl.getCorreo() + "' , '" + cl.getContrasena() + "');";
+				String nombre = cl.getNombre();
+				String apellido = cl.getApellido();
+				String dni = cl.getDni();
+				String contraseña = cl.getContrasena();
+				String direccion = cl.getDireccion();
+				int edad = cl.getEdad();
+				String correo = cl.getCorreo();
+				int tipo = 0;
+				
+				String sent = "INSERT INTO user (nombre, apellido, dni, contrasena, tipo, direccion, edad, correo) "
+						+ " VALUES ( '" + nombre + "', '" + apellido + "', '" + dni + "','" + contraseña + "'," + tipo + ",'" + direccion +"'," + edad + " ,'" + correo + "'" +");";
 
 				logger.log(Level.INFO, "Statement: " + sent);
 
 				statement.executeUpdate(sent);
 			}
 
-			
-			
-
 		} catch (Exception e) {
 			logger.log(Level.SEVERE, "Excepción", e);
 
 		}
-	}*/
+	}
+
 	
-	
-	/*public static Cliente getClienteInicio() {
-		
-	}*/
-	
-	
+
 	///////////////////////////////////////////////////
-	
-	
+
 	public static Festival getFestival(Festival festival) {
 		Festival f = new Festival();
 		try {
 			abrirConexion("BaseDatos.db", false);
-			for (Festival fest: BaseDeDatos.getFestivales() ) {
-				if (fest.getCodigoF() == festival.getCodigoF() ) {
+			for (Festival fest : BaseDeDatos.getFestivales()) {
+				if (fest.getCodigoF() == festival.getCodigoF()) {
 					f.setCodigoF(festival.getCodigoF());
 					f.setNombre(festival.getNombre());
 					f.setLugar(festival.getLugar());
@@ -676,7 +680,7 @@ public class BaseDeDatos {
 					f.setPrecio(festival.getPrecio());
 					f.setFoto(festival.getFoto());
 					ArrayList<Concierto> conciertos = new ArrayList<>();
-					for (Concierto concierto: BaseDeDatos.getConciertos()) {
+					for (Concierto concierto : BaseDeDatos.getConciertos()) {
 						if (concierto.getFestival().getCodigoF() == f.getCodigoF()) {
 							conciertos.add(concierto);
 						}
@@ -691,30 +695,20 @@ public class BaseDeDatos {
 		}
 		return f;
 	}
-	
-	
-	
-	
+
 	public static String getFotoFest(String nombreF) {
 		String fotoFestival = "";
-		
-		for (Festival festival: BaseDeDatos.getFestivales()) {
+
+		for (Festival festival : BaseDeDatos.getFestivales()) {
 			if (festival.getNombre() == nombreF) {
 				System.out.println(festival.getFoto());
 				fotoFestival.concat(festival.getFoto());
 				System.out.println(fotoFestival);
-			} 
-	}
+			}
+		}
 		System.out.println(fotoFestival);
 		return fotoFestival;
 
-
-		
-
-	
-	}
-	
-	
 	}
 
-
+}

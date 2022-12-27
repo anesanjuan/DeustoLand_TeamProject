@@ -18,7 +18,7 @@ public class Main {
 
 	public static void main(String[] args) throws SQLException {
 		
-		Gestor gln = new Gestor(); 	
+		 	
 		//VentanaInicioSesion vi = new VentanaInicioSesion( gln );
 		//vi.setVisible(true);
 		
@@ -26,8 +26,9 @@ public class Main {
 		BaseDeDatos.insertarFestivales();
 		BaseDeDatos.insertarConciertos();
 		BaseDeDatos.insertarArtistas();
-		//BaseDeDatos.insertarUsuarios();
+		BaseDeDatos.insertarUsuarios();
 		
+		Gestor gln = new Gestor();
 		VentanaPrincipal vp = new VentanaPrincipal( gln, null );
 		vp.setVisible(true);
 		

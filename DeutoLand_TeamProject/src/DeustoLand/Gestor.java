@@ -3,19 +3,16 @@ package DeustoLand;
 import java.util.ArrayList;
 
 import DeustoLand.Artista;
-import DeustoLand.Cliente;
+import DeustoLand.User;
 import DeustoLand.Concierto;
 import Excepciones.ClienteRepetidoException;
 
-
 public class Gestor {
-	
 
-	private ArrayList<Cliente> aClientes = new ArrayList<>();
-	
+	private ArrayList<User> aUsers = new ArrayList<>();
+
 	public void CargarClientes() {
-		
-		
+
 	}
 
 	public void GuardarClientes() {
@@ -23,33 +20,58 @@ public class Gestor {
 
 	public Gestor() {
 
-	
+		//recuperarClientes();
+
 	}
 
-	public void comprobarFestival(String nombre, double fecha, ArrayList<Concierto> conciertos, ArrayList<Artista> Artistas,  double precio) {	
-		
+	public void comprobarFestival(String nombre, double fecha, ArrayList<Concierto> conciertos,
+			ArrayList<Artista> Artistas, double precio) {
+
 	}
- 	
-	public void insertarCliente(String nombre, String apellido, String dni, String correo, String contrasena) throws ClienteRepetidoException {
-		Cliente c = new Cliente(nombre, apellido, dni, correo, 0, contrasena, contrasena);
-		if (aClientes.contains(c) == false) {
-			aClientes.add(c);
+
+	public void insertarCliente(String nombre, String apellido, String dni, String correo, String contrasena)
+			throws ClienteRepetidoException {
+		User c = new Cliente(nombre, apellido, dni, correo, 0, contrasena, contrasena);
+		if (aUsers.contains(c) == false) {
+			aUsers.add(c);
 		} else {
 			throw new ClienteRepetidoException("Este cliente ya existe");
 		}
 	}
+
 	private void insertarClientes() {
-		Cliente c1 = new Cliente("Maria", "Perales ", "343534546W", "maria@gmail.com", 0, "1111", null);
-		aClientes.add(c1);	
+		User c1 = new Cliente("Maria", "Perales ", "343534546W", "maria@gmail.com", 0, "1111", null);
+		aUsers.add(c1);
 	}
 
-	//al iniciar sesion
-	public boolean comprobarUsuario(String correo, String contrasena) {
-		for (Cliente c : aClientes) {
-			if (c.getCorreo().equals(correo) && c.getContrasena().equals(contrasena)) {
-				return true;
+	// al iniciar sesion
+	public int comprobarUsuario(String correo, String contrasena) {
+		for (User c : aUsers) {
+			
+			if ( c instanceof Cliente)
+			{
+				Cliente cli = (Cliente)c;
+				if (cli.getCorreo().equals(correo) && c.getContrasena().equals(contrasena)) {
+					return 0;
+				}
+				else
+				{
+					return -1;
+				}
+			}
+			else
+			{
+				Admin cli = (Admin)c;
+				if (cli.getNombre().equals(correo) && c.getContrasena().equals(contrasena)) {
+					return 1;
+				}
+				else
+				{
+					return -1;
+				}			
 			}
 		}
-		return false;
+		
+		return -1;
 	}
 }

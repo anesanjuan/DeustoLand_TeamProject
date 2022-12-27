@@ -103,7 +103,7 @@ public class VentanaRegistro extends JFrame {
 				try { 
 					gestor.insertarCliente( nombre,apellido, dni, email,contrasena);
 					//gestor.GuardarClientes();
-					Cliente c = BaseDeDatos.getCliente(email, contrasena);
+					Cliente c = BaseDeDatos.getUser(email, contrasena);
 					VentanaPrincipal vp = new VentanaPrincipal( gestor , c);
 					vp.setVisible(true);
 					dispose();					

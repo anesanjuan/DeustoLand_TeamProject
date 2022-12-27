@@ -45,7 +45,6 @@ public class VentanaPrincipal extends JFrame{
 	private JLabel lblTitulo;
 	private JButton btnEstadisticas;
 	private JButton btnInicioSesion;
-	private JButton btnRegistro;
 	
 	
 	//en el panel principal
@@ -90,7 +89,7 @@ public class VentanaPrincipal extends JFrame{
 	private Gestor gestor;
 	
 	//esto es como inicializar: mete todo dentro
-	public VentanaPrincipal(Gestor gestor, Cliente c) {
+	public VentanaPrincipal(Gestor gestor, User u) {
 		setBounds(100, 100, 901, 615);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
@@ -108,6 +107,7 @@ public class VentanaPrincipal extends JFrame{
 		panelArriba.add(lblTitulo);
 		
 		btnEstadisticas = new JButton("Estadisticas");
+		btnEstadisticas.setVisible(false);
 		btnEstadisticas.setBounds(378, 9, 117, 29);
 		btnEstadisticas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -118,16 +118,7 @@ public class VentanaPrincipal extends JFrame{
 		});
 		panelArriba.add(btnEstadisticas);
 		
-		btnRegistro = new JButton("Registrarse");
-		btnRegistro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				VentanaRegistro vr = new VentanaRegistro( gestor );
-				vr.setVisible(true);
-			}
-		});
-		btnRegistro.setBounds(766, 9, 117, 29);
-		panelArriba.add(btnRegistro);
+		
 		
 		btnInicioSesion = new JButton("Iniciar Sesion");
 		btnInicioSesion.setBounds(636, 9, 117, 29);
