@@ -15,6 +15,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -31,6 +32,8 @@ import DeustoLand.BaseDeDatos;
 import DeustoLand.Cliente;
 import DeustoLand.Festival;
 import DeustoLand.Gestor;
+import DeustoLand.User;
+
 
 
 
@@ -159,7 +162,7 @@ public class VentanaPrincipal extends JFrame{
 				for (Festival festival : BaseDeDatos.getFestivales()) {
 					if (festival.getNombre().equals(btnFestv1.getText()) ) {
 						Festival f = BaseDeDatos.getFestival(festival);
-						VentanaFestival vf = new VentanaFestival(f, c);
+						VentanaFestival vf = new VentanaFestival(f, u);
 						vf.setVisible(true);
 						setVisible(false);
 					}
@@ -168,11 +171,6 @@ public class VentanaPrincipal extends JFrame{
 			}
 		});
 		panelFestv1.add(btnFestv1);
-	
-		ImageIcon foto1 = new ImageIcon(BaseDeDatos.getFotoFest(btnFestv1.getText()));
-		JLabelAjustado lfoto =  new JLabelAjustado(foto1);
-		lFoto.setBounds(6, 6, 283, 195);
-		panelFestv1.add(lFoto);
 		
 		lblLugarFestv1 = new JLabel("Belgica");
 		lblLugarFestv1.setBounds(156, 213, 61, 16);
@@ -195,7 +193,7 @@ public class VentanaPrincipal extends JFrame{
 				for (Festival festival : BaseDeDatos.getFestivales()) {
 					if (festival.getNombre().equals(btnFestv2.getText()) ) {
 						Festival f = BaseDeDatos.getFestival(festival);
-						VentanaFestival vf = new VentanaFestival(f, c);
+						VentanaFestival vf = new VentanaFestival(f, u);
 						vf.setVisible(true);
 						setVisible(false);
 					}
@@ -204,10 +202,6 @@ public class VentanaPrincipal extends JFrame{
 			}
 		});
 		
-		ImageIcon foto2 = new ImageIcon(BaseDeDatos.getFotoFest(btnFestv2.getText()));
-		JLabelAjustado lfoto2 =  new JLabelAjustado(foto2);
-		lfoto2.setBounds(6, 6, 283, 196);
-		panelFestv2.add(lfoto2);
 		
 		panelFestv2.add(btnFestv2);
 		lblLugarFestv2 = new JLabel("EEUU");
@@ -233,7 +227,7 @@ public class VentanaPrincipal extends JFrame{
 				for (Festival festival : BaseDeDatos.getFestivales()) {
 					if (festival.getNombre().equals(btnFestv3.getText()) ) {
 						Festival f = BaseDeDatos.getFestival(festival);
-						VentanaFestival vf = new VentanaFestival(f, c);
+						VentanaFestival vf = new VentanaFestival(f, u);
 						vf.setVisible(true);
 						setVisible(false);
 					}
@@ -243,12 +237,6 @@ public class VentanaPrincipal extends JFrame{
 		});
 		
 		panelFestv3.add(btnFestv3);
-		
-		
-		ImageIcon foto3 = new ImageIcon(BaseDeDatos.getFotoFest(btnFestv3.getText()));
-		JLabelAjustado lfoto3 =  new JLabelAjustado(foto3);
-		lfoto3.setBounds(6, 6, 283, 197);
-		panelFestv3.add(lfoto3);
 		
 		
 		lblLugarFestv3 = new JLabel("Burriana");
@@ -273,7 +261,7 @@ public class VentanaPrincipal extends JFrame{
 				for (Festival festival : BaseDeDatos.getFestivales()) {
 					if (festival.getNombre().equals(btnFestv4.getText()) ) {
 						Festival f = BaseDeDatos.getFestival(festival);
-						VentanaFestival vf = new VentanaFestival(f, c);
+						VentanaFestival vf = new VentanaFestival(f, u);
 						vf.setVisible(true);
 						setVisible(false);
 					}
@@ -282,11 +270,6 @@ public class VentanaPrincipal extends JFrame{
 			}
 		});
 		panelFestv4.add(btnFestv4);
-		
-		ImageIcon foto4 = new ImageIcon(BaseDeDatos.getFotoFest(btnFestv4.getText()));
-		JLabelAjustado lfoto4 =  new JLabelAjustado(foto4);
-		lfoto4.setBounds(6, 6, 283, 195);
-		panelFestv4.add(lfoto4);
 		
 		
 		lblLugarFestv4 = new JLabel("Belgica");
@@ -310,7 +293,7 @@ public class VentanaPrincipal extends JFrame{
 				for (Festival festival : BaseDeDatos.getFestivales()) {
 					if (festival.getNombre().equals(btnFestv5.getText()) ) {
 						Festival f = BaseDeDatos.getFestival(festival);
-						VentanaFestival vf = new VentanaFestival(f, c);
+						VentanaFestival vf = new VentanaFestival(f, u);
 						vf.setVisible(true);
 						setVisible(false);
 					}
@@ -319,11 +302,7 @@ public class VentanaPrincipal extends JFrame{
 			}
 		});
 		panelFestv5.add(btnFestv5);
-		
-		ImageIcon foto5 = new ImageIcon(BaseDeDatos.getFotoFest(btnFestv5.getText()));
-		JLabelAjustado lfoto5 =  new JLabelAjustado(foto5);
-		lfoto5.setBounds(6, 6, 283, 195);
-		panelFestv5.add(lfoto5);
+	
 		
 		lblLugarFestv5 = new JLabel("La Rioja");
 		lblLugarFestv5.setBounds(156, 213, 122, 16);
@@ -346,7 +325,7 @@ public class VentanaPrincipal extends JFrame{
 				for (Festival festival : BaseDeDatos.getFestivales()) {
 					if (festival.getNombre().equals(btnFestv6.getText()) ) {
 						Festival f = BaseDeDatos.getFestival(festival);
-						VentanaFestival vf = new VentanaFestival(f, c);
+						VentanaFestival vf = new VentanaFestival(f, u);
 						vf.setVisible(true);
 						setVisible(false);
 					}
@@ -356,10 +335,6 @@ public class VentanaPrincipal extends JFrame{
 		});
 		panelFestv6.add(btnFestv6);
 		
-		ImageIcon foto6 = new ImageIcon(BaseDeDatos.getFotoFest(btnFestv6.getText()));
-		JLabelAjustado lfoto6 =  new JLabelAjustado(foto6);
-		lfoto6.setBounds(6, 6, 283, 195);
-		panelFestv6.add(lfoto6);
 		
 		lblLugarFestv6 = new JLabel("Marbella");
 		lblLugarFestv6.setBounds(156, 213, 61, 16);
@@ -370,38 +345,53 @@ public class VentanaPrincipal extends JFrame{
 		panelFestv6.add(lblFechaFestv6);
 		
 		
-		setVisible(true);
 		
-		ArrayList<Festival> festivales = new ArrayList<>();
-		panelPrincipal.addMouseListener(new MouseAdapter() {
-			
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				int anchoP = panelPrincipal.getPreferredSize().width;
-				int largoP = panelPrincipal.getPreferredSize().height;
-				int posy=1;
-				int posx=1;
-				if ( e.getX() > 0 && e.getX() < anchoP && e.getY()>0 && e.getY()<largoP ) {
-					if (e.getY() < largoP && e.getY()>(largoP/2)+1) {
-						posy = 2;
-					} 
-					if (e.getX() < largoP && e.getX() > (largoP / 3) * 2) {
-						posx = 3;
-						
-					} else if (e.getX() < (largoP / 3) * 2 && e.getX() > (largoP / 3)+1 ) {
-						posx = 2;
-					}
-					
-				}
-				int festivalSelec = posy + posx;
-				if (festivalSelec == 2) {
-					
-
-					
-				}
-				
-			}
-		});
+		ImageIcon foto1 = null;
+		ImageIcon foto2 = null;
+		ImageIcon foto3 = null;
+		ImageIcon foto4 = null;
+		ImageIcon foto5 = null;
+		ImageIcon foto6 = null;
+		try {
+			foto1 = new ImageIcon(ImageIO.read(new File("fotos/"+BaseDeDatos.getFotoFest(btnFestv1.getText()))));
+			foto2 = new ImageIcon(ImageIO.read(new File("fotos/"+BaseDeDatos.getFotoFest(btnFestv2.getText()))));
+			foto3 = new ImageIcon(ImageIO.read(new File("fotos/"+BaseDeDatos.getFotoFest(btnFestv3.getText()))));
+			foto4 = new ImageIcon(ImageIO.read(new File("fotos/"+BaseDeDatos.getFotoFest(btnFestv4.getText()))));
+			foto5 = new ImageIcon(ImageIO.read(new File("fotos/"+BaseDeDatos.getFotoFest(btnFestv5.getText()))));
+			foto6 = new ImageIcon(ImageIO.read(new File("fotos/"+BaseDeDatos.getFotoFest(btnFestv6.getText()))));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		JLabelAjustado lFoto =  new JLabelAjustado(foto1);
+		lFoto.setBounds(6, 6, 283, 195);
+		panelFestv1.add(lFoto);
+		
+		JLabelAjustado lfoto2 =  new JLabelAjustado(foto2);
+		lfoto2.setBounds(6, 6, 283, 196);
+		panelFestv2.add(lfoto2);
+		
+		JLabelAjustado lfoto3 =  new JLabelAjustado(foto3);
+		lfoto3.setBounds(6, 6, 283, 197);
+		panelFestv3.add(lfoto3);
+		
+		
+		JLabelAjustado lfoto4 =  new JLabelAjustado(foto4);
+		lfoto4.setBounds(6, 6, 283, 195);
+		panelFestv4.add(lfoto4);
+		
+		
+		JLabelAjustado lfoto5 =  new JLabelAjustado(foto5);
+		lfoto5.setBounds(6, 6, 283, 195);
+		panelFestv5.add(lfoto5);
+		
+		
+		JLabelAjustado lfoto6 =  new JLabelAjustado(foto6);
+		lfoto6.setBounds(6, 6, 283, 195);
+		panelFestv6.add(lfoto6);
+		
+	
 		
 		
 		setVisible(true);

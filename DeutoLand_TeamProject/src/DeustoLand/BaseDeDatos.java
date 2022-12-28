@@ -65,7 +65,7 @@ public class BaseDeDatos {
 				sent = "DROP TABLE IF EXISTS user";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
-				sent = "CREATE TABLE user (codU INTEGER PRIMARY KEY AUTOINCREMENT, nombre char(25), apellido char(25) , dni char(25) , contrasena char(25), tipo int(1), direccion char(25), edad int(2), correo char(30), fechaU char(10) );";
+				sent = "CREATE TABLE user (codU INTEGER PRIMARY KEY AUTOINCREMENT, nombre char(25), apellido char(25) , dni char(25) , correo char(30), contrasena char(25), tipo int(1), direccion char(25), edad int(2), codigoP int(5), fechaU char(10) );";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
 
@@ -202,9 +202,9 @@ public class BaseDeDatos {
 
 	public static boolean insertarCliente(Cliente cliente) {
 		try (Statement statement = con.createStatement()) {
-			String sent = "insert into User values ( '" + cliente.getNombre() + "' , '" + cliente.getApellido()
-					+ "' , '" + cliente.getDni() + "' , '" + cliente.getContrasena() + "' , '" + cliente.getDireccion()
-					+ "' , " + cliente.getEdad() + ", '" + cliente.getCorreo() + "' );";
+			String sent = "insert into user values ( '" + cliente.getNombre() + "' , '" + cliente.getApellido()
+					+ "' , '" + cliente.getDni() + "' , '" + cliente.getCorreo() + "' , '" + cliente.getContrasena() + "' , '" + cliente.getDireccion()
+					+ "' , " + cliente.getEdad() + ", " + cliente.getCodigoPostal() + " );";
 			logger.log(Level.INFO, "Statement: " + sent);
 			int insertados = statement.executeUpdate(sent);
 
@@ -342,7 +342,120 @@ public class BaseDeDatos {
 		}
 
 	}
+	
+	
+	public static ArrayList<Admin> getAdmins() {
+		
+		try (Statement statement = con.createStatement()) {
+		abrirConexion("BaseDatos.db", false);
+		ArrayList<Admin> ret = new ArrayList<>();
+		String sent = "select * from user";
+		logger.log(Level.INFO, "Statement: " + sent);
+		ResultSet rs = statement.executeQuery(sent);
+		while (rs.next()) {
+			int codA = rs.getInt("codU");
+			String nombre = rs.getString("nombre");
+			String apellido = rs.getString("apellido");
+			String dni = rs.getString("dni");
+			String correo = rs.getString("correo");
+			String contraseña = rs.getString("contrasena");
+			String fechaU = rs.getString("fechaU");
+			ret.add(new Admin(codA, nombre, apellido, dni, correo, contraseña, fechaU)); 
+		}
+		return ret;
+	} catch (Exception e) {
+		logger.log(Level.SEVERE, "Excepcion", e);
+		return null;
+	}
 
+		
+	}
+	
+	
+	public static ArrayList<Cliente> getClientes() {	
+		
+		try (Statement statement = con.createStatement()) {
+		abrirConexion("BaseDatos.db", false);
+		ArrayList<Cliente> ret = new ArrayList<>();
+		String sent = "select * from user";
+		logger.log(Level.INFO, "Statement: " + sent);
+		ResultSet rs = statement.executeQuery(sent);
+		while (rs.next()) {
+			int codC = rs.getInt("codU");
+			String nombre = rs.getString("nombre");
+			String apellido = rs.getString("apellido");
+			String dni = rs.getString("dni");
+			String correo = rs.getString("correo");
+			String contraseña = rs.getString("contrasena");
+			String dir = rs.getString("direccion");
+			int edad = rs.getInt("edad");
+			int codigoP = rs.getInt("codigoP");
+			
+			ret.add(new Cliente(codC, nombre, apellido, dni, correo, contraseña, dir, edad, codigoP));
+		}
+		return ret;
+	} catch (Exception e) {
+		logger.log(Level.SEVERE, "Excepcion", e);
+		return null;
+	}
+}
+
+	
+	//////////////esto lo tengo q corregor MAR
+	public static Cliente getCliente(String correo, String contraseña) {
+		Cliente c = new Cliente();
+		try {
+			abrirConexion("BaseDatos.db", false);
+			for (Cliente cli: BaseDeDatos.getClientes() ) {
+				if (cli.getCorreo() ==  correo && cli.getContrasena() == contraseña) {
+					c.setCod(cli.getCod());
+					c.setNombre(cli.getNombre());
+					c.setApellido(cli.getApellido());
+					c.setDni(cli.getDni());
+					c.setCorreo(cli.getCorreo());
+					c.setContrasena(cli.getContrasena());
+					c.setDireccion(cli.getDireccion());
+					c.setEdad(cli.getEdad());
+					c.setCodigoPostal(cli.getCodigoPostal());
+				}
+			}
+
+		} catch (Exception e) {
+			logger.log(Level.SEVERE, "Excepcion", e);
+			return null;
+		}
+		//System.out.println(c);
+		return c;
+		
+	}
+	
+	public static Admin getAdmin(String correo, String contraseña) {
+		Admin a = new Admin();
+		
+		try {
+			abrirConexion("BaseDatos.db", false);
+			for (Admin ad: BaseDeDatos.getAdmins() ) {
+				if (ad.getCorreo() ==  correo && ad.getContrasena() == contraseña) {
+					a.setCod(ad.getCod());
+					a.setNombre(ad.getNombre());
+					a.setApellido(ad.getApellido());
+					a.setDni(ad.getDni());
+					a.setCorreo(ad.getCorreo());
+					a.setContrasena(ad.getContrasena());
+					a.setFechaUltimaMod(ad.getFechaUltimaMod());
+				}
+			}
+
+		} catch (Exception e) {
+			logger.log(Level.SEVERE, "Excepcion", e);
+			return null;
+		}
+		//System.out.println(a);
+		return a;
+		
+	}
+	
+	
 	public static ArrayList<User> getUsers() {
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
@@ -355,16 +468,17 @@ public class BaseDeDatos {
 				String nombre = rs.getString("nombre");
 				String apellido = rs.getString("apellido");
 				String dni = rs.getString("dni");
+				String correo = rs.getString("correo");
 				String contraseña = rs.getString("contrasena");
 				int tipo = rs.getInt("tipo");
 				String dir = rs.getString("direccion");
 				int edad = rs.getInt("edad");
-				String correo = rs.getString("correo");
+				int codigoP = rs.getInt("codigoP");
 				String fU = rs.getString("fechaU");
 				if (tipo==0) {
-					ret.add(new Cliente(codC, nombre, apellido, dni, dir, edad, correo, contraseña));
+					ret.add(new Cliente(nombre, apellido, dni, correo, contraseña, dir, edad, codigoP));
 				} else {
-					ret.add(new Admin(nombre, apellido, dni, contraseña, fU));
+					ret.add(new Admin(nombre, apellido, dni, correo, contraseña, fU));
 				}
 
 			}
@@ -375,24 +489,21 @@ public class BaseDeDatos {
 		}
 
 	}
-
 	
-	//////////////esto lo tengo q corregor MAR
 	public static User getUser(String correo, String contraseña) {
-
-		Cliente c = new Cliente();
+		
 		try {
 			abrirConexion("BaseDatos.db", false);
-			for (Cliente cli : BaseDeDatos.getUsers()) {
-				if (cli.getCorreo() == correo && cli.getContrasena() == contraseña) {
-					c.setCod(cli.getCod());
-					c.setNombre(cli.getNombre());
-					c.setApellido(cli.getApellido());
-					c.setDni(cli.getDni());
-					c.setContrasena(cli.getContrasena());
-					c.setDireccion(cli.getDireccion());
-					c.setEdad(cli.getEdad());
-					c.setCorreo(cli.getCorreo());
+			for (User ad: BaseDeDatos.getUsers() ) {
+				if (ad.equals(BaseDeDatos.getCliente(correo, contraseña))) { //esto es que es un cliente, no???
+					
+					System.out.println(BaseDeDatos.getCliente(correo, contraseña));
+					return BaseDeDatos.getCliente(correo, contraseña);
+					
+				} else {
+					
+					System.out.println(BaseDeDatos.getAdmin(correo, contraseña));
+					return BaseDeDatos.getAdmin(correo, contraseña);
 				}
 			}
 
@@ -400,10 +511,15 @@ public class BaseDeDatos {
 			logger.log(Level.SEVERE, "Excepcion", e);
 			return null;
 		}
-		System.out.println(c);
-		return c;
-
+		return null;
+		
+		
 	}
+	
+	
+	
+	
+	
 
 	////////////////////////////////////////////
 	/// DATOS DE INICIO PARA LA BASE DE DATOS
@@ -598,7 +714,7 @@ public class BaseDeDatos {
 	 */
 	public static void insertarUsuarios() {
 
-		Admin admin = new Admin("admin", "admin", "admin", "admin", "27/12/2022");
+		Admin admin = new Admin("admin", "admin", "admin", "admin", "27/12/2022", "admin");
 		ArrayList<Admin> admins = new ArrayList<>();
 		admins.add(admin);
 
@@ -610,12 +726,13 @@ public class BaseDeDatos {
 				String nombre = ad.getNombre();
 				String apellido = ad.getApellido();
 				String dni = ad.getDni();
+				String correo = ad.getCorreo();
 				String contraseña = ad.getContrasena();
 				String fecha = ad.getFechaUltimaMod();
 				int tipo = 1;
 				
-				String sent = "INSERT INTO user (nombre, apellido, dni, contrasena, tipo , fechaU )"
-						+ " VALUES ( '" + nombre + "', '" + apellido + "', '" + dni + "','" + contraseña + "'," + tipo + ",'" + fecha +"');";
+				String sent = "INSERT INTO user (nombre, apellido, dni, correo, contrasena, tipo , fechaU )"
+						+ " VALUES ( '" + nombre + "', '" + apellido + "', '" + dni + "','" + correo + "','" + contraseña + "'," + tipo + ",'" + fecha +"');";
 
 				logger.log(Level.INFO, "Statement: " + sent);
 
@@ -629,7 +746,7 @@ public class BaseDeDatos {
 
 		// insertarclientes
 
-		Cliente cliente = new Cliente("Juan", "Gonzalez", "567899", "Vitoria", 27, "juan@gmail.com", "0000");
+		Cliente cliente = new Cliente("Juan", "Gonzalez", "567899", "juangon@gmail.com", "1234", "vitoria", 18, 48980);
 		ArrayList<Cliente> clientes = new ArrayList<>();
 		clientes.add(cliente);
 
@@ -642,14 +759,15 @@ public class BaseDeDatos {
 				String nombre = cl.getNombre();
 				String apellido = cl.getApellido();
 				String dni = cl.getDni();
+				String correo = cl.getCorreo();
 				String contraseña = cl.getContrasena();
 				String direccion = cl.getDireccion();
 				int edad = cl.getEdad();
-				String correo = cl.getCorreo();
+				int codigoP = cl.getCodigoPostal();
 				int tipo = 0;
 				
-				String sent = "INSERT INTO user (nombre, apellido, dni, contrasena, tipo, direccion, edad, correo) "
-						+ " VALUES ( '" + nombre + "', '" + apellido + "', '" + dni + "','" + contraseña + "'," + tipo + ",'" + direccion +"'," + edad + " ,'" + correo + "'" +");";
+				String sent = "INSERT INTO user (nombre, apellido, dni, correo, contrasena, tipo, direccion, edad, codigoP) "
+						+ " VALUES ( '" + nombre + "', '" + apellido + "', '" + dni + "','" + correo + "','" + contraseña + "'," + tipo + ",'" + direccion +"'," + edad + " ," + codigoP  +");";
 
 				logger.log(Level.INFO, "Statement: " + sent);
 

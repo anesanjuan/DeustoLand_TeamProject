@@ -20,6 +20,7 @@ import DeustoLand.Admin;
 import DeustoLand.BaseDeDatos;
 import DeustoLand.Cliente;
 import DeustoLand.Gestor;
+import DeustoLand.User;
 
 public class VentanaInicioSesion extends JFrame {
 
@@ -75,12 +76,12 @@ public class VentanaInicioSesion extends JFrame {
 
 				//HAY QUE CORREGIR
 				if (x == 0) {
-					Cliente c = BaseDeDatos.getUser(correo, contrasena);
+					User u = BaseDeDatos.getUser(correo, contrasena);
 					VentanaPrincipal vp = new VentanaPrincipal(gestor, u);
 					vp.setVisible(true);
 					dispose();
 				} else if (x == 1) {
-					Admin a = BaseDeDatos.getUser(correo, contrasena);
+					User u = BaseDeDatos.getUser(correo, contrasena);
 					VentanaPrincipal vp = new VentanaPrincipal(gestor, u);
 					vp.setVisible(true);
 					//HCAER VISIBLE EL BOTON

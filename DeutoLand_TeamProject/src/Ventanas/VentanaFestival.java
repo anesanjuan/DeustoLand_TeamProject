@@ -22,6 +22,7 @@ import DeustoLand.Cliente;
 import DeustoLand.Concierto;
 import DeustoLand.Festival;
 import DeustoLand.Gestor;
+import DeustoLand.User;
 
 public class VentanaFestival extends JFrame{
 
@@ -29,7 +30,7 @@ public class VentanaFestival extends JFrame{
 	
 	//private JLabelAjustado lFoto = new JLabelAjustado( null );
 	
-	public VentanaFestival(Festival festival, Cliente cliente) {
+	public VentanaFestival(Festival festival, User u) {
 		
 		
 		setBounds(100, 100, 901, 615);
@@ -114,10 +115,10 @@ public class VentanaFestival extends JFrame{
 		bComprarEnt.addActionListener(new ActionListener() {
 			@SuppressWarnings("unused")
 			public void actionPerformed(ActionEvent e) {
-				if (cliente == null) {
+				if (u == null) {
 					JOptionPane.showMessageDialog(null, "Para poder acceder a la compra de entradas es necesario Registrarse o Iniciar Sesión");
 				} else {
-					VentanaCompra vc = new VentanaCompra(cliente);
+					VentanaCompra vc = new VentanaCompra(u);
 					vc.setVisible(true);
 					setVisible(false);
 				}
