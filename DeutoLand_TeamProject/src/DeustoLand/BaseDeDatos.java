@@ -15,6 +15,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 /**
  * Clase de gestion de una base de datos del sistema de festivales???
  * 
@@ -22,7 +23,7 @@ import java.util.logging.Logger;
 public class BaseDeDatos {
 
 	private static Connection con;
-	private static Logger logger = Logger.getLogger("BaseDatos");
+	//private static Logger logger = Logger.getLogger("BaseDatos");
 	private static Exception lastError;
 
 	/**
@@ -919,5 +920,15 @@ public class BaseDeDatos {
 		return fotoFestival;
 
 	}
+	
+	
+	
+/////////////////////////////////////////////////////////////////////
+//                      Logging                                    //
+/////////////////////////////////////////////////////////////////////
+	
+	
+	private static Logger logger = null;
+
 
 }
