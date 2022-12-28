@@ -1,9 +1,9 @@
 package JUnit;
 
-import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.Before;
+
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 import DeustoLand.Admin;
