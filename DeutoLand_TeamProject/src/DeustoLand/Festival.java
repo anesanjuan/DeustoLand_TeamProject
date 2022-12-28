@@ -30,8 +30,6 @@ public class Festival {
 		super();
 	}
 
-	
-	
 	public Festival(int codigoF, String nombre, String fecha, String lugar, String descripcion,
 			double precio, String foto) {
 		super();
