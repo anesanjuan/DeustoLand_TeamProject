@@ -62,7 +62,7 @@ public class Gestor {
 			else
 			{
 				Admin cli = (Admin)c;
-				if (cli.getNombre().equals(correo) && c.getContrasena().equals(contrasena)) {
+				if (cli.getCorreo().equals(correo) && c.getContrasena().equals(contrasena)) {
 					return 1;
 				}
 				else

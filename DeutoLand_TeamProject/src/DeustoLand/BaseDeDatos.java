@@ -490,21 +490,14 @@ public class BaseDeDatos {
 
 	}
 	
+	
+	///ESTO TENGO Q PROGRAMAR --- MAR
 	public static User getUser(String correo, String contraseña) {
 		
 		try {
 			abrirConexion("BaseDatos.db", false);
 			for (User ad: BaseDeDatos.getUsers() ) {
-				if (ad.equals(BaseDeDatos.getCliente(correo, contraseña))) { //esto es que es un cliente, no???
-					
-					System.out.println(BaseDeDatos.getCliente(correo, contraseña));
-					return BaseDeDatos.getCliente(correo, contraseña);
-					
-				} else {
-					
-					System.out.println(BaseDeDatos.getAdmin(correo, contraseña));
-					return BaseDeDatos.getAdmin(correo, contraseña);
-				}
+				
 			}
 
 		} catch (Exception e) {

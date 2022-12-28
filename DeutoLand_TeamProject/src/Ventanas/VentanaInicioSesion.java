@@ -74,8 +74,8 @@ public class VentanaInicioSesion extends JFrame {
 
 				int x = gestor.comprobarUsuario(correo, contrasena);
 
-				//HAY QUE CORREGIR
-				if (x == 0) {
+				//HAY QUE CORREGIR ---- MAR
+ 				if (x == 0) {
 					User u = BaseDeDatos.getUser(correo, contrasena);
 					VentanaPrincipal vp = new VentanaPrincipal(gestor, u);
 					vp.setVisible(true);
