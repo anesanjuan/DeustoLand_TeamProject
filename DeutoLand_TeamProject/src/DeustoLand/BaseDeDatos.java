@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 public class BaseDeDatos {
 
 	private static Connection con;
-	//private static Logger logger = Logger.getLogger("BaseDatos");
+	private static Logger logger = Logger.getLogger("BaseDatos");
 	private static Exception lastError;
 
 	/**
@@ -928,7 +928,7 @@ public class BaseDeDatos {
 /////////////////////////////////////////////////////////////////////
 	
 	
-	private static Logger logger = null;
+	//private static Logger logger = null;
 
 
 }
