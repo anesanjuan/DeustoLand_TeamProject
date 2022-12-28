@@ -134,7 +134,7 @@ public class BaseDeDatos {
 	}
 
 	/**
-	 * Insertar un festival en la base de datos abierta (debe abrirse previamente
+	 * Insertar un artista en la base de datos abierta (debe abrirse previamente
 	 * con {@link #abrirConexion(String, boolean)}
 	 * 
 	 * @param artista Artista a insertar
@@ -262,7 +262,7 @@ public class BaseDeDatos {
 	}
 
 	/**
-	 * Lee los festivales de la conexion de base de datos abierta (debe abrirse
+	 * Lee los artistas de la conexion de base de datos abierta (debe abrirse
 	 * previamente con {@link #abrirConexion(String, boolean)}
 	 * 
 	 * @return Lista completa de artistas, vacia si no hay ninguno, null si hay
@@ -707,10 +707,44 @@ public class BaseDeDatos {
 	 */
 	public static void insertarUsuarios() {
 
+		//String nombre, String apellido, String dni, String correo, String contraseña, String fechaUltimaMod
+		
+		//este habrá q cambiar los datos digo yo
 		Admin admin = new Admin("admin", "admin", "admin", "admin", "27/12/2022", "admin");
+		
+		Admin admin2 = new Admin("Juan", "Perez", "23423762A", "juanperez@gmail.com", "juanperez23", "27/10/2022");
+		Admin admin3 = new Admin("Natalia", "Rodriguez", "29753197B", "natarod@gmail.com", "natrodri34", "05/11/2022");
+		Admin admin4 = new Admin("Aitana", "Eguren", "2864286C", "aitanaeg@gmail.com", "casaeguren234", "15/11/2022");
+		Admin admin5 = new Admin("Lucas", "Armas", "1234321D","lucasarmas@gmail.com", "1234", "17/11/2022");
+		Admin admin6 = new Admin("Isaak", "Garcia", "4321234E", "isgarcia@gmail.com", "5432", "27/11/2022");
+		Admin admin7 = new Admin("Iker", "Portela", "9876789F", "portela44@gmail.com", "ikerportela65", "30/11/2022");
+		Admin admin8 = new Admin("Alicia", "Hermosa", "6789876G", "alihermos@gmail.com", "alioli123", "15/12/2022");
+		Admin admin9 = new Admin("Alvaro", "Villanueva", "5460645H", "alvarovilla@gmail.com", "alvarito86", "20/12/2022");
+		Admin admin10 = new Admin("Lidia", "Alvarez", "5554672I", "lidia123@gmail.com", "lidix32", "22/12/2022");
+		Admin admin11 = new Admin("Maria", "Pomares", "1000243J", "mariapom@gmail.com", "merypom99", "26/12/2022");
+		Admin admin12 = new Admin("Lola", "Moreno", "2300233K", "lolalolita@gmail.com", "lolaBrownie", "27/12/2022");
+		Admin admin13 = new Admin("Marcos", "Gonzalez", "1452375L", "marcos32g@gmail.com", "marcos323", "27/12/2022");
+		Admin admin14 = new Admin("Alex", "Navarro", "29096527M", "alexnavarro@gmail.com", "alex231", "04/01/2023");
+		Admin admin15 = new Admin("Mar", "Marco", "2299417N", "marmarco@gmail.com", "5453f", "10/01/2023");
+
+
 		ArrayList<Admin> admins = new ArrayList<>();
 		admins.add(admin);
-
+		//admins.add(admin2);
+		//admins.add(admin3);
+		//admins.add(admin4);
+		//admins.add(admin5);
+		//admins.add(admin6);
+		//admins.add(admin7);
+		//admins.add(admin8);
+		//admins.add(admin9);
+		//admins.add(admin10);
+		//admins.add(admin11);
+		//admins.add(admin12);
+		//admins.add(admin13);
+		//admins.add(admin14);
+		//admins.add(admin15);
+	
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
 
@@ -738,10 +772,74 @@ public class BaseDeDatos {
 		}
 
 		// insertarclientes
+		
+		//String nombre, String apellido, String dni, String correo, String contraseña, String direccion, int edad, int codigoPostal
 
+		//el dni no tiene 9 caracteres y tendria mas sentido. La mayus de vitoria? :(
 		Cliente cliente = new Cliente("Juan", "Gonzalez", "567899", "juangon@gmail.com", "1234", "vitoria", 18, 48980);
+		
+		Cliente cliente2 = new Cliente("Cristina", "Lopez", "4567881A", "crislopez@gmail.com", "5678", "Vitoria", 24, 37879);
+		Cliente cliente3 = new Cliente("Ramon", "Perales", "3234570B", "ramonperales@gmail.com", "4567", "Bilbao", 20, 12398);
+		Cliente cliente4 = new Cliente("Javier", "Rubio", "2003456C", "javierrubio@gmail.com", "3456", "San Sebastian", 18, 23419);
+		Cliente cliente5 = new Cliente("Ane", "Martin", "1234553D", "anemartin@gmail.com", "2345", "Burgos", 18, 23910);
+		Cliente cliente6 = new Cliente("Lucia", "Lopez", "1021344E", "lucialopez@gmail.com", "11223", "Barcelona", 24, 12312);
+		Cliente cliente7 = new Cliente("Andrea", "Rio", "2212533F", "andreario@gmail.com", "22334", "Madrid", 27, 87381);
+		Cliente cliente8 = new Cliente("Iñigo", "Arrieta", "1122334G", "iñiarrieta@gmail.com", "3214", "Valladolid", 18, 01201);
+		Cliente cliente9 = new Cliente("Tomas", "Alonso", "9876508H", "iñiarrieta@gmail.com", "tomas342", "Madrid", 26, 01231);
+		Cliente cliente10 = new Cliente("Larraitz", "Garcia", "1239822I", "iñiarrieta@gmail.com", "432Larra", "Vitoria", 21, 90976);
+		Cliente cliente11 = new Cliente("Petri", "Guinea", "1298404J", "iñiarrieta@gmail.com", "98321", "Vitoria", 20, 12312);
+		Cliente cliente12 = new Cliente("Leire", "Perez", "8723761K", "iñiarrieta@gmail.com", "LeiPe234", "Vitoria", 20, 11223);
+		Cliente cliente13 = new Cliente("Blanca", "Gonzalez", "9087640L", "iñiarrieta@gmail.com", "bg2827h", "Madrid", 22, 33445);
+		Cliente cliente14 = new Cliente("Almudena", "Velasco", "1000841M", "iñiarrieta@gmail.com", "AlmuVelas44", "Bilbao", 21, 55667);
+		Cliente cliente15 = new Cliente("David", "Vesga", "9041287N", "iñiarrieta@gmail.com", "5876g", "Bilbao", 22, 12213);
+		Cliente cliente16 = new Cliente("Fernando", "Basterra", "1111222O", "iñiarrieta@gmail.com", "999f", "Bilbao", 23, 12642);
+		Cliente cliente17 = new Cliente("Maria Jesus", "Barrio", "3332248P", "iñiarrieta@gmail.com", "mariaJesus342", "Madrid", 25, 85643);
+		Cliente cliente18 = new Cliente("Sandra", "Ruiz", "4446657Q", "iñiarrieta@gmail.com", "sandraru333", "Madrid", 32, 66773);
+		Cliente cliente19 = new Cliente("Maria", "Chillida", "8888768R", "iñiarrieta@gmail.com", "87213FF", "Santander", 26, 88535);
+		Cliente cliente20 = new Cliente("Pedro", "Abajo", "9665588S", "iñiarrieta@gmail.com", "fffttt54", "Santander", 26, 98684);
+		Cliente cliente21 = new Cliente("Susana", "Saez", "9900880T", "iñiarrieta@gmail.com", "asdf456", "Madrid", 28, 99945);
+		Cliente cliente22 = new Cliente("Alvaro", "Arana", "7006358U", "iñiarrieta@gmail.com", "alvaroAra00", "Sevilla", 30, 77536);
+		Cliente cliente23 = new Cliente("Jorge", "Madruga", "9124332V", "iñiarrieta@gmail.com", "JorgeMadru213", "Sevilla", 18, 77775);
+		Cliente cliente24 = new Cliente("Monica", "Merino", "9612465W", "iñiarrieta@gmail.com", "1456", "Sevilla", 19, 88824);
+		Cliente cliente25 = new Cliente("Guillermo", "Ibarra", "9988662X", "iñiarrieta@gmail.com", "23521", "Valladolid", 20, 77332);
+		Cliente cliente26 = new Cliente("Lucia", "Martinez", "4422134Y", "iñiarrieta@gmail.com", "3399", "Valladolid", 23, 22233);
+		Cliente cliente27 = new Cliente("Maitane", "Echeverria", "5544321Z", "iñiarrieta@gmail.com", "mai234", "Barcelona", 23, 33332);
+		Cliente cliente28 = new Cliente("Carlos", "Serrano", "9863355Z", "iñiarrieta@gmail.com", "charliesera23", "Barcelona", 24, 11112);
+		Cliente cliente29 = new Cliente("Maider", "Saracibar", "2345632W", "iñiarrieta@gmail.com", "maisa82435", "Barcelona", 21, 11112);
+		Cliente cliente30 = new Cliente("Mara", "Suso", "7776678U", "marasuso@gmail.com", "marasusi878", "Madrid", 18, 14123);
+
 		ArrayList<Cliente> clientes = new ArrayList<>();
 		clientes.add(cliente);
+		//clientes.add(cliente2);
+		//clientes.add(cliente3);
+		//clientes.add(cliente4);
+		//clientes.add(cliente5);
+		//clientes.add(cliente6);
+		//clientes.add(cliente7);
+		//clientes.add(cliente8);
+		//clientes.add(cliente9);
+		//clientes.add(cliente10);
+		//clientes.add(cliente11);
+		//clientes.add(cliente12);
+		//clientes.add(cliente13);
+		//clientes.add(cliente14);
+		//clientes.add(cliente15);
+		//clientes.add(cliente16);
+		//clientes.add(cliente17);
+		//clientes.add(cliente18);
+		//clientes.add(cliente19);
+		//clientes.add(cliente20);
+		//clientes.add(cliente21);
+		//clientes.add(cliente22);
+		//clientes.add(cliente23);
+		//clientes.add(cliente24);
+		//clientes.add(cliente25);
+		//clientes.add(cliente26);
+		//clientes.add(cliente27);
+		//clientes.add(cliente28);
+		//clientes.add(cliente29);
+		//clientes.add(cliente30);
+
 
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
