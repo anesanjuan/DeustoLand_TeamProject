@@ -9,7 +9,7 @@ import Excepciones.ClienteRepetidoException;
 
 public class Gestor {
 
-	private ArrayList<User> aUsers = new ArrayList<>();
+	private ArrayList<User> aUsers = null;
 
 	public void CargarClientes() {
 
@@ -20,58 +20,46 @@ public class Gestor {
 
 	public Gestor() {
 
-		//recuperarClientes();
-
+		aUsers = BaseDeDatos.getUsers();
 	}
 
+	
+	
 	public void comprobarFestival(String nombre, double fecha, ArrayList<Concierto> conciertos,
 			ArrayList<Artista> Artistas, double precio) {
 
 	}
 
-	public void insertarCliente(String nombre, String apellido, String dni, String correo, String contrasena)
-			throws ClienteRepetidoException {
-		User c = new Cliente(nombre, apellido, dni, correo, contrasena);
-		if (aUsers.contains(c) == false) {
-			aUsers.add(c);
-		} else {
-			throw new ClienteRepetidoException("Este cliente ya existe");
-		}
-	}
 
-	private void insertarClientes() {
-		User c1 = new Cliente("Maria", "Perales ", "343534546W", "maria@gmail.com", "1234");
-		aUsers.add(c1);
-	}
 
 	// al iniciar sesion
 	public int comprobarUsuario(String correo, String contrasena) {
 		for (User c : aUsers) {
-			
-			if ( c instanceof Cliente)
-			{
+			if (c instanceof Cliente){
 				Cliente cli = (Cliente)c;
 				if (cli.getCorreo().equals(correo) && c.getContrasena().equals(contrasena)) {
 					return 0;
 				}
-				else
-				{
-					return -1;
-				}
 			}
-			else
-			{
+			else {
 				Admin cli = (Admin)c;
 				if (cli.getCorreo().equals(correo) && c.getContrasena().equals(contrasena)) {
 					return 1;
-				}
-				else
-				{
-					return -1;
-				}			
+				}		
 			}
 		}
-		
 		return -1;
 	}
+
+	//VENTANA REGISTRO
+
+	public void insertarCliente(String nombre, String apellido, String dni, String email, String contrasena, String direccion, int edad, int codigoPostal)  throws ClienteRepetidoException {
+		BaseDeDatos.insertarUsuario(nombre, apellido, dni, email, contrasena, direccion, edad, codigoPostal);
+	}
+
+	
+	
+	
+	
+	
 }

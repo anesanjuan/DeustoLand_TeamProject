@@ -410,7 +410,7 @@ public class BaseDeDatos {
 		try {
 			abrirConexion("BaseDatos.db", false);
 			for (Cliente cli: BaseDeDatos.getClientes() ) {
-				if (cli.getCorreo() ==  correo && cli.getContrasena() == contraseña) {
+				if (cli.getCorreo().equals(correo)  && cli.getContrasena().equals(contraseña)) {
 					c.setCod(cli.getCod());
 					c.setNombre(cli.getNombre());
 					c.setApellido(cli.getApellido());
@@ -494,10 +494,6 @@ public class BaseDeDatos {
 	}
 	
 	
-	///ESTO TENGO Q PROGRAMAR --- MAR
-	//holu soy ane, esto ahora mismo no funciona, pero en cuanto hagas lo de la 
-	//base de datos al registrarse, iniciar sesion y tal, esta funcion deberia de 
-	//funcionar, asiq no la cambies de mientras porfdi que creo que esta bien
 	public static User getUser(String correo, String contraseña) {
 		int cli = 0;
 		try {
@@ -505,10 +501,8 @@ public class BaseDeDatos {
 			for (User ad: BaseDeDatos.getUsers() ) {
 				if (ad.equals(BaseDeDatos.getCliente(correo, contraseña)) ) {
 					cli = cli +1;
-				} 
-				
+				} 	
 			}
-
 		} catch (Exception e) {
 			logger.log(Level.SEVERE, "Excepcion", e);
 			return null;
@@ -722,7 +716,7 @@ public class BaseDeDatos {
 		//String nombre, String apellido, String dni, String correo, String contraseña, String fechaUltimaMod
 		
 		//este habrá q cambiar los datos digo yo
-		Admin admin = new Admin("admin", "admin", "admin", "admin", "27/12/2022", "admin");
+		Admin admin = new Admin("admin", "admin", "admin", "admin", "admin", "27/12/2022");
 		
 		Admin admin2 = new Admin("Juan", "Perez", "23423762A", "juanperez@gmail.com", "juanperez23", "27/10/2022");
 		Admin admin3 = new Admin("Natalia", "Rodriguez", "29753197B", "natarod@gmail.com", "natrodri34", "05/11/2022");
@@ -783,7 +777,8 @@ public class BaseDeDatos {
 
 		}
 
-		// insertarclientes
+		
+		
 		
 		//String nombre, String apellido, String dni, String correo, String contraseña, String direccion, int edad, int codigoPostal
 
@@ -882,6 +877,23 @@ public class BaseDeDatos {
 
 		}
 	}
+	
+	//INSERTAR CLIENTE ---- VENTANA REGISTRO
+	public static void insertarUsuario(String nombre, String apellido, String dni, String correo, String contrasena, String direccion, int edad, int codigoPostal) {
+		try (Statement statement = con.createStatement()) {
+			abrirConexion("BaseDatos.db", true);
+				int tipo = 0;
+				String sent = "INSERT INTO user (nombre, apellido, dni, correo, contrasena, tipo, direccion, edad, codigoP) "
+						+ " VALUES ( '" + nombre + "', '" + apellido + "', '" + dni + "','" + correo + "','" + contrasena + "'," + tipo + ",'" + direccion +"'," + edad + " ," + codigoPostal  +");";
+				logger.log(Level.INFO, "Statement: " + sent);
+				statement.executeUpdate(sent);
+		} catch (Exception e) {
+			logger.log(Level.SEVERE, "Excepción", e);
+		}
+	}
+
+	
+	
 
 	
 

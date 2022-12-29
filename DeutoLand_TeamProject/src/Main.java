@@ -30,12 +30,12 @@ public class Main {
 		//BaseDeDatos.insertarArtistas();
 		//BaseDeDatos.insertarUsuarios();
 		
-		//Gestor gln = new Gestor();
-		//VentanaPrincipal vp = new VentanaPrincipal( gln, null );
-		//vp.setVisible(true);
+		Gestor gln = new Gestor();
+		VentanaPrincipal vp = new VentanaPrincipal( gln, null );
+		vp.setVisible(true);
 		
-		VentanaEstadisticas ve = new VentanaEstadisticas();
-		ve.setVisible(true);
+		//VentanaEstadisticas ve = new VentanaEstadisticas();
+		//ve.setVisible(true);
 		
 		//BaseDeDatos.cerrarConexion();
 

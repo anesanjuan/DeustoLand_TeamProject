@@ -1,5 +1,7 @@
 package DeustoLand;
 
+import java.util.Objects;
+
 public class User {
 	
 	private int cod;
@@ -85,6 +87,23 @@ public class User {
 	public String toString() {
 		return "User [cod=" + cod + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", correo="
 				+ correo + ", contrasena=" + contrasena + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(contrasena, correo);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		return Objects.equals(contrasena, other.contrasena) && Objects.equals(correo, other.correo);
 	}
 	
 	

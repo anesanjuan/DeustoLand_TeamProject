@@ -27,10 +27,14 @@ public class VentanaRegistro extends JFrame {
 	private JTextField txtApellido;
 	private JTextField txtDNI;
 	private JTextField txtEmail;
-	private JTextField txtTipocliente;
 	private JTextField txtContrasena;
+	private JTextField txtDireccion;
+	private JTextField txtEdad;
+	private JTextField txtCodigoPostal;
+	
 	
 	private Gestor gestor;
+
 	
 	public VentanaRegistro( Gestor gestor ) {
 		
@@ -59,11 +63,26 @@ public class VentanaRegistro extends JFrame {
 		panel.add(txtEmail);
 		txtEmail.setColumns(10);
 		
+		txtDireccion = new JTextField();
+		txtDireccion.setBounds(190, 263, 96, 20);
+		panel.add(txtDireccion);
+		txtDireccion.setColumns(10);
 		
 		txtContrasena = new JTextField();
 		txtContrasena.setBounds(190, 219, 96, 20);
 		panel.add(txtContrasena);
 		txtContrasena.setColumns(10);
+		
+		txtEdad = new JTextField();
+		txtEdad.setBounds(190, 313, 96, 20);
+		panel.add(txtEdad);
+		txtEdad.setColumns(10);
+		
+		txtCodigoPostal = new JTextField();
+		txtCodigoPostal.setBounds(190, 367, 96, 20);
+		panel.add(txtCodigoPostal);
+		txtCodigoPostal.setColumns(10);
+		
 		
 		
 		//inicializar las etiquetas
@@ -85,13 +104,25 @@ public class VentanaRegistro extends JFrame {
 		
 		
 		JLabel lblContrasena = new JLabel("Contrasena:");
-		lblContrasena.setBounds(68, 222, 49, 14);
+		lblContrasena.setBounds(68, 222, 89, 14);
 		panel.add(lblContrasena);
+		
+		JLabel lblDireccion = new JLabel("Direccion: ");
+		lblDireccion.setBounds(68, 266, 74, 14);
+		panel.add(lblDireccion);
+
+		JLabel lblEdad = new JLabel("Edad:");
+		lblEdad.setBounds(68, 316, 49, 14);
+		panel.add(lblEdad);
+		
+		JLabel lblCodigoPostal = new JLabel("Codigo Postal:");
+		lblCodigoPostal.setBounds(68, 370, 89, 14);
+		panel.add(lblCodigoPostal);
 		
 		//botones
 		
 		JButton btnRegistro = new JButton("Registro");
-		btnRegistro.setBounds(337, 229, 89, 23);
+		btnRegistro.setBounds(449, 339, 89, 23);
 		btnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String nombre = txtNombre.getText();
@@ -99,18 +130,21 @@ public class VentanaRegistro extends JFrame {
 				String dni = txtDNI.getText();
 				String email = txtEmail.getText();
 				String contrasena = txtContrasena.getText();
-				
+				String direccion = txtDireccion.getText();
+				int edad = Integer.parseInt(txtEdad.getText());
+				int codigoPostal = Integer.parseInt(txtCodigoPostal.getText());
 				
 				try { 
-					gestor.insertarCliente( nombre,apellido, dni, email,contrasena);
-					//gestor.GuardarClientes();
+					gestor.insertarCliente( nombre,apellido, dni, email,contrasena, direccion, edad, codigoPostal);
 					User u = BaseDeDatos.getUser(email, contrasena);
-					VentanaPrincipal vp = new VentanaPrincipal( gestor , u);
+					VentanaPrincipal vp = new VentanaPrincipal(gestor , u);
 					vp.setVisible(true);
-					dispose();					
+					dispose();	
+					//HACER COMPARACION!!! MAR
 				} catch( ClienteRepetidoException ex ) {
-				  JOptionPane.showMessageDialog(null,"Ese usuario ya esta registrado!",
-				  "ALERTA!", JOptionPane.INFORMATION_MESSAGE); System.exit(0); }
+				  JOptionPane.showMessageDialog(null,"Ese usuario ya esta registrado!", "ALERTA!", JOptionPane.INFORMATION_MESSAGE); 
+				  System.exit(0); 
+				  }
 				
 			}
 			
@@ -123,15 +157,15 @@ public class VentanaRegistro extends JFrame {
 
 		
 		//ventana
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 643, 473);
 		getContentPane().setLayout(new BorderLayout());
 		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(panel, BorderLayout.CENTER);
-	}
-	
-	
-	
-	
+		
+		
 		
 	
+		
+		
+	}
 }
