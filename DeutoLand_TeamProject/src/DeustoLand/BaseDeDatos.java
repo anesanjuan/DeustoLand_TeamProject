@@ -651,9 +651,9 @@ public class BaseDeDatos {
 	 */
 	public static void insertarConciertos() {
 
-		Concierto conc1 = new Concierto(01, new Artista(0, "", null), 0, 1.00,
-				new Festival(0, "", null, null, null, null, 0, null));
-		Concierto conc0 = new Concierto(01, BaseDeDatos.getArtistas().get(0), 2022-03-12, 1.00, BaseDeDatos.getFestivales().get(0));
+		//Concierto conc1 = new Concierto(01, new Artista(0, "", null), 0, 1.00,
+				//new Festival(0, "", null, null, null, null, 0, null));
+		//Concierto conc0 = new Concierto(12, BaseDeDatos.getArtistas().get(0), 2022-03-12, 1.00, BaseDeDatos.getFestivales().get(0));
 		// Concierto conc2 = new Concierto(02, BaseDeDatos.getArtistas().get(1), new
 		// Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
 		// Concierto conc3 = new Concierto(03, BaseDeDatos.getArtistas().get(3), new
@@ -674,7 +674,7 @@ public class BaseDeDatos {
 		// Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
 
 		ArrayList<Concierto> conciertos = new ArrayList<>();
-		conciertos.add(conc1);
+		//conciertos.add(conc0);
 		// conciertos.add(conc0);
 		// conciertos.add(conc2);
 		// conciertos.add(conc3);
