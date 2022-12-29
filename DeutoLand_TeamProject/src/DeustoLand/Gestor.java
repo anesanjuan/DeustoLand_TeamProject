@@ -32,7 +32,7 @@ public class Gestor {
 
 
 
-	// al iniciar sesion
+	//VENTANA INICIO SESION
 	public int comprobarUsuario(String correo, String contrasena) {
 		for (User c : aUsers) {
 			if (c instanceof Cliente){

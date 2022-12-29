@@ -34,6 +34,7 @@ public class Main {
 		VentanaPrincipal vp = new VentanaPrincipal( gln, null );
 		vp.setVisible(true);
 		
+		
 		//VentanaEstadisticas ve = new VentanaEstadisticas();
 		//ve.setVisible(true);
 		
