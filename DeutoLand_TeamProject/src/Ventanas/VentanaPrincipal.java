@@ -318,7 +318,7 @@ public class VentanaPrincipal extends JFrame{
 		panelPrincipal.add(panelFestv6);
 		panelFestv6.setLayout(null);
 		
-		btnFestv6 = new JButton("Bombastic");
+		btnFestv6 = new JButton("Boombastic");
 		btnFestv6.setBounds(6, 213, 117, 29);
 		btnFestv6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				
@@ -352,6 +352,7 @@ public class VentanaPrincipal extends JFrame{
 		ImageIcon foto4 = null;
 		ImageIcon foto5 = null;
 		ImageIcon foto6 = null;
+
 		try {
 			foto1 = new ImageIcon(ImageIO.read(new File("fotos/"+BaseDeDatos.getFotoFest(btnFestv1.getText()))));
 			foto2 = new ImageIcon(ImageIO.read(new File("fotos/"+BaseDeDatos.getFotoFest(btnFestv2.getText()))));
@@ -395,6 +396,42 @@ public class VentanaPrincipal extends JFrame{
 		
 		
 		setVisible(true);
+		
+		
+		ArrayList<Festival> festivales = new ArrayList<>();
+		panelPrincipal.addMouseListener(new MouseAdapter() {
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int anchoP = panelPrincipal.getPreferredSize().width;
+				int largoP = panelPrincipal.getPreferredSize().height;
+				int posy=1;
+				int posx=1;
+				if ( e.getX() > 0 && e.getX() < anchoP && e.getY()>0 && e.getY()<largoP ) {
+					if (e.getY() < largoP && e.getY()>(largoP/2)+1) {
+						posy = 2;
+					} 
+					if (e.getX() < largoP && e.getX() > (largoP / 3) * 2) {
+						posx = 3;
+						
+					} else if (e.getX() < (largoP / 3) * 2 && e.getX() > (largoP / 3)+1 ) {
+						posx = 2;
+					}
+					
+				}
+				int festivalSelec = posy + posx;
+				if (festivalSelec == 2) {
+					
+
+					
+				}
+				
+			}
+		});
+		
+		
+		setVisible(true);
+		
 	}
 	
 	

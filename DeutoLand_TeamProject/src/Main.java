@@ -10,6 +10,7 @@ import DeustoLand.Festival;
 import DeustoLand.Gestor;
 import DeustoLand.TipoGenero;
 import Ventanas.VentanaCompra;
+import Ventanas.VentanaEstadisticas;
 import Ventanas.VentanaFestival;
 import Ventanas.VentanaInicioSesion;
 import Ventanas.VentanaPrincipal;
@@ -29,10 +30,12 @@ public class Main {
 		//BaseDeDatos.insertarArtistas();
 		//BaseDeDatos.insertarUsuarios();
 		
-		Gestor gln = new Gestor();
-		VentanaPrincipal vp = new VentanaPrincipal( gln, null );
-		vp.setVisible(true);
+		//Gestor gln = new Gestor();
+		//VentanaPrincipal vp = new VentanaPrincipal( gln, null );
+		//vp.setVisible(true);
 		
+		VentanaEstadisticas ve = new VentanaEstadisticas();
+		ve.setVisible(true);
 		
 		//BaseDeDatos.cerrarConexion();
 

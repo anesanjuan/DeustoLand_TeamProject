@@ -15,6 +15,8 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import Ventanas.VentanaFestival;
+
 
 /**
  * Clase de gestion de una base de datos del sistema de festivales???
@@ -493,11 +495,17 @@ public class BaseDeDatos {
 	
 	
 	///ESTO TENGO Q PROGRAMAR --- MAR
+	//holu soy ane, esto ahora mismo no funciona, pero en cuanto hagas lo de la 
+	//base de datos al registrarse, iniciar sesion y tal, esta funcion deberia de 
+	//funcionar, asiq no la cambies de mientras porfdi que creo que esta bien
 	public static User getUser(String correo, String contraseña) {
-		
+		int cli = 0;
 		try {
 			abrirConexion("BaseDatos.db", false);
 			for (User ad: BaseDeDatos.getUsers() ) {
+				if (ad.equals(BaseDeDatos.getCliente(correo, contraseña)) ) {
+					cli = cli +1;
+				} 
 				
 			}
 
@@ -505,8 +513,11 @@ public class BaseDeDatos {
 			logger.log(Level.SEVERE, "Excepcion", e);
 			return null;
 		}
-		return null;
-		
+		if (cli == 1) {
+			return BaseDeDatos.getCliente(correo, contraseña);
+		} else {
+			return BaseDeDatos.getAdmin(correo, contraseña);
+		}		
 		
 	}
 	
@@ -910,13 +921,10 @@ public class BaseDeDatos {
 		String fotoFestival = "";
 
 		for (Festival festival : BaseDeDatos.getFestivales()) {
-			if (festival.getNombre() == nombreF) {
-				System.out.println(festival.getFoto());
-				fotoFestival.concat(festival.getFoto());
-				System.out.println(fotoFestival);
+			if (festival.getNombre().equals(nombreF)) {
+				fotoFestival += (festival.getFoto());
 			}
 		}
-		System.out.println(fotoFestival);
 		return fotoFestival;
 
 	}
