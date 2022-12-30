@@ -1,0 +1,15 @@
+package JUnit;
+
+import static org.junit.Assert.*;
+
+
+import org.junit.Test;
+
+public class EntradaConCampingTest {
+
+	
+	@Test
+	public void test() {
+	}
+
+}

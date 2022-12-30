@@ -2,17 +2,20 @@ package JUnit;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.Before;
+
 import org.junit.Test;
 
-public class EntradaTest {
+public class EntradaVIPTest {
 
-	
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		
+		
+		
+		
+		
+		
 	}
 
 }
