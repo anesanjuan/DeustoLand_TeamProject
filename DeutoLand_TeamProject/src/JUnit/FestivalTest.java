@@ -25,7 +25,8 @@ public class FestivalTest {
 		assertEquals(f.getFecha(),  "21-07-2023");
 		assertEquals(f.getLugar(), "Boom, Bélgica");
 		assertEquals(f.getDescripcion(),"Tomorrowland es un festival de música electrónica de baile en el que lo pasarás en grande y difrutaras de 3 días increíbles con tus amigos y lleno de música. El festival tiene una duración de 3 días y cada día empezará sobre las 18:00 horas. Para más información consulte la página oficial del sitio: https://www.tomorrowland.com/");
-		assertEquals(f.getPrecio(), 150.00);
+		//este lo he tenido que poner con assertTrue porque con assertEquals me daba error al ser doubles
+		assertTrue(f.getPrecio() == 150.00);
 		assertEquals(f.getFoto(), "tomorrowland.png");
 
 	
