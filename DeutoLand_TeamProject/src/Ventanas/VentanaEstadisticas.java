@@ -29,8 +29,8 @@ public class VentanaEstadisticas extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private JTextField tfMaxP;
 	private JTextField tfMinP;
-	private JTextField tfNomU;
-	private JTextField tfEdadU;
+	private JTextField tfEdadMin;
+	private JTextField tfEdadMax;
 
 	public VentanaEstadisticas() {
 		
@@ -173,15 +173,15 @@ public class VentanaEstadisticas extends JFrame{
 		lblMinP.setBounds(447, 135, 97, 32);
 		panel1.add(lblMinP);
 		
-		JLabel lblNomU = new JLabel("Nombre usuario:");
-		lblNomU.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNomU.setBounds(447, 189, 119, 32);
-		panel1.add(lblNomU);
+		JLabel lblEdadMin = new JLabel("Edad mínima:");
+		lblEdadMin.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblEdadMin.setBounds(447, 189, 119, 32);
+		panel1.add(lblEdadMin);
 		
-		JLabel lblEdadU = new JLabel("Edad usuario:");
-		lblEdadU.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblEdadU.setBounds(447, 240, 119, 32);
-		panel1.add(lblEdadU);
+		JLabel lblEdadMax = new JLabel("Edad máxima:");
+		lblEdadMax.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblEdadMax.setBounds(447, 240, 119, 32);
+		panel1.add(lblEdadMax);
 		
 		tfMaxP = new JTextField();
 		tfMaxP.setColumns(10);
@@ -193,15 +193,15 @@ public class VentanaEstadisticas extends JFrame{
 		tfMinP.setBounds(602, 143, 96, 20);
 		panel1.add(tfMinP);
 		
-		tfNomU = new JTextField();
-		tfNomU.setColumns(10);
-		tfNomU.setBounds(602, 197, 96, 20);
-		panel1.add(tfNomU);
+		tfEdadMin = new JTextField();
+		tfEdadMin.setColumns(10);
+		tfEdadMin.setBounds(602, 197, 96, 20);
+		panel1.add(tfEdadMin);
 		
-		tfEdadU = new JTextField();
-		tfEdadU.setColumns(10);
-		tfEdadU.setBounds(602, 248, 96, 20);
-		panel1.add(tfEdadU);
+		tfEdadMax = new JTextField();
+		tfEdadMax.setColumns(10);
+		tfEdadMax.setBounds(602, 248, 96, 20);
+		panel1.add(tfEdadMax);
 		
 		JButton btnFiltrar = new JButton("FILTRAR");
 		btnFiltrar.setBounds(530, 296, 89, 23);
