@@ -10,6 +10,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -645,40 +647,49 @@ public class BaseDeDatos {
 
 	}
 
+	
+	public static long cambiarLong ( String date) {
+		SimpleDateFormat formato = new SimpleDateFormat("HH:mm:ss");
+		long milliseconds = 0;
+		try {
+		    java.util.Date d = formato.parse(date);
+		    milliseconds += d.getTime();
+		} catch (ParseException e) {
+		    e.printStackTrace();
+		}
+		System.out.println(milliseconds);
+		return milliseconds;
+	}
+	
+	
 	/**
 	 * Festivales ya establecidos una vez se abre el programa ?? redactarlo mejor
 	 * 
 	 */
 	public static void insertarConciertos() {
-
-		//Concierto conc1 = new Concierto(01, new Artista(0, "", null), 0, 1.00,
-				//new Festival(0, "", null, null, null, null, 0, null));
 		
-		//Concierto conc0 = new Concierto(12, BaseDeDatos.getArtistas().get(0), 2022-03-12, 1.00, BaseDeDatos.getFestivales().get(0));
-		
-		
-		// Concierto conc2 = new Concierto(02, BaseDeDatos.getArtistas().get(1), new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
-		// Concierto conc3 = new Concierto(03, BaseDeDatos.getArtistas().get(3), new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
-		// Concierto conc4 = new Concierto(04, BaseDeDatos.getArtistas().get(7), new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
-		// Concierto conc5 = new Concierto(05, BaseDeDatos.getArtistas().get(8), new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
-		// Concierto conc6 = new Concierto(06, BaseDeDatos.getArtistas().get(9), new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
-		// Concierto conc7 = new Concierto(07, BaseDeDatos.getArtistas().get(10), new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
-		// Concierto conc8 = new Concierto(8, BaseDeDatos.getArtistas().get(14), new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
-		// Concierto conc9 = new Concierto(9, BaseDeDatos.getArtistas().get(15), new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
-		// Concierto conc10 = new Concierto(10, BaseDeDatos.getArtistas().get(19), new Date(0), 1.00, BaseDeDatos.getFestivales().get(0));
+		Concierto conc0 = new Concierto(01, BaseDeDatos.getArtistas().get(0), BaseDeDatos.cambiarLong("17:00:00") , 1.00, BaseDeDatos.getFestivales().get(0));
+		Concierto conc1 = new Concierto(02, BaseDeDatos.getArtistas().get(1), BaseDeDatos.cambiarLong("18:00:00"), 1.00, BaseDeDatos.getFestivales().get(0));
+		Concierto conc2 = new Concierto(03, BaseDeDatos.getArtistas().get(3), BaseDeDatos.cambiarLong("19:00:00"), 1.00, BaseDeDatos.getFestivales().get(0));
+		Concierto conc3 = new Concierto(04, BaseDeDatos.getArtistas().get(7), BaseDeDatos.cambiarLong("20:00:00"), 1.00, BaseDeDatos.getFestivales().get(0));
+		Concierto conc4 = new Concierto(05, BaseDeDatos.getArtistas().get(8), BaseDeDatos.cambiarLong("21:00:00"), 1.00, BaseDeDatos.getFestivales().get(0));
+		Concierto conc5 = new Concierto(06, BaseDeDatos.getArtistas().get(9), BaseDeDatos.cambiarLong("22:00:00"), 1.00, BaseDeDatos.getFestivales().get(0));
+		Concierto conc6 = new Concierto(07, BaseDeDatos.getArtistas().get(10), BaseDeDatos.cambiarLong("23:00:00"), 1.00, BaseDeDatos.getFestivales().get(0));
+		Concierto conc7 = new Concierto(8, BaseDeDatos.getArtistas().get(14),BaseDeDatos.cambiarLong("00:00:00"), 1.00, BaseDeDatos.getFestivales().get(0));
+		Concierto conc8 = new Concierto(9, BaseDeDatos.getArtistas().get(15), BaseDeDatos.cambiarLong("01:00:00"), 1.00, BaseDeDatos.getFestivales().get(0));
+		Concierto conc9 = new Concierto(10, BaseDeDatos.getArtistas().get(19), BaseDeDatos.cambiarLong("02:00:00"), 1.00, BaseDeDatos.getFestivales().get(0));
 
 		ArrayList<Concierto> conciertos = new ArrayList<>();
-		//conciertos.add(conc0);
-		// conciertos.add(conc0);
-		// conciertos.add(conc2);
-		// conciertos.add(conc3);
-		// conciertos.add(conc4);
-		// conciertos.add(conc5);
-		// conciertos.add(conc6);
-		// conciertos.add(conc7);
-		// conciertos.add(conc8);
-		// conciertos.add(conc9);
-		// conciertos.add(conc10);
+		conciertos.add(conc0);
+		conciertos.add(conc1);
+		conciertos.add(conc2);
+		conciertos.add(conc3);
+		conciertos.add(conc4);
+		conciertos.add(conc5);
+		conciertos.add(conc6);
+		conciertos.add(conc7);
+		conciertos.add(conc8);
+		conciertos.add(conc9);
 
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
