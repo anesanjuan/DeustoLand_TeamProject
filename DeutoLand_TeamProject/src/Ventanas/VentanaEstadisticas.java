@@ -66,15 +66,6 @@ public class VentanaEstadisticas extends JFrame{
 		bSiguiente.setBounds(617, 24, 144, 36);
 		parteArriba.add(bSiguiente);
 		
-		JButton bEstad = new JButton("Estadisticas numéricas");
-		bEstad.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		
-		bEstad.setFont(new Font("Georgia", Font.PLAIN, 16));
-		bEstad.setBounds(304, 68, 226, 36);
-		parteArriba.add(bEstad);
 		
 		JPanel panelPrincipal = new JPanel();
 		panelPrincipal.setBounds(0, 110, 890, 468);
@@ -115,6 +106,7 @@ public class VentanaEstadisticas extends JFrame{
 		panel1.setBounds(10, 11, 857, 344);
 		panelPrincipal.add(panel1);
 		panel1.setLayout(null);
+		panel1.setVisible(false);
 		
 		JLabel MediaEdad = new JLabel("Media edad:");
 		MediaEdad.setBounds(93, 60, 83, 19);
@@ -215,23 +207,43 @@ public class VentanaEstadisticas extends JFrame{
 		btnFiltrar.setBounds(530, 296, 89, 23);
 		panel1.add(btnFiltrar);
 		
-
-		/*JTable tDatos = new JTable();
+		JPanel panelTable = new JPanel();
+		panelTable.setBounds(0, 11, 880, 332);
+		panelPrincipal.add(panelTable);
+		panelTable.setLayout(null);
+		
+		JTable tDatos= new JTable();
+		tDatos.setBounds(112, 31, 637, 266);
+		panelTable.add(tDatos);
+		Border bordepanel12 = BorderFactory.createTitledBorder("Tabla con datos");
+		panelTable.setBorder(bordepanel12);
+		
 		DefaultTableModel mDatos = new DefaultTableModel();
 		
-		Vector<String> cabeceras = new Vector<String>(Arrays.asList("cod Fest", "asistencia total", "num Conciertos"));
+		Vector<String> cabeceras = new Vector<String>(Arrays.asList("Nombre", "DNI", "Edad", "Tipo Entrada", "Precio"));
 		mDatos = new DefaultTableModel(new Vector<Vector<Object>>(), cabeceras );
 		tDatos = new JTable(mDatos);
 		tDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tDatos.getColumnModel().getColumn(0).setPreferredWidth(40);
-		tDatos.getColumnModel().getColumn(1).setPreferredWidth(30);
-		tDatos.getColumnModel().getColumn(2).setPreferredWidth(30);
-		tDatos.getColumnModel().getColumn(3).setPreferredWidth(120);
-		tDatos.getColumnModel().getColumn(4).setPreferredWidth(120);
+		tDatos.getColumnModel().getColumn(1).setPreferredWidth(40);
+		tDatos.getColumnModel().getColumn(2).setPreferredWidth(20);
+		tDatos.getColumnModel().getColumn(3).setPreferredWidth(50);
+		tDatos.getColumnModel().getColumn(4).setPreferredWidth(20);
 		
-		add (new JScrollPane(tDatos), BorderLayout.CENTER);
+		JButton bEstad = new JButton("Estadisticas numéricas");
+		bEstad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelTable.setVisible(false);
+				panel1.setVisible(true);
+			
+				
+			}
+		});
 		
-		mDatos.addRow(new Object[] {001, 10000, 10});*/
+		bEstad.setFont(new Font("Georgia", Font.PLAIN, 16));
+		bEstad.setBounds(304, 68, 226, 36);
+		parteArriba.add(bEstad);
+
 	}
 
 	
