@@ -39,8 +39,6 @@ public class VentanaPrincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	private JLabelAjustado lFoto = new JLabelAjustado(null);
-
 	// en el panel de arriba
 	private JPanel panelArriba;
 	private JLabel lblTitulo;

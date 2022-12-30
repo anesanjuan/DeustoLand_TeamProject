@@ -1,13 +1,19 @@
 package Ventanas;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,6 +24,7 @@ import javax.swing.SwingConstants;
 import javax.swing.text.html.Option;
 
 import DeustoLand.Artista;
+import DeustoLand.BaseDeDatos;
 import DeustoLand.Cliente;
 import DeustoLand.Concierto;
 import DeustoLand.Festival;
@@ -28,10 +35,9 @@ public class VentanaFestival extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	
-	//private JLabelAjustado lFoto = new JLabelAjustado( null );
+	
 	
 	public VentanaFestival(Festival festival, User u) {
-		
 		
 		setBounds(100, 100, 901, 615);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -184,14 +190,21 @@ public class VentanaFestival extends JFrame{
 		
 		JLabel descripcion = new JLabel(festival.getDescripcion());
 		descripcion.setVerticalAlignment(SwingConstants.TOP);
-		descripcion.setFont(new Font("Georgia", Font.PLAIN, 11));
+		descripcion.setFont(new Font("Georgia", Font.PLAIN, 14));
 		descripcion.setBounds(10, 340, 491, 171);
 		principalDrch.add(descripcion);
 		
-		ImageIcon fotoFest = new ImageIcon(festival.getFoto());
-		//JLabelAjustado fotoFest1 =  new JLabelAjustado(fotoFest);
+		ImageIcon fotoFest = null;
+		try {
+			fotoFest = new ImageIcon(ImageIO.read(new File("fotos/" + BaseDeDatos.getFotoFest(festival.getNombre()))));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
-		
+		JLabelAjustado fotoFest1 =  new JLabelAjustado(fotoFest);
+		fotoFest1.setBounds(21, 11, 352, 243);
+		principalIzq.add(fotoFest1);
+
 		
 		setVisible(true);
 		setSize(1000,1000);
@@ -200,6 +213,60 @@ public class VentanaFestival extends JFrame{
 		
 	}
 	
+	private static class JLabelAjustado extends JLabel {
+		private ImageIcon imagen;
+		private int tamX;
+		private int tamY;
+
+		/**
+		 * Crea un jlabel que ajusta una imagen cualquiera con fondo blanco a su tamaño
+		 * (a la que ajuste más de las dos escalas, horizontal o vertical)
+		 * 
+		 * @param imagen Imagen a visualizar en el label
+		 */
+		public JLabelAjustado(ImageIcon imagen) {
+			setImagen(imagen);
+		}
+
+		/**
+		 * Modifica la imagen
+		 * 
+		 * @param imagen Nueva imagen a visualizar en el label
+		 */
+		public void setImagen(ImageIcon imagen) {
+			this.imagen = imagen;
+			if (imagen == null) {
+				tamX = 0;
+				tamY = 0;
+			} else {
+				this.tamX = imagen.getIconWidth();
+				this.tamY = imagen.getIconHeight();
+			}
+		}
+
+		protected void paintComponent(Graphics g) {
+			Graphics2D g2 = (Graphics2D) g; // El Graphics realmente es Graphics2D
+			g2.setColor(Color.WHITE);
+			g2.fillRect(0, 0, getWidth(), getHeight());
+			if (imagen != null && tamX > 0 && tamY > 0) {
+				g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+				g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+				g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+				double escalaX = 1.0 * getWidth() / tamX;
+				double escalaY = 1.0 * getHeight() / tamY;
+				double escala = escalaX;
+				int x = 0;
+				int y = 0;
+				if (escalaY < escala) {
+					escala = escalaY;
+					x = (int) ((getWidth() - (tamX * escala)) / 2);
+				} else {
+					y = (int) ((getHeight() - (tamY * escala)) / 2);
+				}
+				g2.drawImage(imagen.getImage(), x, y, (int) (tamX * escala), (int) (tamY * escala), null);
+			}
+		}
+	}
 	
 
 	
