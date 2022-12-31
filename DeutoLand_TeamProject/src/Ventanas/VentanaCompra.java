@@ -56,6 +56,12 @@ public class VentanaCompra extends JFrame {
 	
 
 	public VentanaCompra(Festival festival, User u) {
+		//parteArriba.setBounds(0, 0, 890, 47);
+		//partePrincipal.setBounds(0, 0, 890, 47);
+		//pInfoFestival.setBounds(0, 0, 890, 47);
+		//parteAbajo.setBounds(0, 0, 890, 47);
+		
+		
 		System.out.println(festival);
 		System.out.println(u);
 		parteArriba = new JPanel();

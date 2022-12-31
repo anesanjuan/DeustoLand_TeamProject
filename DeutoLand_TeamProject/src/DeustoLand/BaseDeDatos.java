@@ -535,9 +535,9 @@ public class BaseDeDatos {
 					}
 				} 
 				else if (i == 1) {
-					//if ( BaseDeDatos.getFestivales().get(BaseDeDatos.getFestivales().size()-1).equals(f)) {
+					//if ( BaseDeDatos.getFestivales().get(BaseDeDatos.getFestivales().size()-1).equals(f)) {//no entra en este bucle y ns pq
 					
-					if ( BaseDeDatos.getFestivales().get(BaseDeDatos.getFestivales().size()-1).getNombre().equals(f.getNombre())){ //no entra en este bucle y ns pq
+					if ( BaseDeDatos.getFestivales().get(BaseDeDatos.getFestivales().size()-1).getNombre().equals(f.getNombre())){ 
 			
 						fest = BaseDeDatos.getFestivales().get(0);
 						
@@ -821,6 +821,9 @@ public class BaseDeDatos {
 
 		//el dni no tiene 9 caracteres y tendria mas sentido. La mayus de vitoria? :( 
 		
+		//Cliente de prueba DESPUES ELIMINAR!!!!!!!!!!
+		Cliente clienteP = new Cliente("marina", "m", "m", "m", "m", "m", 0, 0);
+		
 		Cliente cliente = new Cliente("Juan", "Gonzalez", "567899", "juangon@gmail.com", "1234", "vitoria", 18, 48980);
 		
 		Cliente cliente2 = new Cliente("Cristina", "Lopez", "4567881A", "crislopez@gmail.com", "5678", "C.Koldo Mitxelena, 9", 24, 37879);
@@ -854,6 +857,8 @@ public class BaseDeDatos {
 		Cliente cliente30 = new Cliente("Mara", "Suso", "7776678U", "marasuso@gmail.com", "marasusi878", "C.Gran V", 18, 14123);
 
 		ArrayList<Cliente> clientes = new ArrayList<>();
+		
+		clientes.add(clienteP); //Cliente de prueba ELIMINAR DESPUES!!!!!!
 		clientes.add(cliente);
 		//clientes.add(cliente2);
 		//clientes.add(cliente3);
