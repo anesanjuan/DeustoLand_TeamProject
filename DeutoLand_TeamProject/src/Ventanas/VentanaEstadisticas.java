@@ -59,11 +59,14 @@ public class VentanaEstadisticas extends JFrame{
 		nomFest.setBounds(352, 11, 144, 53);
 		parteArriba.add(nomFest);
 		
+		//TENGO QUE ARREGLAR ESTO -- ANE (YA SE CUAL ES EL ERROR PERO NO SE COMO ARREGLARLO)
 		JButton bAnterior = new JButton("anterior");
 		bAnterior.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//NO SE POR QUE NO FUNCIONA -- ANE
-				//nomFest = BaseDeDatos.FestEstadistica(fest1, 0).getNombre();
+				//System.out.println(BaseDeDatos.getFestNom(nomFest.toString()));
+				//System.out.println(BaseDeDatos.FestEstadistica(fest1, 0).getNombre());
+				nomFest.setText(BaseDeDatos.FestEstadistica(BaseDeDatos.getFestNom(nomFest.getText()), 0).getNombre());
+
 
 			}
 		});
@@ -71,12 +74,16 @@ public class VentanaEstadisticas extends JFrame{
 		bAnterior.setBounds(103, 24, 133, 36);
 		parteArriba.add(bAnterior);
 		
+		
+		//TENGO QUE ARREGLAR ESTO -- ANE (YA SE CUAL ES EL ERROR PERO NO SE COMO ARREGLARLO)
 		JButton bSiguiente = new JButton("siguiente");
 		bSiguiente.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//nomFest = BaseDeDatos.FestEstadistica(fest1, 1).getNombre();
+				//System.out.println(BaseDeDatos.FestEstadistica(BaseDeDatos.getFestNom(nomFest.getText().toString()), 0).getNombre());
+				//nomFest.add(new JLabel(BaseDeDatos.FestEstadistica(BaseDeDatos.getFestNom(nomFest.getText().toString()), 1).getNombre()));
+				nomFest.setText(BaseDeDatos.FestEstadistica(BaseDeDatos.getFestNom(nomFest.getText()), 1).getNombre());
 			}
 		});
 		

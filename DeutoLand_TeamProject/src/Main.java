@@ -24,19 +24,18 @@ public class Main {
 		//VentanaInicioSesion vi = new VentanaInicioSesion( gln );
 		//vi.setVisible(true);
 		
-		BaseDeDatos.abrirConexion("BaseDatos.db", true);
-		BaseDeDatos.insertarArtistas();
-		BaseDeDatos.insertarFestivales();
-		BaseDeDatos.insertarConciertos();
-		BaseDeDatos.insertarUsuarios();
+		BaseDeDatos.abrirConexion("BaseDatos.db", false);
+		//BaseDeDatos.insertarArtistas();
+		//BaseDeDatos.insertarFestivales();
+		//BaseDeDatos.insertarConciertos();
+		//BaseDeDatos.insertarUsuarios();
 		
 		Gestor gln = new Gestor();
-		VentanaPrincipal vp = new VentanaPrincipal( gln, null );
-		vp.setVisible(true);
+		//VentanaPrincipal vp = new VentanaPrincipal( gln, null );
+		//vp.setVisible(true);
 		
-		
-		//VentanaEstadisticas ve = new VentanaEstadisticas();
-		//ve.setVisible(true);
+		VentanaEstadisticas ve = new VentanaEstadisticas();
+		ve.setVisible(true);
 		
 		//BaseDeDatos.cerrarConexion();
 

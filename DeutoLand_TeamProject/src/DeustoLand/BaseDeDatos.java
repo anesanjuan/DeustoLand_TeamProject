@@ -523,22 +523,22 @@ public class BaseDeDatos {
 	
 	public static Festival FestEstadistica(Festival f, int i) {
 		Festival fest = new Festival();
-		int index = 0;
+		int index = -1;
 		for (Festival festival : BaseDeDatos.getFestivales()) {
 			index += 1;
 			if (f.getNombre().equals(festival.getNombre())) {
 				if (i==0) {
-					if (BaseDeDatos.getFestivales().get(0).equals(f)) {
-						fest = BaseDeDatos.getFestivales().get(BaseDeDatos.getFestivales().size());
+					if (BaseDeDatos.getFestivales().get(0).getNombre().equals(f.getNombre())) {
+						fest = BaseDeDatos.getFestivales().get(BaseDeDatos.getFestivales().size()-1); 
 					} else {
 						fest = BaseDeDatos.getFestivales().get(index -1);
 					}
 				} 
 				else if (i == 1) {
-					if ( BaseDeDatos.getFestivales().get(BaseDeDatos.getFestivales().size()).equals(f)) {
+					if ( BaseDeDatos.getFestivales().get(BaseDeDatos.getFestivales().size()-1).equals(f)) { //no entra en este bucle y ns pq
 						fest = BaseDeDatos.getFestivales().get(0);
 					} else {
-						fest = BaseDeDatos.getFestivales().get(index +1);
+						fest = BaseDeDatos.getFestivales().get(index+1);
 					}
 				} 
 				else {
@@ -546,6 +546,7 @@ public class BaseDeDatos {
 				}
 			}
 		}
+		//System.out.println(fest);
 		return fest;
 	}
 	
@@ -961,6 +962,38 @@ public class BaseDeDatos {
 		return f;
 	}
 
+	
+	public static Festival getFestNom (String nombre) {
+		Festival f = new Festival();
+		try {
+			abrirConexion("BaseDatos.db", false);
+			for (Festival fest : BaseDeDatos.getFestivales()) {
+				if (fest.getNombre().equals(nombre)) {
+					f.setCodigoF(fest.getCodigoF());
+					f.setNombre(fest.getNombre());
+					f.setLugar(fest.getLugar());
+					f.setFecha(fest.getFecha());
+					f.setDescripcion(fest.getDescripcion());
+					f.setPrecio(fest.getPrecio());
+					f.setFoto(fest.getFoto());
+					ArrayList<Concierto> conciertos = new ArrayList<>();
+					for (Concierto concierto : BaseDeDatos.getConciertos()) {
+						if (concierto.getFestival().getCodigoF() == f.getCodigoF()) {
+							conciertos.add(concierto);
+						}
+					}
+					f.setListaConciertos(conciertos);
+				}
+			}
+
+		} catch (Exception e) {
+			logger.log(Level.SEVERE, "Excepcion", e);
+			return null;
+		}
+		return f;
+	}
+	
+	
 	public static String getFotoFest(String nombreF) {
 		String fotoFestival = "";
 
