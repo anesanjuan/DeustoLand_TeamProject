@@ -4,24 +4,28 @@ public class Cliente extends User{
 	
 	private String direccion;
 	private int edad;
-	private String correo;
-
+	private int codigoP;
 	
 	public Cliente(int cod, String nombre, String apellido, String dni, String correo, String contrasena,
-			String direccion, int edad, String correo2) {
+			String direccion, int edad, int codigoP) {
 		super(cod, nombre, apellido, dni, correo, contrasena);
 		this.direccion = direccion;
 		this.edad = edad;
-		correo = correo2;
+		this.codigoP = codigoP;
+		
 	}
-	
-
-	public Cliente(int cod, String nombre, String apellido, String dni, String contrasena ) {
-		super(cod, nombre, apellido, dni, contrasena, contrasena);
+	public Cliente( String nombre, String apellido, String dni, String correo, String contrasena,
+			String direccion, int edad, int codigoP) {
+		super( nombre, apellido, dni, correo, contrasena);
+		this.direccion = direccion;
+		this.edad = edad;
+		this.codigoP = codigoP;
+		
 	}
-	
 	public Cliente() {
 		super();
+		
+		
 	}
 
 	public String getDireccion() {
@@ -40,12 +44,14 @@ public class Cliente extends User{
 		this.edad = edad;
 	}
 
-	public String getCorreo() {
-		return correo;
+	public int getCodigoP() {
+		return codigoP;
 	}
 
-	public void setCorreo(String correo) {
-		this.correo = correo;
+	public void setCodigoP(int codigoP) {
+		this.codigoP = codigoP;
 	}
+
+	
 
 }

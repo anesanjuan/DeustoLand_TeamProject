@@ -22,7 +22,7 @@ public class ClienteTest {
 		assertEquals(c.getContrasena(),"5678");
 		assertEquals(c.getDireccion(),"Vitoria");
 		assertEquals(c.getEdad(), 24);
-		assertEquals(c.getCodigoPostal(), 37879 );
+		assertEquals(c.getCodigoP(), 37879 );
 	}
 
 }

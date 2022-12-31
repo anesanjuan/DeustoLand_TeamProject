@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import DeustoLand.Cliente;
+import DeustoLand.Festival;
 import DeustoLand.User;
 
 public class VentanaCompra extends JFrame {
@@ -22,12 +23,17 @@ public class VentanaCompra extends JFrame {
 	
 	private JPanel parteArriba;
 	private JPanel partePrincipal;
+	private JPanel pInfoFestival;
 	private JPanel partePrincipal1;
 	private JPanel partePrincipal2;
 	private JPanel parteAbajo;
 	
 	//Componentes del panel de arriba
 	private JLabel titulo;
+	
+	//Componentes del panel principal1
+	private JLabel nombreFest;
+	private JLabel infoFest;
 	
 	//Componentes del panel principal1
 	private  JLabel nombre;
@@ -49,15 +55,21 @@ public class VentanaCompra extends JFrame {
 	private  JButton comprar;
 	
 
-	public VentanaCompra(User u) {
+	public VentanaCompra(Festival festival, User u) {
+		System.out.println(festival);
 		System.out.println(u);
 		parteArriba = new JPanel();
 		partePrincipal = new JPanel();
+		pInfoFestival = new JPanel();
 		partePrincipal1 = new JPanel();
 		partePrincipal2 = new JPanel();
 		parteAbajo = new JPanel();
 		
 		titulo = new JLabel("COMPRA ENTRADA FESTIVAL");
+		
+		nombreFest = new JLabel("Festival seleccionado: " + festival.getNombre());
+		infoFest =  new JLabel("Info: " + festival.getDescripcion());
+		
 		
 		nombre = new JLabel("Nombre: ");
 		textnombre = new JLabel (u.getNombre());
@@ -87,9 +99,13 @@ public class VentanaCompra extends JFrame {
 		
 		parteArriba.add(titulo);
 		
-		partePrincipal.setLayout(new GridLayout(2,1));
+		partePrincipal.setLayout(new GridLayout(4,1));
+		partePrincipal.add(pInfoFestival);
 		partePrincipal.add(partePrincipal1);
 		partePrincipal.add(partePrincipal2);
+		
+		pInfoFestival.add(nombreFest);
+		pInfoFestival.add(infoFest);
 		
 		partePrincipal1.add(nombre);
 		partePrincipal1.add(textnombre);
@@ -107,7 +123,6 @@ public class VentanaCompra extends JFrame {
 		partePrincipal2.add(textcv);
 		
 		parteAbajo.add(comprar);
-		
 		
 		getContentPane().add(parteArriba);
 		getContentPane().add(partePrincipal);

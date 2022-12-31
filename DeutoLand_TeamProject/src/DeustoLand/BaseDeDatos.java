@@ -423,7 +423,7 @@ public class BaseDeDatos {
 					c.setContrasena(cli.getContrasena());
 					c.setDireccion(cli.getDireccion());
 					c.setEdad(cli.getEdad());
-					c.setCodigoPostal(cli.getCodigoPostal());
+					c.setCodigoP(cli.getCodigoP());
 				}
 			}
 
@@ -535,12 +535,16 @@ public class BaseDeDatos {
 					}
 				} 
 				else if (i == 1) {
-					if ( BaseDeDatos.getFestivales().get(BaseDeDatos.getFestivales().size()-1).equals(f)) { //no entra en este bucle y ns pq
+					//if ( BaseDeDatos.getFestivales().get(BaseDeDatos.getFestivales().size()-1).equals(f)) {
+					
+					if ( BaseDeDatos.getFestivales().get(BaseDeDatos.getFestivales().size()-1).getNombre().equals(f.getNombre())){ //no entra en este bucle y ns pq
+			
 						fest = BaseDeDatos.getFestivales().get(0);
+						
 					} else {
 						fest = BaseDeDatos.getFestivales().get(index+1);
-					}
 				} 
+				}
 				else {
 					System.out.println("error, el número solo puede estar entre 0 y 1");
 				}
@@ -815,7 +819,8 @@ public class BaseDeDatos {
 		
 		//String nombre, String apellido, String dni, String correo, String contraseña, String direccion, int edad, int codigoPostal
 
-		//el dni no tiene 9 caracteres y tendria mas sentido. La mayus de vitoria? :(
+		//el dni no tiene 9 caracteres y tendria mas sentido. La mayus de vitoria? :( 
+		
 		Cliente cliente = new Cliente("Juan", "Gonzalez", "567899", "juangon@gmail.com", "1234", "vitoria", 18, 48980);
 		
 		Cliente cliente2 = new Cliente("Cristina", "Lopez", "4567881A", "crislopez@gmail.com", "5678", "C.Koldo Mitxelena, 9", 24, 37879);
@@ -894,7 +899,7 @@ public class BaseDeDatos {
 				String contraseña = cl.getContrasena();
 				String direccion = cl.getDireccion();
 				int edad = cl.getEdad();
-				int codigoP = cl.getCodigoPostal();
+				int codigoP = cl.getCodigoP();
 				int tipo = 0;
 				
 				String sent = "INSERT INTO user (nombre, apellido, dni, correo, contrasena, tipo, direccion, edad, codigoP) "
