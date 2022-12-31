@@ -2,12 +2,14 @@ package Ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
+import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,6 +21,9 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
+
+import DeustoLand.BaseDeDatos;
+import DeustoLand.Festival;
 
 public class VentanaEstadisticas extends JFrame{
 
@@ -34,6 +39,8 @@ public class VentanaEstadisticas extends JFrame{
 
 	public VentanaEstadisticas() {
 		
+		Festival fest1 = BaseDeDatos.getFestivales().get(0);
+		
 		setBounds(100, 100, 901, 615);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
@@ -47,14 +54,17 @@ public class VentanaEstadisticas extends JFrame{
 		parteArriba.setLayout(null);
 		
 		
-		JLabel nomFest = new JLabel("Festival X");
-		nomFest.setFont(new Font("Georgia", Font.PLAIN, 30));
+		JLabel nomFest = new JLabel(fest1.getNombre());
+		nomFest.setFont(new Font("Georgia", Font.PLAIN, 21));
 		nomFest.setBounds(352, 11, 144, 53);
 		parteArriba.add(nomFest);
 		
 		JButton bAnterior = new JButton("anterior");
 		bAnterior.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//NO SE POR QUE NO FUNCIONA -- ANE
+				//nomFest = BaseDeDatos.FestEstadistica(fest1, 0).getNombre();
+
 			}
 		});
 		bAnterior.setFont(new Font("Georgia", Font.PLAIN, 16));
@@ -62,6 +72,15 @@ public class VentanaEstadisticas extends JFrame{
 		parteArriba.add(bAnterior);
 		
 		JButton bSiguiente = new JButton("siguiente");
+		bSiguiente.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//nomFest = BaseDeDatos.FestEstadistica(fest1, 1).getNombre();
+			}
+		});
+		
+		
 		bSiguiente.setFont(new Font("Georgia", Font.PLAIN, 16));
 		bSiguiente.setBounds(617, 24, 144, 36);
 		parteArriba.add(bSiguiente);

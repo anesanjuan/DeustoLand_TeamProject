@@ -17,6 +17,8 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.JOptionPane;
+
 import Ventanas.VentanaFestival;
 
 
@@ -519,7 +521,33 @@ public class BaseDeDatos {
 	
 	
 	
-	
+	public static Festival FestEstadistica(Festival f, int i) {
+		Festival fest = new Festival();
+		int index = 0;
+		for (Festival festival : BaseDeDatos.getFestivales()) {
+			index += 1;
+			if (f.getNombre().equals(festival.getNombre())) {
+				if (i==0) {
+					if (BaseDeDatos.getFestivales().get(0).equals(f)) {
+						fest = BaseDeDatos.getFestivales().get(BaseDeDatos.getFestivales().size());
+					} else {
+						fest = BaseDeDatos.getFestivales().get(index -1);
+					}
+				} 
+				else if (i == 1) {
+					if ( BaseDeDatos.getFestivales().get(BaseDeDatos.getFestivales().size()).equals(f)) {
+						fest = BaseDeDatos.getFestivales().get(0);
+					} else {
+						fest = BaseDeDatos.getFestivales().get(index +1);
+					}
+				} 
+				else {
+					System.out.println("error, el número solo puede estar entre 0 y 1");
+				}
+			}
+		}
+		return fest;
+	}
 	
 
 	////////////////////////////////////////////
