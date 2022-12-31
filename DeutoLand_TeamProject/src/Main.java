@@ -9,6 +9,7 @@ import DeustoLand.Concierto;
 import DeustoLand.Festival;
 import DeustoLand.Gestor;
 import DeustoLand.TipoGenero;
+import DeustoLand.User;
 import Ventanas.VentanaCompra;
 import Ventanas.VentanaEstadisticas;
 import Ventanas.VentanaFestival;
@@ -20,6 +21,7 @@ public class Main {
 
 	public static void main(String[] args) throws SQLException {
 		
+		Gestor gln = new Gestor();
 		 	
 		//VentanaInicioSesion vi = new VentanaInicioSesion( gln );
 		//vi.setVisible(true);
@@ -30,12 +32,12 @@ public class Main {
 		//BaseDeDatos.insertarConciertos();
 		//BaseDeDatos.insertarUsuarios();
 		
-		Gestor gln = new Gestor();
-		//VentanaPrincipal vp = new VentanaPrincipal( gln, null );
-		//vp.setVisible(true);
 		
-		VentanaEstadisticas ve = new VentanaEstadisticas();
-		ve.setVisible(true);
+		VentanaPrincipal vp = new VentanaPrincipal( gln, null );
+		vp.setVisible(true);
+	
+		//VentanaEstadisticas ve = new VentanaEstadisticas();
+		//ve.setVisible(true);
 		
 		//BaseDeDatos.cerrarConexion();
 

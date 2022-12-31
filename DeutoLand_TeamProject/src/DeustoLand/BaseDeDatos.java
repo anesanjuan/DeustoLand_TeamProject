@@ -211,7 +211,7 @@ public class BaseDeDatos {
 		try (Statement statement = con.createStatement()) {
 			String sent = "insert into user values ( '" + cliente.getNombre() + "' , '" + cliente.getApellido()
 					+ "' , '" + cliente.getDni() + "' , '" + cliente.getCorreo() + "' , '" + cliente.getContrasena() + "' , '" + cliente.getDireccion()
-					+ "' , " + cliente.getEdad() + ", " + cliente.getCodigoPostal() + " );";
+					+ "' , " + cliente.getEdad() + " );";
 			logger.log(Level.INFO, "Statement: " + sent);
 			int insertados = statement.executeUpdate(sent);
 
