@@ -33,10 +33,15 @@ import DeustoLand.BaseDeDatos;
 import DeustoLand.Cliente;
 import DeustoLand.Festival;
 import DeustoLand.Gestor;
+import DeustoLand.Reloj;
 import DeustoLand.User;
 
 public class VentanaPrincipal extends JFrame {
 
+	//instancia unica del sistema
+	public Reloj reloj = new Reloj();
+	public Thread hilo = new Thread( reloj );
+	
 	private static final long serialVersionUID = 1L;
 
 	// en el panel de arriba
@@ -84,9 +89,14 @@ public class VentanaPrincipal extends JFrame {
 	private JLabel lblFechaFestv6;
 
 	private Gestor gestor;
+	
+	//IMPLEMENTAR LA INTERFAZ OBSERVER 
 
 	// esto es como inicializar: mete todo dentro
 	public VentanaPrincipal(Gestor gestor, User u) {
+		
+		hilo.start();
+		
 		setBounds(100, 100, 901, 615);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
