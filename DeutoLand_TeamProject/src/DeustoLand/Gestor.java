@@ -50,7 +50,17 @@ public class Gestor {
 
 	public void insertarCliente(String nombre, String apellido, String dni, String email, String contrasena,
 			String direccion, int edad, int codigoPostal) throws ClienteRepetidoException {
-		BaseDeDatos.insertarUsuario(nombre, apellido, dni, email, contrasena, direccion, edad, codigoPostal);
+		
+		User u = BaseDeDatos.getCliente(email, contrasena);
+		
+		if( u == null )
+		{
+			BaseDeDatos.insertarUsuario(nombre, apellido, dni, email, contrasena, direccion, edad, codigoPostal);
+		}
+		else
+		{
+			throw new ClienteRepetidoException("Cliente repetido");
+		}
 	}
 
 }

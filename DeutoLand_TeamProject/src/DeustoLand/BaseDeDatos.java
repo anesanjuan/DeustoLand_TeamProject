@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 
+import Excepciones.ClienteRepetidoException;
 import Ventanas.VentanaFestival;
 
 /**
@@ -437,13 +438,13 @@ public class BaseDeDatos {
 		}
 	}
 
-	////////////// esto lo tengo q corregor MAR
 	public static Cliente getCliente(String correo, String contraseña) {
-		Cliente c = new Cliente();
+		Cliente c = null;
 		try {
 			abrirConexion("BaseDatos.db", false);
 			for (Cliente cli : BaseDeDatos.getClientes()) {
 				if (cli.getCorreo().equals(correo) && cli.getContrasena().equals(contraseña)) {
+					c = new Cliente();
 					c.setCod(cli.getCod());
 					c.setNombre(cli.getNombre());
 					c.setApellido(cli.getApellido());
@@ -456,12 +457,12 @@ public class BaseDeDatos {
 				}
 			}
 
+			return c;
+
 		} catch (Exception e) {
 			logger.log(Level.SEVERE, "Excepcion", e);
 			return null;
 		}
-		// System.out.println(c);
-		return c;
 
 	}
 
@@ -987,11 +988,14 @@ public class BaseDeDatos {
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
 			int tipo = 0;
+
 			String sent = "INSERT INTO user (nombre, apellido, dni, correo, contrasena, tipo, direccion, edad, codigoP) "
 					+ " VALUES ( '" + nombre + "', '" + apellido + "', '" + dni + "','" + correo + "','" + contrasena
 					+ "'," + tipo + ",'" + direccion + "'," + edad + " ," + codigoPostal + ");";
 			logger.log(Level.INFO, "Statement: " + sent);
+
 			statement.executeUpdate(sent);
+
 		} catch (Exception e) {
 			logger.log(Level.SEVERE, "Excepción", e);
 		}

@@ -74,8 +74,7 @@ public class VentanaInicioSesion extends JFrame {
 
 				int x = gestor.comprobarUsuario(correo, contrasena);
 
-				//HAY QUE CORREGIR ---- MAR
- 				if (x == 0) {
+				if (x == 0) {
 					User u = BaseDeDatos.getUser(correo, contrasena);
 					VentanaPrincipal vp = new VentanaPrincipal(gestor, u);
 					vp.setVisible(true);
@@ -84,11 +83,10 @@ public class VentanaInicioSesion extends JFrame {
 					User u = BaseDeDatos.getUser(correo, contrasena);
 					VentanaPrincipal vp = new VentanaPrincipal(gestor, u);
 					vp.setVisible(true);
-					//HCAER VISIBLE EL BOTON
-					
+					// HCAER VISIBLE EL BOTON
+
 					dispose();
-					
-					
+
 				} else {
 					JOptionPane.showMessageDialog(null, "El usuario o la contrasena son incorrectos.");
 				}
@@ -108,7 +106,8 @@ public class VentanaInicioSesion extends JFrame {
 				// al pulsar este boton se abre la ventana de regiustro
 				VentanaRegistro vr = new VentanaRegistro(gestor);
 				vr.setVisible(true);
-				// vr.setModal(true);
+				
+				dispose();
 			}
 		});
 		// se a�ade

@@ -404,7 +404,7 @@ public class VentanaPrincipal extends JFrame {
 		if (u instanceof Admin) {
 			btnEstadisticas.setVisible(true);
 			btnInicioSesion.setVisible(false);
-		} else if ( u  instanceof Cliente ) {
+		} else if (u instanceof Cliente) {
 			btnEstadisticas.setVisible(false);
 			btnInicioSesion.setVisible(false);
 		}

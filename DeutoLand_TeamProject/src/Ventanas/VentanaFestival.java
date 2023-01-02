@@ -31,173 +31,166 @@ import DeustoLand.Festival;
 import DeustoLand.Gestor;
 import DeustoLand.User;
 
-public class VentanaFestival extends JFrame{
+public class VentanaFestival extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	
-	
-	
+
 	public VentanaFestival(Festival festival, User u) {
-		
+
 		setBounds(100, 100, 901, 615);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
-		
+
 		JPanel parteArriba = new JPanel();
 		parteArriba.setBounds(0, 0, 890, 47);
 		getContentPane().add(parteArriba);
-		//parteArriba.setLayout(new GridLayout(1,4));
-		
+		// parteArriba.setLayout(new GridLayout(1,4));
+
 		JLabel nomFest = new JLabel("Festival " + festival.getNombre());
 		nomFest.setFont(new Font("Georgia", Font.PLAIN, 25));
 		nomFest.setBounds(10, 11, 299, 36);
 		parteArriba.add(nomFest);
-		
+
 		JButton bAtras = new JButton("volver atrás");
 		bAtras.setFont(new Font("Georgia", Font.PLAIN, 16));
 		bAtras.setBounds(387, 11, 133, 36);
 		parteArriba.add(bAtras);
 		bAtras.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Gestor gn = new Gestor();
 				VentanaPrincipal vp = new VentanaPrincipal(gn, null);
 				vp.setVisible(true);
 				setVisible(false);
-				
+
 			}
 		});
-		
-		
+
 		JButton bInicioSesion = new JButton("iniciar sesión");
 		bInicioSesion.setFont(new Font("Georgia", Font.PLAIN, 16));
 		bInicioSesion.setBounds(716, 11, 144, 36);
 		parteArriba.add(bInicioSesion);
 		bInicioSesion.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Gestor gn = new Gestor();
 				VentanaInicioSesion vis = new VentanaInicioSesion(gn);
 				vis.setVisible(true);
 				setVisible(false);
-				
+
 			}
 		});
-		
+
 		JPanel panelPrincipal = new JPanel();
 		panelPrincipal.setBounds(0, 51, 890, 527);
 		getContentPane().add(panelPrincipal);
-		panelPrincipal.setLayout(new GridLayout(1,2));
-		
+		panelPrincipal.setLayout(new GridLayout(1, 2));
+
 		JPanel principalIzq = new JPanel();
 		principalIzq.setBounds(0, 5, 375, 522);
 		panelPrincipal.add(principalIzq);
 		principalIzq.setLayout(null);
-		
-		
+
 		JLabel tituloPrecio = new JLabel("Precio:");
 		tituloPrecio.setFont(new Font("Georgia", Font.PLAIN, 20));
 		tituloPrecio.setBounds(22, 270, 75, 42);
 		principalIzq.add(tituloPrecio);
-		
+
 		JButton bComprarEnt = new JButton("Comprar Entrada");
 		bComprarEnt.addActionListener(new ActionListener() {
 			@SuppressWarnings("unused")
 			public void actionPerformed(ActionEvent e) {
 				if (u == null) {
-					JOptionPane.showMessageDialog(null, "Para poder acceder a la compra de entradas es necesario Registrarse o Iniciar Sesión");
+					JOptionPane.showMessageDialog(null,
+							"Para poder acceder a la compra de entradas es necesario Registrarse o Iniciar Sesión");
 				} else {
 					VentanaCompra vc = new VentanaCompra(festival, u);
 					vc.setVisible(true);
 					setVisible(false);
 				}
-				
-				
+
 			}
 		});
 		bComprarEnt.setFont(new Font("Georgia", Font.PLAIN, 16));
 		bComprarEnt.setBounds(101, 380, 167, 36);
 		principalIzq.add(bComprarEnt);
-		
+
 		JLabel precio = new JLabel(festival.getPrecio() + "€");
 		precio.setFont(new Font("Georgia", Font.PLAIN, 20));
 		precio.setBounds(114, 270, 128, 42);
 		principalIzq.add(precio);
-		
+
 		JPanel principalDrch = new JPanel();
 		principalDrch.setBounds(379, 5, 511, 522);
 		panelPrincipal.add(principalDrch);
 		principalDrch.setLayout(null);
-		
+
 		JLabel tituloFecha = new JLabel("Fecha:");
 		tituloFecha.setFont(new Font("Georgia", Font.PLAIN, 20));
 		tituloFecha.setBounds(61, 78, 75, 42);
 		principalDrch.add(tituloFecha);
-		
+
 		JLabel tituloLugar = new JLabel("Lugar:");
 		tituloLugar.setFont(new Font("Georgia", Font.PLAIN, 20));
 		tituloLugar.setBounds(61, 132, 75, 42);
 		principalDrch.add(tituloLugar);
-		
+
 		JLabel tituloArtistasInv = new JLabel("Aristas Invitados:");
 		tituloArtistasInv.setFont(new Font("Georgia", Font.PLAIN, 20));
 		tituloArtistasInv.setBounds(61, 185, 164, 42);
 		principalDrch.add(tituloArtistasInv);
-		
+
 		JLabel tituloDescripcion = new JLabel("Descripción:");
 		tituloDescripcion.setFont(new Font("Georgia", Font.PLAIN, 20));
 		tituloDescripcion.setBounds(61, 307, 121, 42);
 		principalDrch.add(tituloDescripcion);
-		
+
 		JLabel fecha = new JLabel(festival.getFecha());
 		fecha.setFont(new Font("Georgia", Font.PLAIN, 20));
 		fecha.setBounds(146, 78, 327, 42);
 		principalDrch.add(fecha);
-		
+
 		JLabel lugar = new JLabel(festival.getLugar());
 		lugar.setFont(new Font("Georgia", Font.PLAIN, 20));
 		lugar.setBounds(150, 132, 323, 42);
 		principalDrch.add(lugar);
-		
+
 		String listaA = "";
-		for (Concierto con: festival.getListaConciertos()) {
+		for (Concierto con : festival.getListaConciertos()) {
 			String artista = con.getArtista().getNombre();
 			listaA = listaA + "," + artista;
 		}
-		
+
 		JLabel artistasInv = new JLabel(listaA);
 		artistasInv.setVerticalAlignment(SwingConstants.TOP);
 		artistasInv.setFont(new Font("Georgia", Font.PLAIN, 20));
 		artistasInv.setBounds(61, 225, 412, 78);
 		principalDrch.add(artistasInv);
-		
+
 		JLabel descripcion = new JLabel(festival.getDescripcion());
 		descripcion.setVerticalAlignment(SwingConstants.TOP);
 		descripcion.setFont(new Font("Georgia", Font.PLAIN, 14));
 		descripcion.setBounds(10, 340, 491, 171);
 		principalDrch.add(descripcion);
-		
+
 		ImageIcon fotoFest = null;
 		try {
 			fotoFest = new ImageIcon(ImageIO.read(new File("fotos/" + BaseDeDatos.getFotoFest(festival.getNombre()))));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		JLabelAjustado fotoFest1 =  new JLabelAjustado(fotoFest);
+
+		JLabelAjustado fotoFest1 = new JLabelAjustado(fotoFest);
 		fotoFest1.setBounds(21, 11, 352, 243);
 		principalIzq.add(fotoFest1);
 
-		
 		setVisible(true);
-		setSize(1000,1000);
-		
-		
-		
+		setSize(1000, 1000);
+
 	}
-	
+
 	private static class JLabelAjustado extends JLabel {
 		private ImageIcon imagen;
 		private int tamX;
@@ -252,7 +245,5 @@ public class VentanaFestival extends JFrame{
 			}
 		}
 	}
-	
 
-	
 }
