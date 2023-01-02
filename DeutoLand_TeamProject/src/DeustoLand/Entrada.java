@@ -1,6 +1,6 @@
 package DeustoLand;
 
-public class Entrada {
+public class Entrada implements Comparable<Entrada> {
 
 	// tbala entrada con lo comun + columna tipo (boolean, string.. para
 	// diferenciar), + columnas especificas de cada clase
@@ -9,11 +9,22 @@ public class Entrada {
 	private int numeroEntrada;
 	private Festival festival;
 
-	public Entrada(Cliente cliente, int numeroEntrada, Festival festival) {
+	private double precio;
+
+	public Entrada(Cliente cliente, int numeroEntrada, Festival festival, double precio) {
 		super();
 		this.cliente = cliente;
 		this.numeroEntrada = numeroEntrada;
 		this.festival = festival;
+		this.precio = precio;
+	}
+
+	public double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
 	}
 
 	public Entrada() {
@@ -47,6 +58,12 @@ public class Entrada {
 	@Override
 	public String toString() {
 		return "Entrada [cliente=" + cliente + ", numeroEntrada=" + numeroEntrada + ", festival=" + festival + "]";
+	}
+
+	@Override
+	public int compareTo(Entrada o) {
+
+		return (int) (precio * 100 - o.precio * 100);
 	}
 
 }

@@ -15,8 +15,8 @@ public class EntradaConCamping extends Entrada {
 	 * @param parcela
 	 */
 	public EntradaConCamping(Cliente cliente, int numeroEntrada, Festival festival, int suplementoCamping,
-			int parcela) {
-		super(cliente, numeroEntrada, festival);
+			int parcela , double precio ) {
+		super(cliente, numeroEntrada, festival, precio );
 		this.suplementoCamping = suplementoCamping;
 		this.parcela = parcela;
 	}
