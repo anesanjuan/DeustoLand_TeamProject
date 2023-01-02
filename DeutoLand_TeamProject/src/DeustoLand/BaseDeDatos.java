@@ -980,7 +980,7 @@ public class BaseDeDatos {
 	//INSERTAR CLIENTE ---- VENTANA REGISTRO
 	public static void insertarUsuario(String nombre, String apellido, String dni, String correo, String contrasena, String direccion, int edad, int codigoPostal) {
 		try (Statement statement = con.createStatement()) {
-			abrirConexion("BaseDatos.db", true);
+			abrirConexion("BaseDatos.db", false);
 				int tipo = 0;
 				String sent = "INSERT INTO user (nombre, apellido, dni, correo, contrasena, tipo, direccion, edad, codigoP) "
 						+ " VALUES ( '" + nombre + "', '" + apellido + "', '" + dni + "','" + correo + "','" + contrasena + "'," + tipo + ",'" + direccion +"'," + edad + " ," + codigoPostal  +");";
