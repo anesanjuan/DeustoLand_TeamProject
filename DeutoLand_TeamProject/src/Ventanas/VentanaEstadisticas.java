@@ -23,6 +23,7 @@ import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 
 import DeustoLand.BaseDeDatos;
+import DeustoLand.Cliente;
 import DeustoLand.Festival;
 
 public class VentanaEstadisticas extends JFrame{
@@ -256,11 +257,24 @@ public class VentanaEstadisticas extends JFrame{
 		tDatos.getColumnModel().getColumn(3).setPreferredWidth(50);
 		tDatos.getColumnModel().getColumn(4).setPreferredWidth(20);
 		
+		
+		/*for (Entrada c: BaseDeDatos.getEntradas()) {
+			
+		}*/
+		
+		
 		JButton bEstad = new JButton("Estadisticas numéricas");
 		bEstad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelTable.setVisible(false);
-				panel1.setVisible(true);
+				if (panelTable.isVisible()) {
+					panelTable.setVisible(false);
+					panel1.setVisible(true);
+				} else {
+					panel1.setVisible(false);
+					panelTable.setVisible(true);
+					
+				}
+				
 			
 				
 			}

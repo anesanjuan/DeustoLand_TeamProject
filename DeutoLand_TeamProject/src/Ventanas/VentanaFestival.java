@@ -69,21 +69,6 @@ public class VentanaFestival extends JFrame{
 			}
 		});
 		
-		JButton bRegistro = new JButton("registrarme");
-		bRegistro.setFont(new Font("Georgia", Font.PLAIN, 16));
-		bRegistro.setBounds(545, 11, 144, 36);
-		parteArriba.add(bRegistro);
-		bRegistro.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				Gestor gn = new Gestor();
-				VentanaRegistro vr = new VentanaRegistro(gn);
-				vr.setVisible(true);
-				setVisible(false);
-				
-			}
-		});
 		
 		JButton bInicioSesion = new JButton("iniciar sesión");
 		bInicioSesion.setFont(new Font("Georgia", Font.PLAIN, 16));

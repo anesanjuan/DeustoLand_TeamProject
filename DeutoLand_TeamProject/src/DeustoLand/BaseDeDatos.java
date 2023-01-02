@@ -79,7 +79,7 @@ public class BaseDeDatos {
 				sent = "DROP TABLE IF EXISTS entradas";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
-				sent = "CREATE TABLE entradas (codE INTEGER PRIMARY KEY AUTOINCREMENT, codC int(4) REFERENCES clientes(codC), codF int (3) REFERENCES festival(codF) , tipo int(1) , suplemento_c dec(4,2), parcela int(3), suplemento_v dec(4,2), num_zona int(2) );";
+				sent = "CREATE TABLE entradas (codE INTEGER PRIMARY KEY AUTOINCREMENT, codC int(4) REFERENCES user(codU), codF int (3) REFERENCES festival(codF) , tipo int(1) , suplemento_c dec(4,2), parcela int(3), suplemento_v dec(4,2), num_zona int(2) );";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
 
@@ -267,6 +267,62 @@ public class BaseDeDatos {
 		return ret;
 
 	}
+	
+	
+	// LO HE EMPZADO PERO NO ME HA DADO TIEMPO A ACABAR, LUEGO LO ACABO -- ANE
+	
+	/*public static ArrayList<Entrada> getEntradas() {
+		ArrayList<Entrada> ret = new ArrayList<>();
+		try (Statement statement = con.createStatement()) {
+			abrirConexion("BaseDatos.db", false);
+			String sent = "select * from entradas";
+			logger.log(Level.INFO, "Statement: " + sent);
+			ResultSet rs = statement.executeQuery(sent);
+			while (rs.next()) {
+				int cod = rs.getInt("codE");
+				int codUser = rs.getInt("codU");
+				int codFest = rs.getInt("codF");
+				int tipo = rs.getInt("tipo");
+				double suplementoC = rs.getDouble("suplemento_c");
+				int parcela = rs.getInt("parcela");
+				Double suplementoV = rs.getDouble("suplemento_v");
+				int numZona = rs.getInt("num_zona");
+				
+				User user = new User();
+				for (User u : BaseDeDatos.getUsers()) {
+					if (u.getCod() == codUser) {
+						user = BaseDeDatos.getUser(u.getCorreo(), u.getContrasena());
+					}
+				}
+				
+				Festival fest = new Festival();
+				for (Festival festival : BaseDeDatos.getFestivales()) {
+					if (festival.getCodigoF() == codFest) {
+						fest.setCodigoF(festival.getCodigoF());
+						fest.setNombre(festival.getNombre());
+						fest.setFecha(festival.getFecha());
+						fest.setLugar(festival.getLugar());
+						fest.setDescripcion(festival.getDescripcion());
+						fest.setPrecio(festival.getPrecio());
+						fest.setFoto(festival.getFoto());
+					}
+				}
+				
+				if (tipo == 0) {
+					ret.add(new Entrada(cod, user, fest));
+				}
+				ret.add(new Festival(cod, nombre, fecha, lugar, descripcion, precio, foto));
+
+			}
+			// return ret;
+		} catch (Exception e) {
+			logger.log(Level.SEVERE, "Excepcion", e);
+			return null;
+		}
+		return ret;
+
+	}*/
+	
 
 	/**
 	 * Lee los artistas de la conexion de base de datos abierta (debe abrirse
