@@ -2,7 +2,7 @@ package DeustoLand;
 
 import java.util.ArrayList;
 
-public class Festival {
+public class Festival implements Comparable<Festival>{
 
 	private int codigoF;
 	private String nombre;
@@ -111,6 +111,12 @@ public class Festival {
 		return "Festival [codigoF=" + codigoF + ", nombre=" + nombre + ", fecha=" + fecha + ", lugar=" + lugar
 				+ ", descripcion=" + descripcion + ", listaConciertos=" + listaConciertos + ", precio=" + precio
 				+ ", foto=" + foto + "]";
+	}
+	
+	@Override
+	public int compareTo(Festival o) {
+
+		return (int) (precio * 100 - o.precio * 100);
 	}
 
 }
