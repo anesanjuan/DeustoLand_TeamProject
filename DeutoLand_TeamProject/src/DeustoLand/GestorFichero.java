@@ -9,10 +9,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-
 public class GestorFichero {
-	
-	public ArrayList<Cliente> cargarClientes() { 
+
+	public ArrayList<Cliente> cargarClientes() {
 
 		ArrayList<Cliente> clientes = null;
 		try {
@@ -32,7 +31,7 @@ public class GestorFichero {
 		return null;
 	}
 
-	public void guardarClientes(ArrayList<Cliente> clientes) { 
+	public void guardarClientes(ArrayList<Cliente> clientes) {
 		try {
 			File f = new File("clientes.dat");
 			FileOutputStream fos = new FileOutputStream(f);

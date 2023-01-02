@@ -1,31 +1,32 @@
 package DeustoLand;
 
-public class Cliente extends User{
-	
+public class Cliente extends User {
+
 	private String direccion;
 	private int edad;
 	private int codigoP;
-	
+
 	public Cliente(int cod, String nombre, String apellido, String dni, String correo, String contrasena,
 			String direccion, int edad, int codigoP) {
 		super(cod, nombre, apellido, dni, correo, contrasena);
 		this.direccion = direccion;
 		this.edad = edad;
 		this.codigoP = codigoP;
-		
+
 	}
-	public Cliente( String nombre, String apellido, String dni, String correo, String contrasena,
-			String direccion, int edad, int codigoP) {
-		super( nombre, apellido, dni, correo, contrasena);
+
+	public Cliente(String nombre, String apellido, String dni, String correo, String contrasena, String direccion,
+			int edad, int codigoP) {
+		super(nombre, apellido, dni, correo, contrasena);
 		this.direccion = direccion;
 		this.edad = edad;
 		this.codigoP = codigoP;
-		
+
 	}
+
 	public Cliente() {
 		super();
-		
-		
+
 	}
 
 	public String getDireccion() {
@@ -51,7 +52,5 @@ public class Cliente extends User{
 	public void setCodigoP(int codigoP) {
 		this.codigoP = codigoP;
 	}
-
-	
 
 }

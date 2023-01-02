@@ -4,13 +4,13 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 public class Concierto {
-	
+
 	private int codigoC;
 	private Artista artista;
-	private long hora; 
+	private long hora;
 	private double duracion;
 	private Festival festival;
-	
+
 	/**
 	 * 
 	 * @param codigoC
@@ -19,7 +19,7 @@ public class Concierto {
 	 * @param duracion
 	 * @param festival
 	 */
-	public Concierto( int codigoC, Artista artista, long hora, double duracion, Festival festival) {
+	public Concierto(int codigoC, Artista artista, long hora, double duracion, Festival festival) {
 		super();
 		this.codigoC = codigoC;
 		this.artista = artista;
@@ -39,11 +39,9 @@ public class Concierto {
 		return codigoC;
 	}
 
-
 	public void setCodigoC(int codigoC) {
 		this.codigoC = codigoC;
 	}
-
 
 	public Artista getArtista() {
 		return artista;
@@ -52,7 +50,6 @@ public class Concierto {
 	public void setArtista(Artista artista) {
 		this.artista = artista;
 	}
-
 
 	public long getHora() {
 		return hora;
@@ -70,8 +67,6 @@ public class Concierto {
 		this.duracion = duracion;
 	}
 
-	
-
 	public Festival getFestival() {
 		return festival;
 	}
@@ -86,5 +81,4 @@ public class Concierto {
 				+ ", festival=" + festival + "]";
 	}
 
-	
 }

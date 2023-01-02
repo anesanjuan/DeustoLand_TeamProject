@@ -23,43 +23,34 @@ public class Gestor {
 		aUsers = BaseDeDatos.getUsers();
 	}
 
-	
-	
 	public void comprobarFestival(String nombre, double fecha, ArrayList<Concierto> conciertos,
 			ArrayList<Artista> Artistas, double precio) {
 
 	}
 
-
-
-	//VENTANA INICIO SESION
+	// VENTANA INICIO SESION
 	public int comprobarUsuario(String correo, String contrasena) {
 		for (User c : aUsers) {
-			if (c instanceof Cliente){
-				Cliente cli = (Cliente)c;
+			if (c instanceof Cliente) {
+				Cliente cli = (Cliente) c;
 				if (cli.getCorreo().equals(correo) && c.getContrasena().equals(contrasena)) {
 					return 0;
 				}
-			}
-			else {
-				Admin cli = (Admin)c;
+			} else {
+				Admin cli = (Admin) c;
 				if (cli.getCorreo().equals(correo) && c.getContrasena().equals(contrasena)) {
 					return 1;
-				}		
+				}
 			}
 		}
 		return -1;
 	}
 
-	//VENTANA REGISTRO
+	// VENTANA REGISTRO
 
-	public void insertarCliente(String nombre, String apellido, String dni, String email, String contrasena, String direccion, int edad, int codigoPostal)  throws ClienteRepetidoException {
+	public void insertarCliente(String nombre, String apellido, String dni, String email, String contrasena,
+			String direccion, int edad, int codigoPostal) throws ClienteRepetidoException {
 		BaseDeDatos.insertarUsuario(nombre, apellido, dni, email, contrasena, direccion, edad, codigoPostal);
 	}
 
-	
-	
-	
-	
-	
 }

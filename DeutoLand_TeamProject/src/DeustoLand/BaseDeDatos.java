@@ -21,7 +21,6 @@ import javax.swing.JOptionPane;
 
 import Ventanas.VentanaFestival;
 
-
 /**
  * Clase de gestion de una base de datos del sistema de festivales???
  * 
@@ -141,8 +140,8 @@ public class BaseDeDatos {
 	}
 
 	/**
-	 * Insertar un artista en la base de datos abierta (debe abrirse previamente
-	 * con {@link #abrirConexion(String, boolean)}
+	 * Insertar un artista en la base de datos abierta (debe abrirse previamente con
+	 * {@link #abrirConexion(String, boolean)}
 	 * 
 	 * @param artista Artista a insertar
 	 * @return true si la insercion es correcta, false en caso contrario
@@ -210,8 +209,8 @@ public class BaseDeDatos {
 	public static boolean insertarCliente(Cliente cliente) {
 		try (Statement statement = con.createStatement()) {
 			String sent = "insert into user values ( '" + cliente.getNombre() + "' , '" + cliente.getApellido()
-					+ "' , '" + cliente.getDni() + "' , '" + cliente.getCorreo() + "' , '" + cliente.getContrasena() + "' , '" + cliente.getDireccion()
-					+ "' , " + cliente.getEdad() + " );";
+					+ "' , '" + cliente.getDni() + "' , '" + cliente.getCorreo() + "' , '" + cliente.getContrasena()
+					+ "' , '" + cliente.getDireccion() + "' , " + cliente.getEdad() + " );";
 			logger.log(Level.INFO, "Statement: " + sent);
 			int insertados = statement.executeUpdate(sent);
 
@@ -267,62 +266,40 @@ public class BaseDeDatos {
 		return ret;
 
 	}
-	
-	
+
 	// LO HE EMPZADO PERO NO ME HA DADO TIEMPO A ACABAR, LUEGO LO ACABO -- ANE
-	
-	/*public static ArrayList<Entrada> getEntradas() {
-		ArrayList<Entrada> ret = new ArrayList<>();
-		try (Statement statement = con.createStatement()) {
-			abrirConexion("BaseDatos.db", false);
-			String sent = "select * from entradas";
-			logger.log(Level.INFO, "Statement: " + sent);
-			ResultSet rs = statement.executeQuery(sent);
-			while (rs.next()) {
-				int cod = rs.getInt("codE");
-				int codUser = rs.getInt("codU");
-				int codFest = rs.getInt("codF");
-				int tipo = rs.getInt("tipo");
-				double suplementoC = rs.getDouble("suplemento_c");
-				int parcela = rs.getInt("parcela");
-				Double suplementoV = rs.getDouble("suplemento_v");
-				int numZona = rs.getInt("num_zona");
-				
-				User user = new User();
-				for (User u : BaseDeDatos.getUsers()) {
-					if (u.getCod() == codUser) {
-						user = BaseDeDatos.getUser(u.getCorreo(), u.getContrasena());
-					}
-				}
-				
-				Festival fest = new Festival();
-				for (Festival festival : BaseDeDatos.getFestivales()) {
-					if (festival.getCodigoF() == codFest) {
-						fest.setCodigoF(festival.getCodigoF());
-						fest.setNombre(festival.getNombre());
-						fest.setFecha(festival.getFecha());
-						fest.setLugar(festival.getLugar());
-						fest.setDescripcion(festival.getDescripcion());
-						fest.setPrecio(festival.getPrecio());
-						fest.setFoto(festival.getFoto());
-					}
-				}
-				
-				if (tipo == 0) {
-					ret.add(new Entrada(cod, user, fest));
-				}
-				ret.add(new Festival(cod, nombre, fecha, lugar, descripcion, precio, foto));
 
-			}
-			// return ret;
-		} catch (Exception e) {
-			logger.log(Level.SEVERE, "Excepcion", e);
-			return null;
-		}
-		return ret;
-
-	}*/
-	
+	/*
+	 * public static ArrayList<Entrada> getEntradas() { ArrayList<Entrada> ret = new
+	 * ArrayList<>(); try (Statement statement = con.createStatement()) {
+	 * abrirConexion("BaseDatos.db", false); String sent = "select * from entradas";
+	 * logger.log(Level.INFO, "Statement: " + sent); ResultSet rs =
+	 * statement.executeQuery(sent); while (rs.next()) { int cod =
+	 * rs.getInt("codE"); int codUser = rs.getInt("codU"); int codFest =
+	 * rs.getInt("codF"); int tipo = rs.getInt("tipo"); double suplementoC =
+	 * rs.getDouble("suplemento_c"); int parcela = rs.getInt("parcela"); Double
+	 * suplementoV = rs.getDouble("suplemento_v"); int numZona =
+	 * rs.getInt("num_zona");
+	 * 
+	 * User user = new User(); for (User u : BaseDeDatos.getUsers()) { if
+	 * (u.getCod() == codUser) { user = BaseDeDatos.getUser(u.getCorreo(),
+	 * u.getContrasena()); } }
+	 * 
+	 * Festival fest = new Festival(); for (Festival festival :
+	 * BaseDeDatos.getFestivales()) { if (festival.getCodigoF() == codFest) {
+	 * fest.setCodigoF(festival.getCodigoF()); fest.setNombre(festival.getNombre());
+	 * fest.setFecha(festival.getFecha()); fest.setLugar(festival.getLugar());
+	 * fest.setDescripcion(festival.getDescripcion());
+	 * fest.setPrecio(festival.getPrecio()); fest.setFoto(festival.getFoto()); } }
+	 * 
+	 * if (tipo == 0) { ret.add(new Entrada(cod, user, fest)); } ret.add(new
+	 * Festival(cod, nombre, fecha, lugar, descripcion, precio, foto));
+	 * 
+	 * } // return ret; } catch (Exception e) { logger.log(Level.SEVERE,
+	 * "Excepcion", e); return null; } return ret;
+	 * 
+	 * }
+	 */
 
 	/**
 	 * Lee los artistas de la conexion de base de datos abierta (debe abrirse
@@ -405,72 +382,68 @@ public class BaseDeDatos {
 		}
 
 	}
-	
-	
+
 	public static ArrayList<Admin> getAdmins() {
-		
+
 		try (Statement statement = con.createStatement()) {
-		abrirConexion("BaseDatos.db", false);
-		ArrayList<Admin> ret = new ArrayList<>();
-		String sent = "select * from user";
-		logger.log(Level.INFO, "Statement: " + sent);
-		ResultSet rs = statement.executeQuery(sent);
-		while (rs.next()) {
-			int codA = rs.getInt("codU");
-			String nombre = rs.getString("nombre");
-			String apellido = rs.getString("apellido");
-			String dni = rs.getString("dni");
-			String correo = rs.getString("correo");
-			String contraseña = rs.getString("contrasena");
-			String fechaU = rs.getString("fechaU");
-			ret.add(new Admin(codA, nombre, apellido, dni, correo, contraseña, fechaU)); 
+			abrirConexion("BaseDatos.db", false);
+			ArrayList<Admin> ret = new ArrayList<>();
+			String sent = "select * from user";
+			logger.log(Level.INFO, "Statement: " + sent);
+			ResultSet rs = statement.executeQuery(sent);
+			while (rs.next()) {
+				int codA = rs.getInt("codU");
+				String nombre = rs.getString("nombre");
+				String apellido = rs.getString("apellido");
+				String dni = rs.getString("dni");
+				String correo = rs.getString("correo");
+				String contraseña = rs.getString("contrasena");
+				String fechaU = rs.getString("fechaU");
+				ret.add(new Admin(codA, nombre, apellido, dni, correo, contraseña, fechaU));
+			}
+			return ret;
+		} catch (Exception e) {
+			logger.log(Level.SEVERE, "Excepcion", e);
+			return null;
 		}
-		return ret;
-	} catch (Exception e) {
-		logger.log(Level.SEVERE, "Excepcion", e);
-		return null;
+
 	}
 
-		
-	}
-	
-	
-	public static ArrayList<Cliente> getClientes() {	
-		
-		try (Statement statement = con.createStatement()) {
-		abrirConexion("BaseDatos.db", false);
-		ArrayList<Cliente> ret = new ArrayList<>();
-		String sent = "select * from user";
-		logger.log(Level.INFO, "Statement: " + sent);
-		ResultSet rs = statement.executeQuery(sent);
-		while (rs.next()) {
-			int codC = rs.getInt("codU");
-			String nombre = rs.getString("nombre");
-			String apellido = rs.getString("apellido");
-			String dni = rs.getString("dni");
-			String correo = rs.getString("correo");
-			String contraseña = rs.getString("contrasena");
-			String dir = rs.getString("direccion");
-			int edad = rs.getInt("edad");
-			int codigoP = rs.getInt("codigoP");
-			
-			ret.add(new Cliente(codC, nombre, apellido, dni, correo, contraseña, dir, edad, codigoP));
-		}
-		return ret;
-	} catch (Exception e) {
-		logger.log(Level.SEVERE, "Excepcion", e);
-		return null;
-	}
-}
+	public static ArrayList<Cliente> getClientes() {
 
-	
-	//////////////esto lo tengo q corregor MAR
+		try (Statement statement = con.createStatement()) {
+			abrirConexion("BaseDatos.db", false);
+			ArrayList<Cliente> ret = new ArrayList<>();
+			String sent = "select * from user";
+			logger.log(Level.INFO, "Statement: " + sent);
+			ResultSet rs = statement.executeQuery(sent);
+			while (rs.next()) {
+				int codC = rs.getInt("codU");
+				String nombre = rs.getString("nombre");
+				String apellido = rs.getString("apellido");
+				String dni = rs.getString("dni");
+				String correo = rs.getString("correo");
+				String contraseña = rs.getString("contrasena");
+				String dir = rs.getString("direccion");
+				int edad = rs.getInt("edad");
+				int codigoP = rs.getInt("codigoP");
+
+				ret.add(new Cliente(codC, nombre, apellido, dni, correo, contraseña, dir, edad, codigoP));
+			}
+			return ret;
+		} catch (Exception e) {
+			logger.log(Level.SEVERE, "Excepcion", e);
+			return null;
+		}
+	}
+
+	////////////// esto lo tengo q corregor MAR
 	public static Cliente getCliente(String correo, String contraseña) {
 		Cliente c = new Cliente();
 		try {
 			abrirConexion("BaseDatos.db", false);
-			for (Cliente cli: BaseDeDatos.getClientes() ) {
-				if (cli.getCorreo().equals(correo)  && cli.getContrasena().equals(contraseña)) {
+			for (Cliente cli : BaseDeDatos.getClientes()) {
+				if (cli.getCorreo().equals(correo) && cli.getContrasena().equals(contraseña)) {
 					c.setCod(cli.getCod());
 					c.setNombre(cli.getNombre());
 					c.setApellido(cli.getApellido());
@@ -487,18 +460,18 @@ public class BaseDeDatos {
 			logger.log(Level.SEVERE, "Excepcion", e);
 			return null;
 		}
-		//System.out.println(c);
+		// System.out.println(c);
 		return c;
-		
+
 	}
-	
+
 	public static Admin getAdmin(String correo, String contraseña) {
 		Admin a = new Admin();
-		
+
 		try {
 			abrirConexion("BaseDatos.db", false);
-			for (Admin ad: BaseDeDatos.getAdmins() ) {
-				if (ad.getCorreo() ==  correo && ad.getContrasena() == contraseña) {
+			for (Admin ad : BaseDeDatos.getAdmins()) {
+				if (ad.getCorreo() == correo && ad.getContrasena() == contraseña) {
 					a.setCod(ad.getCod());
 					a.setNombre(ad.getNombre());
 					a.setApellido(ad.getApellido());
@@ -513,12 +486,11 @@ public class BaseDeDatos {
 			logger.log(Level.SEVERE, "Excepcion", e);
 			return null;
 		}
-		//System.out.println(a);
+		// System.out.println(a);
 		return a;
-		
+
 	}
-	
-	
+
 	public static ArrayList<User> getUsers() {
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
@@ -538,7 +510,7 @@ public class BaseDeDatos {
 				int edad = rs.getInt("edad");
 				int codigoP = rs.getInt("codigoP");
 				String fU = rs.getString("fechaU");
-				if (tipo==0) {
+				if (tipo == 0) {
 					ret.add(new Cliente(nombre, apellido, dni, correo, contraseña, dir, edad, codigoP));
 				} else {
 					ret.add(new Admin(nombre, apellido, dni, correo, contraseña, fU));
@@ -552,16 +524,15 @@ public class BaseDeDatos {
 		}
 
 	}
-	
-	
+
 	public static User getUser(String correo, String contraseña) {
 		int cli = 0;
 		try {
 			abrirConexion("BaseDatos.db", false);
-			for (User ad: BaseDeDatos.getUsers() ) {
-				if (ad.equals(BaseDeDatos.getCliente(correo, contraseña)) ) {
-					cli = cli +1;
-				} 	
+			for (User ad : BaseDeDatos.getUsers()) {
+				if (ad.equals(BaseDeDatos.getCliente(correo, contraseña))) {
+					cli = cli + 1;
+				}
 			}
 		} catch (Exception e) {
 			logger.log(Level.SEVERE, "Excepcion", e);
@@ -571,45 +542,43 @@ public class BaseDeDatos {
 			return BaseDeDatos.getCliente(correo, contraseña);
 		} else {
 			return BaseDeDatos.getAdmin(correo, contraseña);
-		}		
-		
+		}
+
 	}
-	
-	
-	
+
 	public static Festival FestEstadistica(Festival f, int i) {
 		Festival fest = new Festival();
 		int index = -1;
 		for (Festival festival : BaseDeDatos.getFestivales()) {
 			index += 1;
 			if (f.getNombre().equals(festival.getNombre())) {
-				if (i==0) {
+				if (i == 0) {
 					if (BaseDeDatos.getFestivales().get(0).getNombre().equals(f.getNombre())) {
-						fest = BaseDeDatos.getFestivales().get(BaseDeDatos.getFestivales().size()-1); 
+						fest = BaseDeDatos.getFestivales().get(BaseDeDatos.getFestivales().size() - 1);
 					} else {
-						fest = BaseDeDatos.getFestivales().get(index -1);
+						fest = BaseDeDatos.getFestivales().get(index - 1);
 					}
-				} 
-				else if (i == 1) {
-					//if ( BaseDeDatos.getFestivales().get(BaseDeDatos.getFestivales().size()-1).equals(f)) {//no entra en este bucle y ns pq
-					
-					if ( BaseDeDatos.getFestivales().get(BaseDeDatos.getFestivales().size()-1).getNombre().equals(f.getNombre())){ 
-			
+				} else if (i == 1) {
+					// if (
+					// BaseDeDatos.getFestivales().get(BaseDeDatos.getFestivales().size()-1).equals(f))
+					// {//no entra en este bucle y ns pq
+
+					if (BaseDeDatos.getFestivales().get(BaseDeDatos.getFestivales().size() - 1).getNombre()
+							.equals(f.getNombre())) {
+
 						fest = BaseDeDatos.getFestivales().get(0);
-						
+
 					} else {
-						fest = BaseDeDatos.getFestivales().get(index+1);
-				} 
-				}
-				else {
+						fest = BaseDeDatos.getFestivales().get(index + 1);
+					}
+				} else {
 					System.out.println("error, el número solo puede estar entre 0 y 1");
 				}
 			}
 		}
-		//System.out.println(fest);
+		// System.out.println(fest);
 		return fest;
 	}
-	
 
 	////////////////////////////////////////////
 	/// DATOS DE INICIO PARA LA BASE DE DATOS
@@ -736,37 +705,45 @@ public class BaseDeDatos {
 
 	}
 
-	
-	public static long cambiarLong ( String date) {
+	public static long cambiarLong(String date) {
 		SimpleDateFormat formato = new SimpleDateFormat("HH:mm:ss");
 		long milliseconds = 0;
 		try {
-		    java.util.Date d = formato.parse(date);
-		    milliseconds += d.getTime();
+			java.util.Date d = formato.parse(date);
+			milliseconds += d.getTime();
 		} catch (ParseException e) {
-		    e.printStackTrace();
+			e.printStackTrace();
 		}
 		System.out.println(milliseconds);
 		return milliseconds;
 	}
-	
-	
+
 	/**
 	 * Festivales ya establecidos una vez se abre el programa ?? redactarlo mejor
 	 * 
 	 */
 	public static void insertarConciertos() {
-		
-		Concierto conc0 = new Concierto(01, BaseDeDatos.getArtistas().get(0), BaseDeDatos.cambiarLong("17:00:00") , 1.00, BaseDeDatos.getFestivales().get(0));
-		Concierto conc1 = new Concierto(02, BaseDeDatos.getArtistas().get(1), BaseDeDatos.cambiarLong("18:00:00"), 1.00, BaseDeDatos.getFestivales().get(0));
-		Concierto conc2 = new Concierto(03, BaseDeDatos.getArtistas().get(3), BaseDeDatos.cambiarLong("19:00:00"), 1.00, BaseDeDatos.getFestivales().get(0));
-		Concierto conc3 = new Concierto(04, BaseDeDatos.getArtistas().get(7), BaseDeDatos.cambiarLong("20:00:00"), 1.00, BaseDeDatos.getFestivales().get(0));
-		Concierto conc4 = new Concierto(05, BaseDeDatos.getArtistas().get(8), BaseDeDatos.cambiarLong("21:00:00"), 1.00, BaseDeDatos.getFestivales().get(0));
-		Concierto conc5 = new Concierto(06, BaseDeDatos.getArtistas().get(9), BaseDeDatos.cambiarLong("22:00:00"), 1.00, BaseDeDatos.getFestivales().get(0));
-		Concierto conc6 = new Concierto(07, BaseDeDatos.getArtistas().get(10), BaseDeDatos.cambiarLong("23:00:00"), 1.00, BaseDeDatos.getFestivales().get(0));
-		Concierto conc7 = new Concierto(8, BaseDeDatos.getArtistas().get(14),BaseDeDatos.cambiarLong("00:00:00"), 1.00, BaseDeDatos.getFestivales().get(0));
-		Concierto conc8 = new Concierto(9, BaseDeDatos.getArtistas().get(15), BaseDeDatos.cambiarLong("01:00:00"), 1.00, BaseDeDatos.getFestivales().get(0));
-		Concierto conc9 = new Concierto(10, BaseDeDatos.getArtistas().get(19), BaseDeDatos.cambiarLong("02:00:00"), 1.00, BaseDeDatos.getFestivales().get(0));
+
+		Concierto conc0 = new Concierto(01, BaseDeDatos.getArtistas().get(0), BaseDeDatos.cambiarLong("17:00:00"), 1.00,
+				BaseDeDatos.getFestivales().get(0));
+		Concierto conc1 = new Concierto(02, BaseDeDatos.getArtistas().get(1), BaseDeDatos.cambiarLong("18:00:00"), 1.00,
+				BaseDeDatos.getFestivales().get(0));
+		Concierto conc2 = new Concierto(03, BaseDeDatos.getArtistas().get(3), BaseDeDatos.cambiarLong("19:00:00"), 1.00,
+				BaseDeDatos.getFestivales().get(0));
+		Concierto conc3 = new Concierto(04, BaseDeDatos.getArtistas().get(7), BaseDeDatos.cambiarLong("20:00:00"), 1.00,
+				BaseDeDatos.getFestivales().get(0));
+		Concierto conc4 = new Concierto(05, BaseDeDatos.getArtistas().get(8), BaseDeDatos.cambiarLong("21:00:00"), 1.00,
+				BaseDeDatos.getFestivales().get(0));
+		Concierto conc5 = new Concierto(06, BaseDeDatos.getArtistas().get(9), BaseDeDatos.cambiarLong("22:00:00"), 1.00,
+				BaseDeDatos.getFestivales().get(0));
+		Concierto conc6 = new Concierto(07, BaseDeDatos.getArtistas().get(10), BaseDeDatos.cambiarLong("23:00:00"),
+				1.00, BaseDeDatos.getFestivales().get(0));
+		Concierto conc7 = new Concierto(8, BaseDeDatos.getArtistas().get(14), BaseDeDatos.cambiarLong("00:00:00"), 1.00,
+				BaseDeDatos.getFestivales().get(0));
+		Concierto conc8 = new Concierto(9, BaseDeDatos.getArtistas().get(15), BaseDeDatos.cambiarLong("01:00:00"), 1.00,
+				BaseDeDatos.getFestivales().get(0));
+		Concierto conc9 = new Concierto(10, BaseDeDatos.getArtistas().get(19), BaseDeDatos.cambiarLong("02:00:00"),
+				1.00, BaseDeDatos.getFestivales().get(0));
 
 		ArrayList<Concierto> conciertos = new ArrayList<>();
 		conciertos.add(conc0);
@@ -806,26 +783,27 @@ public class BaseDeDatos {
 	 */
 	public static void insertarUsuarios() {
 
-		//String nombre, String apellido, String dni, String correo, String contraseña, String fechaUltimaMod
-		
-		//este habrá q cambiar los datos digo yo
+		// String nombre, String apellido, String dni, String correo, String contraseña,
+		// String fechaUltimaMod
+
+		// este habrá q cambiar los datos digo yo
 		Admin admin = new Admin("admin", "admin", "admin", "admin", "admin", "27/12/2022");
-		
+
 		Admin admin2 = new Admin("Juan", "Perez", "23423762A", "juanperez@gmail.com", "juanperez23", "27/10/2022");
 		Admin admin3 = new Admin("Natalia", "Rodriguez", "29753197B", "natarod@gmail.com", "natrodri34", "05/11/2022");
 		Admin admin4 = new Admin("Aitana", "Eguren", "2864286C", "aitanaeg@gmail.com", "casaeguren234", "15/11/2022");
-		Admin admin5 = new Admin("Lucas", "Armas", "1234321D","lucasarmas@gmail.com", "1234", "17/11/2022");
+		Admin admin5 = new Admin("Lucas", "Armas", "1234321D", "lucasarmas@gmail.com", "1234", "17/11/2022");
 		Admin admin6 = new Admin("Isaak", "Garcia", "4321234E", "isgarcia@gmail.com", "5432", "27/11/2022");
 		Admin admin7 = new Admin("Iker", "Portela", "9876789F", "portela44@gmail.com", "ikerportela65", "30/11/2022");
 		Admin admin8 = new Admin("Alicia", "Hermosa", "6789876G", "alihermos@gmail.com", "alioli123", "15/12/2022");
-		Admin admin9 = new Admin("Alvaro", "Villanueva", "5460645H", "alvarovilla@gmail.com", "alvarito86", "20/12/2022");
+		Admin admin9 = new Admin("Alvaro", "Villanueva", "5460645H", "alvarovilla@gmail.com", "alvarito86",
+				"20/12/2022");
 		Admin admin10 = new Admin("Lidia", "Alvarez", "5554672I", "lidia123@gmail.com", "lidix32", "22/12/2022");
 		Admin admin11 = new Admin("Maria", "Pomares", "1000243J", "mariapom@gmail.com", "merypom99", "26/12/2022");
 		Admin admin12 = new Admin("Lola", "Moreno", "2300233K", "lolalolita@gmail.com", "lolaBrownie", "27/12/2022");
 		Admin admin13 = new Admin("Marcos", "Gonzalez", "1452375L", "marcos32g@gmail.com", "marcos323", "27/12/2022");
 		Admin admin14 = new Admin("Alex", "Navarro", "29096527M", "alexnavarro@gmail.com", "alex231", "04/01/2023");
 		Admin admin15 = new Admin("Mar", "Marco", "2299417N", "marmarco@gmail.com", "5453f", "10/01/2023");
-
 
 		ArrayList<Admin> admins = new ArrayList<>();
 		admins.add(admin);
@@ -834,21 +812,21 @@ public class BaseDeDatos {
 		admins.add(admin4);
 		admins.add(admin5);
 		admins.add(admin6);
-		//admins.add(admin7);
-		//admins.add(admin8);
-		//admins.add(admin9);
-		//admins.add(admin10);
-		//admins.add(admin11);
-		//admins.add(admin12);
-		//admins.add(admin13);
-		//admins.add(admin14);
-		//admins.add(admin15);
-	
+		// admins.add(admin7);
+		// admins.add(admin8);
+		// admins.add(admin9);
+		// admins.add(admin10);
+		// admins.add(admin11);
+		// admins.add(admin12);
+		// admins.add(admin13);
+		// admins.add(admin14);
+		// admins.add(admin15);
+
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
 
 			for (Admin ad : admins) {
-				
+
 				String nombre = ad.getNombre();
 				String apellido = ad.getApellido();
 				String dni = ad.getDni();
@@ -856,9 +834,10 @@ public class BaseDeDatos {
 				String contraseña = ad.getContrasena();
 				String fecha = ad.getFechaUltimaMod();
 				int tipo = 1;
-				
+
 				String sent = "INSERT INTO user (nombre, apellido, dni, correo, contrasena, tipo , fechaU )"
-						+ " VALUES ( '" + nombre + "', '" + apellido + "', '" + dni + "','" + correo + "','" + contraseña + "'," + tipo + ",'" + fecha +"');";
+						+ " VALUES ( '" + nombre + "', '" + apellido + "', '" + dni + "','" + correo + "','"
+						+ contraseña + "'," + tipo + ",'" + fecha + "');";
 
 				logger.log(Level.INFO, "Statement: " + sent);
 
@@ -870,87 +849,111 @@ public class BaseDeDatos {
 
 		}
 
-		
-		
-		
-		//String nombre, String apellido, String dni, String correo, String contraseña, String direccion, int edad, int codigoPostal
+		// String nombre, String apellido, String dni, String correo, String contraseña,
+		// String direccion, int edad, int codigoPostal
 
-		//el dni no tiene 9 caracteres y tendria mas sentido. La mayus de vitoria? :( 
-		
-		//Cliente de prueba DESPUES ELIMINAR!!!!!!!!!!
+		// el dni no tiene 9 caracteres y tendria mas sentido. La mayus de vitoria? :(
+
+		// Cliente de prueba DESPUES ELIMINAR!!!!!!!!!!
 		Cliente clienteP = new Cliente("marina", "m", "m", "m", "m", "m", 0, 0);
-		
+
 		Cliente cliente = new Cliente("Juan", "Gonzalez", "567899", "juangon@gmail.com", "1234", "vitoria", 18, 48980);
-		
-		Cliente cliente2 = new Cliente("Cristina", "Lopez", "4567881A", "crislopez@gmail.com", "5678", "C.Koldo Mitxelena, 9", 24, 37879);
-		Cliente cliente3 = new Cliente("Ramon", "Foronda", "3234570B", "ramonperales@gmail.com", "4567", "C.Blas de Otero, 15", 20, 12398);
-		Cliente cliente4 = new Cliente("Javier", "Rubio", "2003456C", "javierrubio@gmail.com", "3456", "C.Zubieta, 32", 18, 23419);
-		Cliente cliente5 = new Cliente("Ane", "Martin", "1234553D", "anemartin@gmail.com", "2345", "C.Fernan Gonzalez, 50", 18, 23910);
-		Cliente cliente6 = new Cliente("Lucia", "Lopez", "1021344E", "lucialopez@gmail.com", "11223", "Av. de Roma, 123", 24, 12312);
-		Cliente cliente7 = new Cliente("Andrea", "Rio", "2212533F", "andreario@gmail.com", "22334", "Gran Via, 50", 27, 87381);
-		Cliente cliente8 = new Cliente("Iñigo", "Arrieta", "1122334G", "iñiarrieta@gmail.com", "3214", "C.Platerias, 3", 18, 01201);
-		Cliente cliente9 = new Cliente("Tomas", "Alonso", "9876508H", "iñiarrieta@gmail.com", "tomas342", "C.Huertas, 5", 26, 01231);
-		Cliente cliente10 = new Cliente("Larraitz", "Garcia", "1239822I", "iñiarrieta@gmail.com", "432Larra", "C.Eduardo Dato, 3", 21, 90976);
-		Cliente cliente11 = new Cliente("Petri", "Guinea", "1298404J", "iñiarrieta@gmail.com", "98321", "C.Postas, 45", 20, 12312);
-		Cliente cliente12 = new Cliente("Leire", "Perez", "8723761K", "iñiarrieta@gmail.com", "LeiPe234", "C.Voluntaria Entrega, 1", 20, 11223);
-		Cliente cliente13 = new Cliente("Blanca", "Gonzalez", "9087640L", "iñiarrieta@gmail.com", "bg2827h", "C.Mayor, 25", 22, 33445);
-		Cliente cliente14 = new Cliente("Almudena", "Velasco", "1000841M", "iñiarrieta@gmail.com", "AlmuVelas44", "C.Alameda Urquijo, 44", 21, 55667);
-		Cliente cliente15 = new Cliente("David", "Vesga", "9041287N", "iñiarrieta@gmail.com", "5876g", "C.Iparaguirre, 34", 22, 12213);
-		Cliente cliente16 = new Cliente("Fernando", "Basterra", "1111222O", "iñiarrieta@gmail.com", "999f", "Ercilla,3", 23, 12642);
-		Cliente cliente17 = new Cliente("Maria Jesus", "Barrio", "3332248P", "iñiarrieta@gmail.com", "mariaJesus342", "C.Cava Baja, 7", 25, 85643);
-		Cliente cliente18 = new Cliente("Sandra", "Ruiz", "4446657Q", "iñiarrieta@gmail.com", "sandraru333", "C.Orcasitas, 90", 32, 66773);
-		Cliente cliente19 = new Cliente("Maria", "Chillida", "8888768R", "iñiarrieta@gmail.com", "87213FF", "C.Cardenal Cisneros, 89", 26, 88535);
-		Cliente cliente20 = new Cliente("Pedro", "Abajo", "9665588S", "iñiarrieta@gmail.com", "fffttt54", "C.Antonio Mendoza, 65", 26, 98684);
-		Cliente cliente21 = new Cliente("Susana", "Saez", "9900880T", "iñiarrieta@gmail.com", "asdf456", "C.Arenal, 6", 28, 99945);
-		Cliente cliente22 = new Cliente("Alvaro", "Arana", "7006358U", "iñiarrieta@gmail.com", "alvaroAra00", "C.Agua, 50", 30, 77536);
-		Cliente cliente23 = new Cliente("Jorge", "Madruga", "9124332V", "iñiarrieta@gmail.com", "JorgeMadru213", "C.Angela de la Cruz, 3", 18, 77775);
-		Cliente cliente24 = new Cliente("Monica", "Merino", "9612465W", "iñiarrieta@gmail.com", "1456", "C.Alhondiga, 59", 19, 88824);
-		Cliente cliente25 = new Cliente("Guillermo", "Ibarra", "9988662X", "iñiarrieta@gmail.com", "23521", "C.Platerias, 15", 20, 77332);
-		Cliente cliente26 = new Cliente("Lucia", "Martinez", "4422134Y", "iñiarrieta@gmail.com", "3399", "C.Santiago, 23", 23, 22233);
-		Cliente cliente27 = new Cliente("Maitane", "Echeverria", "5544321Z", "iñiarrieta@gmail.com", "mai234", "C.Lepanto, 273", 23, 33332);
-		Cliente cliente28 = new Cliente("Carlos", "Serrano", "9863355Z", "iñiarrieta@gmail.com", "charliesera23", "Av. de Gaudi, 587", 24, 11112);
-		Cliente cliente29 = new Cliente("Maider", "Saracibar", "2345632W", "iñiarrieta@gmail.com", "maisa82435", "Av. de Gaudi, 585", 21, 11112);
-		Cliente cliente30 = new Cliente("Mara", "Suso", "7776678U", "marasuso@gmail.com", "marasusi878", "C.Gran V", 18, 14123);
+
+		Cliente cliente2 = new Cliente("Cristina", "Lopez", "4567881A", "crislopez@gmail.com", "5678",
+				"C.Koldo Mitxelena, 9", 24, 37879);
+		Cliente cliente3 = new Cliente("Ramon", "Foronda", "3234570B", "ramonperales@gmail.com", "4567",
+				"C.Blas de Otero, 15", 20, 12398);
+		Cliente cliente4 = new Cliente("Javier", "Rubio", "2003456C", "javierrubio@gmail.com", "3456", "C.Zubieta, 32",
+				18, 23419);
+		Cliente cliente5 = new Cliente("Ane", "Martin", "1234553D", "anemartin@gmail.com", "2345",
+				"C.Fernan Gonzalez, 50", 18, 23910);
+		Cliente cliente6 = new Cliente("Lucia", "Lopez", "1021344E", "lucialopez@gmail.com", "11223",
+				"Av. de Roma, 123", 24, 12312);
+		Cliente cliente7 = new Cliente("Andrea", "Rio", "2212533F", "andreario@gmail.com", "22334", "Gran Via, 50", 27,
+				87381);
+		Cliente cliente8 = new Cliente("Iñigo", "Arrieta", "1122334G", "iñiarrieta@gmail.com", "3214", "C.Platerias, 3",
+				18, 01201);
+		Cliente cliente9 = new Cliente("Tomas", "Alonso", "9876508H", "iñiarrieta@gmail.com", "tomas342",
+				"C.Huertas, 5", 26, 01231);
+		Cliente cliente10 = new Cliente("Larraitz", "Garcia", "1239822I", "iñiarrieta@gmail.com", "432Larra",
+				"C.Eduardo Dato, 3", 21, 90976);
+		Cliente cliente11 = new Cliente("Petri", "Guinea", "1298404J", "iñiarrieta@gmail.com", "98321", "C.Postas, 45",
+				20, 12312);
+		Cliente cliente12 = new Cliente("Leire", "Perez", "8723761K", "iñiarrieta@gmail.com", "LeiPe234",
+				"C.Voluntaria Entrega, 1", 20, 11223);
+		Cliente cliente13 = new Cliente("Blanca", "Gonzalez", "9087640L", "iñiarrieta@gmail.com", "bg2827h",
+				"C.Mayor, 25", 22, 33445);
+		Cliente cliente14 = new Cliente("Almudena", "Velasco", "1000841M", "iñiarrieta@gmail.com", "AlmuVelas44",
+				"C.Alameda Urquijo, 44", 21, 55667);
+		Cliente cliente15 = new Cliente("David", "Vesga", "9041287N", "iñiarrieta@gmail.com", "5876g",
+				"C.Iparaguirre, 34", 22, 12213);
+		Cliente cliente16 = new Cliente("Fernando", "Basterra", "1111222O", "iñiarrieta@gmail.com", "999f", "Ercilla,3",
+				23, 12642);
+		Cliente cliente17 = new Cliente("Maria Jesus", "Barrio", "3332248P", "iñiarrieta@gmail.com", "mariaJesus342",
+				"C.Cava Baja, 7", 25, 85643);
+		Cliente cliente18 = new Cliente("Sandra", "Ruiz", "4446657Q", "iñiarrieta@gmail.com", "sandraru333",
+				"C.Orcasitas, 90", 32, 66773);
+		Cliente cliente19 = new Cliente("Maria", "Chillida", "8888768R", "iñiarrieta@gmail.com", "87213FF",
+				"C.Cardenal Cisneros, 89", 26, 88535);
+		Cliente cliente20 = new Cliente("Pedro", "Abajo", "9665588S", "iñiarrieta@gmail.com", "fffttt54",
+				"C.Antonio Mendoza, 65", 26, 98684);
+		Cliente cliente21 = new Cliente("Susana", "Saez", "9900880T", "iñiarrieta@gmail.com", "asdf456", "C.Arenal, 6",
+				28, 99945);
+		Cliente cliente22 = new Cliente("Alvaro", "Arana", "7006358U", "iñiarrieta@gmail.com", "alvaroAra00",
+				"C.Agua, 50", 30, 77536);
+		Cliente cliente23 = new Cliente("Jorge", "Madruga", "9124332V", "iñiarrieta@gmail.com", "JorgeMadru213",
+				"C.Angela de la Cruz, 3", 18, 77775);
+		Cliente cliente24 = new Cliente("Monica", "Merino", "9612465W", "iñiarrieta@gmail.com", "1456",
+				"C.Alhondiga, 59", 19, 88824);
+		Cliente cliente25 = new Cliente("Guillermo", "Ibarra", "9988662X", "iñiarrieta@gmail.com", "23521",
+				"C.Platerias, 15", 20, 77332);
+		Cliente cliente26 = new Cliente("Lucia", "Martinez", "4422134Y", "iñiarrieta@gmail.com", "3399",
+				"C.Santiago, 23", 23, 22233);
+		Cliente cliente27 = new Cliente("Maitane", "Echeverria", "5544321Z", "iñiarrieta@gmail.com", "mai234",
+				"C.Lepanto, 273", 23, 33332);
+		Cliente cliente28 = new Cliente("Carlos", "Serrano", "9863355Z", "iñiarrieta@gmail.com", "charliesera23",
+				"Av. de Gaudi, 587", 24, 11112);
+		Cliente cliente29 = new Cliente("Maider", "Saracibar", "2345632W", "iñiarrieta@gmail.com", "maisa82435",
+				"Av. de Gaudi, 585", 21, 11112);
+		Cliente cliente30 = new Cliente("Mara", "Suso", "7776678U", "marasuso@gmail.com", "marasusi878", "C.Gran V", 18,
+				14123);
 
 		ArrayList<Cliente> clientes = new ArrayList<>();
-		
-		clientes.add(clienteP); //Cliente de prueba ELIMINAR DESPUES!!!!!!
-		clientes.add(cliente);
-		//clientes.add(cliente2);
-		//clientes.add(cliente3);
-		//clientes.add(cliente4);
-		//clientes.add(cliente5);
-		//clientes.add(cliente6);
-		//clientes.add(cliente7);
-		//clientes.add(cliente8);
-		//clientes.add(cliente9);
-		//clientes.add(cliente10);
-		//clientes.add(cliente11);
-		//clientes.add(cliente12);
-		//clientes.add(cliente13);
-		//clientes.add(cliente14);
-		//clientes.add(cliente15);
-		//clientes.add(cliente16);
-		//clientes.add(cliente17);
-		//clientes.add(cliente18);
-		//clientes.add(cliente19);
-		//clientes.add(cliente20);
-		//clientes.add(cliente21);
-		//clientes.add(cliente22);
-		//clientes.add(cliente23);
-		//clientes.add(cliente24);
-		//clientes.add(cliente25);
-		//clientes.add(cliente26);
-		//clientes.add(cliente27);
-		//clientes.add(cliente28);
-		//clientes.add(cliente29);
-		//clientes.add(cliente30);
 
+		clientes.add(clienteP); // Cliente de prueba ELIMINAR DESPUES!!!!!!
+		clientes.add(cliente);
+		// clientes.add(cliente2);
+		// clientes.add(cliente3);
+		// clientes.add(cliente4);
+		// clientes.add(cliente5);
+		// clientes.add(cliente6);
+		// clientes.add(cliente7);
+		// clientes.add(cliente8);
+		// clientes.add(cliente9);
+		// clientes.add(cliente10);
+		// clientes.add(cliente11);
+		// clientes.add(cliente12);
+		// clientes.add(cliente13);
+		// clientes.add(cliente14);
+		// clientes.add(cliente15);
+		// clientes.add(cliente16);
+		// clientes.add(cliente17);
+		// clientes.add(cliente18);
+		// clientes.add(cliente19);
+		// clientes.add(cliente20);
+		// clientes.add(cliente21);
+		// clientes.add(cliente22);
+		// clientes.add(cliente23);
+		// clientes.add(cliente24);
+		// clientes.add(cliente25);
+		// clientes.add(cliente26);
+		// clientes.add(cliente27);
+		// clientes.add(cliente28);
+		// clientes.add(cliente29);
+		// clientes.add(cliente30);
 
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
-			
-		
 
 			for (Cliente cl : clientes) {
 				String nombre = cl.getNombre();
@@ -962,9 +965,10 @@ public class BaseDeDatos {
 				int edad = cl.getEdad();
 				int codigoP = cl.getCodigoP();
 				int tipo = 0;
-				
+
 				String sent = "INSERT INTO user (nombre, apellido, dni, correo, contrasena, tipo, direccion, edad, codigoP) "
-						+ " VALUES ( '" + nombre + "', '" + apellido + "', '" + dni + "','" + correo + "','" + contraseña + "'," + tipo + ",'" + direccion +"'," + edad + " ," + codigoP  +");";
+						+ " VALUES ( '" + nombre + "', '" + apellido + "', '" + dni + "','" + correo + "','"
+						+ contraseña + "'," + tipo + ",'" + direccion + "'," + edad + " ," + codigoP + ");";
 
 				logger.log(Level.INFO, "Statement: " + sent);
 
@@ -976,25 +980,22 @@ public class BaseDeDatos {
 
 		}
 	}
-	
-	//INSERTAR CLIENTE ---- VENTANA REGISTRO
-	public static void insertarUsuario(String nombre, String apellido, String dni, String correo, String contrasena, String direccion, int edad, int codigoPostal) {
+
+	// INSERTAR CLIENTE ---- VENTANA REGISTRO
+	public static void insertarUsuario(String nombre, String apellido, String dni, String correo, String contrasena,
+			String direccion, int edad, int codigoPostal) {
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
-				int tipo = 0;
-				String sent = "INSERT INTO user (nombre, apellido, dni, correo, contrasena, tipo, direccion, edad, codigoP) "
-						+ " VALUES ( '" + nombre + "', '" + apellido + "', '" + dni + "','" + correo + "','" + contrasena + "'," + tipo + ",'" + direccion +"'," + edad + " ," + codigoPostal  +");";
-				logger.log(Level.INFO, "Statement: " + sent);
-				statement.executeUpdate(sent);
+			int tipo = 0;
+			String sent = "INSERT INTO user (nombre, apellido, dni, correo, contrasena, tipo, direccion, edad, codigoP) "
+					+ " VALUES ( '" + nombre + "', '" + apellido + "', '" + dni + "','" + correo + "','" + contrasena
+					+ "'," + tipo + ",'" + direccion + "'," + edad + " ," + codigoPostal + ");";
+			logger.log(Level.INFO, "Statement: " + sent);
+			statement.executeUpdate(sent);
 		} catch (Exception e) {
 			logger.log(Level.SEVERE, "Excepción", e);
 		}
 	}
-
-	
-	
-
-	
 
 	///////////////////////////////////////////////////
 
@@ -1028,8 +1029,7 @@ public class BaseDeDatos {
 		return f;
 	}
 
-	
-	public static Festival getFestNom (String nombre) {
+	public static Festival getFestNom(String nombre) {
 		Festival f = new Festival();
 		try {
 			abrirConexion("BaseDatos.db", false);
@@ -1058,8 +1058,7 @@ public class BaseDeDatos {
 		}
 		return f;
 	}
-	
-	
+
 	public static String getFotoFest(String nombreF) {
 		String fotoFestival = "";
 
@@ -1071,15 +1070,11 @@ public class BaseDeDatos {
 		return fotoFestival;
 
 	}
-	
-	
-	
+
 /////////////////////////////////////////////////////////////////////
 //                      Logging                                    //
 /////////////////////////////////////////////////////////////////////
-	
-	
-	//private static Logger logger = null;
 
+	// private static Logger logger = null;
 
 }

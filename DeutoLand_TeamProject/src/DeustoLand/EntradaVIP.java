@@ -1,13 +1,14 @@
 
 package DeustoLand;
 
-public class EntradaVIP extends Entrada{
+public class EntradaVIP extends Entrada {
 
 	private int suplementoVIP;
-	private int  numZonaVIP;
-	
+	private int numZonaVIP;
+
 	/**
 	 * Creacion de una nueva entrada
+	 * 
 	 * @param cliente
 	 * @param numeroEntrada
 	 * @param festival
@@ -20,31 +21,25 @@ public class EntradaVIP extends Entrada{
 		this.numZonaVIP = numZonaVIP;
 	}
 
-
 	public int getSuplementoVIP() {
 		return suplementoVIP;
 	}
-
 
 	public void setSuplementoVIP(int suplementoVIP) {
 		this.suplementoVIP = suplementoVIP;
 	}
 
-
 	public int getNumZonaVIP() {
 		return numZonaVIP;
 	}
-
 
 	public void setNumZonaVIP(int numZonaVIP) {
 		this.numZonaVIP = numZonaVIP;
 	}
 
-
 	@Override
 	public String toString() {
 		return "EntradaVIP [suplementoVIP=" + suplementoVIP + ", numZonaVIP=" + numZonaVIP + "]";
 	}
-	
 
 }

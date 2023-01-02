@@ -3,15 +3,14 @@ package DeustoLand;
 import java.util.Objects;
 
 public class User {
-	
+
 	private int cod;
 	private String nombre;
 	private String apellido;
 	private String dni;
 	private String correo;
 	private String contrasena;
-	
-	
+
 	public User(int cod, String nombre, String apellido, String dni, String correo, String contrasena) {
 		super();
 		this.cod = cod;
@@ -21,7 +20,7 @@ public class User {
 		this.correo = correo;
 		this.contrasena = contrasena;
 	}
-	
+
 	public User(String nombre, String apellido, String dni, String correo, String contrasena) {
 		super();
 		this.nombre = nombre;
@@ -105,9 +104,5 @@ public class User {
 		User other = (User) obj;
 		return Objects.equals(contrasena, other.contrasena) && Objects.equals(correo, other.correo);
 	}
-	
-	
-	
-	
-	
-	}
+
+}
