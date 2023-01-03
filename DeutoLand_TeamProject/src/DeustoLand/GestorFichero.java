@@ -11,6 +11,10 @@ import java.util.ArrayList;
 
 public class GestorFichero {
 
+	/**
+	 * 
+	 * @return
+	 */
 	public ArrayList<Cliente> cargarClientes() {
 
 		ArrayList<Cliente> clientes = null;
@@ -31,6 +35,10 @@ public class GestorFichero {
 		return null;
 	}
 
+	/**
+	 * 
+	 * @param clientes
+	 */
 	public void guardarClientes(ArrayList<Cliente> clientes) {
 		try {
 			File f = new File("clientes.dat");

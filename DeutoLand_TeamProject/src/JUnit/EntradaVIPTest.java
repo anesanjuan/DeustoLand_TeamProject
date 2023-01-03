@@ -26,7 +26,7 @@ public class EntradaVIPTest {
 		assertEquals(ev.getNumeroEntrada(), 100);
 		assertEquals(ev.getFestival().getCodigoF(), 01 );
 		assertEquals(ev.getTipoE(), "VIP");
-		assertEquals(ev.getSuplementoVIP(), 50);
+		assertTrue(ev.getSuplementoVIP()== 50);
 		assertEquals(ev.getNumZonaVIP(), 1);
 	}
 

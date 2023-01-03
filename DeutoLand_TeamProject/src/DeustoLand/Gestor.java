@@ -29,6 +29,12 @@ public class Gestor {
 	}
 
 	// VENTANA INICIO SESION
+	/**
+	 * 
+	 * @param correo
+	 * @param contrasena
+	 * @return
+	 */
 	public int comprobarUsuario(String correo, String contrasena) {
 		for (User c : aUsers) {
 			if (c instanceof Cliente) {
@@ -47,7 +53,18 @@ public class Gestor {
 	}
 
 	// VENTANA REGISTRO
-
+	/**
+	 * 
+	 * @param nombre
+	 * @param apellido
+	 * @param dni
+	 * @param email
+	 * @param contrasena
+	 * @param direccion
+	 * @param edad
+	 * @param codigoPostal
+	 * @throws ClienteRepetidoException
+	 */
 	public void insertarCliente(String nombre, String apellido, String dni, String email, String contrasena,
 			String direccion, int edad, int codigoPostal) throws ClienteRepetidoException {
 		

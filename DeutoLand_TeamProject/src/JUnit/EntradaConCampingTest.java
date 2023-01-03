@@ -26,7 +26,7 @@ public class EntradaConCampingTest {
 		assertEquals(ec.getNumeroEntrada(), 200);
 		assertEquals(ec.getFestival().getCodigoF(), 02 );
 		assertEquals(ec.getTipoE(), "NORMAL");
-		assertEquals(ec.getSuplementoCamping(), 30);
+		assertTrue(ec.getSuplementoCamping() == 30);
 		assertEquals(ec.getParcela(), 150);
 	}
 	
