@@ -290,6 +290,7 @@ public class BaseDeDatos {
 				 Double suplementoV = rs.getDouble("suplemento_v"); 
 				 int numZona = rs.getInt("num_zona");
 	 
+				 System.out.println("Hola");
 			User user = new User(); 
 			for (User u : BaseDeDatos.getUsers()) { 
 				if (u.getCod() == codUser) { 
@@ -322,7 +323,7 @@ public class BaseDeDatos {
 						} else {
 							System.out.println("tipo no válido para tipos de entrada disponibles");
 						}
-					return ret;
+					
 				
 			} else {
 				System.out.println("los administradores no los usamos para las estadísticas");
@@ -331,6 +332,7 @@ public class BaseDeDatos {
 			
 	 
 	 } 
+			 //System.out.println(ret);
 			 return ret; 
 			 
 		 } catch (Exception e) { 

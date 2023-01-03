@@ -236,38 +236,39 @@ public class VentanaEstadisticas extends JFrame {
 		panelTable.setBounds(0, 11, 880, 332);
 		panelPrincipal.add(panelTable);
 		panelTable.setLayout(null);
+		
 
 		JTable tDatos = new JTable();
-		tDatos.setBounds(112, 31, 637, 266);
-		panelTable.add(tDatos);
-		Border bordepanel12 = BorderFactory.createTitledBorder("Tabla con datos");
-		panelTable.setBorder(bordepanel12);
-
-		DefaultTableModel mDatos = new DefaultTableModel();
-
-		Vector<String> cabeceras = new Vector<String>(Arrays.asList("Nombre", "DNI", "Edad", "Tipo Entrada", "Precio Entrada", "Precio Total"));
-		mDatos = new DefaultTableModel(new Vector<Vector<Object>>(), cabeceras);
-		tDatos = new JTable(mDatos);
-		tDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		tDatos.getColumnModel().getColumn(0).setPreferredWidth(40);
-		tDatos.getColumnModel().getColumn(1).setPreferredWidth(40);
-		tDatos.getColumnModel().getColumn(2).setPreferredWidth(20);
-		tDatos.getColumnModel().getColumn(3).setPreferredWidth(50);
-		tDatos.getColumnModel().getColumn(4).setPreferredWidth(20);
+		
+			
+			DefaultTableModel mDatos = new DefaultTableModel();
+			 tDatos = new JTable(mDatos);
+			Vector<String> cabeceras = new Vector<String>(Arrays.asList("Nombre", "DNI", "Edad", "Tipo Entrada", "Precio Entrada", "Precio Total"));
+			mDatos = new DefaultTableModel(new Vector<Vector<Object>>(), cabeceras);
+			
+			for (Entrada e: BaseDeDatos.getEntradas()) {
+				 mDatos.addRow(new Object[] {e.getCliente().getNombre(), e.getCliente().getDni(), e.getCliente().getEdad(), e.getTipoE(), e.getFestival().getPrecio(),  BaseDeDatos.getPrecioTotal(e) });
+			 }
+			
+			 tDatos.setModel(mDatos);
+			
+			
+			tDatos = new JTable(mDatos);
+			tDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			tDatos.getColumnModel().getColumn(0).setPreferredWidth(40);
+			tDatos.getColumnModel().getColumn(1).setPreferredWidth(40);
+			tDatos.getColumnModel().getColumn(2).setPreferredWidth(20);
+			tDatos.getColumnModel().getColumn(3).setPreferredWidth(50);
+			tDatos.getColumnModel().getColumn(4).setPreferredWidth(20);
+			
+			
+		
+			tDatos.setBounds(112, 31, 637, 266);
+			panelTable.add(tDatos);
+			Border bordepanel12 = BorderFactory.createTitledBorder("Tabla con datos");
+			panelTable.setBorder(bordepanel12);
 
 		
-		 for (Entrada e: BaseDeDatos.getEntradas()) {
-			 ArrayList<Object> line = new ArrayList<>();
-			 line.add(e.getCliente().getNombre());
-			 line.add(e.getCliente().getDni());
-			 line.add(e.getCliente().getEdad());
-			 line.add(e.getTipoE());
-			 line.add(e.getFestival().getPrecio());
-			 line.add(BaseDeDatos.getPrecioTotal(e));
-			 
-			 //mDatos.addRow(Object[] line);
-		 }
-		 
 
 		JButton bEstad = new JButton("Estadisticas numéricas");
 		bEstad.addActionListener(new ActionListener() {
@@ -289,5 +290,9 @@ public class VentanaEstadisticas extends JFrame {
 		parteArriba.add(bEstad);
 
 	}
+	
+	
+	
+	
 
 }
