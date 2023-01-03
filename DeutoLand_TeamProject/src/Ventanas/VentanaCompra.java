@@ -1,6 +1,9 @@
 package Ventanas;
 
+import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -11,6 +14,7 @@ import javax.swing.JTextField;
 
 import DeustoLand.Cliente;
 import DeustoLand.Festival;
+import DeustoLand.Gestor;
 import DeustoLand.User;
 
 public class VentanaCompra extends JFrame {
@@ -69,10 +73,27 @@ public class VentanaCompra extends JFrame {
 		parteAbajo = new JPanel();
 
 		titulo = new JLabel("COMPRA ENTRADA FESTIVAL");
+		
+		//quiero hacer que vuelva a la ventana del festival que le toca pero me da pereza asi q lo hago mñn
+		//tmb quiero poner el boton mas a la izquierda
+		JButton bAtras = new JButton("volver atrás");
+		bAtras.setFont(new Font("Georgia", Font.PLAIN, 16));
+		bAtras.setBounds(387, 11, 133, 36);
+		parteArriba.add(bAtras);
+		bAtras.addActionListener(new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Gestor gn = new Gestor();
+				VentanaPrincipal vp = new VentanaPrincipal(gn, null);
+				vp.setVisible(true);
+				setVisible(false);
+
+			}
+		});
 		nombreFest = new JLabel("Festival seleccionado: " + festival.getNombre());
 		infoFest = new JLabel("Info: " + festival.getDescripcion());
-
+		
 		nombre = new JLabel("Nombre: ");
 		textnombre = new JLabel(u.getNombre());
 		mail = new JLabel("Mail :");
@@ -88,11 +109,12 @@ public class VentanaCompra extends JFrame {
 		cv = new JLabel("C.V. :");
 		textcv = new JTextField(3);
 
-		comprar = new JButton("Comparar");
+		comprar = new JButton("Comprar");
 
 		setSize(1050, 800);
 		getContentPane().setLayout(new GridLayout(3, 1));
 		setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		parteArriba.setSize(1050, 200);
 		partePrincipal.setSize(1050, 500);
 		parteAbajo.setSize(1050, 100);

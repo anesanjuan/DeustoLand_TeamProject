@@ -35,7 +35,7 @@ public class VentanaRegistro extends JFrame {
 	public VentanaRegistro(Gestor gestor) {
 
 		this.gestor = gestor;
-
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Registrarse:");
 
 		// inicializar los campos editables
