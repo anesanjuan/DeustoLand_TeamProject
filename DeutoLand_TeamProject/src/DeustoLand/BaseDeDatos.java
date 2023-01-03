@@ -207,6 +207,11 @@ public class BaseDeDatos {
 
 	}
 
+	/**
+	 * 
+	 * @param cliente
+	 * @return
+	 */
 	public static boolean insertarCliente(Cliente cliente) {
 		try (Statement statement = con.createStatement()) {
 			String sent = "insert into user values ( '" + cliente.getNombre() + "' , '" + cliente.getApellido()
@@ -270,7 +275,10 @@ public class BaseDeDatos {
 
 	// LO HE EMPZADO PERO NO ME HA DADO TIEMPO A ACABAR, LUEGO LO ACABO -- ANE
 
-	
+	/**
+	 * 
+	 * @return
+	 */
 	 public static ArrayList<Entrada> getEntradas() {
 		 ArrayList<Entrada> ret = new ArrayList<>(); 
 		 
@@ -344,6 +352,11 @@ public class BaseDeDatos {
 	 
 	 }
 	 
+	 /**
+	  * 
+	  * @param e
+	  * @return
+	  */
 	 public static double getPrecioTotal (Entrada e) {
 		 double precio = e.getFestival().getPrecio();
 		 
@@ -442,6 +455,10 @@ public class BaseDeDatos {
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public static ArrayList<Admin> getAdmins() {
 
 		try (Statement statement = con.createStatement()) {
@@ -468,6 +485,10 @@ public class BaseDeDatos {
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public static ArrayList<Cliente> getClientes() {
 
 		try (Statement statement = con.createStatement()) {
@@ -496,6 +517,12 @@ public class BaseDeDatos {
 		}
 	}
 
+	/**
+	 * 
+	 * @param correo
+	 * @param contraseña
+	 * @return
+	 */
 	public static Cliente getCliente(String correo, String contraseña) {
 		Cliente c = null;
 		try {
@@ -524,6 +551,12 @@ public class BaseDeDatos {
 
 	}
 
+	/**
+	 * 
+	 * @param correo
+	 * @param contraseña
+	 * @return
+	 */
 	public static Admin getAdmin(String correo, String contraseña) {
 		Admin a = new Admin();
 
@@ -550,6 +583,10 @@ public class BaseDeDatos {
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public static ArrayList<User> getUsers() {
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
@@ -584,6 +621,12 @@ public class BaseDeDatos {
 
 	}
 
+	/**
+	 * 
+	 * @param correo
+	 * @param contraseña
+	 * @return
+	 */
 	public static User getUser(String correo, String contraseña) {
 		int cli = 0;
 		try {
@@ -605,6 +648,12 @@ public class BaseDeDatos {
 
 	}
 
+	/**
+	 * 
+	 * @param f
+	 * @param i
+	 * @return
+	 */
 	public static Festival FestEstadistica(Festival f, int i) {
 		Festival fest = new Festival();
 		int index = -1;
@@ -855,7 +904,7 @@ public class BaseDeDatos {
 		Admin admin6 = new Admin("Isaak", "Garcia", "4321234E", "isgarcia@gmail.com", "5432", "27/11/2022");
 		Admin admin7 = new Admin("Iker", "Portela", "9876789F", "portela44@gmail.com", "ikerportela65", "30/11/2022");
 		Admin admin8 = new Admin("Alicia", "Hermosa", "6789876G", "alihermos@gmail.com", "alioli123", "15/12/2022");
-		Admin admin9 = new Admin("Alvaro", "Villanueva", "5460645H", "alvarovilla@gmail.com", "alvarito86",
+		Admin admin9 = new Admin("Alvaro", "Villanueva", "5460645H", "alvarovilla@gmail.com", "alvarito86", 
 				"20/12/2022");
 		Admin admin10 = new Admin("Lidia", "Alvarez", "5554672I", "lidia123@gmail.com", "lidix32", "22/12/2022");
 		Admin admin11 = new Admin("Maria", "Pomares", "1000243J", "mariapom@gmail.com", "merypom99", "26/12/2022");
@@ -871,15 +920,15 @@ public class BaseDeDatos {
 		admins.add(admin4);
 		admins.add(admin5);
 		admins.add(admin6);
-		// admins.add(admin7);
-		// admins.add(admin8);
-		// admins.add(admin9);
-		// admins.add(admin10);
-		// admins.add(admin11);
-		// admins.add(admin12);
-		// admins.add(admin13);
-		// admins.add(admin14);
-		// admins.add(admin15);
+		admins.add(admin7);
+		admins.add(admin8);
+		admins.add(admin9);
+		admins.add(admin10);
+		admins.add(admin11);
+		admins.add(admin12);
+		admins.add(admin13);
+		admins.add(admin14);
+		admins.add(admin15);
 
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
@@ -1041,6 +1090,17 @@ public class BaseDeDatos {
 	}
 
 	// INSERTAR CLIENTE ---- VENTANA REGISTRO
+	/**
+	 * 
+	 * @param nombre
+	 * @param apellido
+	 * @param dni
+	 * @param correo
+	 * @param contrasena
+	 * @param direccion
+	 * @param edad
+	 * @param codigoPostal
+	 */
 	public static void insertarUsuario(String nombre, String apellido, String dni, String correo, String contrasena,
 			String direccion, int edad, int codigoPostal) {
 		try (Statement statement = con.createStatement()) {
@@ -1061,6 +1121,11 @@ public class BaseDeDatos {
 
 	///////////////////////////////////////////////////
 
+	/**
+	 * 
+	 * @param festival
+	 * @return
+	 */
 	public static Festival getFestival(Festival festival) {
 		Festival f = new Festival();
 		try {
@@ -1091,6 +1156,11 @@ public class BaseDeDatos {
 		return f;
 	}
 
+	/**
+	 * 
+	 * @param nombre
+	 * @return
+	 */
 	public static Festival getFestNom(String nombre) {
 		Festival f = new Festival();
 		try {
@@ -1121,6 +1191,11 @@ public class BaseDeDatos {
 		return f;
 	}
 
+	/**
+	 * 
+	 * @param nombreF
+	 * @return
+	 */
 	public static String getFotoFest(String nombreF) {
 		String fotoFestival = "";
 
