@@ -67,7 +67,7 @@ public class VentanaFestival extends JFrame {
 			}
 		});
 
-		JButton bInicioSesion = new JButton("iniciar sesión");
+		JButton bInicioSesion = new JButton("Iniciar sesión");
 		bInicioSesion.setFont(new Font("Georgia", Font.PLAIN, 16));
 		bInicioSesion.setBounds(716, 11, 144, 36);
 		parteArriba.add(bInicioSesion);
@@ -137,7 +137,7 @@ public class VentanaFestival extends JFrame {
 		tituloLugar.setBounds(61, 132, 75, 42);
 		principalDrch.add(tituloLugar);
 
-		JLabel tituloArtistasInv = new JLabel("Aristas Invitados:");
+		JLabel tituloArtistasInv = new JLabel("Artistas Invitados:");
 		tituloArtistasInv.setFont(new Font("Georgia", Font.PLAIN, 20));
 		tituloArtistasInv.setBounds(61, 185, 164, 42);
 		principalDrch.add(tituloArtistasInv);

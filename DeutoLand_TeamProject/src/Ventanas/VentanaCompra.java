@@ -74,8 +74,7 @@ public class VentanaCompra extends JFrame {
 
 		titulo = new JLabel("COMPRA ENTRADA FESTIVAL");
 		
-		//quiero hacer que vuelva a la ventana del festival que le toca pero me da pereza asi q lo hago mñn
-		//tmb quiero poner el boton mas a la izquierda
+		// quiero poner el boton a la izquierda
 		JButton bAtras = new JButton("volver atrás");
 		bAtras.setFont(new Font("Georgia", Font.PLAIN, 16));
 		bAtras.setBounds(387, 11, 133, 36);
@@ -84,9 +83,8 @@ public class VentanaCompra extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Gestor gn = new Gestor();
-				VentanaPrincipal vp = new VentanaPrincipal(gn, null);
-				vp.setVisible(true);
+				VentanaFestival vf = new VentanaFestival(festival, u);
+				vf.setVisible(true);
 				setVisible(false);
 
 			}
