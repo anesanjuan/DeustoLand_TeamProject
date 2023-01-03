@@ -3,7 +3,7 @@ package DeustoLand;
 
 public class EntradaVIP extends Entrada {
 
-	private int suplementoVIP;
+	private double suplementoVIP;
 	private int numZonaVIP;
 
 	/**
@@ -15,17 +15,17 @@ public class EntradaVIP extends Entrada {
 	 * @param suplementoVIP
 	 * @param numZonaVIP
 	 */
-	public EntradaVIP(Cliente cliente, int numeroEntrada, Festival festival, int suplementoVIP, int numZonaVIP) {
-		super(cliente, numeroEntrada, festival );
+	public EntradaVIP(Cliente cliente, int numeroEntrada, Festival festival, TipoEntrada tipoE, double suplementoVIP, int numZonaVIP) {
+		super(cliente, numeroEntrada, festival, tipoE);
 		this.suplementoVIP = suplementoVIP;
 		this.numZonaVIP = numZonaVIP;
 	}
 
-	public int getSuplementoVIP() {
+	public double getSuplementoVIP() {
 		return suplementoVIP;
 	}
 
-	public void setSuplementoVIP(int suplementoVIP) {
+	public void setSuplementoVIP(double suplementoVIP) {
 		this.suplementoVIP = suplementoVIP;
 	}
 

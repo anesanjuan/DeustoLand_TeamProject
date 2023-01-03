@@ -4,7 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.ActionListener;import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Vector;
 
@@ -24,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
 
 import DeustoLand.BaseDeDatos;
 import DeustoLand.Cliente;
+import DeustoLand.Entrada;
 import DeustoLand.Festival;
 
 public class VentanaEstadisticas extends JFrame {
@@ -244,7 +245,7 @@ public class VentanaEstadisticas extends JFrame {
 
 		DefaultTableModel mDatos = new DefaultTableModel();
 
-		Vector<String> cabeceras = new Vector<String>(Arrays.asList("Nombre", "DNI", "Edad", "Tipo Entrada", "Precio"));
+		Vector<String> cabeceras = new Vector<String>(Arrays.asList("Nombre", "DNI", "Edad", "Tipo Entrada", "Precio Entrada", "Precio Total"));
 		mDatos = new DefaultTableModel(new Vector<Vector<Object>>(), cabeceras);
 		tDatos = new JTable(mDatos);
 		tDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -254,11 +255,19 @@ public class VentanaEstadisticas extends JFrame {
 		tDatos.getColumnModel().getColumn(3).setPreferredWidth(50);
 		tDatos.getColumnModel().getColumn(4).setPreferredWidth(20);
 
-		/*
-		 * for (Entrada c: BaseDeDatos.getEntradas()) {
-		 * 
-		 * }
-		 */
+		
+		 for (Entrada e: BaseDeDatos.getEntradas()) {
+			 ArrayList<Object> line = new ArrayList<>();
+			 line.add(e.getCliente().getNombre());
+			 line.add(e.getCliente().getDni());
+			 line.add(e.getCliente().getEdad());
+			 line.add(e.getTipoE());
+			 line.add(e.getFestival().getPrecio());
+			 line.add(BaseDeDatos.getPrecioTotal(e));
+			 
+			 //mDatos.addRow(Object[] line);
+		 }
+		 
 
 		JButton bEstad = new JButton("Estadisticas numéricas");
 		bEstad.addActionListener(new ActionListener() {

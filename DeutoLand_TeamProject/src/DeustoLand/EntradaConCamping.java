@@ -2,7 +2,7 @@ package DeustoLand;
 
 public class EntradaConCamping extends Entrada {
 
-	private int suplementoCamping;
+	private double suplementoCamping;
 	private int parcela;
 
 	/**
@@ -14,18 +14,18 @@ public class EntradaConCamping extends Entrada {
 	 * @param suplementoCamping
 	 * @param parcela
 	 */
-	public EntradaConCamping(Cliente cliente, int numeroEntrada, Festival festival, int suplementoCamping,
+	public EntradaConCamping(Cliente cliente, int numeroEntrada, Festival festival, TipoEntrada tipoE,  double suplementoCamping,
 			int parcela  ) {
-		super(cliente, numeroEntrada, festival );
+		super(cliente, numeroEntrada, festival, tipoE );
 		this.suplementoCamping = suplementoCamping;
 		this.parcela = parcela;
 	}
 
-	public int getSuplementoCamping() {
+	public double getSuplementoCamping() {
 		return suplementoCamping;
 	}
 
-	public void setSuplementoCamping(int suplementoCamping) {
+	public void setSuplementoCamping(double suplementoCamping) {
 		this.suplementoCamping = suplementoCamping;
 	}
 

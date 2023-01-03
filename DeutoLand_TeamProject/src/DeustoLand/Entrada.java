@@ -8,14 +8,16 @@ public class Entrada {
 	private Cliente cliente;
 	private int numeroEntrada;
 	private Festival festival;
+	private TipoEntrada tipoE;
 
 	private double precio;
 
-	public Entrada(Cliente cliente, int numeroEntrada, Festival festival) {
+	public Entrada(Cliente cliente, int numeroEntrada, Festival festival, TipoEntrada tipoE) {
 		super();
 		this.cliente = cliente;
 		this.numeroEntrada = numeroEntrada;
 		this.festival = festival;
+		this.tipoE = tipoE;
 		}
 
 	public double getPrecio() {
@@ -52,6 +54,15 @@ public class Entrada {
 
 	public void setFestival(Festival festival) {
 		this.festival = festival;
+	}
+	
+
+	public TipoEntrada getTipoE() {
+		return tipoE;
+	}
+
+	public void setTipoE(TipoEntrada tipoE) {
+		this.tipoE = tipoE;
 	}
 
 	@Override

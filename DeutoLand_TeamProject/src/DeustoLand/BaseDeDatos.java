@@ -270,37 +270,93 @@ public class BaseDeDatos {
 
 	// LO HE EMPZADO PERO NO ME HA DADO TIEMPO A ACABAR, LUEGO LO ACABO -- ANE
 
-	/*
-	 * public static ArrayList<Entrada> getEntradas() { ArrayList<Entrada> ret = new
-	 * ArrayList<>(); try (Statement statement = con.createStatement()) {
-	 * abrirConexion("BaseDatos.db", false); String sent = "select * from entradas";
-	 * logger.log(Level.INFO, "Statement: " + sent); ResultSet rs =
-	 * statement.executeQuery(sent); while (rs.next()) { int cod =
-	 * rs.getInt("codE"); int codUser = rs.getInt("codU"); int codFest =
-	 * rs.getInt("codF"); int tipo = rs.getInt("tipo"); double suplementoC =
-	 * rs.getDouble("suplemento_c"); int parcela = rs.getInt("parcela"); Double
-	 * suplementoV = rs.getDouble("suplemento_v"); int numZona =
-	 * rs.getInt("num_zona");
-	 * 
-	 * User user = new User(); for (User u : BaseDeDatos.getUsers()) { if
-	 * (u.getCod() == codUser) { user = BaseDeDatos.getUser(u.getCorreo(),
-	 * u.getContrasena()); } }
-	 * 
-	 * Festival fest = new Festival(); for (Festival festival :
-	 * BaseDeDatos.getFestivales()) { if (festival.getCodigoF() == codFest) {
-	 * fest.setCodigoF(festival.getCodigoF()); fest.setNombre(festival.getNombre());
-	 * fest.setFecha(festival.getFecha()); fest.setLugar(festival.getLugar());
-	 * fest.setDescripcion(festival.getDescripcion());
-	 * fest.setPrecio(festival.getPrecio()); fest.setFoto(festival.getFoto()); } }
-	 * 
-	 * if (tipo == 0) { ret.add(new Entrada(cod, user, fest)); } ret.add(new
-	 * Festival(cod, nombre, fecha, lugar, descripcion, precio, foto));
-	 * 
-	 * } // return ret; } catch (Exception e) { logger.log(Level.SEVERE,
-	 * "Excepcion", e); return null; } return ret;
-	 * 
-	 * }
-	 */
+	
+	 public static ArrayList<Entrada> getEntradas() {
+		 ArrayList<Entrada> ret = new ArrayList<>(); 
+		 
+		 try (Statement statement = con.createStatement()) {
+			 abrirConexion("BaseDatos.db", false); 
+			 String sent = "select * from entradas";
+			 logger.log(Level.INFO, "Statement: " + sent); 
+			 ResultSet rs = statement.executeQuery(sent); 
+			 
+			 while (rs.next()) { 
+				 int cod = rs.getInt("codE"); 
+				 int codUser = rs.getInt("codU"); 
+				 int codFest = rs.getInt("codF"); 
+				 int tipo = rs.getInt("tipo"); 
+				 double suplementoC = rs.getDouble("suplemento_c"); 
+				 int parcela = rs.getInt("parcela"); 
+				 Double suplementoV = rs.getDouble("suplemento_v"); 
+				 int numZona = rs.getInt("num_zona");
+	 
+			User user = new User(); 
+			for (User u : BaseDeDatos.getUsers()) { 
+				if (u.getCod() == codUser) { 
+					user = BaseDeDatos.getUser(u.getCorreo(), u.getContrasena()); 
+					} 
+				}
+			if (user.equals(BaseDeDatos.getCliente(user.getCorreo(), user.getContrasena()))) {
+				
+				Cliente c = (Cliente) user;
+				Festival fest = new Festival(); 
+				for (Festival festival : BaseDeDatos.getFestivales()) { 
+					if (festival.getCodigoF() == codFest) {
+		 
+						fest.setCodigoF(festival.getCodigoF()); 
+						fest.setNombre(festival.getNombre());
+						fest.setFecha(festival.getFecha()); 
+						fest.setLugar(festival.getLugar());
+						fest.setDescripcion(festival.getDescripcion());
+						fest.setPrecio(festival.getPrecio()); 
+						fest.setFoto(festival.getFoto()); 
+						} 
+					}
+		 
+					if (tipo == 0) { 
+						ret.add(new Entrada(c,cod, fest, TipoEntrada.NORMAL)); 
+						} else if (tipo == 1) {
+							ret.add(new EntradaConCamping(c, cod, fest, TipoEntrada.CONCAMPING ,suplementoC, parcela));
+						} else if (tipo == 2) {
+							ret.add(new EntradaVIP(c, cod, fest, TipoEntrada.VIP, suplementoV, numZona));
+						} else {
+							System.out.println("tipo no válido para tipos de entrada disponibles");
+						}
+					return ret;
+				
+			} else {
+				System.out.println("los administradores no los usamos para las estadísticas");
+				
+			}
+			
+	 
+	 } 
+			 return ret; 
+			 
+		 } catch (Exception e) { 
+			 logger.log(Level.SEVERE, "Excepcion", e); 
+			 
+			 return null; 
+			 
+		 } 
+	 
+	 }
+	 
+	 public static double getPrecioTotal (Entrada e) {
+		 double precio = e.getFestival().getPrecio();
+		 
+		 if (e.getTipoE().equals(TipoEntrada.NORMAL)) {
+			 return precio;
+		 } else if (e.getTipoE().equals(TipoEntrada.CONCAMPING)) {
+			 EntradaConCamping ec = (EntradaConCamping) e;
+			 return precio + ec.getSuplementoCamping();
+		 } else {
+			 EntradaVIP ev = (EntradaVIP) e;
+			 return precio + ev.getSuplementoVIP();
+		 }
+
+	 }
+	 
 
 	/**
 	 * Lee los artistas de la conexion de base de datos abierta (debe abrirse
