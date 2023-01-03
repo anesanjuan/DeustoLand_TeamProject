@@ -81,11 +81,11 @@ public class VentanaRegistro extends JFrame {
 
 		// inicializar las etiquetas
 		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(68, 35, 49, 14);
+		lblNombre.setBounds(68, 35, 60, 14);
 		panel.add(lblNombre);
 
 		JLabel lblApellido = new JLabel("Apellido:");
-		lblApellido.setBounds(68, 82, 49, 14);
+		lblApellido.setBounds(68, 82, 60, 14);
 		panel.add(lblApellido);
 
 		JLabel lblDNI = new JLabel("DNI:");
@@ -109,7 +109,7 @@ public class VentanaRegistro extends JFrame {
 		panel.add(lblEdad);
 
 		JLabel lblCodigoPostal = new JLabel("Codigo Postal:");
-		lblCodigoPostal.setBounds(68, 370, 89, 14);
+		lblCodigoPostal.setBounds(68, 370, 95, 14);
 		panel.add(lblCodigoPostal);
 
 		// botones
