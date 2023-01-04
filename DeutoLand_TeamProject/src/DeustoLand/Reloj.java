@@ -1,34 +1,30 @@
 package DeustoLand;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
-public class Reloj implements Runnable {
+import javax.swing.JFrame;
+import javax.swing.SwingWorker;
 
-	SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-	String hora;
+public class Reloj extends SwingWorker<Void, Void> {
 
-	public String getHora()
-	{
-		return hora;
+	private JFrame frame;
+
+	public Reloj(JFrame frame) {
+		this.frame = frame;
 	}
-	
-	public void run() {
 
-		while (true) {
-			// Obtener la hora actual
-			hora = sdf.format(new Date());
-			// Mostrar la hora
-			System.out.println(hora);
-
-			// Duerme el hilo durante 1 segundo
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-
+	@Override
+	protected Void doInBackground() throws Exception {
+		while (!isCancelled()) {
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+			String hora = LocalDateTime.now().format(formatter);
+			frame.setTitle("Fecha y hora del sistema: " + hora);
+			Thread.sleep(1000);
 		}
+		return null;
 	}
 
 }

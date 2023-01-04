@@ -34,6 +34,7 @@ import DeustoLand.User;
 public class VentanaFestival extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	private JButton bInicioSesion;
 
 	public VentanaFestival(Festival festival, User u) {
 
@@ -67,7 +68,7 @@ public class VentanaFestival extends JFrame {
 			}
 		});
 
-		JButton bInicioSesion = new JButton("Iniciar sesión");
+		bInicioSesion = new JButton("Iniciar sesión");
 		bInicioSesion.setFont(new Font("Georgia", Font.PLAIN, 16));
 		bInicioSesion.setBounds(716, 11, 144, 36);
 		parteArriba.add(bInicioSesion);
