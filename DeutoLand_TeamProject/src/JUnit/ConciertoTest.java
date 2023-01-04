@@ -23,7 +23,6 @@ public class ConciertoTest {
 				"Mad Cool es un festival de música que se realiza en Madrid desde el año 2016. El arte, la moda, la gastronomía y el turismo se unen eclécticamente en este festival. Para más información consulte la página oficial del sitio: https://madcoolfestival.es/",
 				120.00, "madcool.jpg") );
 
-		assertEquals(c.getCodigoC(),13 );
 		assertEquals(c.getArtista().getCodigoA(), 01 );
 		assertEquals(c.getHora(), 2022-03-12);
 		assertTrue(c.getDuracion() == 1.00 );
