@@ -1,6 +1,8 @@
 package DeustoLand;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import DeustoLand.Artista;
 import DeustoLand.User;
@@ -9,6 +11,9 @@ import Excepciones.ClienteRepetidoException;
 
 public class Gestor {
 
+	//almacenamos numero de 
+	private Map<Integer,Integer> ventas = new HashMap<>();
+	
 	private ArrayList<User> aUsers = null;
 
 	public void CargarClientes() {

@@ -13,15 +13,17 @@ import DeustoLand.TipoGenero;
 
 public class ConciertoTestV2 {
 
-	private Concierto c ; 
-	
+	private Artista a;
+
+	private Concierto c;
+
 	@Before
 	public void setUp() throws Exception {
 
-		c = new Concierto(13, new Artista(01, "Aitana", TipoGenero.POP),2022-03-12, 1.00, new Festival(04, "Mad Cool", "04-07-2023", "Madrid, España",
+		a = new Artista(01, "Aitana", TipoGenero.POP);
+		c = new Concierto(13, a, 2022 - 03 - 12, 1.00, new Festival(04, "Mad Cool", "04-07-2023", "Madrid, España",
 				"Mad Cool es un festival de música que se realiza en Madrid desde el año 2016. El arte, la moda, la gastronomía y el turismo se unen eclécticamente en este festival. Para más información consulte la página oficial del sitio: https://madcoolfestival.es/",
-				120.00, "madcool.jpg") );
-		
+				120.00, "madcool.jpg"));
 	}
 
 	@After
@@ -31,12 +33,12 @@ public class ConciertoTestV2 {
 	@Test
 	public void testConcierto() {
 
-		assertNotNull( c );
+		assertNotNull(c);
 	}
 
 	@Test
 	public void testGetCodigoC() {
-		assertEquals(c.getCodigoC(),13 );
+		assertEquals(c.getCodigoC(), 13);
 	}
 
 	@Test
@@ -46,18 +48,23 @@ public class ConciertoTestV2 {
 
 	@Test
 	public void testGetArtista() {
-		
-		assertEquals("Aitana", c.getArtista() );
+
+		assertEquals(a, c.getArtista());
+
 	}
 
 	@Test
 	public void testSetArtista() {
-		fail("Not yet implemented");
+
+		assertEquals(a, c.getArtista());
+		c.setArtista(null);
+		assertNull(c.getArtista());
+
 	}
 
 	@Test
 	public void testGetHora() {
-		assertEquals(c.getHora(), 2022-03-12);
+		assertEquals(c.getHora(), 2022 - 03 - 12);
 	}
 
 	@Test
@@ -67,7 +74,7 @@ public class ConciertoTestV2 {
 
 	@Test
 	public void testGetDuracion() {
-		assertTrue(c.getDuracion() == 1.00 );
+		assertTrue(c.getDuracion() == 1.00);
 	}
 
 	@Test
@@ -77,13 +84,12 @@ public class ConciertoTestV2 {
 
 	@Test
 	public void testGetFestival() {
-		assertEquals(c.getFestival().getCodigoF(),04 );
+		assertEquals(c.getFestival().getCodigoF(), 04);
 	}
 
 	@Test
 	public void testSetFestival() {
 		fail("Not yet implemented");
 	}
-
 
 }
