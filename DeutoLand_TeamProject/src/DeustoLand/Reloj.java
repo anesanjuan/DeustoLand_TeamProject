@@ -9,12 +9,13 @@ import javax.swing.JFrame;
 import javax.swing.SwingWorker;
 
 public class Reloj extends SwingWorker<Void, Void> {
-	
-	
+
 	private JFrame frame;
-	public Reloj (JFrame frame) {
+
+	public Reloj(JFrame frame) {
 		this.frame = frame;
 	}
+
 	@Override
 	protected Void doInBackground() throws Exception {
 		while (!isCancelled()) {
@@ -25,9 +26,5 @@ public class Reloj extends SwingWorker<Void, Void> {
 		}
 		return null;
 	}
-	
-
-
-	
 
 }
