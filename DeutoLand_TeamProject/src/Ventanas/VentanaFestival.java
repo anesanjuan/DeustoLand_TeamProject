@@ -68,21 +68,29 @@ public class VentanaFestival extends JFrame {
 			}
 		});
 
-		bInicioSesion = new JButton("Iniciar sesión");
-		bInicioSesion.setFont(new Font("Georgia", Font.PLAIN, 16));
-		bInicioSesion.setBounds(716, 11, 144, 36);
-		parteArriba.add(bInicioSesion);
-		bInicioSesion.addActionListener(new ActionListener() {
+		
+		if (u == null) {
+			
+			bInicioSesion = new JButton("Iniciar sesión");
+			bInicioSesion.setFont(new Font("Georgia", Font.PLAIN, 16));
+			bInicioSesion.setBounds(716, 11, 144, 36);
+			parteArriba.add(bInicioSesion);
+			bInicioSesion.addActionListener(new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				Gestor gn = new Gestor();
-				VentanaInicioSesion vis = new VentanaInicioSesion(gn);
-				vis.setVisible(true);
-				setVisible(false);
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Gestor gn = new Gestor();
+					VentanaInicioSesion vis = new VentanaInicioSesion(gn);
+					vis.setVisible(true);
+					setVisible(false);
 
-			}
-		});
+				}
+				
+			});
+			
+		} 
+		
+		
 
 		JPanel panelPrincipal = new JPanel();
 		panelPrincipal.setBounds(0, 51, 890, 527);
