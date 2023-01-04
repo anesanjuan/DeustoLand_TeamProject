@@ -12,13 +12,22 @@ public class Entrada {
 
 	private double precio;
 
-	public Entrada(Cliente cliente, int numeroEntrada, Festival festival, TipoEntrada tipoE) {
+	public Entrada(int numeroEntrada, Cliente cliente, Festival festival, TipoEntrada tipoE) {
 		super();
-		this.cliente = cliente;
 		this.numeroEntrada = numeroEntrada;
+		this.cliente = cliente;
 		this.festival = festival;
 		this.tipoE = tipoE;
 		}
+	
+	public Entrada(Cliente cliente, Festival festival, TipoEntrada tipoE) {
+		super();
+		this.cliente = cliente;
+		this.festival = festival;
+		this.tipoE = tipoE;
+		}
+	
+	
 
 	public double getPrecio() {
 		return precio;

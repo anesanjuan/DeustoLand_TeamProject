@@ -14,13 +14,21 @@ public class EntradaConCamping extends Entrada {
 	 * @param suplementoCamping
 	 * @param parcela
 	 */
-	public EntradaConCamping(Cliente cliente, int numeroEntrada, Festival festival, TipoEntrada tipoE,  double suplementoCamping,
+	public EntradaConCamping( int numeroEntrada, Cliente cliente, Festival festival, TipoEntrada tipoE,  double suplementoCamping,
 			int parcela  ) {
-		super(cliente, numeroEntrada, festival, tipoE );
+		super(numeroEntrada, cliente, festival, tipoE );
 		this.suplementoCamping = suplementoCamping;
 		this.parcela = parcela;
 	}
 
+	public EntradaConCamping(Cliente cliente, Festival festival, TipoEntrada tipoE,  double suplementoCamping,
+			int parcela  ) {
+		super(cliente, festival, tipoE );
+		this.suplementoCamping = suplementoCamping;
+		this.parcela = parcela;
+	}
+	
+	
 	public double getSuplementoCamping() {
 		return suplementoCamping;
 	}

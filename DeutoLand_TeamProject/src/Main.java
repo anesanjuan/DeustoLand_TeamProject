@@ -31,6 +31,7 @@ public class Main {
 		//BaseDeDatos.insertarFestivales();
 		//BaseDeDatos.insertarConciertos();
 		//BaseDeDatos.insertarUsuarios();
+		//BaseDeDatos.insertarEntradas();
 		
 		Gestor gln = new Gestor();
 		VentanaPrincipal vp = new VentanaPrincipal( gln, null );

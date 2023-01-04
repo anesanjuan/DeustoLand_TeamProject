@@ -15,12 +15,18 @@ public class EntradaVIP extends Entrada {
 	 * @param suplementoVIP
 	 * @param numZonaVIP
 	 */
-	public EntradaVIP(Cliente cliente, int numeroEntrada, Festival festival, TipoEntrada tipoE, double suplementoVIP, int numZonaVIP) {
-		super(cliente, numeroEntrada, festival, tipoE);
+	public EntradaVIP( int numeroEntrada, Cliente cliente, Festival festival, TipoEntrada tipoE, double suplementoVIP, int numZonaVIP) {
+		super( numeroEntrada, cliente, festival, tipoE);
 		this.suplementoVIP = suplementoVIP;
 		this.numZonaVIP = numZonaVIP;
 	}
 
+	public EntradaVIP(Cliente cliente, Festival festival, TipoEntrada tipoE, double suplementoVIP, int numZonaVIP) {
+		super(cliente, festival, tipoE);
+		this.suplementoVIP = suplementoVIP;
+		this.numZonaVIP = numZonaVIP;
+	}
+	
 	public double getSuplementoVIP() {
 		return suplementoVIP;
 	}
