@@ -38,9 +38,8 @@ import DeustoLand.User;
 
 public class VentanaPrincipal extends JFrame {
 
-	//instancia unica del sistema
-	public Reloj reloj = new Reloj();
-	public Thread hilo = new Thread( reloj );
+	//HILO
+	private Reloj reloj;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -95,7 +94,10 @@ public class VentanaPrincipal extends JFrame {
 	// esto es como inicializar: mete todo dentro
 	public VentanaPrincipal(Gestor gestor, User u) {
 		
-		hilo.start();
+		//HILO
+		reloj = new Reloj(this);
+		reloj.execute();
+		
 		
 		setBounds(100, 100, 901, 615);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
