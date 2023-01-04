@@ -1088,6 +1088,14 @@ public class BaseDeDatos {
 
 		}
 	}
+	
+	
+	//LO HE EMPEZADO PERO NO ME HA DADO TIEMPO A ACABAR -- ANE (A LA HORA DE COMER LO ACABO)
+	/*public static void insertarEntradas () {
+		Entrada e1 = new Entrada(BaseDeDatos.getClientes().get(1), );
+	}*/
+	
+	
 
 	// INSERTAR CLIENTE ---- VENTANA REGISTRO
 	/**
