@@ -32,6 +32,7 @@ import DeustoLand.Entrada;
 import DeustoLand.Festival;
 import DeustoLand.TipoEntrada;
 
+
 public class VentanaEstadisticas extends JFrame {
 
 	/**
@@ -44,6 +45,8 @@ public class VentanaEstadisticas extends JFrame {
 	private JTextField tfEdadMax;
 	private final JTable tDatos;
 	private final DefaultTableModel mDatos;
+	
+	private Renderer cellRenderer;
 
 	public VentanaEstadisticas() {
 
@@ -66,29 +69,7 @@ public class VentanaEstadisticas extends JFrame {
 		parteArriba.add(nomFest);
 
 
-		JButton bAnterior = new JButton("anterior");
-		bAnterior.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				nomFest.setText(BaseDeDatos.FestEstadistica(BaseDeDatos.getFestNom(nomFest.getText()), 0).getNombre());
-
-			}
-		});
-		bAnterior.setFont(new Font("Georgia", Font.PLAIN, 16));
-		bAnterior.setBounds(103, 24, 133, 36);
-		parteArriba.add(bAnterior);
-
-		JButton bSiguiente = new JButton("siguiente");
-		bSiguiente.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				nomFest.setText(BaseDeDatos.FestEstadistica(BaseDeDatos.getFestNom(nomFest.getText()), 1).getNombre());
-			}
-		});
-
-		bSiguiente.setFont(new Font("Georgia", Font.PLAIN, 16));
-		bSiguiente.setBounds(617, 24, 144, 36);
-		parteArriba.add(bSiguiente);
+		
 
 		JPanel panelPrincipal = new JPanel();
 		panelPrincipal.setBounds(0, 110, 890, 468);
@@ -215,31 +196,72 @@ public class VentanaEstadisticas extends JFrame {
 		panelPrincipal.add(panelTable);
 		panelTable.setLayout(null);
 		
-		
+		cellRenderer = new Renderer();
 		tDatos = new JTable();
+		tDatos.setDefaultRenderer(Object.class, cellRenderer);
+		
 		Vector<String> cabeceras = new Vector<String>(Arrays.asList("Nombre", "DNI", "Edad", "Tipo Entrada", "Precio Entrada", "Precio Total"));
 		mDatos = new DefaultTableModel(new Vector<Vector<Object>>(), cabeceras);
-		
-		for (Entrada e: BaseDeDatos.getEntradas()) {
-			 mDatos.addRow(new Object[] {e.getCliente().getNombre(), e.getCliente().getDni(), e.getCliente().getEdad(), e.getTipoE(), e.getFestival().getPrecio(),  BaseDeDatos.getPrecioTotal(e) });
+
+		for (Entrada en: BaseDeDatos.getEntradas()) {
+			if (en.getFestival().getNombre().equals(nomFest.getText())) {
+				 mDatos.addRow(new Object[] {en.getCliente().getNombre(), en.getCliente().getDni(), en.getCliente().getEdad(), en.getTipoE(), en.getFestival().getPrecio(),  BaseDeDatos.getPrecioTotal(en) });
+			}
+			
 		 }
 		
-		 tDatos.setModel(mDatos);
-		
-		tDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		tDatos.getColumnModel().getColumn(0).setPreferredWidth(40);
-		tDatos.getColumnModel().getColumn(1).setPreferredWidth(40);
-		tDatos.getColumnModel().getColumn(2).setPreferredWidth(20);
-		tDatos.getColumnModel().getColumn(3).setPreferredWidth(50);
-		tDatos.getColumnModel().getColumn(4).setPreferredWidth(20);
-		
-		
-	
-		tDatos.setBounds(112, 31, 637, 266);
-		panelTable.add(tDatos);
-		Border bordepanel12 = BorderFactory.createTitledBorder("Tabla con datos");
-		panelTable.setBorder(bordepanel12);
+		JButton bAnterior = new JButton("anterior");
+		bAnterior.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				nomFest.setText(BaseDeDatos.FestEstadistica(BaseDeDatos.getFestNom(nomFest.getText()), 0).getNombre());
+				tDatos.removeAll();
+				for (Entrada en: BaseDeDatos.getEntradas()) {
+					if (en.getFestival().getNombre().equals(nomFest.getText())) {
+						 mDatos.addRow(new Object[] {en.getCliente().getNombre(), en.getCliente().getDni(), en.getCliente().getEdad(), en.getTipoE(), en.getFestival().getPrecio(),  BaseDeDatos.getPrecioTotal(en) });
+					}
+				 }
 
+			}
+		});
+		bAnterior.setFont(new Font("Georgia", Font.PLAIN, 16));
+		bAnterior.setBounds(103, 24, 133, 36);
+		parteArriba.add(bAnterior);
+
+		JButton bSiguiente = new JButton("siguiente");
+		bSiguiente.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				nomFest.setText(BaseDeDatos.FestEstadistica(BaseDeDatos.getFestNom(nomFest.getText()), 1).getNombre());
+				tDatos.removeAll();
+				for (Entrada en: BaseDeDatos.getEntradas()) {
+					if (en.getFestival().getNombre().equals(nomFest.getText())) {
+						 mDatos.addRow(new Object[] {en.getCliente().getNombre(), en.getCliente().getDni(), en.getCliente().getEdad(), en.getTipoE(), en.getFestival().getPrecio(),  BaseDeDatos.getPrecioTotal(en) });
+					}
+				 }
+			}
+		});
+
+		bSiguiente.setFont(new Font("Georgia", Font.PLAIN, 16));
+		bSiguiente.setBounds(617, 24, 144, 36);
+		parteArriba.add(bSiguiente);
+		
+		
+		 tDatos.setModel(mDatos);
+			
+			tDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			tDatos.getColumnModel().getColumn(0).setPreferredWidth(40);
+			tDatos.getColumnModel().getColumn(1).setPreferredWidth(40);
+			tDatos.getColumnModel().getColumn(2).setPreferredWidth(20);
+			tDatos.getColumnModel().getColumn(3).setPreferredWidth(50);
+			tDatos.getColumnModel().getColumn(4).setPreferredWidth(20);
+			
+			
+		
+			tDatos.setBounds(112, 31, 637, 266);
+			panelTable.add(tDatos);
+			Border bordepanel12 = BorderFactory.createTitledBorder("Tabla con datos");
+			panelTable.setBorder(bordepanel12);
 		
 
 		JButton bEstad = new JButton("Estadisticas numéricas");
@@ -263,10 +285,18 @@ public class VentanaEstadisticas extends JFrame {
 		
 		
 		
-		JButton btnTodos = new JButton("Todos");
-		btnTodos.setBounds(75, 30, 133, 36);
-		panelAbajo.add(btnTodos);
-		btnTodos.setFont(new Font("Georgia", Font.PLAIN, 16));
+		JButton btnNormal = new JButton("Normal");
+		btnNormal.setBounds(75, 30, 133, 36);
+		panelAbajo.add(btnNormal);
+		btnNormal.setFont(new Font("Georgia", Font.PLAIN, 16));
+		btnNormal.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cellRenderer.setEntrada(TipoEntrada.NORMAL);
+				tDatos.repaint();
+			}
+		});
 		
 
 		JButton btnVip = new JButton("VIP");
@@ -278,45 +308,8 @@ public class VentanaEstadisticas extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				tDatos.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
-					public Component getTableCellRendererComponent (JTable table, Object values, boolean isSelected, boolean hasFocus, int row, int col) {
-						Component ret = super.getTableCellRendererComponent(table, values, isSelected, hasFocus, row, col);
-						
-						//Object valorSubZonas = mDatos.getValueAt(row, col);
-						
-						for (int i = 0; i < mDatos.getRowCount() ; i++) {
-							if (mDatos.getValueAt(i, 3).equals(TipoEntrada.VIP)) {
-								for (int j = 0; j < mDatos.getColumnCount(); j++) {
-									Object fila = mDatos.getValueAt(i, j);
-									ret = super.getTableCellRendererComponent(table, values, isSelected, hasFocus, i, j);
-									ret.setBackground(Color.GREEN);
-								}
-					
-							}
-							
-						}
-						
-						for (int i = 0; i < mDatos.getRowCount() ; i++) {
-							if (mDatos.getValueAt(i, 3).equals(TipoEntrada.VIP) ){
-								
-							}
-						}
-						
-						/*if (valorSubZonas instanceof Integer) {
-							Integer valor = (Integer) valorSubZonas;
-							if (valor %2 == 2) {
-								ret.setBackground(Color.WHITE);
-							} else {
-								ret.setBackground(Color.LIGHT_GRAY);
-							}
-						}*/
-						
-						return ret;
-					}
-					
-				});
-				
+				cellRenderer.setEntrada(TipoEntrada.VIP);
+				tDatos.repaint();
 			}
 		});
 		
@@ -327,11 +320,31 @@ public class VentanaEstadisticas extends JFrame {
 		btnVipCamping.setFont(new Font("Georgia", Font.PLAIN, 16));
 		btnVipCamping.setBounds(614, 30, 180, 36);
 		panelAbajo.add(btnVipCamping);
+		btnVipCamping.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cellRenderer.setEntrada(TipoEntrada.VIP);
+				cellRenderer.setEntrada(TipoEntrada.CONCAMPING);
+				tDatos.repaint();
+				
+			}
+		});
+		
 
 		JButton btnCamping = new JButton("Camping");
 		btnCamping.setFont(new Font("Georgia", Font.PLAIN, 16));
 		btnCamping.setBounds(438, 30, 133, 36);
 		panelAbajo.add(btnCamping);
+		btnCamping.addActionListener(new ActionListener() {
+		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cellRenderer.setEntrada(TipoEntrada.CONCAMPING);
+				tDatos.repaint();
+				
+			}
+		});
 
 
 	}

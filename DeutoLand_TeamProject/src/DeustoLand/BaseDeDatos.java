@@ -328,7 +328,7 @@ public class BaseDeDatos {
 							ret.add(new EntradaConCamping( cod, c, fest, TipoEntrada.CONCAMPING ,suplementoC, parcela));
 						} else if (tipo == 2) {
 							ret.add(new EntradaVIP(cod, c, fest, TipoEntrada.VIP, suplementoV, numZona));
-						} else {
+						}  else {
 							System.out.println("tipo no válido para tipos de entrada disponibles");
 						}
 					
@@ -359,15 +359,21 @@ public class BaseDeDatos {
 	  */
 	 public static double getPrecioTotal (Entrada e) {
 		 double precio = e.getFestival().getPrecio();
-		 
 		 if (e.getTipoE().equals(TipoEntrada.NORMAL)) {
+			 //System.out.println(precio);
 			 return precio;
 		 } else if (e.getTipoE().equals(TipoEntrada.CONCAMPING)) {
 			 EntradaConCamping ec = (EntradaConCamping) e;
-			 return precio + ec.getSuplementoCamping();
+			 System.out.println(ec);
+			 double precioTotal = precio + ec.getSuplementoCamping();
+			 //System.out.println(precioTotal);
+			 return precioTotal;
 		 } else {
 			 EntradaVIP ev = (EntradaVIP) e;
-			 return precio + ev.getSuplementoVIP();
+			 System.out.println(ev);
+			 double precioTotal = precio + ev.getSuplementoVIP();
+			 //System.out.println(precioTotal);
+			 return precioTotal;
 		 }
 
 	 }
