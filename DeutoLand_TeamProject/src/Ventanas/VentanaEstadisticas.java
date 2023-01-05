@@ -1,8 +1,11 @@
 package Ventanas;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.Label;
+import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,6 +23,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import DeustoLand.BaseDeDatos;
@@ -95,26 +99,7 @@ public class VentanaEstadisticas extends JFrame {
 		panelPrincipal.add(panelAbajo);
 		panelAbajo.setLayout(null);
 
-		JButton btnTodos = new JButton("Todos");
-		btnTodos.setBounds(75, 30, 133, 36);
-		panelAbajo.add(btnTodos);
-		btnTodos.setFont(new Font("Georgia", Font.PLAIN, 16));
-
-		JButton btnVip = new JButton("VIP");
-		btnVip.setFont(new Font("Georgia", Font.PLAIN, 16));
-		btnVip.setBounds(253, 30, 133, 36);
-		panelAbajo.add(btnVip);
-
-		JButton btnVipCamping = new JButton("VIP + Camping");
-		btnVipCamping.setFont(new Font("Georgia", Font.PLAIN, 16));
-		btnVipCamping.setBounds(614, 30, 180, 36);
-		panelAbajo.add(btnVipCamping);
-
-		JButton btnCamping = new JButton("Camping");
-		btnCamping.setFont(new Font("Georgia", Font.PLAIN, 16));
-		btnCamping.setBounds(438, 30, 133, 36);
-		panelAbajo.add(btnCamping);
-
+		
 		JPanel panel1 = new JPanel();
 		Border bordepanel1 = BorderFactory.createTitledBorder("Datos y Filtros");
 		panel1.setBorder(bordepanel1);
@@ -227,36 +212,36 @@ public class VentanaEstadisticas extends JFrame {
 		panelPrincipal.add(panelTable);
 		panelTable.setLayout(null);
 		
-
+		
 		JTable tDatos = new JTable();
 		
-			
-			DefaultTableModel mDatos = new DefaultTableModel();
-			 tDatos = new JTable(mDatos);
-			Vector<String> cabeceras = new Vector<String>(Arrays.asList("Nombre", "DNI", "Edad", "Tipo Entrada", "Precio Entrada", "Precio Total"));
-			mDatos = new DefaultTableModel(new Vector<Vector<Object>>(), cabeceras);
-			
-			for (Entrada e: BaseDeDatos.getEntradas()) {
-				 mDatos.addRow(new Object[] {e.getCliente().getNombre(), e.getCliente().getDni(), e.getCliente().getEdad(), e.getTipoE(), e.getFestival().getPrecio(),  BaseDeDatos.getPrecioTotal(e) });
-			 }
-			
-			 tDatos.setModel(mDatos);
-			
-			
-			tDatos = new JTable(mDatos);
-			tDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-			tDatos.getColumnModel().getColumn(0).setPreferredWidth(40);
-			tDatos.getColumnModel().getColumn(1).setPreferredWidth(40);
-			tDatos.getColumnModel().getColumn(2).setPreferredWidth(20);
-			tDatos.getColumnModel().getColumn(3).setPreferredWidth(50);
-			tDatos.getColumnModel().getColumn(4).setPreferredWidth(20);
-			
-			
 		
-			tDatos.setBounds(112, 31, 637, 266);
-			panelTable.add(tDatos);
-			Border bordepanel12 = BorderFactory.createTitledBorder("Tabla con datos");
-			panelTable.setBorder(bordepanel12);
+		DefaultTableModel mDatos = new DefaultTableModel();
+		 tDatos = new JTable(mDatos);
+		Vector<String> cabeceras = new Vector<String>(Arrays.asList("Nombre", "DNI", "Edad", "Tipo Entrada", "Precio Entrada", "Precio Total"));
+		mDatos = new DefaultTableModel(new Vector<Vector<Object>>(), cabeceras);
+		
+		for (Entrada e: BaseDeDatos.getEntradas()) {
+			 mDatos.addRow(new Object[] {e.getCliente().getNombre(), e.getCliente().getDni(), e.getCliente().getEdad(), e.getTipoE(), e.getFestival().getPrecio(),  BaseDeDatos.getPrecioTotal(e) });
+		 }
+		
+		 tDatos.setModel(mDatos);
+		
+		
+		tDatos = new JTable(mDatos);
+		tDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		tDatos.getColumnModel().getColumn(0).setPreferredWidth(40);
+		tDatos.getColumnModel().getColumn(1).setPreferredWidth(40);
+		tDatos.getColumnModel().getColumn(2).setPreferredWidth(20);
+		tDatos.getColumnModel().getColumn(3).setPreferredWidth(50);
+		tDatos.getColumnModel().getColumn(4).setPreferredWidth(20);
+		
+		
+	
+		tDatos.setBounds(112, 31, 637, 266);
+		panelTable.add(tDatos);
+		Border bordepanel12 = BorderFactory.createTitledBorder("Tabla con datos");
+		panelTable.setBorder(bordepanel12);
 
 		
 
@@ -278,6 +263,38 @@ public class VentanaEstadisticas extends JFrame {
 		bEstad.setFont(new Font("Georgia", Font.PLAIN, 16));
 		bEstad.setBounds(304, 68, 226, 36);
 		parteArriba.add(bEstad);
+		
+		
+		
+		JButton btnTodos = new JButton("Todos");
+		btnTodos.setBounds(75, 30, 133, 36);
+		panelAbajo.add(btnTodos);
+		btnTodos.setFont(new Font("Georgia", Font.PLAIN, 16));
+		
+
+		JButton btnVip = new JButton("VIP");
+		btnVip.setFont(new Font("Georgia", Font.PLAIN, 16));
+		btnVip.setBounds(253, 30, 133, 36);
+		panelAbajo.add(btnVip);
+		btnVip.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
+		
+		JButton btnVipCamping = new JButton("VIP + Camping");
+		btnVipCamping.setFont(new Font("Georgia", Font.PLAIN, 16));
+		btnVipCamping.setBounds(614, 30, 180, 36);
+		panelAbajo.add(btnVipCamping);
+
+		JButton btnCamping = new JButton("Camping");
+		btnCamping.setFont(new Font("Georgia", Font.PLAIN, 16));
+		btnCamping.setBounds(438, 30, 133, 36);
+		panelAbajo.add(btnCamping);
+
 
 	}
 	
