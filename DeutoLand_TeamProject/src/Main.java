@@ -21,7 +21,7 @@ public class Main {
 
 	public static void main(String[] args) throws SQLException {
 		
-		
+		//hooo
 		 	
 		//VentanaInicioSesion vi = new VentanaInicioSesion( gln );
 		//vi.setVisible(true);
