@@ -203,11 +203,9 @@ public class VentanaEstadisticas extends JFrame {
 		Vector<String> cabeceras = new Vector<String>(Arrays.asList("Nombre", "DNI", "Edad", "Tipo Entrada", "Precio Entrada", "Precio Total"));
 		mDatos = new DefaultTableModel(new Vector<Vector<Object>>(), cabeceras);
 
+		tDatos.removeAll();
 		for (Entrada en: BaseDeDatos.getEntradas()) {
-			if (en.getFestival().getNombre().equals(nomFest.getText())) {
 				 mDatos.addRow(new Object[] {en.getCliente().getNombre(), en.getCliente().getDni(), en.getCliente().getEdad(), en.getTipoE(), en.getFestival().getPrecio(),  BaseDeDatos.getPrecioTotal(en) });
-			}
-			
 		 }
 		
 		JButton bAnterior = new JButton("anterior");
@@ -218,7 +216,7 @@ public class VentanaEstadisticas extends JFrame {
 				for (Entrada en: BaseDeDatos.getEntradas()) {
 					if (en.getFestival().getNombre().equals(nomFest.getText())) {
 						 mDatos.addRow(new Object[] {en.getCliente().getNombre(), en.getCliente().getDni(), en.getCliente().getEdad(), en.getTipoE(), en.getFestival().getPrecio(),  BaseDeDatos.getPrecioTotal(en) });
-					}
+					} 
 				 }
 
 			}
