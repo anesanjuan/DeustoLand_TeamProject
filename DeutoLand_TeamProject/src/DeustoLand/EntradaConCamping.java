@@ -16,7 +16,7 @@ public class EntradaConCamping extends Entrada {
 	 */
 	public EntradaConCamping( int numeroEntrada, Cliente cliente, Festival festival, TipoEntrada tipoE,  double suplementoCamping,
 			int parcela  ) {
-		super(numeroEntrada, cliente, festival, tipoE );
+		super( numeroEntrada, cliente, festival, tipoE );
 		this.suplementoCamping = suplementoCamping;
 		this.parcela = parcela;
 	}

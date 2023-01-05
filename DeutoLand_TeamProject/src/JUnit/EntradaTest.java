@@ -29,7 +29,7 @@ public class EntradaTest {
 				"Tomorrowland es un festival de música electrónica de baile en el que lo pasarás en grande y difrutaras de 3 días increíbles con tus amigos y lleno de música. El festival tiene una duración de 3 días y cada día empezará sobre las 18:00 horas. Para más información consulte la página oficial del sitio: https://www.tomorrowland.com/",
 				listaConciertos,150.00, "tomorrowland.png");
 		
-		e = new Entrada( c,12, f, TipoEntrada.NORMAL);
+		e = new Entrada( 12, c, f, TipoEntrada.NORMAL);
 		
 	}
 

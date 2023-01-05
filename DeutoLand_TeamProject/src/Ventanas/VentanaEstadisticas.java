@@ -30,6 +30,7 @@ import DeustoLand.BaseDeDatos;
 import DeustoLand.Cliente;
 import DeustoLand.Entrada;
 import DeustoLand.Festival;
+import DeustoLand.TipoEntrada;
 
 public class VentanaEstadisticas extends JFrame {
 
@@ -41,6 +42,8 @@ public class VentanaEstadisticas extends JFrame {
 	private JTextField tfMinP;
 	private JTextField tfEdadMin;
 	private JTextField tfEdadMax;
+	private final JTable tDatos;
+	private final DefaultTableModel mDatos;
 
 	public VentanaEstadisticas() {
 
@@ -213,11 +216,7 @@ public class VentanaEstadisticas extends JFrame {
 		panelTable.setLayout(null);
 		
 		
-		JTable tDatos = new JTable();
-		
-		
-		DefaultTableModel mDatos = new DefaultTableModel();
-		 tDatos = new JTable(mDatos);
+		tDatos = new JTable();
 		Vector<String> cabeceras = new Vector<String>(Arrays.asList("Nombre", "DNI", "Edad", "Tipo Entrada", "Precio Entrada", "Precio Total"));
 		mDatos = new DefaultTableModel(new Vector<Vector<Object>>(), cabeceras);
 		
@@ -227,8 +226,6 @@ public class VentanaEstadisticas extends JFrame {
 		
 		 tDatos.setModel(mDatos);
 		
-		
-		tDatos = new JTable(mDatos);
 		tDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tDatos.getColumnModel().getColumn(0).setPreferredWidth(40);
 		tDatos.getColumnModel().getColumn(1).setPreferredWidth(40);
@@ -277,12 +274,53 @@ public class VentanaEstadisticas extends JFrame {
 		btnVip.setBounds(253, 30, 133, 36);
 		panelAbajo.add(btnVip);
 		btnVip.addActionListener(new ActionListener() {
+
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				tDatos.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+					public Component getTableCellRendererComponent (JTable table, Object values, boolean isSelected, boolean hasFocus, int row, int col) {
+						Component ret = super.getTableCellRendererComponent(table, values, isSelected, hasFocus, row, col);
+						
+						//Object valorSubZonas = mDatos.getValueAt(row, col);
+						
+						for (int i = 0; i < mDatos.getRowCount() ; i++) {
+							if (mDatos.getValueAt(i, 3).equals(TipoEntrada.VIP)) {
+								for (int j = 0; j < mDatos.getColumnCount(); j++) {
+									Object fila = mDatos.getValueAt(i, j);
+									ret = super.getTableCellRendererComponent(table, values, isSelected, hasFocus, i, j);
+									ret.setBackground(Color.GREEN);
+								}
+					
+							}
+							
+						}
+						
+						for (int i = 0; i < mDatos.getRowCount() ; i++) {
+							if (mDatos.getValueAt(i, 3).equals(TipoEntrada.VIP) ){
+								
+							}
+						}
+						
+						/*if (valorSubZonas instanceof Integer) {
+							Integer valor = (Integer) valorSubZonas;
+							if (valor %2 == 2) {
+								ret.setBackground(Color.WHITE);
+							} else {
+								ret.setBackground(Color.LIGHT_GRAY);
+							}
+						}*/
+						
+						return ret;
+					}
+					
+				});
+				
 			}
 		});
+		
+		
 		
 		
 		JButton btnVipCamping = new JButton("VIP + Camping");

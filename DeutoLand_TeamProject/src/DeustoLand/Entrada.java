@@ -22,7 +22,7 @@ public class Entrada {
 	 * @param festival festival al que pertenece la entrada
 	 * @param tipoE tipo de la entrada
 	 */
-	public Entrada(Cliente cliente,int numeroEntrada, Festival festival, TipoEntrada tipoE) {
+	public Entrada(int numeroEntrada,  Cliente cliente,Festival festival, TipoEntrada tipoE) {
 		super();
 		this.cliente = cliente;
 		this.numeroEntrada = numeroEntrada;
