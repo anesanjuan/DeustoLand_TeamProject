@@ -12,6 +12,9 @@ import DeustoLand.User;
 
 public class UserTest {
 
+	
+	
+	//no me funcioooonaaaa
 	//el hashcode, equals???
 	
 	private User u;
@@ -35,7 +38,7 @@ public class UserTest {
 		assertEquals(u.getCod(), 01);
 	}
 	@Test
-	public void setCod(int cod) {
+	public void setCod( ) {
 		fail("Not yet implemented");
 	}
 	@Test
@@ -43,7 +46,7 @@ public class UserTest {
 		assertEquals(u.getNombre(), "Alex");
 	}
 	@Test
-	public void setNombre(String nombre) {
+	public void setNombre( ) {
 		fail("Not yet implemented");
 	}
 	@Test
@@ -51,7 +54,7 @@ public class UserTest {
 		assertEquals(u.getApellido(), "Navarro");
 	}
 	@Test
-	public void setApellido(String apellido) {
+	public void setApellido( ) {
 		fail("Not yet implemented");
 	}
 	@Test
@@ -59,7 +62,7 @@ public class UserTest {
 		assertEquals(u.getDni(), "29096527M" );
 	}
 	@Test
-	public void setDni(String dni) {
+	public void setDni( ) {
 		fail("Not yet implemented");
 	}
 	@Test
@@ -67,7 +70,7 @@ public class UserTest {
 		assertEquals(u.getCorreo(), "alexnavarro@gmail.com");
 	}
 	@Test
-	public void setCorreo(String correo) {
+	public void setCorreo( ) {
 		fail("Not yet implemented");
 	}
 	@Test
@@ -75,7 +78,7 @@ public class UserTest {
 		assertEquals(u.getContrasena(), "alex231");
 	}
 	@Test
-	public void setContrasena(String contrasena) {
+	public void setContrasena( ) {
 		fail("Not yet implemented");
 	}
 }

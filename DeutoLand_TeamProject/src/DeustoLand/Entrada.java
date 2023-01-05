@@ -5,17 +5,27 @@ public class Entrada {
 	// tbala entrada con lo comun + columna tipo (boolean, string.. para
 	// diferenciar), + columnas especificas de cada clase
 
+	
+	
+	//Atributos de la clase
 	private Cliente cliente;
 	private int numeroEntrada;
 	private Festival festival;
 	private TipoEntrada tipoE;
+	
 
-	private double precio;
-
-	public Entrada(int numeroEntrada, Cliente cliente, Festival festival, TipoEntrada tipoE) {
+	//constructor entero
+	/**
+	 * Crea una entrada con los datos indicados
+	 * @param cliente cliente que compra la entrada
+	 * @param numeroEntrada numero de la entrada
+	 * @param festival festival al que pertenece la entrada
+	 * @param tipoE tipo de la entrada
+	 */
+	public Entrada(Cliente cliente,int numeroEntrada, Festival festival, TipoEntrada tipoE) {
 		super();
-		this.numeroEntrada = numeroEntrada;
 		this.cliente = cliente;
+		this.numeroEntrada = numeroEntrada;
 		this.festival = festival;
 		this.tipoE = tipoE;
 		}
@@ -27,20 +37,17 @@ public class Entrada {
 		this.tipoE = tipoE;
 		}
 	
-	
-
-	public double getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(double precio) {
-		this.precio = precio;
-	}
-
+	/**
+	 * Crea una entrada vacia.
+	 */
 	public Entrada() {
 		super();
 	}
-
+	
+	/**
+	 * Obtiene el cliente que compra la entrada
+	 * @return el cliente que compra la entrada
+	 */
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -48,7 +55,10 @@ public class Entrada {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-
+	/**
+	 * Obtiene el numero de la entrada
+	 * @return el numero de la entrada
+	 */
 	public int getNumeroEntrada() {
 		return numeroEntrada;
 	}
@@ -56,7 +66,10 @@ public class Entrada {
 	public void setNumeroEntrada(int numeroEntrada) {
 		this.numeroEntrada = numeroEntrada;
 	}
-
+	/**
+	 * Obtiene el festival al que pertenece la entrada
+	 * @return el festival al que pertenece la entrada
+	 */
 	public Festival getFestival() {
 		return festival;
 	}
@@ -65,7 +78,10 @@ public class Entrada {
 		this.festival = festival;
 	}
 	
-
+	/**
+	 * Obtiene el tipo de entrada
+	 * @return el tipo de entrada
+	 */
 	public TipoEntrada getTipoE() {
 		return tipoE;
 	}
@@ -73,6 +89,7 @@ public class Entrada {
 	public void setTipoE(TipoEntrada tipoE) {
 		this.tipoE = tipoE;
 	}
+	
 
 	@Override
 	public String toString() {

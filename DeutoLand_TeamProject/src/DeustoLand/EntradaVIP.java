@@ -9,11 +9,11 @@ public class EntradaVIP extends Entrada {
 	/**
 	 * Creacion de una nueva entrada
 	 * 
-	 * @param cliente
-	 * @param numeroEntrada
-	 * @param festival
-	 * @param suplementoVIP
-	 * @param numZonaVIP
+	 * @param cliente cliente que compra la entrada
+	 * @param numeroEntrada numero de la entrada
+	 * @param festival festival al que pertenece la entrada
+	 * @param suplementoVIP sumplemento de la entrada
+	 * @param numZonaVIP numero de la zona VIP
 	 */
 	public EntradaVIP( int numeroEntrada, Cliente cliente, Festival festival, TipoEntrada tipoE, double suplementoVIP, int numZonaVIP) {
 		super( numeroEntrada, cliente, festival, tipoE);
@@ -27,6 +27,17 @@ public class EntradaVIP extends Entrada {
 		this.numZonaVIP = numZonaVIP;
 	}
 	
+	/**
+	 * Crea una entrada vacia
+	 */
+	public EntradaVIP() {
+		super();
+	}
+	
+	/**
+	 * Obtiene el sumplemento VIP 
+	 * @return el sumplemento VIP
+	 */
 	public double getSuplementoVIP() {
 		return suplementoVIP;
 	}
@@ -35,6 +46,10 @@ public class EntradaVIP extends Entrada {
 		this.suplementoVIP = suplementoVIP;
 	}
 
+	/**
+	 * Obtiene el numero de la zona VIP
+	 * @return el numero de la zona VIP
+	 */
 	public int getNumZonaVIP() {
 		return numZonaVIP;
 	}

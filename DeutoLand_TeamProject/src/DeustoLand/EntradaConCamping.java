@@ -8,11 +8,11 @@ public class EntradaConCamping extends Entrada {
 	/**
 	 * Creacion de una nueva entrada
 	 * 
-	 * @param cliente
-	 * @param numeroEntrada
-	 * @param festival
-	 * @param suplementoCamping
-	 * @param parcela
+	 * @param cliente cliente que compra la entrada
+	 * @param numeroEntrada numero de la entrada
+	 * @param festival festival al que pertenece la entrada
+	 * @param suplementoCamping sumplemento de la entrada
+	 * @param parcela parcela usada para el camping
 	 */
 	public EntradaConCamping( int numeroEntrada, Cliente cliente, Festival festival, TipoEntrada tipoE,  double suplementoCamping,
 			int parcela  ) {
@@ -28,7 +28,16 @@ public class EntradaConCamping extends Entrada {
 		this.parcela = parcela;
 	}
 	
-	
+	/*
+	 * Crea una EntradConCamping vacia
+	 */
+	public EntradaConCamping() {
+		super();
+	}
+	/**
+	 * Obtiene el sumplemento a la entrada por ser con camping
+	 * @return el sumplemento a la entrada por ser con camping
+	 */
 	public double getSuplementoCamping() {
 		return suplementoCamping;
 	}
@@ -37,6 +46,10 @@ public class EntradaConCamping extends Entrada {
 		this.suplementoCamping = suplementoCamping;
 	}
 
+	/**
+	 * Obtiene la parcela usada para el camping
+	 * @return la parcela usada para el camping
+	 */
 	public int getParcela() {
 		return parcela;
 	}

@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class User {
 
+	//Atributos de la clase
 	private int cod;
 	private String nombre;
 	private String apellido;
@@ -11,6 +12,15 @@ public class User {
 	private String correo;
 	private String contrasena;
 
+	/**
+	 * Crea un user con los datos indicados.
+	 * @param cod codigo del user
+	 * @param nombre nombre del user
+	 * @param apellido apellido del user
+	 * @param dni dni del user
+	 * @param correo correo del user
+	 * @param contrasena contraseña adel user
+	 */
 	public User(int cod, String nombre, String apellido, String dni, String correo, String contrasena) {
 		super();
 		this.cod = cod;
@@ -30,18 +40,29 @@ public class User {
 		this.contrasena = contrasena;
 	}
 
+	/**
+	 * Crea un user vacio
+	 */
 	public User() {
 		super();
 	}
 
+	/**
+	 * Obtiene el codigo del user
+	 * @return el codigo del user
+	 */
 	public int getCod() {
 		return cod;
 	}
-
+	
 	public void setCod(int cod) {
 		this.cod = cod;
 	}
 
+	/**
+	 * Obtiene el nombre del user
+	 * @return el nombre del user
+	 */
 	public String getNombre() {
 		return nombre;
 	}
@@ -50,6 +71,10 @@ public class User {
 		this.nombre = nombre;
 	}
 
+	/**
+	 * Obtiene el apellido del user
+	 * @return el apellido del user
+	 */
 	public String getApellido() {
 		return apellido;
 	}
@@ -57,7 +82,11 @@ public class User {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-
+	
+	/**
+	 * Obtiene el dni del user
+	 * @return el dni del user
+	 */
 	public String getDni() {
 		return dni;
 	}
@@ -66,6 +95,10 @@ public class User {
 		this.dni = dni;
 	}
 
+	/**
+	 * Obtiene el correo del user
+	 * @return el correo del user
+	 */
 	public String getCorreo() {
 		return correo;
 	}
@@ -74,6 +107,10 @@ public class User {
 		this.correo = correo;
 	}
 
+	/**
+	 * Obtiene la contraseña del user
+	 * @return
+	 */
 	public String getContrasena() {
 		return contrasena;
 	}

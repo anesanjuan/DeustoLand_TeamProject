@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Concierto {
 
+	//Atributos de la clase
 	private int codigoC;
 	private Artista artista;
 	private long hora;
@@ -12,12 +13,12 @@ public class Concierto {
 	private Festival festival;
 
 	/**
-	 * 
-	 * @param codigoC
-	 * @param artista
-	 * @param hora
-	 * @param duracion
-	 * @param festival
+	 * Crea un concierto con los datos indicados.
+	 * @param codigoC codigo del concierto
+	 * @param artista artista que canta en el concierto
+	 * @param hora hora del concierto
+	 * @param duracion duracion del concierto
+	 * @param festival festival al que pertence el concierto
 	 */
 	public Concierto(int codigoC, Artista artista, long hora, double duracion, Festival festival) {
 		super();
@@ -35,6 +36,10 @@ public class Concierto {
 		super();
 	}
 
+	/**
+	 * Obtiene el codigo del concierto
+	 * @return el codigo del concierto
+	 */
 	public int getCodigoC() {
 		return codigoC;
 	}
@@ -43,6 +48,10 @@ public class Concierto {
 		this.codigoC = codigoC;
 	}
 
+	/**
+	 * Obtiene el artista que canta en el concierto
+	 * @return el artista que canta en el concierto
+	 */
 	public Artista getArtista() {
 		return artista;
 	}
@@ -51,6 +60,10 @@ public class Concierto {
 		this.artista = artista;
 	}
 
+	/**
+	 * Obtiene la hora a la que empieza el concierto
+	 * @return la hora a la que empieza el concierto
+	 */
 	public long getHora() {
 		return hora;
 	}
@@ -59,6 +72,10 @@ public class Concierto {
 		this.hora = hora;
 	}
 
+	/**
+	 * Obtiene la duracion del concierto
+	 * @return la duracion del concierto
+	 */
 	public double getDuracion() {
 		return duracion;
 	}
@@ -67,6 +84,10 @@ public class Concierto {
 		this.duracion = duracion;
 	}
 
+	/**
+	 * Obtiene el festival al que pertenece el concierto
+	 * @return el festival al que pertenece el concierto
+	 */
 	public Festival getFestival() {
 		return festival;
 	}

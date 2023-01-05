@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Festival implements Comparable<Festival>{
 
+	//Atributos de la clase
 	private int codigoF;
 	private String nombre;
 	private String fecha; // date
@@ -13,6 +14,17 @@ public class Festival implements Comparable<Festival>{
 	private double precio;
 	private String foto;
 
+	/**
+	 * Crea un festival con los datos indicados
+	 * @param codigoF codigo del festival
+	 * @param nombre nombre del festival
+	 * @param fecha fecha del festival
+	 * @param lugar lugar del festival
+	 * @param descripcion descripcion del festival
+	 * @param listaConciertos lista de concierto que participan en el festival
+	 * @param precio precio del festival
+	 * @param foto foto del festival
+	 */
 	public Festival(int codigoF, String nombre, String fecha, String lugar, String descripcion,
 			ArrayList<Concierto> listaConciertos, double precio, String foto) {
 		super();
@@ -26,6 +38,9 @@ public class Festival implements Comparable<Festival>{
 		this.foto = foto;
 	}
 
+	/**
+	 * Crea una festival vacio
+	 */
 	public Festival() {
 		super();
 	}
@@ -42,6 +57,10 @@ public class Festival implements Comparable<Festival>{
 		this.foto = foto;
 	}
 
+	/**
+	 * Obtiene el codigo del festival
+	 * @return el codigo del festival
+	 */
 	public int getCodigoF() {
 		return codigoF;
 	}
@@ -50,6 +69,10 @@ public class Festival implements Comparable<Festival>{
 		this.codigoF = codigoF;
 	}
 
+	/**
+	 * Obtiene el nombre del festival
+	 * @return el nombre del festival
+	 */
 	public String getNombre() {
 		return nombre;
 	}
@@ -58,6 +81,10 @@ public class Festival implements Comparable<Festival>{
 		this.nombre = nombre;
 	}
 
+	/**
+	 * Obtiene la fecha en la que se celebra el festival
+	 * @return la fecha en la que se celebra el festival
+	 */
 	public String getFecha() {
 		return fecha;
 	}
@@ -66,6 +93,10 @@ public class Festival implements Comparable<Festival>{
 		this.fecha = fecha;
 	}
 
+	/**
+	 * Obtiene el lugar en el que se celebra el festival
+	 * @return el lugar en el que se celebra el festival
+	 */
 	public String getLugar() {
 		return lugar;
 	}
@@ -74,6 +105,10 @@ public class Festival implements Comparable<Festival>{
 		this.lugar = lugar;
 	}
 
+	/**
+	 * Obtiene la descripcion del festival
+	 * @return la descripcion del festival
+	 */
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -82,6 +117,10 @@ public class Festival implements Comparable<Festival>{
 		this.descripcion = descripcion;
 	}
 
+	/**
+	 * Obtiene la lista de conciertos que participan en el festival
+	 * @return Ola lista de conciertos que participan en el festival
+	 */
 	public ArrayList<Concierto> getListaConciertos() {
 		return listaConciertos;
 	}
@@ -89,7 +128,11 @@ public class Festival implements Comparable<Festival>{
 	public void setListaConciertos(ArrayList<Concierto> listaConciertos) {
 		this.listaConciertos = listaConciertos;
 	}
-
+	
+	/**
+	 * Obtiene el precio de 
+	 * @return
+	 */
 	public double getPrecio() {
 		return precio;
 	}
@@ -98,6 +141,10 @@ public class Festival implements Comparable<Festival>{
 		this.precio = precio;
 	}
 
+	/**
+	 * Obtiene la foto del festival
+	 * @return la foto del festival
+	 */
 	public String getFoto() {
 		return foto;
 	}

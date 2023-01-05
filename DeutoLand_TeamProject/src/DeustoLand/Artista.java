@@ -2,13 +2,13 @@ package DeustoLand;
 
 public class Artista {
 
+	//Atributos de la clase
 	private int codigoA;
 	private String nombre;
 	private TipoGenero tipogenero;
 
 	/**
-	 * Creacion de un nuevo artista
-	 * 
+	 * Creacion de un nuevo artista.
 	 * @param codigoA    Codigo del artista
 	 * @param nombre     Nombre del artista
 	 * @param tipogenero Genero de las canciones del artista
@@ -20,10 +20,17 @@ public class Artista {
 		this.tipogenero = tipogenero;
 	}
 
+	/**
+	 * Crea un Artista vacio.
+	 */
 	public Artista() {
 		super();
 	}
 
+	/**
+	 * Obtiene el codigo del artista
+	 * @return el codigo del artista
+	 */
 	public int getCodigoA() {
 		return codigoA;
 	}
@@ -32,6 +39,10 @@ public class Artista {
 		this.codigoA = codigoA;
 	}
 
+	/**
+	 * Obtiene el nombre del artista
+	 * @return el nombre del artista
+	 */
 	public String getNombre() {
 		return nombre;
 	}
@@ -40,6 +51,10 @@ public class Artista {
 		this.nombre = nombre;
 	}
 
+	/**
+	 * Obtiene el genero de las canciones del artista
+	 * @return el genero de las canciones del artista
+	 */
 	public TipoGenero getTipogenero() {
 		return tipogenero;
 	}
