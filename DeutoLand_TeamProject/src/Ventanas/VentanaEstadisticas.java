@@ -117,10 +117,7 @@ public class VentanaEstadisticas extends JFrame {
 		CTEc.setBounds(93, 203, 215, 32);
 		panel1.add(CTEc);
 
-		JLabel lblMediaEdad = new JLabel("x");
-		lblMediaEdad.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblMediaEdad.setBounds(194, 53, 84, 32);
-		panel1.add(lblMediaEdad);
+	
 
 		JLabel lblCTE = new JLabel("x");
 		lblCTE.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -203,16 +200,26 @@ public class VentanaEstadisticas extends JFrame {
 		Vector<String> cabeceras = new Vector<String>(Arrays.asList("Nombre", "DNI", "Edad", "Tipo Entrada", "Precio Entrada", "Precio Total"));
 		mDatos = new DefaultTableModel(new Vector<Vector<Object>>(), cabeceras);
 
-		tDatos.removeAll();
+		if (mDatos.getRowCount() != 0) {
+			for(int i = 0; i < mDatos.getRowCount(); i ++) {
+				mDatos.removeRow(i);
+			}
+		}
 		for (Entrada en: BaseDeDatos.getEntradas()) {
+			if (en.getFestival().getNombre().equals(nomFest.getText())) {
 				 mDatos.addRow(new Object[] {en.getCliente().getNombre(), en.getCliente().getDni(), en.getCliente().getEdad(), en.getTipoE(), en.getFestival().getPrecio(),  BaseDeDatos.getPrecioTotal(en) });
+			} 
 		 }
 		
 		JButton bAnterior = new JButton("anterior");
 		bAnterior.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				nomFest.setText(BaseDeDatos.FestEstadistica(BaseDeDatos.getFestNom(nomFest.getText()), 0).getNombre());
-				tDatos.removeAll();
+				if (mDatos.getRowCount() != 0) {
+					for(int i = 0; i < mDatos.getRowCount(); i ++) {
+						mDatos.removeRow(i);
+					}
+				}
 				for (Entrada en: BaseDeDatos.getEntradas()) {
 					if (en.getFestival().getNombre().equals(nomFest.getText())) {
 						 mDatos.addRow(new Object[] {en.getCliente().getNombre(), en.getCliente().getDni(), en.getCliente().getEdad(), en.getTipoE(), en.getFestival().getPrecio(),  BaseDeDatos.getPrecioTotal(en) });
@@ -231,7 +238,11 @@ public class VentanaEstadisticas extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				nomFest.setText(BaseDeDatos.FestEstadistica(BaseDeDatos.getFestNom(nomFest.getText()), 1).getNombre());
-				tDatos.removeAll();
+				if (mDatos.getRowCount() != 0) {
+					for(int i = 0; i < mDatos.getRowCount(); i ++) {
+						mDatos.removeRow(i);
+					}
+				}
 				for (Entrada en: BaseDeDatos.getEntradas()) {
 					if (en.getFestival().getNombre().equals(nomFest.getText())) {
 						 mDatos.addRow(new Object[] {en.getCliente().getNombre(), en.getCliente().getDni(), en.getCliente().getEdad(), en.getTipoE(), en.getFestival().getPrecio(),  BaseDeDatos.getPrecioTotal(en) });
@@ -343,11 +354,16 @@ public class VentanaEstadisticas extends JFrame {
 				
 			}
 		});
+		
+		
+		//JLabel lblMediaEdad = new JLabel(BaseDeDatos.getMediaEdad(tDatos));
+		JLabel lblMediaEdad = new JLabel("x");
+		lblMediaEdad.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblMediaEdad.setBounds(194, 53, 84, 32);
+		panel1.add(lblMediaEdad);
 
 
 	}
-	
-	
 	
 	
 

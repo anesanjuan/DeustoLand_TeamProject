@@ -17,7 +17,9 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 import Excepciones.ClienteRepetidoException;
 import Ventanas.VentanaFestival;
@@ -360,19 +362,14 @@ public class BaseDeDatos {
 	 public static double getPrecioTotal (Entrada e) {
 		 double precio = e.getFestival().getPrecio();
 		 if (e.getTipoE().equals(TipoEntrada.NORMAL)) {
-			 //System.out.println(precio);
 			 return precio;
 		 } else if (e.getTipoE().equals(TipoEntrada.CONCAMPING)) {
 			 EntradaConCamping ec = (EntradaConCamping) e;
-			 System.out.println(ec);
 			 double precioTotal = precio + ec.getSuplementoCamping();
-			 //System.out.println(precioTotal);
 			 return precioTotal;
 		 } else {
 			 EntradaVIP ev = (EntradaVIP) e;
-			 System.out.println(ev);
 			 double precioTotal = precio + ev.getSuplementoVIP();
-			 //System.out.println(precioTotal);
 			 return precioTotal;
 		 }
 
@@ -1102,7 +1099,7 @@ public class BaseDeDatos {
 	public static void insertarEntradas () {
 		Entrada e1 = new Entrada(BaseDeDatos.getClientes().get(33), BaseDeDatos.getFestivales().get(0), TipoEntrada.NORMAL);
 		EntradaVIP e2 = new EntradaVIP(BaseDeDatos.getClientes().get(35), BaseDeDatos.getFestivales().get(3), TipoEntrada.VIP, 40.5 , 03);
-		EntradaVIP e3 = new EntradaVIP(BaseDeDatos.getClientes().get(37), BaseDeDatos.getFestivales().get(1), TipoEntrada.VIP, 65 , 01);
+		EntradaVIP e3 = new EntradaVIP(BaseDeDatos.getClientes().get(37), BaseDeDatos.getFestivales().get(3), TipoEntrada.VIP, 65 , 01);
 		EntradaConCamping e4 = new EntradaConCamping(BaseDeDatos.getClientes().get(38), BaseDeDatos.getFestivales().get(4), TipoEntrada.CONCAMPING, 30 , 1345);
 		EntradaConCamping e5 = new EntradaConCamping(BaseDeDatos.getClientes().get(40), BaseDeDatos.getFestivales().get(5), TipoEntrada.CONCAMPING, 25.50 , 85);
 	
@@ -1135,7 +1132,7 @@ public class BaseDeDatos {
 					double suplementoC = ec.getSuplementoCamping();
 					int parcela = ec.getParcela();
 					String sent = "INSERT INTO entradas (codC, codF, tipo, suplemento_c, parcela, suplemento_v, num_zona) VALUES ( " 
-							+ codC + " , " + codF + " , " + 1 + " , " + null + " , " + null + " , " + suplementoC + " , " + parcela + ");";
+							+ codC + " , " + codF + " , " + 1 + " , " + suplementoC + " , " + parcela + " , " + null + " , " + null + ");";
 					
 					logger.log(Level.INFO, "Statement: " + sent);
 					statement.executeUpdate(sent);
@@ -1145,7 +1142,7 @@ public class BaseDeDatos {
 					double suplementoV = ev.getSuplementoVIP();
 					int numZona = ev.getNumZonaVIP();
 					String sent = "INSERT INTO entradas (codC, codF, tipo, suplemento_c, parcela, suplemento_v, num_zona) VALUES ( " 
-							+ codC + " , " + codF + " , " + 2 + " , " + suplementoV + " , " + numZona + " , " + null + " , " + null + ");";
+							+ codC + " , " + codF + " , " + 2 + " , " + null + " , " + null + " , " + suplementoV + " , " + numZona + ");";
 					
 					logger.log(Level.INFO, "Statement: " + sent);
 					statement.executeUpdate(sent);
@@ -1282,6 +1279,25 @@ public class BaseDeDatos {
 		return fotoFestival;
 
 	}
+	
+	//NO SE HACERLA -- ANE (SI ALGUNA SABE QUE LO INTENTE)
+	
+	/*public static String getMediaEdad (JTable t) {
+		ArrayList<Object> edades = new ArrayList<>();
+		for (int i = 0; i < t.getRowCount(); i++) {
+			Object edad = t.getValueAt(i, 2);
+			edades.add(edad);
+		}
+		double sumatorio = 0;
+		int divisor = 0;
+		for (Object e :edades) {
+			sumatorio += (Double) e;
+			divisor += 1;
+		}
+		double mediaE = sumatorio / divisor;
+		return String.valueOf(mediaE);
+		
+	}*/
 	
 	
 /////////////////////////////////////////////////////////////////////
