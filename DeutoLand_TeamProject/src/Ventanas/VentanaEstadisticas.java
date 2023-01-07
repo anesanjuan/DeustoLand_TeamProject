@@ -107,37 +107,12 @@ public class VentanaEstadisticas extends JFrame {
 		CTEvip.setBounds(93, 152, 180, 32);
 		panel1.add(CTEvip);
 
-		JLabel CTEvipc = new JLabel("Calculo total entradas VIP+C:");
-		CTEvipc.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		CTEvipc.setBounds(93, 259, 201, 32);
-		panel1.add(CTEvipc);
-
 		JLabel CTEc = new JLabel("Calculo total entradas Camping:");
 		CTEc.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		CTEc.setBounds(93, 203, 215, 32);
 		panel1.add(CTEc);
 
-	
 
-		JLabel lblCTE = new JLabel("x");
-		lblCTE.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblCTE.setBounds(253, 99, 84, 32);
-		panel1.add(lblCTE);
-
-		JLabel lblCTEvip = new JLabel("x");
-		lblCTEvip.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblCTEvip.setBounds(281, 150, 84, 32);
-		panel1.add(lblCTEvip);
-
-		JLabel lblCTEc = new JLabel("x");
-		lblCTEc.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblCTEc.setBounds(317, 203, 84, 32);
-		panel1.add(lblCTEc);
-
-		JLabel lblCTEvipc = new JLabel("x");
-		lblCTEvipc.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblCTEvipc.setBounds(308, 259, 84, 32);
-		panel1.add(lblCTEvipc);
 
 		JLabel filtros = new JLabel("FILTROS:");
 		filtros.setFont(new Font("Tahoma", Font.PLAIN, 17));
@@ -187,6 +162,17 @@ public class VentanaEstadisticas extends JFrame {
 		JButton btnFiltrar = new JButton("FILTRAR");
 		btnFiltrar.setBounds(530, 296, 89, 23);
 		panel1.add(btnFiltrar);
+		btnFiltrar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				for (int i = 0; i < tDatos.getRowCount(); i ++) {
+					//for (int j = 0; i < BaseDeDatos.recalcularTabla(tDatos, tfEdadMin, getTitle(), getWarningString(), getName()))
+				}
+				
+			}
+		});
 
 		JPanel panelTable = new JPanel();
 		panelTable.setBounds(0, 11, 880, 332);
@@ -322,24 +308,7 @@ public class VentanaEstadisticas extends JFrame {
 				tDatos.repaint();
 			}
 		});
-		
-		
-		
-		
-		JButton btnVipCamping = new JButton("VIP + Camping");
-		btnVipCamping.setFont(new Font("Georgia", Font.PLAIN, 16));
-		btnVipCamping.setBounds(614, 30, 180, 36);
-		panelAbajo.add(btnVipCamping);
-		btnVipCamping.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				cellRenderer.setEntrada(TipoEntrada.VIP);
-				cellRenderer.setEntrada(TipoEntrada.CONCAMPING);
-				tDatos.repaint();
-				
-			}
-		});
+	
 		
 
 		JButton btnCamping = new JButton("Camping");
@@ -357,12 +326,27 @@ public class VentanaEstadisticas extends JFrame {
 		});
 		
 		
-		//JLabel lblMediaEdad = new JLabel(BaseDeDatos.getMediaEdad(tDatos));
-		JLabel lblMediaEdad = new JLabel("x");
+		JLabel lblMediaEdad = new JLabel(BaseDeDatos.getMediaEdad(tDatos));
 		lblMediaEdad.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblMediaEdad.setBounds(194, 53, 84, 32);
 		panel1.add(lblMediaEdad);
 
+		
+		
+		JLabel lblCTE = new JLabel(BaseDeDatos.calculoTotalE(tDatos, TipoEntrada.NORMAL));
+		lblCTE.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblCTE.setBounds(253, 99, 84, 32);
+		panel1.add(lblCTE);
+
+		JLabel lblCTEvip = new JLabel(BaseDeDatos.calculoTotalE(tDatos, TipoEntrada.VIP));
+		lblCTEvip.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblCTEvip.setBounds(281, 150, 84, 32);
+		panel1.add(lblCTEvip);
+
+		JLabel lblCTEc = new JLabel(BaseDeDatos.calculoTotalE(tDatos, TipoEntrada.CONCAMPING));
+		lblCTEc.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblCTEc.setBounds(317, 203, 84, 32);
+		panel1.add(lblCTEc);
 
 	}
 	

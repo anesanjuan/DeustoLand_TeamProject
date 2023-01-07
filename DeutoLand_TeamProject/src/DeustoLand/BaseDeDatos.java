@@ -17,11 +17,13 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.CellEditor;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 import Excepciones.ClienteRepetidoException;
+import Ventanas.Renderer;
 import Ventanas.VentanaFestival;
 
 /**
@@ -33,6 +35,7 @@ public class BaseDeDatos {
 	private static Connection con;
 	private static Logger logger = Logger.getLogger("BaseDatos");
 	private static Exception lastError;
+	
 
 	/**
 	 * Abre conexión con la base de datos
@@ -208,6 +211,8 @@ public class BaseDeDatos {
 		}
 
 	}
+	
+
 
 	/**
 	 * 
@@ -1282,7 +1287,7 @@ public class BaseDeDatos {
 	
 	//NO SE HACERLA -- ANE (SI ALGUNA SABE QUE LO INTENTE)
 	
-	/*public static String getMediaEdad (JTable t) {
+	public static String getMediaEdad (JTable t) {
 		ArrayList<Object> edades = new ArrayList<>();
 		for (int i = 0; i < t.getRowCount(); i++) {
 			Object edad = t.getValueAt(i, 2);
@@ -1291,13 +1296,56 @@ public class BaseDeDatos {
 		double sumatorio = 0;
 		int divisor = 0;
 		for (Object e :edades) {
-			sumatorio += (Double) e;
+			sumatorio += Double.valueOf((Integer) e);
 			divisor += 1;
 		}
 		double mediaE = sumatorio / divisor;
 		return String.valueOf(mediaE);
+	
 		
-	}*/
+	}
+	
+	public static String calculoTotalE (JTable t, TipoEntrada tipoE) {
+		int entradas = 0;
+		if (tipoE.equals(TipoEntrada.NORMAL)) {
+			for (int i = 0; i < t.getRowCount(); i++) {
+				entradas += 1;
+			}
+		} else if (tipoE.equals(TipoEntrada.VIP)) {
+			for (int i = 0; i < t.getRowCount(); i++) {
+				if (t.getValueAt(i, 3).equals(tipoE)) {
+					entradas+= 1;
+				}
+			}
+		} else if (tipoE.equals(TipoEntrada.CONCAMPING)) {
+			for (int i = 0; i < t.getRowCount(); i++) {
+				if (t.getValueAt(i, 3).equals(tipoE)) {
+					entradas+= 1;
+				}
+			}
+		}
+		return String.valueOf(entradas);
+	
+	
+		
+	}
+
+
+	public static ArrayList<Integer> recalcularTabla (JTable t, String edadMin, String edadMax, String minPrecio, String maxPrecio) {
+		int minE = Integer.parseInt(edadMin);
+		int maxE = Integer.parseInt(edadMax);
+		double minP = Double.parseDouble(minPrecio);
+		double maxP = Double.parseDouble(maxPrecio);
+		
+		ArrayList <Integer> filas = new ArrayList<>();
+		
+		for (int i = 0; i < t.getRowCount(); i++) {
+			if (Integer.parseInt((String)t.getValueAt(i, 2)) >= minE && Integer.parseInt((String)t.getValueAt(i, 2)) <= maxE && Double.parseDouble((String) t.getValueAt(i, 5)) >= minP && Double.parseDouble((String) t.getValueAt(i, 5)) <= maxP ) {
+				filas.add(i);
+			}
+		}
+		return filas;
+	}
 	
 	
 /////////////////////////////////////////////////////////////////////
