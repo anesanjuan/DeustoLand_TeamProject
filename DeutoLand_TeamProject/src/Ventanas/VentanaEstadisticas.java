@@ -160,20 +160,6 @@ public class VentanaEstadisticas extends JFrame {
 		tfEdadMax.setBounds(602, 248, 96, 20);
 		panel1.add(tfEdadMax);
 
-		JButton btnFiltrar = new JButton("FILTRAR");
-		btnFiltrar.setBounds(530, 296, 89, 23);
-		panel1.add(btnFiltrar);
-		btnFiltrar.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				for (int i = 0; i < tDatos.getRowCount(); i ++) {
-					//for (int j = 0; i < BaseDeDatos.recalcularTabla(tDatos, tfEdadMin, getTitle(), getWarningString(), getName()))
-				}
-				
-			}
-		});
 
 		
 //___________________________JTable_____________________
@@ -354,6 +340,20 @@ public class VentanaEstadisticas extends JFrame {
 		lblCTEc.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblCTEc.setBounds(317, 203, 84, 32);
 		panel1.add(lblCTEc);
+		
+		
+
+		JButton btnFiltrar = new JButton("FILTRAR");
+		btnFiltrar.setBounds(530, 296, 89, 23);
+		panel1.add(btnFiltrar);
+		btnFiltrar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
 
 	}
 
