@@ -3,6 +3,7 @@ package DeustoLand;
 import java.beans.beancontext.BeanContextContainerProxy;
 
 import java.io.File;
+import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.Date;
@@ -13,6 +14,7 @@ import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -1389,6 +1391,45 @@ public class BaseDeDatos {
 		return filas;
 	}
 	
+	public static void crearEntrada (Festival f, Cliente c, TipoEntrada tipoE) {
+		if (tipoE.equals(TipoEntrada.NORMAL)) {
+			Entrada e = new Entrada(c, f, tipoE);
+			
+		}else if (tipoE.equals(TipoEntrada.VIP)) {
+			double suplemento = f.getPrecio() *0.2;
+			
+			Random numAleatorio = new Random();
+			int zonaVip = numAleatorio.nextInt(10-1+1) + 1;
+			
+			Entrada e = new EntradaVIP(c, f, tipoE, suplemento, zonaVip);
+			
+		}
+	}
+	
+	
+	
+	public static Entrada crearEntradaConCamping (Festival f, Cliente c, Random r) {
+		double suplemento = f.getPrecio() *0.15;
+		
+		ArrayList<EntradaConCamping> entradasC = new ArrayList<>();
+		for (Entrada e : BaseDeDatos.getEntradas()) {
+			if (e.getTipoE().equals(TipoEntrada.CONCAMPING)) {
+				entradasC.add((EntradaConCamping) e);
+			}
+
+		}
+		int p = 0;
+		
+		for ( EntradaConCamping eC : entradasC ) {
+			r = new Random();
+			p += r.nextInt(2000-10+1) + 10;
+			if( eC.getParcela()== p) {
+				crearEntradaConCamping(f, c, r);
+			}
+		}
+		Entrada e = new EntradaConCamping(c, f, TipoEntrada.CONCAMPING, suplemento, p);
+		return e;
+	}
 	
 /////////////////////////////////////////////////////////////////////
 //                      Logging                                    //

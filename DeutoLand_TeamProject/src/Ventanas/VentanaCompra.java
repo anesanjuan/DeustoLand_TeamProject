@@ -4,17 +4,21 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import DeustoLand.BaseDeDatos;
 import DeustoLand.Cliente;
 import DeustoLand.Festival;
 import DeustoLand.Gestor;
+import DeustoLand.TipoEntrada;
 import DeustoLand.User;
 
 public class VentanaCompra extends JFrame {
@@ -44,7 +48,7 @@ public class VentanaCompra extends JFrame {
 	private JLabel mail;
 	private JLabel textmail;
 	private JLabel entradaVip;
-	private JComboBox<String> esEntradaVip;
+	private JComboBox<String> tipoEntrada;
 	private JLabel precioTotal;
 
 	private JLabel numeroTarjeta;
@@ -96,8 +100,12 @@ public class VentanaCompra extends JFrame {
 		textnombre = new JLabel(u.getNombre());
 		mail = new JLabel("Mail :");
 		textmail = new JLabel(u.getCorreo());
-		entradaVip = new JLabel("Entrada VIP :");
-		esEntradaVip = new JComboBox<String>();
+		entradaVip = new JLabel("Tipo entrada :");
+		tipoEntrada = new JComboBox<String>();
+		tipoEntrada.addItem(String.valueOf(TipoEntrada.CONCAMPING));
+		tipoEntrada.addItem(String.valueOf(TipoEntrada.VIP));
+		tipoEntrada.addItem(String.valueOf(TipoEntrada.NORMAL));
+		
 		precioTotal = new JLabel("Precio total :");
 
 		numeroTarjeta = new JLabel("Número de tarjeta :");
@@ -132,7 +140,7 @@ public class VentanaCompra extends JFrame {
 		partePrincipal1.add(mail);
 		partePrincipal1.add(textmail);
 		partePrincipal1.add(entradaVip);
-		partePrincipal1.add(esEntradaVip);
+		partePrincipal1.add(tipoEntrada);
 		partePrincipal1.add(precioTotal);
 
 		partePrincipal2.add(numeroTarjeta);
@@ -144,11 +152,68 @@ public class VentanaCompra extends JFrame {
 
 		parteAbajo.add(comprar);
 
+		comprar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				if (tipoEntrada.getSelectedItem().toString().equals(String.valueOf(TipoEntrada.NORMAL))) {
+
+					if(textnumeroTarjeta.equals("") || textFechaCaducidad.equals("") || textcv.equals("")) {
+						JOptionPane.showMessageDialog(null,
+								"Para poder realizar la compra es necesario rellenar todos los campos");
+					}else {
+						if (textnumeroTarjeta.getSelectionEnd()== 15) {
+							Cliente c = BaseDeDatos.getCliente(u.getCorreo(), u.getContrasena());
+							BaseDeDatos.crearEntrada(festival, c, TipoEntrada.NORMAL);
+						}
+					}
+					
+					
+					
+				}else if (tipoEntrada.getSelectedItem().toString().equals(String.valueOf(TipoEntrada.VIP))) {
+					
+					if(textnumeroTarjeta.equals("") || textFechaCaducidad.equals("") || textcv.equals("")) {
+						JOptionPane.showMessageDialog(null,
+								"Para poder realizar la compra es necesario rellenar todos los campos");
+					}else {
+						if (textnumeroTarjeta.getSelectionEnd()== 15) {
+							Cliente c = BaseDeDatos.getCliente(u.getCorreo(), u.getContrasena());
+							BaseDeDatos.crearEntrada(festival, c, TipoEntrada.VIP);
+						}
+					}
+				}else if (tipoEntrada.getSelectedItem().toString().equals(String.valueOf(TipoEntrada.CONCAMPING))) {
+					if(textnumeroTarjeta.equals("") || textFechaCaducidad.equals("") || textcv.equals("")) {
+						JOptionPane.showMessageDialog(null,
+								"Para poder realizar la compra es necesario rellenar todos los campos");
+					}else {
+						if (textnumeroTarjeta.getSelectionEnd()== 15) {
+							Cliente c = BaseDeDatos.getCliente(u.getCorreo(), u.getContrasena());
+							Random numAleatorio = new Random();
+							BaseDeDatos.crearEntradaConCamping(festival, c, numAleatorio);
+						}
+					}
+				}else  {
+					System.out.println(tipoEntrada.getSelectedItem());
+					System.out.println(TipoEntrada.NORMAL);
+					JOptionPane.showMessageDialog(null,
+							"Para poder realizar la compra es necesario escoger un tipo de entrada");
+					
+				}
+			}
+		});
+		
+		
+		
+		
+		
 		getContentPane().add(parteArriba);
 		getContentPane().add(partePrincipal);
 		getContentPane().add(parteAbajo);
 
 		setVisible(true);
+		
+		
 
 	}
 
