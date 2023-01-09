@@ -21,6 +21,7 @@ import javax.swing.CellEditor;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import Excepciones.ClienteRepetidoException;
 import Ventanas.Renderer;
@@ -1103,11 +1104,22 @@ public class BaseDeDatos {
 	
 	public static void insertarEntradas () {
 		Entrada e1 = new Entrada(BaseDeDatos.getClientes().get(33), BaseDeDatos.getFestivales().get(0), TipoEntrada.NORMAL);
-		EntradaVIP e2 = new EntradaVIP(BaseDeDatos.getClientes().get(35), BaseDeDatos.getFestivales().get(3), TipoEntrada.VIP, 40.5 , 03);
-		EntradaVIP e3 = new EntradaVIP(BaseDeDatos.getClientes().get(37), BaseDeDatos.getFestivales().get(3), TipoEntrada.VIP, 65 , 01);
-		EntradaConCamping e4 = new EntradaConCamping(BaseDeDatos.getClientes().get(38), BaseDeDatos.getFestivales().get(4), TipoEntrada.CONCAMPING, 30 , 1345);
-		EntradaConCamping e5 = new EntradaConCamping(BaseDeDatos.getClientes().get(40), BaseDeDatos.getFestivales().get(5), TipoEntrada.CONCAMPING, 25.50 , 85);
+		EntradaVIP e2 = new EntradaVIP(BaseDeDatos.getClientes().get(35), BaseDeDatos.getFestivales().get(1), TipoEntrada.VIP, 40.5 , 03);
+		EntradaVIP e3 = new EntradaVIP(BaseDeDatos.getClientes().get(37), BaseDeDatos.getFestivales().get(2), TipoEntrada.VIP, 65 , 01);
+		EntradaConCamping e4 = new EntradaConCamping(BaseDeDatos.getClientes().get(38), BaseDeDatos.getFestivales().get(3), TipoEntrada.CONCAMPING, 30 , 1345);
+		EntradaConCamping e5 = new EntradaConCamping(BaseDeDatos.getClientes().get(40), BaseDeDatos.getFestivales().get(4), TipoEntrada.CONCAMPING, 25.50 , 85);
+		Entrada e6 = new Entrada(BaseDeDatos.getClientes().get(16), BaseDeDatos.getFestivales().get(5), TipoEntrada.NORMAL);
+		EntradaVIP e7 = new EntradaVIP(BaseDeDatos.getClientes().get(17), BaseDeDatos.getFestivales().get(0), TipoEntrada.VIP, 40.5 , 04);
+		EntradaVIP e8 = new EntradaVIP(BaseDeDatos.getClientes().get(18), BaseDeDatos.getFestivales().get(1), TipoEntrada.VIP, 65 , 02);
+		EntradaConCamping e9 = new EntradaConCamping(BaseDeDatos.getClientes().get(19), BaseDeDatos.getFestivales().get(2), TipoEntrada.CONCAMPING, 25 , 264);
+		EntradaConCamping e10 = new EntradaConCamping(BaseDeDatos.getClientes().get(20), BaseDeDatos.getFestivales().get(3), TipoEntrada.CONCAMPING, 25.50 , 768);
+		Entrada e11 = new Entrada(BaseDeDatos.getClientes().get(21), BaseDeDatos.getFestivales().get(4), TipoEntrada.NORMAL);
+		EntradaVIP e12 = new EntradaVIP(BaseDeDatos.getClientes().get(22), BaseDeDatos.getFestivales().get(5), TipoEntrada.VIP, 50 , 01);
+		EntradaVIP e13 = new EntradaVIP(BaseDeDatos.getClientes().get(23), BaseDeDatos.getFestivales().get(0), TipoEntrada.VIP, 65 , 03);
+		EntradaConCamping e14 = new EntradaConCamping(BaseDeDatos.getClientes().get(24), BaseDeDatos.getFestivales().get(1), TipoEntrada.CONCAMPING, 28 , 142);
+		EntradaConCamping e15 = new EntradaConCamping(BaseDeDatos.getClientes().get(25), BaseDeDatos.getFestivales().get(2), TipoEntrada.CONCAMPING, 29.25 , 1879);
 	
+		
 		ArrayList<Entrada> entradas = new ArrayList<>();
 		
 		entradas.add(e1);
@@ -1115,6 +1127,16 @@ public class BaseDeDatos {
 		entradas.add(e3);
 		entradas.add(e4);
 		entradas.add(e5);
+		entradas.add(e6);
+		entradas.add(e7);
+		entradas.add(e8);
+		entradas.add(e9);
+		entradas.add(e10);
+		entradas.add(e11);
+		entradas.add(e12);
+		entradas.add(e13);
+		entradas.add(e14);
+		entradas.add(e15);
 		
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
@@ -1285,7 +1307,27 @@ public class BaseDeDatos {
 
 	}
 	
-	//NO SE HACERLA -- ANE (SI ALGUNA SABE QUE LO INTENTE)
+	public static ArrayList<Entrada> search (String nomFest) {
+		Festival fest = BaseDeDatos.getFestNom(nomFest);
+		ArrayList<Entrada> entradas = new ArrayList<>();
+		
+		for (Entrada e: BaseDeDatos.getEntradas()) {
+			if (e.getFestival().getNombre().equals(fest.getNombre())) {
+				entradas.add(e);
+			}
+		}
+		return entradas;
+	}
+	
+	public static void borrarDatos (DefaultTableModel mdatos) {
+		if (mdatos.getRowCount() != 0) {
+			for (int i = 0; i < mdatos.getRowCount(); i++) {
+				mdatos.removeRow(i);
+			}
+		}
+	}
+	
+	
 	
 	public static String getMediaEdad (JTable t) {
 		ArrayList<Object> edades = new ArrayList<>();

@@ -48,6 +48,7 @@ public class VentanaEstadisticas extends JFrame {
 	private DefaultTableModel mDatos;
 	
 	private Renderer cellRenderer;
+	
 
 	public VentanaEstadisticas() {
 
@@ -179,32 +180,48 @@ public class VentanaEstadisticas extends JFrame {
 		tDatos = new JTable(mDatos);
 		
 
-		if (mDatos.getRowCount() != 0) {
-			for(int i = 0; i < mDatos.getRowCount(); i ++) {
-				mDatos.removeRow(i);
-			}
-		}
-		for (Entrada en: BaseDeDatos.getEntradas()) {
-			if (en.getFestival().getNombre().equals(nomFest.getText())) {
-				 mDatos.addRow(new Object[] {en.getCliente().getNombre(), en.getCliente().getDni(), en.getCliente().getEdad(), en.getTipoE(), en.getFestival().getPrecio(),  BaseDeDatos.getPrecioTotal(en) });
-			} 
+		BaseDeDatos.borrarDatos(mDatos);
+		for (Entrada en: BaseDeDatos.search(nomFest.getText())) {
+				mDatos.addRow(new Object[] {en.getCliente().getNombre(), en.getCliente().getDni(), en.getCliente().getEdad(), en.getTipoE(), en.getFestival().getPrecio(),  BaseDeDatos.getPrecioTotal(en) });
 		 }
+		
+		
+		
+		JLabel lblMediaEdad = new JLabel(BaseDeDatos.getMediaEdad(tDatos));
+		lblMediaEdad.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblMediaEdad.setBounds(194, 53, 84, 32);
+		panel1.add(lblMediaEdad);
+
+		
+		
+		JLabel lblCTE = new JLabel(BaseDeDatos.calculoTotalE(tDatos, TipoEntrada.NORMAL));
+		lblCTE.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblCTE.setBounds(253, 99, 84, 32);
+		panel1.add(lblCTE);
+
+		JLabel lblCTEvip = new JLabel(BaseDeDatos.calculoTotalE(tDatos, TipoEntrada.VIP));
+		lblCTEvip.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblCTEvip.setBounds(281, 150, 84, 32);
+		panel1.add(lblCTEvip);
+
+		JLabel lblCTEc = new JLabel(BaseDeDatos.calculoTotalE(tDatos, TipoEntrada.CONCAMPING));
+		lblCTEc.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblCTEc.setBounds(317, 203, 84, 32);
+		panel1.add(lblCTEc);
+		
 		
 		JButton bAnterior = new JButton("anterior");
 		bAnterior.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				nomFest.setText(BaseDeDatos.FestEstadistica(BaseDeDatos.getFestNom(nomFest.getText()), 0).getNombre());
-				if (mDatos.getRowCount() != 0) {
-					for(int i = 0; i < mDatos.getRowCount(); i ++) {
-						mDatos.removeRow(i);
-					}
-				}
-				for (Entrada en: BaseDeDatos.getEntradas()) {
-					if (en.getFestival().getNombre().equals(nomFest.getText())) {
+				BaseDeDatos.borrarDatos(mDatos);
+				for (Entrada en: BaseDeDatos.search(nomFest.getText())) {
 						 mDatos.addRow(new Object[] {en.getCliente().getNombre(), en.getCliente().getDni(), en.getCliente().getEdad(), en.getTipoE(), en.getFestival().getPrecio(),  BaseDeDatos.getPrecioTotal(en) });
-					} 
 				 }
-
+				lblMediaEdad.setText(BaseDeDatos.getMediaEdad(tDatos));
+				lblCTE.setText(BaseDeDatos.calculoTotalE(tDatos, TipoEntrada.NORMAL));
+				lblCTEvip.setText(BaseDeDatos.calculoTotalE(tDatos, TipoEntrada.VIP));
+				lblCTEc.setText(BaseDeDatos.calculoTotalE(tDatos, TipoEntrada.CONCAMPING));
 			}
 		});
 		bAnterior.setFont(new Font("Georgia", Font.PLAIN, 16));
@@ -217,16 +234,15 @@ public class VentanaEstadisticas extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				nomFest.setText(BaseDeDatos.FestEstadistica(BaseDeDatos.getFestNom(nomFest.getText()), 1).getNombre());
-				if (mDatos.getRowCount() != 0) {
-					for(int i = 0; i < mDatos.getRowCount(); i ++) {
-						mDatos.removeRow(i);
-					}
-				}
-				for (Entrada en: BaseDeDatos.getEntradas()) {
-					if (en.getFestival().getNombre().equals(nomFest.getText())) {
+				BaseDeDatos.borrarDatos(mDatos);
+				for (Entrada en: BaseDeDatos.search(nomFest.getText())) {
 						 mDatos.addRow(new Object[] {en.getCliente().getNombre(), en.getCliente().getDni(), en.getCliente().getEdad(), en.getTipoE(), en.getFestival().getPrecio(),  BaseDeDatos.getPrecioTotal(en) });
-					}
-				 }
+				}
+				
+				lblMediaEdad.setText(BaseDeDatos.getMediaEdad(tDatos));
+				lblCTE.setText(BaseDeDatos.calculoTotalE(tDatos, TipoEntrada.NORMAL));
+				lblCTEvip.setText(BaseDeDatos.calculoTotalE(tDatos, TipoEntrada.VIP));
+				lblCTEc.setText(BaseDeDatos.calculoTotalE(tDatos, TipoEntrada.CONCAMPING));
 			}
 		});
 
@@ -247,7 +263,7 @@ public class VentanaEstadisticas extends JFrame {
 			
 		
 			tDatos.setBounds(112, 31, 637, 266);
-			//panelTable.add(new JScrollPane(tDatos));
+			panelTable.add(new JScrollPane(tDatos), BorderLayout.CENTER);
 			panelTable.add(tDatos);
 			Border bordepanel12 = BorderFactory.createTitledBorder("Tabla con datos");
 			panelTable.setBorder(bordepanel12);
@@ -319,27 +335,7 @@ public class VentanaEstadisticas extends JFrame {
 		});
 		
 		
-		JLabel lblMediaEdad = new JLabel(BaseDeDatos.getMediaEdad(tDatos));
-		lblMediaEdad.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblMediaEdad.setBounds(194, 53, 84, 32);
-		panel1.add(lblMediaEdad);
-
 		
-		
-		JLabel lblCTE = new JLabel(BaseDeDatos.calculoTotalE(tDatos, TipoEntrada.NORMAL));
-		lblCTE.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblCTE.setBounds(253, 99, 84, 32);
-		panel1.add(lblCTE);
-
-		JLabel lblCTEvip = new JLabel(BaseDeDatos.calculoTotalE(tDatos, TipoEntrada.VIP));
-		lblCTEvip.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblCTEvip.setBounds(281, 150, 84, 32);
-		panel1.add(lblCTEvip);
-
-		JLabel lblCTEc = new JLabel(BaseDeDatos.calculoTotalE(tDatos, TipoEntrada.CONCAMPING));
-		lblCTEc.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblCTEc.setBounds(317, 203, 84, 32);
-		panel1.add(lblCTEc);
 		
 		
 

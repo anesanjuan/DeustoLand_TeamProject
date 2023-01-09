@@ -35,14 +35,6 @@ public class Renderer extends JLabel implements TableCellRenderer {
 		return this;
 	}
 	
-	public Component getTableCellRendererComponent1(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int col) {
-		this.setText(value.toString());
-		this.setFont(new Font("Helvetica Bold", Font.PLAIN, 12));
-		this.setOpaque(true);
-		this.setBackground(new Color(207, 154, 231));
-		return this;
-		
-	}
 
 
 	public void setEntrada(TipoEntrada entrada) {
