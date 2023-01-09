@@ -23,6 +23,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -43,8 +44,8 @@ public class VentanaEstadisticas extends JFrame {
 	private JTextField tfMinP;
 	private JTextField tfEdadMin;
 	private JTextField tfEdadMax;
-	private final JTable tDatos;
-	private final DefaultTableModel mDatos;
+	private JTable tDatos;
+	private DefaultTableModel mDatos;
 	
 	private Renderer cellRenderer;
 
@@ -174,6 +175,9 @@ public class VentanaEstadisticas extends JFrame {
 			}
 		});
 
+		
+//___________________________JTable_____________________
+		
 		JPanel panelTable = new JPanel();
 		panelTable.setBounds(0, 11, 880, 332);
 		panelPrincipal.add(panelTable);
@@ -183,8 +187,11 @@ public class VentanaEstadisticas extends JFrame {
 		tDatos = new JTable();
 		tDatos.setDefaultRenderer(Object.class, cellRenderer);
 		
+		
 		Vector<String> cabeceras = new Vector<String>(Arrays.asList("Nombre", "DNI", "Edad", "Tipo Entrada", "Precio Entrada", "Precio Total"));
 		mDatos = new DefaultTableModel(new Vector<Vector<Object>>(), cabeceras);
+		tDatos = new JTable(mDatos);
+		
 
 		if (mDatos.getRowCount() != 0) {
 			for(int i = 0; i < mDatos.getRowCount(); i ++) {
@@ -349,7 +356,5 @@ public class VentanaEstadisticas extends JFrame {
 		panel1.add(lblCTEc);
 
 	}
-	
-	
 
 }
