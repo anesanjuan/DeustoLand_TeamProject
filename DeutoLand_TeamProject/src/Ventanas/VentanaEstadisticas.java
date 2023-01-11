@@ -251,24 +251,22 @@ public class VentanaEstadisticas extends JFrame {
 		parteArriba.add(bSiguiente);
 		
 		
-		 tDatos.setModel(mDatos);
+		tDatos.setModel(mDatos);
 			
-			tDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-			tDatos.getColumnModel().getColumn(0).setPreferredWidth(40);
-			tDatos.getColumnModel().getColumn(1).setPreferredWidth(40);
-			tDatos.getColumnModel().getColumn(2).setPreferredWidth(20);
-			tDatos.getColumnModel().getColumn(3).setPreferredWidth(50);
-			tDatos.getColumnModel().getColumn(4).setPreferredWidth(20);
+		tDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		tDatos.getColumnModel().getColumn(0).setPreferredWidth(40);
+		tDatos.getColumnModel().getColumn(1).setPreferredWidth(40);
+		tDatos.getColumnModel().getColumn(2).setPreferredWidth(20);
+		tDatos.getColumnModel().getColumn(3).setPreferredWidth(50);
+		tDatos.getColumnModel().getColumn(4).setPreferredWidth(20);
 			
 			
 		
-			tDatos.setBounds(112, 31, 637, 266);
-			panelTable.add(new JScrollPane(tDatos), BorderLayout.CENTER);
-			panelTable.add(tDatos);
-			Border bordepanel12 = BorderFactory.createTitledBorder("Tabla con datos");
-			panelTable.setBorder(bordepanel12);
+		tDatos.setBounds(112, 31, 637, 266);
+		panelTable.add(new JScrollPane(tDatos));
+		Border bordepanel12 = BorderFactory.createTitledBorder("Tabla con datos");
+		panelTable.setBorder(bordepanel12);
 		
-
 		JButton bEstad = new JButton("Estadisticas numéricas");
 		bEstad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -330,7 +328,6 @@ public class VentanaEstadisticas extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				cellRenderer.setEntrada(TipoEntrada.CONCAMPING);
 				tDatos.repaint();
-				
 			}
 		});
 		

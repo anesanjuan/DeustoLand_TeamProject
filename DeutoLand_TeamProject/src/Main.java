@@ -33,11 +33,11 @@ public class Main {
 		//BaseDeDatos.insertarEntradas();
 		
 		Gestor gln = new Gestor();
-		VentanaPrincipal vp = new VentanaPrincipal( gln, null );
-		vp.setVisible(true);
+		//VentanaPrincipal vp = new VentanaPrincipal( gln, null );
+		//vp.setVisible(true);
 	
-		//VentanaEstadisticas ve = new VentanaEstadisticas();
-		//ve.setVisible(true);
+		VentanaEstadisticas ve = new VentanaEstadisticas();
+		ve.setVisible(true);
 		
 		//BaseDeDatos.cerrarConexion();
 
