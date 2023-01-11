@@ -263,7 +263,7 @@ public class VentanaEstadisticas extends JFrame {
 			
 		
 		tDatos.setBounds(112, 31, 637, 266);
-		panelTable.add(tDatos);
+		panelTable.add(new JScrollPane(tDatos));
 		Border bordepanel12 = BorderFactory.createTitledBorder("Tabla con datos");
 		panelTable.setBorder(bordepanel12);
 		

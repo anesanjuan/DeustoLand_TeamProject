@@ -48,7 +48,7 @@ public class VentanaCompra extends JFrame {
 	private JLabel mail;
 	private JLabel textmail;
 	private JLabel entradaVip;
-	private JComboBox<String> tipoEntrada;
+	private JComboBox<TipoEntrada> tipoEntrada;
 	private JLabel precioTotal;
 
 	private JLabel numeroTarjeta;
@@ -101,10 +101,10 @@ public class VentanaCompra extends JFrame {
 		mail = new JLabel("Mail :");
 		textmail = new JLabel(u.getCorreo());
 		entradaVip = new JLabel("Tipo entrada :");
-		tipoEntrada = new JComboBox<String>();
-		tipoEntrada.addItem(String.valueOf(TipoEntrada.CONCAMPING));
-		tipoEntrada.addItem(String.valueOf(TipoEntrada.VIP));
-		tipoEntrada.addItem(String.valueOf(TipoEntrada.NORMAL));
+		tipoEntrada = new JComboBox<TipoEntrada>();
+		tipoEntrada.addItem(TipoEntrada.CONCAMPING);
+		tipoEntrada.addItem(TipoEntrada.VIP);
+		tipoEntrada.addItem(TipoEntrada.NORMAL);
 		
 		precioTotal = new JLabel("Precio total :");
 
@@ -153,44 +153,59 @@ public class VentanaCompra extends JFrame {
 		parteAbajo.add(comprar);
 
 		comprar.addActionListener(new ActionListener() {
+			@SuppressWarnings("unlikely-arg-type")
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				
-				if (tipoEntrada.getSelectedItem().toString().equals(String.valueOf(TipoEntrada.NORMAL))) {
-
-					if(textnumeroTarjeta.equals("") || textFechaCaducidad.equals("") || textcv.equals("")) {
+				if (((TipoEntrada) tipoEntrada.getSelectedItem()).equals(TipoEntrada.NORMAL)) {
+					
+					if(textnumeroTarjeta.getText().equals("") || textFechaCaducidad.getText().equals("") || textcv.getText().equals("")) {
 						JOptionPane.showMessageDialog(null,
 								"Para poder realizar la compra es necesario rellenar todos los campos");
 					}else {
-						if (textnumeroTarjeta.getSelectionEnd()== 15) {
+						if (textnumeroTarjeta.getSelectionEnd()== 16 && textFechaCaducidad.getText().length() == 4 && textcv.getText().length() == 3 ) {
 							Cliente c = BaseDeDatos.getCliente(u.getCorreo(), u.getContrasena());
 							BaseDeDatos.crearEntrada(festival, c, TipoEntrada.NORMAL);
+							JOptionPane.showMessageDialog(null,
+									"La entrada se ha comprado correctamente");
+							} else {
+							JOptionPane.showMessageDialog(null,
+									"El número de tarjeta introducido no es válido");
 						}
 					}
 					
+				}else if (((TipoEntrada) tipoEntrada.getSelectedItem()).equals(TipoEntrada.VIP)) {
 					
-					
-				}else if (tipoEntrada.getSelectedItem().toString().equals(String.valueOf(TipoEntrada.VIP))) {
-					
-					if(textnumeroTarjeta.equals("") || textFechaCaducidad.equals("") || textcv.equals("")) {
+					if(textnumeroTarjeta.getText().equals("") || textFechaCaducidad.getText().equals("") || textcv.getText().equals("")) {
 						JOptionPane.showMessageDialog(null,
 								"Para poder realizar la compra es necesario rellenar todos los campos");
 					}else {
-						if (textnumeroTarjeta.getSelectionEnd()== 15) {
+						if (textnumeroTarjeta.getText().length()== 16 && textFechaCaducidad.getText().length() == 4 && textcv.getText().length() == 3 ) {
 							Cliente c = BaseDeDatos.getCliente(u.getCorreo(), u.getContrasena());
 							BaseDeDatos.crearEntrada(festival, c, TipoEntrada.VIP);
+							JOptionPane.showMessageDialog(null,
+									"La entrada se ha comprado correctamente");
+							
+						} else {
+							JOptionPane.showMessageDialog(null,
+									"El número de tarjeta introducido no es válido");
 						}
 					}
-				}else if (tipoEntrada.getSelectedItem().toString().equals(String.valueOf(TipoEntrada.CONCAMPING))) {
-					if(textnumeroTarjeta.equals("") || textFechaCaducidad.equals("") || textcv.equals("")) {
+				}else if (((TipoEntrada) tipoEntrada.getSelectedItem()).equals(TipoEntrada.CONCAMPING)) {
+					if(textnumeroTarjeta.getText().equals("") || textFechaCaducidad.getText().equals("") || textcv.getText().equals("")) {
 						JOptionPane.showMessageDialog(null,
 								"Para poder realizar la compra es necesario rellenar todos los campos");
 					}else {
-						if (textnumeroTarjeta.getSelectionEnd()== 15) {
+						if (textnumeroTarjeta.getText().length()== 16 && textFechaCaducidad.getText().length() == 4 && textcv.getText().length() == 3 ) {
 							Cliente c = BaseDeDatos.getCliente(u.getCorreo(), u.getContrasena());
 							Random numAleatorio = new Random();
 							BaseDeDatos.crearEntradaConCamping(festival, c, numAleatorio);
+							JOptionPane.showMessageDialog(null,
+									"La entrada se ha comprado correctamente");
+							}else {
+							JOptionPane.showMessageDialog(null,
+									"El número de tarjeta introducido no es válido");
 						}
 					}
 				}else  {

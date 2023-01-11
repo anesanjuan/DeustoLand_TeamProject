@@ -1186,6 +1186,37 @@ public class BaseDeDatos {
 	
 	}
 	
+	public static void insertarEntrada(Entrada e) {
+		
+		try (Statement statement = con.createStatement()) {
+			abrirConexion("BaseDatos.db", false);
+			if (e.getTipoE().equals(TipoEntrada.NORMAL)) {
+				String sent = "INSERT INTO entradas (codC, codF, tipo)"
+						+ " VALUES ( " + e.getCliente().getCod() + "," + e.getFestival().getCodigoF() + "," + 0 + ");";
+				logger.log(Level.INFO, "Statement: " + sent);
+				statement.executeUpdate(sent);
+				
+			} else if (e.getTipoE().equals(TipoEntrada.VIP)) {
+				EntradaVIP ev = (EntradaVIP) e;
+				String sent = "INSERT INTO entradas (codC, codF, tipo, suplemento_v, num_zona)"
+						+ " VALUES ( " + ev.getCliente().getCod() + "," + ev.getFestival().getCodigoF() + "," + 2 + "," + ev.getSuplementoVIP() + "," + ev.getNumZonaVIP() +");";
+				logger.log(Level.INFO, "Statement: " + sent);
+				statement.executeUpdate(sent);
+				
+			} else if(e.getTipoE().equals(TipoEntrada.CONCAMPING)) {
+				EntradaConCamping ec = (EntradaConCamping) e;
+				String sent = "INSERT INTO entradas (codC, codF, tipo, suplemento_c , parcela)"
+						+ " VALUES ( " + ec.getCliente().getCod() + "," + ec.getFestival().getCodigoF() + "," + 1 + "," + ec.getSuplementoCamping() + "," + ec.getParcela() +");";
+				logger.log(Level.INFO, "Statement: " + sent);
+				statement.executeUpdate(sent);
+			}
+			
+
+		} catch (Exception ex) {
+			logger.log(Level.SEVERE, "Excepción", ex);
+		}
+		
+	}
 	
 	
 	
@@ -1392,22 +1423,23 @@ public class BaseDeDatos {
 		return filas;
 	}
 	
-	public static void crearEntrada (Festival f, Cliente c, TipoEntrada tipoE) {
+	public static Entrada crearEntrada (Festival f, Cliente c, TipoEntrada tipoE) {
+		Entrada e = new Entrada();
 		if (tipoE.equals(TipoEntrada.NORMAL)) {
-			Entrada e = new Entrada(c, f, tipoE);
+			e = new Entrada(c, f, tipoE);
 			
-		}else if (tipoE.equals(TipoEntrada.VIP)) {
+		}else {
 			double suplemento = f.getPrecio() *0.2;
 			
 			Random numAleatorio = new Random();
 			int zonaVip = numAleatorio.nextInt(10-1+1) + 1;
 			
-			Entrada e = new EntradaVIP(c, f, tipoE, suplemento, zonaVip);
-			
+			e = new EntradaVIP(c, f, tipoE, suplemento, zonaVip);
+
 		}
+		BaseDeDatos.insertarEntrada(e);
+		return e;
 	}
-	
-	
 	
 	public static Entrada crearEntradaConCamping (Festival f, Cliente c, Random r) {
 		double suplemento = f.getPrecio() *0.15;
@@ -1420,16 +1452,16 @@ public class BaseDeDatos {
 
 		}
 		int p = 0;
-		
 		for ( EntradaConCamping eC : entradasC ) {
-			r = new Random();
 			p += r.nextInt(2000-10+1) + 10;
 			if( eC.getParcela()== p) {
-				crearEntradaConCamping(f, c, r);
+				return crearEntradaConCamping(f, c, r);
 			}
 		}
 		Entrada e = new EntradaConCamping(c, f, TipoEntrada.CONCAMPING, suplemento, p);
+		BaseDeDatos.insertarEntrada(e);
 		return e;
+		
 	}
 	
 /////////////////////////////////////////////////////////////////////
