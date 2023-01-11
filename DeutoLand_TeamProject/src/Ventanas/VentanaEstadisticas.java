@@ -263,7 +263,7 @@ public class VentanaEstadisticas extends JFrame {
 			
 		
 		tDatos.setBounds(112, 31, 637, 266);
-		panelTable.add(new JScrollPane(tDatos));
+		panelTable.add(tDatos);
 		Border bordepanel12 = BorderFactory.createTitledBorder("Tabla con datos");
 		panelTable.setBorder(bordepanel12);
 		
@@ -343,8 +343,8 @@ public class VentanaEstadisticas extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				
+				cellRenderer.setArray(BaseDeDatos.recalcularTabla(tDatos, tfEdadMin.getText(), tfEdadMax.getText(), tfMinP.getText(), tfMaxP.getText()));
+				tDatos.repaint();
 			}
 		});
 
