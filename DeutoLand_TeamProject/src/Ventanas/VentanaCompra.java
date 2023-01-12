@@ -54,7 +54,8 @@ public class VentanaCompra extends JFrame {
 	private JLabel numeroTarjeta;
 	private JTextField textnumeroTarjeta;
 	private JLabel fechaCaducidad;
-	private JTextField textFechaCaducidad;
+	private JTextField textFechaCaducidad1;
+	private JTextField textFechaCaducidad2;
 	private JLabel cv;
 	private JTextField textcv;
 
@@ -111,7 +112,8 @@ public class VentanaCompra extends JFrame {
 		numeroTarjeta = new JLabel("Número de tarjeta :");
 		textnumeroTarjeta = new JTextField(16);
 		fechaCaducidad = new JLabel("Fecha de caducidad :");
-		textFechaCaducidad = new JTextField(5);
+		textFechaCaducidad1 = new JTextField(2);
+		textFechaCaducidad2 = new JTextField(2);
 		cv = new JLabel("C.V. :");
 		textcv = new JTextField(3);
 
@@ -146,7 +148,8 @@ public class VentanaCompra extends JFrame {
 		partePrincipal2.add(numeroTarjeta);
 		partePrincipal2.add(textnumeroTarjeta);
 		partePrincipal2.add(fechaCaducidad);
-		partePrincipal2.add(textFechaCaducidad);
+		partePrincipal2.add(textFechaCaducidad1);
+		partePrincipal2.add(textFechaCaducidad2);
 		partePrincipal2.add(cv);
 		partePrincipal2.add(textcv);
 
@@ -160,11 +163,11 @@ public class VentanaCompra extends JFrame {
 				
 				if (((TipoEntrada) tipoEntrada.getSelectedItem()).equals(TipoEntrada.NORMAL)) {
 					
-					if(textnumeroTarjeta.getText().equals("") || textFechaCaducidad.getText().equals("") || textcv.getText().equals("")) {
+					if(textnumeroTarjeta.getText().equals("") || textFechaCaducidad1.getText().equals("")|| textFechaCaducidad2.getText().equals("") || textcv.getText().equals("")) {
 						JOptionPane.showMessageDialog(null,
 								"Para poder realizar la compra es necesario rellenar todos los campos");
 					}else {
-						if (textnumeroTarjeta.getSelectionEnd()== 16 && textFechaCaducidad.getText().length() == 4 && textcv.getText().length() == 3 ) {
+						if (textnumeroTarjeta.getSelectionEnd()== 16 && textFechaCaducidad1.getText().length() == 2  && textFechaCaducidad2.getText().length() == 2 && textcv.getText().length() == 3 ) {
 							Cliente c = BaseDeDatos.getCliente(u.getCorreo(), u.getContrasena());
 							BaseDeDatos.crearEntrada(festival, c, TipoEntrada.NORMAL);
 							JOptionPane.showMessageDialog(null,
@@ -177,11 +180,11 @@ public class VentanaCompra extends JFrame {
 					
 				}else if (((TipoEntrada) tipoEntrada.getSelectedItem()).equals(TipoEntrada.VIP)) {
 					
-					if(textnumeroTarjeta.getText().equals("") || textFechaCaducidad.getText().equals("") || textcv.getText().equals("")) {
+					if(textnumeroTarjeta.getText().equals("") || textFechaCaducidad1.getText().equals("")|| textFechaCaducidad2.getText().equals("") || textcv.getText().equals("")) {
 						JOptionPane.showMessageDialog(null,
 								"Para poder realizar la compra es necesario rellenar todos los campos");
 					}else {
-						if (textnumeroTarjeta.getText().length()== 16 && textFechaCaducidad.getText().length() == 4 && textcv.getText().length() == 3 ) {
+						if (textnumeroTarjeta.getText().length()== 16 && textFechaCaducidad1.getText().length() == 2  && textFechaCaducidad2.getText().length() == 2 && textcv.getText().length() == 3 ) {
 							Cliente c = BaseDeDatos.getCliente(u.getCorreo(), u.getContrasena());
 							BaseDeDatos.crearEntrada(festival, c, TipoEntrada.VIP);
 							JOptionPane.showMessageDialog(null,
@@ -193,11 +196,11 @@ public class VentanaCompra extends JFrame {
 						}
 					}
 				}else if (((TipoEntrada) tipoEntrada.getSelectedItem()).equals(TipoEntrada.CONCAMPING)) {
-					if(textnumeroTarjeta.getText().equals("") || textFechaCaducidad.getText().equals("") || textcv.getText().equals("")) {
+					if(textnumeroTarjeta.getText().equals("")|| textFechaCaducidad1.getText().equals("")|| textFechaCaducidad2.getText().equals("") || textcv.getText().equals("")) {
 						JOptionPane.showMessageDialog(null,
 								"Para poder realizar la compra es necesario rellenar todos los campos");
 					}else {
-						if (textnumeroTarjeta.getText().length()== 16 && textFechaCaducidad.getText().length() == 4 && textcv.getText().length() == 3 ) {
+						if (textnumeroTarjeta.getText().length()== 16 && textFechaCaducidad1.getText().length() == 2  && textFechaCaducidad2.getText().length() == 2 && textcv.getText().length() == 3 ) {
 							Cliente c = BaseDeDatos.getCliente(u.getCorreo(), u.getContrasena());
 							Random numAleatorio = new Random();
 							BaseDeDatos.crearEntradaConCamping(festival, c, numAleatorio);
