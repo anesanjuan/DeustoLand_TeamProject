@@ -1,12 +1,6 @@
 package DeustoLand;
 
-import java.beans.beancontext.BeanContextContainerProxy;
-
-import java.io.File;
-import java.lang.reflect.Array;
-import java.math.BigDecimal;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,19 +9,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.swing.CellEditor;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
-import Excepciones.ClienteRepetidoException;
-import Ventanas.Renderer;
-import Ventanas.VentanaFestival;
 
 /**
  * Clase de gestion de una base de datos del sistema de festivales???
