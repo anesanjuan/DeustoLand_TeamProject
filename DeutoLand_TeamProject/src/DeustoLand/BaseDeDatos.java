@@ -12,6 +12,7 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -1338,12 +1339,34 @@ public class BaseDeDatos {
 		return entradas;
 	}
 	
-	public static void borrarDatos (DefaultTableModel mdatos) {
-		if (mdatos.getRowCount() != 0) {
-			for (int i = 0; i < mdatos.getRowCount(); i++) {
-				mdatos.removeRow(i);
-			}
-		}
+	
+	public static void borrarDatos(JTable tDatos){
+        try {
+            DefaultTableModel mDatos = (DefaultTableModel) tDatos.getModel();
+            int numFilas= tDatos.getRowCount();
+            for (int i = 0; numFilas>i; i++) {
+                mDatos.removeRow(0);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+	
+	public static void insertarDatos (JTable tDatos, String nomFest) {
+		 try {
+	            DefaultTableModel mDatos = (DefaultTableModel) tDatos.getModel();
+	            for (Entrada en: BaseDeDatos.search(nomFest)) {
+					mDatos.addRow(new Object[] {en.getCliente().getNombre(), 
+												en.getCliente().getDni(), 
+												en.getCliente().getEdad(), 
+												en.getTipoE(), 
+												en.getFestival().getPrecio(),  
+												BaseDeDatos.getPrecioTotal(en) });
+					
+	            }   
+		 } catch (Exception e) {
+			 e.printStackTrace();   	
+		 }
 	}
 	
 	

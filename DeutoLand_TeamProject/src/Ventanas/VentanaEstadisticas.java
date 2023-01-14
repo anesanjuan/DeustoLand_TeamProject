@@ -180,11 +180,8 @@ public class VentanaEstadisticas extends JFrame {
 		tDatos = new JTable(mDatos);
 		
 
-		BaseDeDatos.borrarDatos(mDatos);
-		for (Entrada en: BaseDeDatos.search(nomFest.getText())) {
-				mDatos.addRow(new Object[] {en.getCliente().getNombre(), en.getCliente().getDni(), en.getCliente().getEdad(), en.getTipoE(), en.getFestival().getPrecio(),  BaseDeDatos.getPrecioTotal(en) });
-		 }
-		
+		BaseDeDatos.borrarDatos(tDatos);
+		BaseDeDatos.insertarDatos(tDatos, nomFest.getText());
 		
 		
 		JLabel lblMediaEdad = new JLabel(BaseDeDatos.getMediaEdad(tDatos));
@@ -214,10 +211,9 @@ public class VentanaEstadisticas extends JFrame {
 		bAnterior.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				nomFest.setText(BaseDeDatos.FestEstadistica(BaseDeDatos.getFestNom(nomFest.getText()), 0).getNombre());
-				BaseDeDatos.borrarDatos(mDatos);
-				for (Entrada en: BaseDeDatos.search(nomFest.getText())) {
-						 mDatos.addRow(new Object[] {en.getCliente().getNombre(), en.getCliente().getDni(), en.getCliente().getEdad(), en.getTipoE(), en.getFestival().getPrecio(),  BaseDeDatos.getPrecioTotal(en) });
-				 }
+				BaseDeDatos.borrarDatos(tDatos);
+				BaseDeDatos.insertarDatos(tDatos, nomFest.getText());
+				
 				lblMediaEdad.setText(BaseDeDatos.getMediaEdad(tDatos));
 				lblCTE.setText(BaseDeDatos.calculoTotalE(tDatos, TipoEntrada.NORMAL));
 				lblCTEvip.setText(BaseDeDatos.calculoTotalE(tDatos, TipoEntrada.VIP));
@@ -234,10 +230,8 @@ public class VentanaEstadisticas extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				nomFest.setText(BaseDeDatos.FestEstadistica(BaseDeDatos.getFestNom(nomFest.getText()), 1).getNombre());
-				BaseDeDatos.borrarDatos(mDatos);
-				for (Entrada en: BaseDeDatos.search(nomFest.getText())) {
-						 mDatos.addRow(new Object[] {en.getCliente().getNombre(), en.getCliente().getDni(), en.getCliente().getEdad(), en.getTipoE(), en.getFestival().getPrecio(),  BaseDeDatos.getPrecioTotal(en) });
-				}
+				BaseDeDatos.borrarDatos(tDatos);
+				BaseDeDatos.insertarDatos(tDatos, nomFest.getText());
 				
 				lblMediaEdad.setText(BaseDeDatos.getMediaEdad(tDatos));
 				lblCTE.setText(BaseDeDatos.calculoTotalE(tDatos, TipoEntrada.NORMAL));
