@@ -3,6 +3,7 @@ package JUnit;
 import static org.junit.Assert.*;
 
 
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,9 +24,10 @@ public class BDTest {
 	public void testAbrirConexion() {
 		assertTrue(BaseDeDatos.abrirConexion("BaseDatos.db", false));
 	}
-	//@Test
+	
+	@Test
 	public void testCerrarConexion() {
-		
+		//assertTrue(BaseDeDatos.cerrarConexion() );
 	}
 	
 	//@Test

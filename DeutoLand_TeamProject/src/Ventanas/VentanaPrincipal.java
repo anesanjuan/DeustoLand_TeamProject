@@ -35,6 +35,9 @@ import DeustoLand.Festival;
 import DeustoLand.Gestor;
 import DeustoLand.Reloj;
 import DeustoLand.User;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 public class VentanaPrincipal extends JFrame {
 
@@ -107,40 +110,58 @@ public class VentanaPrincipal extends JFrame {
 		panelArriba = new JPanel();
 		panelArriba.setBounds(6, 6, 889, 47);
 		getContentPane().add(panelArriba);
-		panelArriba.setLayout(null);
-
-		// en el panel de arriba
-		lblTitulo = new JLabel("DEUSTOLAND");
-		lblTitulo.setBounds(24, 9, 272, 29);
-		lblTitulo.setFont(new Font("Palatino", Font.PLAIN, 29));
-		panelArriba.add(lblTitulo);
-
-		btnEstadisticas = new JButton("Estadisticas");
-		btnEstadisticas.setVisible(false);
-		btnEstadisticas.setBounds(378, 9, 117, 29);
-		btnEstadisticas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				VentanaEstadisticas ve = new VentanaEstadisticas();
-				ve.setVisible(true);
-			}
-		});
-		panelArriba.add(btnEstadisticas);
-
-		btnInicioSesion = new JButton("Iniciar Sesion");
-		btnInicioSesion.setBounds(636, 9, 117, 29);
-		btnInicioSesion.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				VentanaInicioSesion vs = new VentanaInicioSesion(gestor);
-				vs.setVisible(true);
-			}
-		});
-		panelArriba.add(btnInicioSesion);
+		GridBagLayout gbl_panelArriba = new GridBagLayout();
+		gbl_panelArriba.columnWidths = new int[]{272, 82, 117, 141, 117, 0};
+		gbl_panelArriba.rowHeights = new int[]{29, 0};
+		gbl_panelArriba.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panelArriba.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		panelArriba.setLayout(gbl_panelArriba);
+		
+				btnEstadisticas = new JButton("Estadisticas");
+				btnEstadisticas.setVisible(false);
+				btnEstadisticas.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						dispose();
+						VentanaEstadisticas ve = new VentanaEstadisticas();
+						ve.setVisible(true);
+					}
+				});
+				
+						// en el panel de arriba
+						lblTitulo = new JLabel("DEUSTOLAND");
+						lblTitulo.setFont(new Font("Palatino", Font.PLAIN, 29));
+						GridBagConstraints gbc_lblTitulo = new GridBagConstraints();
+						gbc_lblTitulo.fill = GridBagConstraints.BOTH;
+						gbc_lblTitulo.insets = new Insets(0, 0, 0, 5);
+						gbc_lblTitulo.gridx = 0;
+						gbc_lblTitulo.gridy = 0;
+						panelArriba.add(lblTitulo, gbc_lblTitulo);
+				GridBagConstraints gbc_btnEstadisticas = new GridBagConstraints();
+				gbc_btnEstadisticas.anchor = GridBagConstraints.NORTH;
+				gbc_btnEstadisticas.fill = GridBagConstraints.HORIZONTAL;
+				gbc_btnEstadisticas.insets = new Insets(0, 0, 0, 5);
+				gbc_btnEstadisticas.gridx = 2;
+				gbc_btnEstadisticas.gridy = 0;
+				panelArriba.add(btnEstadisticas, gbc_btnEstadisticas);
+		
+				btnInicioSesion = new JButton("Iniciar Sesion");
+				btnInicioSesion.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						dispose();
+						VentanaInicioSesion vs = new VentanaInicioSesion(gestor);
+						vs.setVisible(true);
+					}
+				});
+				GridBagConstraints gbc_btnInicioSesion = new GridBagConstraints();
+				gbc_btnInicioSesion.anchor = GridBagConstraints.NORTH;
+				gbc_btnInicioSesion.fill = GridBagConstraints.HORIZONTAL;
+				gbc_btnInicioSesion.gridx = 4;
+				gbc_btnInicioSesion.gridy = 0;
+				panelArriba.add(btnInicioSesion, gbc_btnInicioSesion);
 
 //PANEL PRINCIAPAL EN EL QUE HAY 6 PANELES
 		panelPrincipal = new JPanel();
-		panelPrincipal.setBounds(6, 54, 889, 527);
+		panelPrincipal.setBounds(6, 51, 889, 530);
 		getContentPane().add(panelPrincipal);
 		panelPrincipal.setLayout(null);
 
@@ -412,7 +433,8 @@ public class VentanaPrincipal extends JFrame {
 		});
 
 		setVisible(true);
-
+		
+		
 		if (u instanceof Admin) {
 			btnEstadisticas.setVisible(true);
 			btnInicioSesion.setVisible(false);
