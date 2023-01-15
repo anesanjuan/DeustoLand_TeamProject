@@ -2,25 +2,25 @@ package DeustoLand;
 
 public class Tarjeta {
 	
-	private int numTarjeta;
+	private long numTarjeta;
 	private String fechaCad;
-	private int cvc;
+	private int cvv;
 	
 	
-	public Tarjeta(int numTarjeta, String fechaCad, int cvc) {
+	public Tarjeta(long numTarjeta, String fechaCad, int cvv) {
 		super();
 		this.numTarjeta = numTarjeta;
 		this.fechaCad = fechaCad;
-		this.cvc = cvc;
+		this.cvv = cvv;
 	}
 
 
-	public int getNumTarjeta() {
+	public long getNumTarjeta() {
 		return numTarjeta;
 	}
 
 
-	public void setNumTarjeta(int numTarjeta) {
+	public void setNumTarjeta(long numTarjeta) {
 		this.numTarjeta = numTarjeta;
 	}
 
@@ -35,19 +35,19 @@ public class Tarjeta {
 	}
 
 
-	public int getCvc() {
-		return cvc;
+	public int getCvv() {
+		return cvv;
 	}
 
 
-	public void setCvc(int cvc) {
-		this.cvc = cvc;
+	public void setCvc(int cvv) {
+		this.cvv = cvv;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Tarjeta [numTarjeta=" + numTarjeta + ", fechaCad=" + fechaCad + ", cvc=" + cvc + "]";
+		return "Tarjeta [numTarjeta=" + numTarjeta + ", fechaCad=" + fechaCad + ", cvv=" + cvv + "]";
 	}
 	
 	

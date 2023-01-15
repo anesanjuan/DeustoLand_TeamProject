@@ -18,6 +18,7 @@ import DeustoLand.BaseDeDatos;
 import DeustoLand.Cliente;
 import DeustoLand.Festival;
 import DeustoLand.Gestor;
+import DeustoLand.GestorFichero;
 import DeustoLand.TipoEntrada;
 import DeustoLand.User;
 
@@ -168,10 +169,15 @@ public class VentanaCompra extends JFrame {
 								"Para poder realizar la compra es necesario rellenar todos los campos");
 					}else {
 						if (textnumeroTarjeta.getSelectionEnd()== 16 && textFechaCaducidad1.getText().length() == 2  && textFechaCaducidad2.getText().length() == 2 && textcv.getText().length() == 3 ) {
-							Cliente c = BaseDeDatos.getCliente(u.getCorreo(), u.getContrasena());
-							BaseDeDatos.crearEntrada(festival, c, TipoEntrada.NORMAL);
-							JOptionPane.showMessageDialog(null,
-									"La entrada se ha comprado correctamente");
+							if (GestorFichero.comprobarTarjeta(Integer.parseInt(textnumeroTarjeta.getText()), Integer.parseInt(textcv.getText()))) {
+								Cliente c = BaseDeDatos.getCliente(u.getCorreo(), u.getContrasena());
+								BaseDeDatos.crearEntrada(festival, c, TipoEntrada.NORMAL);
+								JOptionPane.showMessageDialog(null,
+										"La entrada se ha comprado correctamente");
+							} else {
+								JOptionPane.showMessageDialog(null,
+										"La tarjeta introducida no existe");
+							}
 							} else {
 							JOptionPane.showMessageDialog(null,
 									"El número de tarjeta introducido no es válido");
@@ -185,10 +191,15 @@ public class VentanaCompra extends JFrame {
 								"Para poder realizar la compra es necesario rellenar todos los campos");
 					}else {
 						if (textnumeroTarjeta.getText().length()== 16 && textFechaCaducidad1.getText().length() == 2  && textFechaCaducidad2.getText().length() == 2 && textcv.getText().length() == 3 ) {
-							Cliente c = BaseDeDatos.getCliente(u.getCorreo(), u.getContrasena());
-							BaseDeDatos.crearEntrada(festival, c, TipoEntrada.VIP);
-							JOptionPane.showMessageDialog(null,
-									"La entrada se ha comprado correctamente");
+							if (GestorFichero.comprobarTarjeta(Integer.parseInt(textnumeroTarjeta.getText()), Integer.parseInt(textcv.getText()))) {
+								Cliente c = BaseDeDatos.getCliente(u.getCorreo(), u.getContrasena());
+								BaseDeDatos.crearEntrada(festival, c, TipoEntrada.VIP);
+								JOptionPane.showMessageDialog(null,
+										"La entrada se ha comprado correctamente");
+							} else {
+								JOptionPane.showMessageDialog(null,
+										"La tarjeta introducida no existe");
+							}
 							
 						} else {
 							JOptionPane.showMessageDialog(null,
@@ -201,11 +212,18 @@ public class VentanaCompra extends JFrame {
 								"Para poder realizar la compra es necesario rellenar todos los campos");
 					}else {
 						if (textnumeroTarjeta.getText().length()== 16 && textFechaCaducidad1.getText().length() == 2  && textFechaCaducidad2.getText().length() == 2 && textcv.getText().length() == 3 ) {
-							Cliente c = BaseDeDatos.getCliente(u.getCorreo(), u.getContrasena());
-							Random numAleatorio = new Random();
-							BaseDeDatos.crearEntradaConCamping(festival, c, numAleatorio);
-							JOptionPane.showMessageDialog(null,
-									"La entrada se ha comprado correctamente");
+							if (GestorFichero.comprobarTarjeta(Long.parseLong(textnumeroTarjeta.getText()), Integer.parseInt(textcv.getText()))) {
+								
+								Cliente c = BaseDeDatos.getCliente(u.getCorreo(), u.getContrasena());
+								Random numAleatorio = new Random();
+								BaseDeDatos.crearEntradaConCamping(festival, c, numAleatorio);
+								JOptionPane.showMessageDialog(null,
+										"La entrada se ha comprado correctamente");
+							} else {
+								JOptionPane.showMessageDialog(null,
+										"La tarjeta introducida no existe");
+							}
+							
 							}else {
 							JOptionPane.showMessageDialog(null,
 									"El número de tarjeta introducido no es válido");
