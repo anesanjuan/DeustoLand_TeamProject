@@ -1,5 +1,7 @@
 package DeustoLand;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -8,6 +10,9 @@ import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,7 +20,6 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
 /**
  * Clase de gestion de una base de datos del sistema de festivales???
  * 
@@ -1472,6 +1476,30 @@ public class BaseDeDatos {
 		return e;
 		
 	}
+	
+	
+	public ArrayList<Tarjeta> cargarTarjetasCredito() {
+
+		ArrayList<Tarjeta> tarjetas = new ArrayList<>();
+		
+		try (BufferedReader reader = new BufferedReader(new FileReader("TarjetasCredito.csv"))) {
+			String line = reader.readLine();
+			String[] fields;
+
+			while ((line = reader.readLine()) != null) {
+				fields = line.split(",");
+				Tarjeta tarjeta = new Tarjeta(Integer.parseInt(fields[0]), fields[1], Integer.parseInt(fields[2]));
+				tarjetas.add(tarjeta);
+			}
+		} catch (Exception ex) {
+			logger.warning(String.format("%s - Error al cargando vuelos: %s"));
+		}
+		
+		logger.info(String.format("%s - %d vuelos cargados correctamente"));
+		
+		return tarjetas;
+	}
+	
 	
 /////////////////////////////////////////////////////////////////////
 //                      Logging                                    //
