@@ -13,7 +13,6 @@ public class Gestor {
 
 	//almacenamos numero de 
 	private Map<Integer,Integer> ventas = new HashMap<>();
-	
 	private ArrayList<User> aUsers = null;
 
 	public void CargarClientes() {
@@ -33,6 +32,7 @@ public class Gestor {
 
 	}
 
+	
 	// VENTANA INICIO SESION
 	/**
 	 * 
@@ -41,7 +41,11 @@ public class Gestor {
 	 * @return
 	 */
 	public int comprobarUsuario(String correo, String contrasena) {
+		
+		System.out.println( aUsers );
+		
 		for (User c : aUsers) {
+			
 			if (c instanceof Cliente) {
 				Cliente cli = (Cliente) c;
 				if (cli.getCorreo().equals(correo) && c.getContrasena().equals(contrasena)) {
@@ -54,7 +58,9 @@ public class Gestor {
 				}
 			}
 		}
+		
 		return -1;
+	
 	}
 
 	// VENTANA REGISTRO

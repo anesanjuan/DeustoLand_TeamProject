@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
 /**
  * Clase de gestion de una base de datos del sistema de festivales???
  * 
@@ -29,17 +30,16 @@ import javax.swing.table.DefaultTableModel;
 public class BaseDeDatos {
 
 	private static Connection con;
-	//private static Logger logger = Logger.getLogger("BaseDatos");
+	// private static Logger logger = Logger.getLogger("BaseDatos");
 	private static Logger logger = Logger.getLogger(BaseDeDatos.class.getName());
 	private static Exception lastError;
-	
-	public BaseDeDatos()
-	{
+
+	public BaseDeDatos() {
 		try (FileInputStream fis = new FileInputStream("logger.properties")) {
 			LogManager.getLogManager().readConfiguration(fis);
 		} catch (Exception ex) {
-			logger.warning(String.format("%s - Error leyendo configuración del Logger: %s", 
-										this.getClass(), ex.getMessage()));
+			logger.warning(
+					String.format("%s - Error leyendo configuración del Logger: %s", this.getClass(), ex.getMessage()));
 		}
 	}
 
@@ -217,8 +217,6 @@ public class BaseDeDatos {
 		}
 
 	}
-	
-
 
 	/**
 	 * 
@@ -292,100 +290,97 @@ public class BaseDeDatos {
 	 * 
 	 * @return
 	 */
-	 public static ArrayList<Entrada> getEntradas() {
-		 ArrayList<Entrada> ret = new ArrayList<>(); 
-		 
-		 try (Statement statement = con.createStatement()) {
-			 abrirConexion("BaseDatos.db", false); 
-			 String sent = "select * from entradas";
-			 logger.log(Level.INFO, "Statement: " + sent); 
-			 ResultSet rs = statement.executeQuery(sent); 
-			 
-			 while (rs.next()) { 
-				 int cod = rs.getInt("codE"); 
-				 int codUser = rs.getInt("codC"); 
-				 int codFest = rs.getInt("codF"); 
-				 int tipo = rs.getInt("tipo"); 
-				 double suplementoC = rs.getDouble("suplemento_c"); 
-				 int parcela = rs.getInt("parcela"); 
-				 Double suplementoV = rs.getDouble("suplemento_v"); 
-				 int numZona = rs.getInt("num_zona");
-	 
-			User user = new User(); 
-			for (User u : BaseDeDatos.getUsers()) { 
-				if (u.getCod() == codUser) { 
-					user = BaseDeDatos.getUser(u.getCorreo(), u.getContrasena()); 
-					} 
+	public static ArrayList<Entrada> getEntradas() {
+		ArrayList<Entrada> ret = new ArrayList<>();
+
+		try (Statement statement = con.createStatement()) {
+			abrirConexion("BaseDatos.db", false);
+			String sent = "select * from entradas";
+			logger.log(Level.INFO, "Statement: " + sent);
+			ResultSet rs = statement.executeQuery(sent);
+
+			while (rs.next()) {
+				int cod = rs.getInt("codE");
+				int codUser = rs.getInt("codC");
+				int codFest = rs.getInt("codF");
+				int tipo = rs.getInt("tipo");
+				double suplementoC = rs.getDouble("suplemento_c");
+				int parcela = rs.getInt("parcela");
+				Double suplementoV = rs.getDouble("suplemento_v");
+				int numZona = rs.getInt("num_zona");
+
+				User user = new User();
+				for (User u : BaseDeDatos.getUsers()) {
+					if (u.getCod() == codUser) {
+						user = BaseDeDatos.getUser(u.getCorreo(), u.getContrasena());
+					}
 				}
 
-			if (user.equals(BaseDeDatos.getCliente(user.getCorreo(), user.getContrasena()))) {
-				
-				Cliente c = (Cliente) user;
-				Festival fest = new Festival(); 
-				for (Festival festival : BaseDeDatos.getFestivales()) { 
-					if (festival.getCodigoF() == codFest) {
-		 
-						fest.setCodigoF(festival.getCodigoF()); 
-						fest.setNombre(festival.getNombre());
-						fest.setFecha(festival.getFecha()); 
-						fest.setLugar(festival.getLugar());
-						fest.setDescripcion(festival.getDescripcion());
-						fest.setPrecio(festival.getPrecio()); 
-						fest.setFoto(festival.getFoto()); 
-						} 
-					}
-		 
-					if (tipo == 0) { 
-						ret.add(new Entrada(cod, c ,fest, TipoEntrada.NORMAL)); 
-						} else if (tipo == 1) {
-							ret.add(new EntradaConCamping( cod, c, fest, TipoEntrada.CONCAMPING ,suplementoC, parcela));
-						} else if (tipo == 2) {
-							ret.add(new EntradaVIP(cod, c, fest, TipoEntrada.VIP, suplementoV, numZona));
-						}  else {
-							System.out.println("tipo no válido para tipos de entrada disponibles");
-						}
-					
-				
-			} else {
-				System.out.println("los administradores no los usamos para las estadísticas");
-				
-			}
-			
-	 
-	 } 
-			 //System.out.println(ret);
-			 return ret; 
-			 
-		 } catch (Exception e) { 
-			 logger.log(Level.SEVERE, "Excepcion", e); 
-			 
-			 return null; 
-			 
-		 } 
-	 
-	 }
-	 
-	 /**
-	  * 
-	  * @param e
-	  * @return
-	  */
-	 public static double getPrecioTotal (Entrada e) {
-		 double precio = e.getFestival().getPrecio();
-		 if (e.getTipoE().equals(TipoEntrada.NORMAL)) {
-			 return precio;
-		 } else if (e.getTipoE().equals(TipoEntrada.CONCAMPING)) {
-			 EntradaConCamping ec = (EntradaConCamping) e;
-			 double precioTotal = precio + ec.getSuplementoCamping();
-			 return precioTotal;
-		 } else {
-			 EntradaVIP ev = (EntradaVIP) e;
-			 double precioTotal = precio + ev.getSuplementoVIP();
-			 return precioTotal;
-		 }
+				if (user.equals(BaseDeDatos.getCliente(user.getCorreo(), user.getContrasena()))) {
 
-	 }
-	 
+					Cliente c = (Cliente) user;
+					Festival fest = new Festival();
+					for (Festival festival : BaseDeDatos.getFestivales()) {
+						if (festival.getCodigoF() == codFest) {
+
+							fest.setCodigoF(festival.getCodigoF());
+							fest.setNombre(festival.getNombre());
+							fest.setFecha(festival.getFecha());
+							fest.setLugar(festival.getLugar());
+							fest.setDescripcion(festival.getDescripcion());
+							fest.setPrecio(festival.getPrecio());
+							fest.setFoto(festival.getFoto());
+						}
+					}
+
+					if (tipo == 0) {
+						ret.add(new Entrada(cod, c, fest, TipoEntrada.NORMAL));
+					} else if (tipo == 1) {
+						ret.add(new EntradaConCamping(cod, c, fest, TipoEntrada.CONCAMPING, suplementoC, parcela));
+					} else if (tipo == 2) {
+						ret.add(new EntradaVIP(cod, c, fest, TipoEntrada.VIP, suplementoV, numZona));
+					} else {
+						System.out.println("tipo no válido para tipos de entrada disponibles");
+					}
+
+				} else {
+					System.out.println("los administradores no los usamos para las estadísticas");
+
+				}
+
+			}
+			// System.out.println(ret);
+			return ret;
+
+		} catch (Exception e) {
+			logger.log(Level.SEVERE, "Excepcion", e);
+
+			return null;
+
+		}
+
+	}
+
+	/**
+	 * 
+	 * @param e
+	 * @return
+	 */
+	public static double getPrecioTotal(Entrada e) {
+		double precio = e.getFestival().getPrecio();
+		if (e.getTipoE().equals(TipoEntrada.NORMAL)) {
+			return precio;
+		} else if (e.getTipoE().equals(TipoEntrada.CONCAMPING)) {
+			EntradaConCamping ec = (EntradaConCamping) e;
+			double precioTotal = precio + ec.getSuplementoCamping();
+			return precioTotal;
+		} else {
+			EntradaVIP ev = (EntradaVIP) e;
+			double precioTotal = precio + ev.getSuplementoVIP();
+			return precioTotal;
+		}
+
+	}
 
 	/**
 	 * Lee los artistas de la conexion de base de datos abierta (debe abrirse
@@ -601,11 +596,14 @@ public class BaseDeDatos {
 	 * 
 	 * @return
 	 */
+	// public static ArrayList<User> getUsers() {
 	public static ArrayList<User> getUsers() {
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
+
 			ArrayList<User> ret = new ArrayList<>();
-			String sent = "select * from user";
+
+			String sent = "select * from user order by correo";
 			logger.log(Level.INFO, "Statement: " + sent);
 			ResultSet rs = statement.executeQuery(sent);
 			while (rs.next()) {
@@ -620,6 +618,7 @@ public class BaseDeDatos {
 				int edad = rs.getInt("edad");
 				int codigoP = rs.getInt("codigoP");
 				String fU = rs.getString("fechaU");
+
 				if (tipo == 0) {
 					ret.add(new Cliente(codU, nombre, apellido, dni, correo, contraseña, dir, edad, codigoP));
 				} else {
@@ -629,6 +628,7 @@ public class BaseDeDatos {
 			}
 			System.out.println(ret);
 			return ret;
+
 		} catch (Exception e) {
 			logger.log(Level.SEVERE, "Excepcion", e);
 			return null;
@@ -643,18 +643,22 @@ public class BaseDeDatos {
 	 * @return
 	 */
 	public static User getUser(String correo, String contraseña) {
+
 		int cli = 0;
 		try {
 			abrirConexion("BaseDatos.db", false);
+
 			for (User ad : BaseDeDatos.getUsers()) {
 				if (ad.equals(BaseDeDatos.getCliente(correo, contraseña))) {
 					cli = cli + 1;
 				}
 			}
+
 		} catch (Exception e) {
 			logger.log(Level.SEVERE, "Excepcion", e);
 			return null;
 		}
+
 		if (cli == 1) {
 			return BaseDeDatos.getCliente(correo, contraseña);
 		} else {
@@ -919,7 +923,7 @@ public class BaseDeDatos {
 		Admin admin6 = new Admin("Isaak", "Garcia", "4321234E", "isgarcia@gmail.com", "5432", "27/11/2022");
 		Admin admin7 = new Admin("Iker", "Portela", "9876789F", "portela44@gmail.com", "ikerportela65", "30/11/2022");
 		Admin admin8 = new Admin("Alicia", "Hermosa", "6789876G", "alihermos@gmail.com", "alioli123", "15/12/2022");
-		Admin admin9 = new Admin("Alvaro", "Villanueva", "5460645H", "alvarovilla@gmail.com", "alvarito86", 
+		Admin admin9 = new Admin("Alvaro", "Villanueva", "5460645H", "alvarovilla@gmail.com", "alvarito86",
 				"20/12/2022");
 		Admin admin10 = new Admin("Lidia", "Alvarez", "5554672I", "lidia123@gmail.com", "lidix32", "22/12/2022");
 		Admin admin11 = new Admin("Maria", "Pomares", "1000243J", "mariapom@gmail.com", "merypom99", "26/12/2022");
@@ -1046,34 +1050,34 @@ public class BaseDeDatos {
 		clientes.add(clienteP); // Cliente de prueba ELIMINAR DESPUES!!!!!!
 		clientes.add(cliente);
 		clientes.add(cliente2);
-		 clientes.add(cliente3);
-		 clientes.add(cliente4);
-		 clientes.add(cliente5);
-		 clientes.add(cliente6);
-		 clientes.add(cliente7);
-		 clientes.add(cliente8);
-		 clientes.add(cliente9);
-		 clientes.add(cliente10);
-		 clientes.add(cliente11);
-		 clientes.add(cliente12);
-		 clientes.add(cliente13);
-		 clientes.add(cliente14);
-		 clientes.add(cliente15);
-		 clientes.add(cliente16);
-		 clientes.add(cliente17);
-		 clientes.add(cliente18);
-		 clientes.add(cliente19);
-		 clientes.add(cliente20);
-		 clientes.add(cliente21);
-		 clientes.add(cliente22);
-		 clientes.add(cliente23);
-		 clientes.add(cliente24);
-		 clientes.add(cliente25);
-		 clientes.add(cliente26);
-		 clientes.add(cliente27);
-		 clientes.add(cliente28);
-		 clientes.add(cliente29);
-		 clientes.add(cliente30);
+		clientes.add(cliente3);
+		clientes.add(cliente4);
+		clientes.add(cliente5);
+		clientes.add(cliente6);
+		clientes.add(cliente7);
+		clientes.add(cliente8);
+		clientes.add(cliente9);
+		clientes.add(cliente10);
+		clientes.add(cliente11);
+		clientes.add(cliente12);
+		clientes.add(cliente13);
+		clientes.add(cliente14);
+		clientes.add(cliente15);
+		clientes.add(cliente16);
+		clientes.add(cliente17);
+		clientes.add(cliente18);
+		clientes.add(cliente19);
+		clientes.add(cliente20);
+		clientes.add(cliente21);
+		clientes.add(cliente22);
+		clientes.add(cliente23);
+		clientes.add(cliente24);
+		clientes.add(cliente25);
+		clientes.add(cliente26);
+		clientes.add(cliente27);
+		clientes.add(cliente28);
+		clientes.add(cliente29);
+		clientes.add(cliente30);
 
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
@@ -1102,31 +1106,43 @@ public class BaseDeDatos {
 			logger.log(Level.SEVERE, "Excepción", e);
 
 		}
-		
+
 	}
-	
-	
-	
-	public static void insertarEntradas () {
-		Entrada e1 = new Entrada(BaseDeDatos.getClientes().get(33), BaseDeDatos.getFestivales().get(0), TipoEntrada.NORMAL);
-		EntradaVIP e2 = new EntradaVIP(BaseDeDatos.getClientes().get(35), BaseDeDatos.getFestivales().get(1), TipoEntrada.VIP, 40.5 , 03);
-		EntradaVIP e3 = new EntradaVIP(BaseDeDatos.getClientes().get(37), BaseDeDatos.getFestivales().get(2), TipoEntrada.VIP, 65 , 01);
-		EntradaConCamping e4 = new EntradaConCamping(BaseDeDatos.getClientes().get(38), BaseDeDatos.getFestivales().get(3), TipoEntrada.CONCAMPING, 30 , 1345);
-		EntradaConCamping e5 = new EntradaConCamping(BaseDeDatos.getClientes().get(40), BaseDeDatos.getFestivales().get(4), TipoEntrada.CONCAMPING, 25.50 , 85);
-		Entrada e6 = new Entrada(BaseDeDatos.getClientes().get(16), BaseDeDatos.getFestivales().get(5), TipoEntrada.NORMAL);
-		EntradaVIP e7 = new EntradaVIP(BaseDeDatos.getClientes().get(17), BaseDeDatos.getFestivales().get(0), TipoEntrada.VIP, 40.5 , 04);
-		EntradaVIP e8 = new EntradaVIP(BaseDeDatos.getClientes().get(18), BaseDeDatos.getFestivales().get(1), TipoEntrada.VIP, 65 , 02);
-		EntradaConCamping e9 = new EntradaConCamping(BaseDeDatos.getClientes().get(19), BaseDeDatos.getFestivales().get(2), TipoEntrada.CONCAMPING, 25 , 264);
-		EntradaConCamping e10 = new EntradaConCamping(BaseDeDatos.getClientes().get(20), BaseDeDatos.getFestivales().get(3), TipoEntrada.CONCAMPING, 25.50 , 768);
-		Entrada e11 = new Entrada(BaseDeDatos.getClientes().get(21), BaseDeDatos.getFestivales().get(4), TipoEntrada.NORMAL);
-		EntradaVIP e12 = new EntradaVIP(BaseDeDatos.getClientes().get(22), BaseDeDatos.getFestivales().get(5), TipoEntrada.VIP, 50 , 01);
-		EntradaVIP e13 = new EntradaVIP(BaseDeDatos.getClientes().get(23), BaseDeDatos.getFestivales().get(0), TipoEntrada.VIP, 65 , 03);
-		EntradaConCamping e14 = new EntradaConCamping(BaseDeDatos.getClientes().get(24), BaseDeDatos.getFestivales().get(1), TipoEntrada.CONCAMPING, 28 , 142);
-		EntradaConCamping e15 = new EntradaConCamping(BaseDeDatos.getClientes().get(25), BaseDeDatos.getFestivales().get(2), TipoEntrada.CONCAMPING, 29.25 , 1879);
-	
-		
+
+	public static void insertarEntradas() {
+		Entrada e1 = new Entrada(BaseDeDatos.getClientes().get(33), BaseDeDatos.getFestivales().get(0),
+				TipoEntrada.NORMAL);
+		EntradaVIP e2 = new EntradaVIP(BaseDeDatos.getClientes().get(35), BaseDeDatos.getFestivales().get(1),
+				TipoEntrada.VIP, 40.5, 03);
+		EntradaVIP e3 = new EntradaVIP(BaseDeDatos.getClientes().get(37), BaseDeDatos.getFestivales().get(2),
+				TipoEntrada.VIP, 65, 01);
+		EntradaConCamping e4 = new EntradaConCamping(BaseDeDatos.getClientes().get(38),
+				BaseDeDatos.getFestivales().get(3), TipoEntrada.CONCAMPING, 30, 1345);
+		EntradaConCamping e5 = new EntradaConCamping(BaseDeDatos.getClientes().get(40),
+				BaseDeDatos.getFestivales().get(4), TipoEntrada.CONCAMPING, 25.50, 85);
+		Entrada e6 = new Entrada(BaseDeDatos.getClientes().get(16), BaseDeDatos.getFestivales().get(5),
+				TipoEntrada.NORMAL);
+		EntradaVIP e7 = new EntradaVIP(BaseDeDatos.getClientes().get(17), BaseDeDatos.getFestivales().get(0),
+				TipoEntrada.VIP, 40.5, 04);
+		EntradaVIP e8 = new EntradaVIP(BaseDeDatos.getClientes().get(18), BaseDeDatos.getFestivales().get(1),
+				TipoEntrada.VIP, 65, 02);
+		EntradaConCamping e9 = new EntradaConCamping(BaseDeDatos.getClientes().get(19),
+				BaseDeDatos.getFestivales().get(2), TipoEntrada.CONCAMPING, 25, 264);
+		EntradaConCamping e10 = new EntradaConCamping(BaseDeDatos.getClientes().get(20),
+				BaseDeDatos.getFestivales().get(3), TipoEntrada.CONCAMPING, 25.50, 768);
+		Entrada e11 = new Entrada(BaseDeDatos.getClientes().get(21), BaseDeDatos.getFestivales().get(4),
+				TipoEntrada.NORMAL);
+		EntradaVIP e12 = new EntradaVIP(BaseDeDatos.getClientes().get(22), BaseDeDatos.getFestivales().get(5),
+				TipoEntrada.VIP, 50, 01);
+		EntradaVIP e13 = new EntradaVIP(BaseDeDatos.getClientes().get(23), BaseDeDatos.getFestivales().get(0),
+				TipoEntrada.VIP, 65, 03);
+		EntradaConCamping e14 = new EntradaConCamping(BaseDeDatos.getClientes().get(24),
+				BaseDeDatos.getFestivales().get(1), TipoEntrada.CONCAMPING, 28, 142);
+		EntradaConCamping e15 = new EntradaConCamping(BaseDeDatos.getClientes().get(25),
+				BaseDeDatos.getFestivales().get(2), TipoEntrada.CONCAMPING, 29.25, 1879);
+
 		ArrayList<Entrada> entradas = new ArrayList<>();
-		
+
 		entradas.add(e1);
 		entradas.add(e2);
 		entradas.add(e3);
@@ -1142,7 +1158,7 @@ public class BaseDeDatos {
 		entradas.add(e13);
 		entradas.add(e14);
 		entradas.add(e15);
-		
+
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
 
@@ -1150,35 +1166,38 @@ public class BaseDeDatos {
 				int codC = e.getCliente().getCod();
 				int codF = e.getFestival().getCodigoF();
 				TipoEntrada tipoE = e.getTipoE();
-				
+
 				if (tipoE.equals(TipoEntrada.NORMAL)) {
-					String sent = "INSERT INTO entradas (codC, codF, tipo, suplemento_c, parcela, suplemento_v, num_zona) VALUES ( " 
-							+ codC + " , " + codF + " , " + 0 + " , " + null + " , " + null + " , " + null + " , " + null + ");";
-					
+					String sent = "INSERT INTO entradas (codC, codF, tipo, suplemento_c, parcela, suplemento_v, num_zona) VALUES ( "
+							+ codC + " , " + codF + " , " + 0 + " , " + null + " , " + null + " , " + null + " , "
+							+ null + ");";
+
 					logger.log(Level.INFO, "Statement: " + sent);
 					statement.executeUpdate(sent);
-					
+
 				} else if (tipoE.equals(TipoEntrada.CONCAMPING)) {
-					
+
 					EntradaConCamping ec = (EntradaConCamping) e;
 					double suplementoC = ec.getSuplementoCamping();
 					int parcela = ec.getParcela();
-					String sent = "INSERT INTO entradas (codC, codF, tipo, suplemento_c, parcela, suplemento_v, num_zona) VALUES ( " 
-							+ codC + " , " + codF + " , " + 1 + " , " + suplementoC + " , " + parcela + " , " + null + " , " + null + ");";
-					
+					String sent = "INSERT INTO entradas (codC, codF, tipo, suplemento_c, parcela, suplemento_v, num_zona) VALUES ( "
+							+ codC + " , " + codF + " , " + 1 + " , " + suplementoC + " , " + parcela + " , " + null
+							+ " , " + null + ");";
+
 					logger.log(Level.INFO, "Statement: " + sent);
 					statement.executeUpdate(sent);
-					
+
 				} else if (tipoE.equals(TipoEntrada.VIP)) {
 					EntradaVIP ev = (EntradaVIP) e;
 					double suplementoV = ev.getSuplementoVIP();
 					int numZona = ev.getNumZonaVIP();
-					String sent = "INSERT INTO entradas (codC, codF, tipo, suplemento_c, parcela, suplemento_v, num_zona) VALUES ( " 
-							+ codC + " , " + codF + " , " + 2 + " , " + null + " , " + null + " , " + suplementoV + " , " + numZona + ");";
-					
+					String sent = "INSERT INTO entradas (codC, codF, tipo, suplemento_c, parcela, suplemento_v, num_zona) VALUES ( "
+							+ codC + " , " + codF + " , " + 2 + " , " + null + " , " + null + " , " + suplementoV
+							+ " , " + numZona + ");";
+
 					logger.log(Level.INFO, "Statement: " + sent);
 					statement.executeUpdate(sent);
-					
+
 				}
 			}
 
@@ -1186,43 +1205,41 @@ public class BaseDeDatos {
 			logger.log(Level.SEVERE, "Excepción", e);
 
 		}
-	
+
 	}
-	
+
 	public static void insertarEntrada(Entrada e) {
-		
+
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
 			if (e.getTipoE().equals(TipoEntrada.NORMAL)) {
-				String sent = "INSERT INTO entradas (codC, codF, tipo)"
-						+ " VALUES ( " + e.getCliente().getCod() + "," + e.getFestival().getCodigoF() + "," + 0 + ");";
+				String sent = "INSERT INTO entradas (codC, codF, tipo)" + " VALUES ( " + e.getCliente().getCod() + ","
+						+ e.getFestival().getCodigoF() + "," + 0 + ");";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
-				
+
 			} else if (e.getTipoE().equals(TipoEntrada.VIP)) {
 				EntradaVIP ev = (EntradaVIP) e;
-				String sent = "INSERT INTO entradas (codC, codF, tipo, suplemento_v, num_zona)"
-						+ " VALUES ( " + ev.getCliente().getCod() + "," + ev.getFestival().getCodigoF() + "," + 2 + "," + ev.getSuplementoVIP() + "," + ev.getNumZonaVIP() +");";
+				String sent = "INSERT INTO entradas (codC, codF, tipo, suplemento_v, num_zona)" + " VALUES ( "
+						+ ev.getCliente().getCod() + "," + ev.getFestival().getCodigoF() + "," + 2 + ","
+						+ ev.getSuplementoVIP() + "," + ev.getNumZonaVIP() + ");";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
-				
-			} else if(e.getTipoE().equals(TipoEntrada.CONCAMPING)) {
+
+			} else if (e.getTipoE().equals(TipoEntrada.CONCAMPING)) {
 				EntradaConCamping ec = (EntradaConCamping) e;
-				String sent = "INSERT INTO entradas (codC, codF, tipo, suplemento_c , parcela)"
-						+ " VALUES ( " + ec.getCliente().getCod() + "," + ec.getFestival().getCodigoF() + "," + 1 + "," + ec.getSuplementoCamping() + "," + ec.getParcela() +");";
+				String sent = "INSERT INTO entradas (codC, codF, tipo, suplemento_c , parcela)" + " VALUES ( "
+						+ ec.getCliente().getCod() + "," + ec.getFestival().getCodigoF() + "," + 1 + ","
+						+ ec.getSuplementoCamping() + "," + ec.getParcela() + ");";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
 			}
-			
 
 		} catch (Exception ex) {
 			logger.log(Level.SEVERE, "Excepción", ex);
 		}
-		
+
 	}
-	
-	
-	
 
 	// INSERTAR CLIENTE ---- VENTANA REGISTRO
 	/**
@@ -1342,52 +1359,46 @@ public class BaseDeDatos {
 		return fotoFestival;
 
 	}
-	
-	public static ArrayList<Entrada> search (String nomFest) {
+
+	public static ArrayList<Entrada> search(String nomFest) {
 		Festival fest = BaseDeDatos.getFestNom(nomFest);
 		ArrayList<Entrada> entradas = new ArrayList<>();
-		
-		for (Entrada e: BaseDeDatos.getEntradas()) {
+
+		for (Entrada e : BaseDeDatos.getEntradas()) {
 			if (e.getFestival().getNombre().equals(fest.getNombre())) {
 				entradas.add(e);
 			}
 		}
 		return entradas;
 	}
-	
-	
-	public static void borrarDatos(JTable tDatos){
-        try {
-            DefaultTableModel mDatos = (DefaultTableModel) tDatos.getModel();
-            int numFilas= tDatos.getRowCount();
-            for (int i = 0; numFilas>i; i++) {
-                mDatos.removeRow(0);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-	
-	public static void insertarDatos (JTable tDatos, String nomFest) {
-		 try {
-	            DefaultTableModel mDatos = (DefaultTableModel) tDatos.getModel();
-	            for (Entrada en: BaseDeDatos.search(nomFest)) {
-					mDatos.addRow(new Object[] {en.getCliente().getNombre(), 
-												en.getCliente().getDni(), 
-												en.getCliente().getEdad(), 
-												en.getTipoE(), 
-												en.getFestival().getPrecio(),  
-												BaseDeDatos.getPrecioTotal(en) });
-					
-	            }   
-		 } catch (Exception e) {
-			 e.printStackTrace();   	
-		 }
+
+	public static void borrarDatos(JTable tDatos) {
+		try {
+			DefaultTableModel mDatos = (DefaultTableModel) tDatos.getModel();
+			int numFilas = tDatos.getRowCount();
+			for (int i = 0; numFilas > i; i++) {
+				mDatos.removeRow(0);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-	
-	
-	
-	public static String getMediaEdad (JTable t) {
+
+	public static void insertarDatos(JTable tDatos, String nomFest) {
+		try {
+			DefaultTableModel mDatos = (DefaultTableModel) tDatos.getModel();
+			for (Entrada en : BaseDeDatos.search(nomFest)) {
+				mDatos.addRow(
+						new Object[] { en.getCliente().getNombre(), en.getCliente().getDni(), en.getCliente().getEdad(),
+								en.getTipoE(), en.getFestival().getPrecio(), BaseDeDatos.getPrecioTotal(en) });
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static String getMediaEdad(JTable t) {
 		ArrayList<Object> edades = new ArrayList<>();
 		for (int i = 0; i < t.getRowCount(); i++) {
 			Object edad = t.getValueAt(i, 2);
@@ -1395,17 +1406,16 @@ public class BaseDeDatos {
 		}
 		double sumatorio = 0;
 		int divisor = 0;
-		for (Object e :edades) {
+		for (Object e : edades) {
 			sumatorio += Double.valueOf((Integer) e);
 			divisor += 1;
 		}
 		double mediaE = sumatorio / divisor;
 		return String.valueOf(mediaE);
-	
-		
+
 	}
-	
-	public static String calculoTotalE (JTable t, TipoEntrada tipoE) {
+
+	public static String calculoTotalE(JTable t, TipoEntrada tipoE) {
 		int entradas = 0;
 		if (tipoE.equals(TipoEntrada.NORMAL)) {
 			for (int i = 0; i < t.getRowCount(); i++) {
@@ -1414,61 +1424,62 @@ public class BaseDeDatos {
 		} else if (tipoE.equals(TipoEntrada.VIP)) {
 			for (int i = 0; i < t.getRowCount(); i++) {
 				if (t.getValueAt(i, 3).equals(tipoE)) {
-					entradas+= 1;
+					entradas += 1;
 				}
 			}
 		} else if (tipoE.equals(TipoEntrada.CONCAMPING)) {
 			for (int i = 0; i < t.getRowCount(); i++) {
 				if (t.getValueAt(i, 3).equals(tipoE)) {
-					entradas+= 1;
+					entradas += 1;
 				}
 			}
 		}
 		return String.valueOf(entradas);
-	
-	
-		
+
 	}
 
-
-	public static ArrayList<Integer> recalcularTabla (JTable t, String edadMin, String edadMax, String minPrecio, String maxPrecio) {
+	public static ArrayList<Integer> recalcularTabla(JTable t, String edadMin, String edadMax, String minPrecio,
+			String maxPrecio) {
 		System.out.println(edadMin);
 		int minE = Integer.parseInt(edadMin);
 		int maxE = Integer.parseInt(edadMax);
 		double minP = Double.parseDouble(minPrecio);
 		double maxP = Double.parseDouble(maxPrecio);
-		
-		ArrayList <Integer> filas = new ArrayList<>();
-		
+
+		ArrayList<Integer> filas = new ArrayList<>();
+
 		for (int i = 0; i < t.getRowCount(); i++) {
-			if ((Integer.parseInt((String)t.getValueAt(i, 2))) >= minE && (Integer.parseInt((String)t.getValueAt(i, 2))) <= maxE && (Double.parseDouble((String) t.getValueAt(i, 5))) >= minP && (Double.parseDouble((String) t.getValueAt(i, 5))) <= maxP ) {
+			if ((Integer.parseInt((String) t.getValueAt(i, 2))) >= minE
+					&& (Integer.parseInt((String) t.getValueAt(i, 2))) <= maxE
+					&& (Double.parseDouble((String) t.getValueAt(i, 5))) >= minP
+					&& (Double.parseDouble((String) t.getValueAt(i, 5))) <= maxP) {
 				filas.add(i);
 			}
 		}
 		return filas;
 	}
-	
-	public static Entrada crearEntrada (Festival f, Cliente c, TipoEntrada tipoE) {
+
+	public static Entrada crearEntrada(Festival f, Cliente c, TipoEntrada tipoE) {
 		Entrada e = new Entrada();
 		if (tipoE.equals(TipoEntrada.NORMAL)) {
 			e = new Entrada(c, f, tipoE);
-			
-		}else {
-			double suplemento = f.getPrecio() *0.2;
-			
+
+		} else {
+			double suplemento = f.getPrecio() * 0.2;
+
 			Random numAleatorio = new Random();
-			int zonaVip = numAleatorio.nextInt(10-1+1) + 1;
-			
+			int zonaVip = numAleatorio.nextInt(10 - 1 + 1) + 1;
+
 			e = new EntradaVIP(c, f, tipoE, suplemento, zonaVip);
 
 		}
 		BaseDeDatos.insertarEntrada(e);
 		return e;
 	}
-	
-	public static Entrada crearEntradaConCamping (Festival f, Cliente c, Random r) {
-		double suplemento = f.getPrecio() *0.15;
-		
+
+	public static Entrada crearEntradaConCamping(Festival f, Cliente c, Random r) {
+		double suplemento = f.getPrecio() * 0.15;
+
 		ArrayList<EntradaConCamping> entradasC = new ArrayList<>();
 		for (Entrada e : BaseDeDatos.getEntradas()) {
 			if (e.getTipoE().equals(TipoEntrada.CONCAMPING)) {
@@ -1477,22 +1488,18 @@ public class BaseDeDatos {
 
 		}
 		int p = 0;
-		for ( EntradaConCamping eC : entradasC ) {
-			p += r.nextInt(2000-10+1) + 10;
-			if( eC.getParcela()== p) {
+		for (EntradaConCamping eC : entradasC) {
+			p += r.nextInt(2000 - 10 + 1) + 10;
+			if (eC.getParcela() == p) {
 				return crearEntradaConCamping(f, c, r);
 			}
 		}
 		Entrada e = new EntradaConCamping(c, f, TipoEntrada.CONCAMPING, suplemento, p);
 		BaseDeDatos.insertarEntrada(e);
 		return e;
-		
+
 	}
-	
-	
-	
-	
-	
+
 /////////////////////////////////////////////////////////////////////
 //                      Logging                                    //
 /////////////////////////////////////////////////////////////////////

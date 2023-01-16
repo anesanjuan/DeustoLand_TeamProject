@@ -2,7 +2,7 @@ package DeustoLand;
 
 import java.util.Objects;
 
-public class User {
+public class User implements Comparable<User>{
 
 	//Atributos de la clase
 	private int cod;
@@ -140,6 +140,11 @@ public class User {
 			return false;
 		User other = (User) obj;
 		return Objects.equals(contrasena, other.contrasena) && Objects.equals(correo, other.correo);
+	}
+
+	public int compareTo(User x) {
+		
+		return this.correo.compareTo( x.correo );
 	}
 
 }
