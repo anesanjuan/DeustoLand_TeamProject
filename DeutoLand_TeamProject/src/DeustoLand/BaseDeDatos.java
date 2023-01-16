@@ -1,6 +1,7 @@
 package DeustoLand;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.logging.Level;
+import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
@@ -27,9 +29,19 @@ import javax.swing.table.DefaultTableModel;
 public class BaseDeDatos {
 
 	private static Connection con;
-	private static Logger logger = Logger.getLogger("BaseDatos");
+	//private static Logger logger = Logger.getLogger("BaseDatos");
+	private static Logger logger = Logger.getLogger(BaseDeDatos.class.getName());
 	private static Exception lastError;
 	
+	public BaseDeDatos()
+	{
+		try (FileInputStream fis = new FileInputStream("logger.properties")) {
+			LogManager.getLogManager().readConfiguration(fis);
+		} catch (Exception ex) {
+			logger.warning(String.format("%s - Error leyendo configuración del Logger: %s", 
+										this.getClass(), ex.getMessage()));
+		}
+	}
 
 	/**
 	 * Abre conexión con la base de datos
