@@ -67,7 +67,9 @@ public class GestorFichero {
 
 			while ((line = reader.readLine()) != null) {
 				fields = line.split(",");
-				Tarjeta tarjeta = new Tarjeta(Long.parseLong(fields[0]), fields[1], Integer.parseInt(fields[2]));
+				String cvv = fields[2];
+				String cvv2 = (String) cvv.subSequence(0, 3);
+				Tarjeta tarjeta = new Tarjeta(Long.parseLong(fields[0]), fields[1], Integer.parseInt(cvv2));
 				tarjetas.add(tarjeta);
 			}
 		} catch (Exception ex) {
@@ -78,10 +80,12 @@ public class GestorFichero {
 	}
 	
 	
-	public static boolean comprobarTarjeta (long numTarjeta, int cvv) {
+	public static boolean comprobarTarjeta (String numTarjeta, String cvv) {
+		long numTarjetaLong = Long.parseLong(numTarjeta);
+		int cvvInt = Integer.parseInt(cvv);
 		
 		for (Tarjeta tarjeta : GestorFichero.cargarTarjetasCredito()) {
-			if (tarjeta.getNumTarjeta() == numTarjeta && tarjeta.getCvv() == cvv) {
+			if (tarjeta.getNumTarjeta() == numTarjetaLong && tarjeta.getCvv() == cvvInt) {
 				return true;
 			} 
 		}
