@@ -326,9 +326,6 @@ public class VentanaEstadisticas extends JFrame {
 		});
 		
 		
-		
-		
-		
 
 		JButton btnFiltrar = new JButton("FILTRAR");
 		btnFiltrar.setBounds(530, 296, 89, 23);
