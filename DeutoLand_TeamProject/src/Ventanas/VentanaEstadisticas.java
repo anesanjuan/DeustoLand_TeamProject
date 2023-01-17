@@ -183,6 +183,7 @@ public class VentanaEstadisticas extends JFrame {
 		BaseDeDatos.borrarDatos(tDatos);
 		BaseDeDatos.insertarDatos(tDatos, nomFest.getText());
 		
+		tDatos.setModel(mDatos);
 		
 		JLabel lblMediaEdad = new JLabel(BaseDeDatos.getMediaEdad(tDatos));
 		lblMediaEdad.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -245,7 +246,7 @@ public class VentanaEstadisticas extends JFrame {
 		parteArriba.add(bSiguiente);
 		
 		
-		tDatos.setModel(mDatos);
+
 			
 		tDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tDatos.getColumnModel().getColumn(0).setPreferredWidth(40);
