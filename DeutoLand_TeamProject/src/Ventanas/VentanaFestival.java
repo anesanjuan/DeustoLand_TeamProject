@@ -1,8 +1,7 @@
 package Ventanas;
 
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.FlowLayout;
+
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -11,7 +10,6 @@ import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -21,11 +19,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import javax.swing.text.html.Option;
 
-import DeustoLand.Artista;
 import DeustoLand.BaseDeDatos;
-import DeustoLand.Cliente;
 import DeustoLand.Concierto;
 import DeustoLand.Festival;
 import DeustoLand.Gestor;

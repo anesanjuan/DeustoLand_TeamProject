@@ -13,7 +13,6 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import DeustoLand.BaseDeDatos;
-import DeustoLand.Cliente;
 import DeustoLand.Gestor;
 import DeustoLand.User;
 import Excepciones.ClienteRepetidoException;
@@ -103,7 +102,6 @@ public class VentanaRegistro extends JFrame {
 					VentanaPrincipal vp = new VentanaPrincipal(gestor, u);
 					vp.setVisible(true);
 					dispose();
-					// HACER COMPARACION!!! MAR
 				} catch (ClienteRepetidoException ex) {
 					JOptionPane.showMessageDialog(null, "Ese usuario ya esta registrado!", "ALERTA!",
 							JOptionPane.INFORMATION_MESSAGE);

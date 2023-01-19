@@ -16,9 +16,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import DeustoLand.Admin;
 import DeustoLand.BaseDeDatos;
-import DeustoLand.Cliente;
 import DeustoLand.Gestor;
 import DeustoLand.User;
 

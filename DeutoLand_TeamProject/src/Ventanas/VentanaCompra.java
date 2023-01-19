@@ -17,7 +17,6 @@ import javax.swing.JTextField;
 import DeustoLand.BaseDeDatos;
 import DeustoLand.Cliente;
 import DeustoLand.Festival;
-import DeustoLand.Gestor;
 import DeustoLand.GestorFichero;
 import DeustoLand.TipoEntrada;
 import DeustoLand.User;
