@@ -180,7 +180,9 @@ public class VentanaEstadisticas extends JFrame {
 		
 		tDatos.setDefaultRenderer(Object.class, cellRenderer);
 		
-
+		tDatos.getTableHeader().setReorderingAllowed(false);
+	
+		
 		BaseDeDatos.borrarDatos(tDatos);
 		BaseDeDatos.insertarDatos(tDatos, nomFest.getText());
 		
@@ -340,6 +342,8 @@ public class VentanaEstadisticas extends JFrame {
 			}
 		});
 
+		
 	}
+	
 
 }

@@ -19,8 +19,8 @@ public class Renderer extends JLabel implements TableCellRenderer {
 	private static final long serialVersionUID = 1L;
 	
 
-	private TipoEntrada tipoE = null;
-	private ArrayList<Integer> is=null;
+	private TipoEntrada tipoE;
+	private ArrayList<Integer> is;
 	
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 		
@@ -53,4 +53,10 @@ public class Renderer extends JLabel implements TableCellRenderer {
 	public void setArray(ArrayList<Integer> is) {
 		this.is=is;
 	}
+	
+	//acabar por maria
+	public void isCellEditable(int rowIndex, int colIndex) {
+		
+	}
+	
 }
