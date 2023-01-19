@@ -2,7 +2,6 @@ package JUnit;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,18 +9,12 @@ import DeustoLand.Cliente;
 
 public class ClienteTest {
 
-	//tengo q poner algo de user???
-	
 	private Cliente c;
-	
+
 	@Before
 	public void setUp() throws Exception {
-		c = new Cliente("Cristina", "Lopez", "4567881A", "crislopez@gmail.com", "5678", "Koldo Mitxelena, 9", 24, 37879);
-
-	}
-	
-	@After
-	public void tearDown() throws Exception {
+		c = new Cliente("Cristina", "Lopez", "4567881A", "crislopez@gmail.com", "5678", "Koldo Mitxelena, 9", 24,
+				37879);
 
 	}
 
@@ -29,33 +22,40 @@ public class ClienteTest {
 	public void testCliente() {
 		assertNotNull(c);
 	}
+
 	@Test
 	public void getDireccion() {
-		assertEquals(c.getDireccion(),"Koldo Mitxelena, 9" );
+		assertEquals("Koldo Mitxelena, 9", c.getDireccion());
 	}
+
 	@Test
-	public void setDireccion( ) {
-		
-		
-		fail("Not yet implementes");
-		
-		
+	public void setDireccion() {
+
+		c.setDireccion("Vitoria");
+		assertEquals("Vitoria", c.getDireccion());
+
 	}
+
 	@Test
 	public void getEdad() {
-		assertEquals(c.getEdad(), 24);
+		assertEquals(24, c.getEdad());
 	}
+
 	@Test
 	public void setEdad() {
-		fail("Not yet implementes");
+		c.setEdad(25);
+		assertEquals(25, c.getEdad());
 	}
+
 	@Test
 	public void getCodigoP() {
-		assertEquals(c.getCodigoP(), 37879);
+		assertEquals(37879, c.getCodigoP());
 	}
+
 	@Test
 	public void setCodigoP() {
-		fail("Not yet implementes");
+		c.setCodigoP(387870);
+		assertEquals(387870, c.getCodigoP());
 	}
 
 }

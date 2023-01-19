@@ -2,7 +2,6 @@ package JUnit;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,37 +18,37 @@ public class ArtistaTest {
 		 art = new Artista(02, "Mora", TipoGenero.URBANOLATINO);
 	}
 	
-	@After
-	public void tearDown() throws Exception {
-	}
-	
 	@Test
 	public void testArtista() {
 		assertNotNull(art);
 	}
 	@Test
 	public void getCodigoA() {
-		assertEquals(art.getCodigoA(), 02);
+		assertEquals(02, art.getCodigoA());
 	}
 	@Test
 	public void setCodigoA() {
-		fail("Not yet implemented");
+		art.setCodigoA(03);
+		assertEquals(03, art.getCodigoA());
 	}
 	@Test
 	public void getNombre() {
-		assertEquals(art.getNombre(), "Mora");
+		assertEquals("Mora", art.getNombre());
 	}
 	@Test
 	public void setNombre() {
-		fail("Not yet implemented");
+		art.setNombre("Bad Bunny");
+		assertEquals("Bad Bunny", art.getNombre());
 	}
 	@Test
 	public void getTipogenero() {
-		assertEquals(art.getTipogenero(), TipoGenero.URBANOLATINO);
+		assertEquals( TipoGenero.URBANOLATINO, art.getTipogenero());
 	}
 	@Test
 	public void setTipogenero() {
-		fail("Not yet implemented");
+		TipoGenero tipoG = TipoGenero.REGGAETON;
+		art.setTipogenero(tipoG);
+		assertEquals(tipoG, art.getTipogenero());
 	}
 
 }

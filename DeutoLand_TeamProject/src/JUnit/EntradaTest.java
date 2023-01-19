@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,45 +32,44 @@ public class EntradaTest {
 		
 	}
 
-	@After
-	public void tearDown() throws Exception {
-	}
-
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
 	@Test
 	public void getCliente() {
 		assertEquals(e.getCliente(), c);
 	}
 	@Test
 	public void setCliente( ) {
-		fail("Not yet implemented");
+		Cliente c2 = new Cliente(null, null, null, null, null, null, 0, 0);
+		e.setCliente(c2);
+		assertEquals(c2, e.getCliente());
 	}
 	@Test
 	public void getNumeroEntrada() {
-		assertEquals(e.getNumeroEntrada(), 12);
+		assertEquals(12, e.getNumeroEntrada());
 	}
 	@Test
 	public void setNumeroEntrada( ) {
-		fail("Not yet implemented");
+		e.setNumeroEntrada(9);
+		assertEquals(9, e.getNumeroEntrada());
 	}
 	@Test
 	public void getFestival() {
-		assertEquals(e.getFestival(), f);
+		assertEquals(f, e.getFestival());
 	}
 	@Test
 	public void setFestival( ) {
-		fail("Not yet implemented");
+		Festival f2 = new Festival(0, null, null, null, null, listaConciertos, 0, null);
+		e.setFestival(f2);
+		assertEquals(f2, e.getFestival());
 	}
 	@Test
 	public void getTipoE() {
-		assertEquals(e.getTipoE(), TipoEntrada.NORMAL);
+		assertEquals(TipoEntrada.NORMAL, e.getTipoE());
 	}
 
 	public void setTipoE( ) {
-		fail("Not yet implemented");
+		TipoEntrada tipoE = TipoEntrada.CONCAMPING;
+		e.setTipoE(tipoE);
+		assertEquals(tipoE, e.getTipoE());
 	}
 	
 }

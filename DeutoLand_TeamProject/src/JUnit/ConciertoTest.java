@@ -2,7 +2,6 @@ package JUnit;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -26,10 +25,6 @@ public class ConciertoTest {
 				120.00, "madcool.jpg"));
 	}
 
-	@After
-	public void tearDown() throws Exception {
-	}
-
 	@Test
 	public void testConcierto() {
 
@@ -38,38 +33,36 @@ public class ConciertoTest {
 
 	@Test
 	public void testGetCodigoC() {
-		assertEquals(c.getCodigoC(), 13);
+		assertEquals(13, c.getCodigoC());
 	}
 
 	@Test
 	public void testSetCodigoC() {
-		fail("Not yet implemented");
+		c.setCodigoC(21);
+		assertEquals(21, c.getCodigoC());
 	}
 
 	@Test
 	public void testGetArtista() {
-
 		assertEquals(a, c.getArtista());
-
 	}
 
 	@Test
 	public void testSetArtista() {
-
-		assertEquals(a, c.getArtista());
 		c.setArtista(null);
 		assertNull(c.getArtista());
-
 	}
 
 	@Test
 	public void testGetHora() {
-		assertEquals(c.getHora(), 2022 - 03 - 12);
+		assertEquals( 2022 - 03 - 12, c.getHora());
 	}
 
 	@Test
 	public void testSetHora() {
-		fail("Not yet implemented");
+		c.setHora(0);
+		assertEquals(0, c.getHora());
+		
 	}
 
 	@Test
@@ -79,17 +72,20 @@ public class ConciertoTest {
 
 	@Test
 	public void testSetDuracion() {
-		fail("Not yet implemented");
+		c.setDuracion(2.00);
+		assertTrue(2.00 == c.getDuracion());
 	}
 
 	@Test
 	public void testGetFestival() {
-		assertEquals(c.getFestival().getCodigoF(), 04);
+		assertEquals(04, c.getFestival().getCodigoF());
 	}
 
 	@Test
 	public void testSetFestival() {
-		fail("Not yet implemented");
+		Festival f2 = new Festival(0, null, null, null, null, 0, null);
+		c.setFestival(f2);
+		assertEquals(f2, c.getFestival());
 	}
 
 }

@@ -14,7 +14,6 @@ import DeustoLand.User;
 
 public class EntradaConCampingTest {
 
-	//tengo q añadir lo de entrada normal??
 	
 	private EntradaConCamping ec;
 	
@@ -24,10 +23,6 @@ public class EntradaConCampingTest {
 				"Coachella es un gran festival de música que se lleva a cabo durante tres días en la última semana del mes de abril en California. Es uno de los festivales de música más grandes, famosos y rentables de Estados Unidos y del mundo. Para más información consulte la página oficial del sitio: https://www.coachella.com/",
 				300.00, "coachella.png"), TipoEntrada.NORMAL, 30, 150);
 	
-	}
-		
-	@After
-	public void tearDown() throws Exception {
 	}
 	
 	@Test
@@ -41,7 +36,8 @@ public class EntradaConCampingTest {
 	}
 	@Test
 	public void setSuplementoCamping() {
-		fail("Not yet implemented");
+		ec.setSuplementoCamping(45.0);
+		assertTrue(45.0 == ec.getSuplementoCamping());
 	}
 	@Test
 	public void getParcela() {
@@ -49,7 +45,8 @@ public class EntradaConCampingTest {
 	}
 	@Test
 	public void setParcela() {
-		fail("Not yet implemented");
+		ec.setParcela(200);
+		assertEquals(200, ec.getParcela());
 	}
 
 }
