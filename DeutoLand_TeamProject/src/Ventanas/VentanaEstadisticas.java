@@ -58,6 +58,7 @@ public class VentanaEstadisticas extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 
+		this.setResizable(false);
 		JPanel parteArriba = new JPanel();
 		Border bordeFestival = BorderFactory.createTitledBorder("Festival");
 		parteArriba.setBorder(bordeFestival);
