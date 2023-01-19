@@ -97,6 +97,9 @@ public class VentanaPrincipal extends JFrame {
 	// esto es como inicializar: mete todo dentro
 	public VentanaPrincipal(Gestor gestor, User u) {
 		
+		
+		
+		
 		//HILO
 		reloj = new Reloj(this);
 		reloj.execute();
@@ -442,6 +445,12 @@ public class VentanaPrincipal extends JFrame {
 			btnEstadisticas.setVisible(false);
 			btnInicioSesion.setVisible(false);
 		}
+		
+		setLocationRelativeTo(null);
+		
+		WelcomePage wp = new WelcomePage( true );
+	
+		
 	}
 
 	private static class JLabelAjustado extends JLabel {

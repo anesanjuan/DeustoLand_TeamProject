@@ -35,7 +35,11 @@ public class ClienteTest {
 	}
 	@Test
 	public void setDireccion( ) {
+		
+		
 		fail("Not yet implementes");
+		
+		
 	}
 	@Test
 	public void getEdad() {

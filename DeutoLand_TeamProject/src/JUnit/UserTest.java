@@ -14,15 +14,17 @@ public class UserTest {
 
 	
 	
-	//no me funcioooonaaaa
-	//el hashcode, equals???
+
 	
 	private User u;
+	private User u2;
 	
 	
 	@Before
 	public void setUp() throws Exception {
 		u = new User(01,"Alex", "Navarro", "29096527M", "alexnavarro@gmail.com", "alex231");
+		u2 = new User(02,"Lucia", "Gomez", "29093727E", "lucia@gmail.com", "lu99");
+
 	}
 
 	@After
@@ -39,7 +41,8 @@ public class UserTest {
 	}
 	@Test
 	public void setCod( ) {
-		fail("Not yet implemented");
+		u.setCod(544);
+		assertEquals(544, u.getCod());
 	}
 	@Test
 	public void getNombre() {
@@ -80,5 +83,10 @@ public class UserTest {
 	@Test
 	public void setContrasena( ) {
 		fail("Not yet implemented");
+	}
+	
+	@Test
+	public void compareTo() {
+		assertTrue(u.compareTo(u2)<0);
 	}
 }
