@@ -1,8 +1,6 @@
 package DeustoLand;
 
-import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -11,15 +9,11 @@ import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -114,7 +108,7 @@ public class BaseDeDatos {
 		}
 	}
 
-	/////////////////////////////////////////////////////////////// 7
+	/////////////////////////////////////////////////////////////// 
 	// operacion para insertar festivales desde la app
 
 	/**
@@ -1500,7 +1494,6 @@ public class BaseDeDatos {
 
 	}
 
-	
 /////////////////////////////////////////////////////////////////////
 //                      Logging                                    //
 /////////////////////////////////////////////////////////////////////

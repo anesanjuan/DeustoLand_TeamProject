@@ -1,8 +1,6 @@
 package DeustoLand;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 import javax.swing.JFrame;
@@ -12,10 +10,19 @@ public class Reloj extends SwingWorker<Void, Void> {
 
 	private JFrame frame;
 
+	/**
+	 * Constructor de la clase
+	 * 
+	 * @param frame ventana en la que se implementa
+	 */
 	public Reloj(JFrame frame) {
 		this.frame = frame;
 	}
 
+	/**
+	 * Este método es utilizado para actualizar el título de la ventana con la fecha
+	 * y hora actual cada segundo.
+	 */
 	@Override
 	protected Void doInBackground() throws Exception {
 		while (!isCancelled()) {

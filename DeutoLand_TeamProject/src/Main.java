@@ -23,8 +23,7 @@ public class Main {
 	public static void main(String[] args) throws SQLException {
 		
 		 	
-		//VentanaInicioSesion vi = new VentanaInicioSesion( gln );
-		//vi.setVisible(true);
+		
 		
 		BaseDeDatos.abrirConexion("BaseDatos.db", false);
 		//BaseDeDatos.insertarArtistas();

@@ -13,7 +13,13 @@ import java.util.ArrayList;
 
 public class GestorFichero {
 
+	
+	// ESTA HAY QUE BORRAR?
+	
 	/**
+	 * Este es un método que devuelve una ArrayList de objetos "Cliente". Utilizado
+	 * para cargar una lista de objetos de cliente desde un archivo llamado
+	 * "clientes.dat" en el sistema de archivos.
 	 * 
 	 * @return
 	 */
@@ -38,6 +44,10 @@ public class GestorFichero {
 	}
 
 	/**
+	 * Este es un método que toma una ArrayList de
+	 * objetos "Cliente" como parámetro. Utilizado para guardar una lista de
+	 * objetos de cliente en un archivo llamado "clientes.dat" en el sistema de
+	 * archivos.
 	 * 
 	 * @param clientes
 	 */
@@ -54,13 +64,15 @@ public class GestorFichero {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
+
+	/**
+	 * 
+	 * @return
+	 */
 	public static ArrayList<Tarjeta> cargarTarjetasCredito() {
 
 		ArrayList<Tarjeta> tarjetas = new ArrayList<>();
-		
+
 		try (BufferedReader reader = new BufferedReader(new FileReader("TarjetasCredito.csv"))) {
 			String line = reader.readLine();
 			String[] fields;
@@ -78,16 +90,21 @@ public class GestorFichero {
 
 		return tarjetas;
 	}
-	
-	
-	public static boolean comprobarTarjeta (String numTarjeta, String cvv) {
+
+	/**
+	 * 
+	 * @param numTarjeta
+	 * @param cvv
+	 * @return
+	 */
+	public static boolean comprobarTarjeta(String numTarjeta, String cvv) {
 		long numTarjetaLong = Long.parseLong(numTarjeta);
 		int cvvInt = Integer.parseInt(cvv);
-		
+
 		for (Tarjeta tarjeta : GestorFichero.cargarTarjetasCredito()) {
 			if (tarjeta.getNumTarjeta() == numTarjetaLong && tarjeta.getCvv() == cvvInt) {
 				return true;
-			} 
+			}
 		}
 		return false;
 	}
