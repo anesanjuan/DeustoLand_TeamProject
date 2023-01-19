@@ -170,20 +170,19 @@ public class VentanaEstadisticas extends JFrame {
 		panelPrincipal.add(panelTable);
 		panelTable.setLayout(null);
 		
-		cellRenderer = new Renderer();
-		tDatos = new JTable();
-		tDatos.setDefaultRenderer(Object.class, cellRenderer);
 		
 		
 		Vector<String> cabeceras = new Vector<String>(Arrays.asList("Nombre", "DNI", "Edad", "Tipo Entrada", "Precio Entrada", "Precio Total"));
 		mDatos = new DefaultTableModel(new Vector<Vector<Object>>(), cabeceras);
 		tDatos = new JTable(mDatos);
+		cellRenderer = new Renderer();
+		
+		tDatos.setDefaultRenderer(Object.class, cellRenderer);
 		
 
 		BaseDeDatos.borrarDatos(tDatos);
 		BaseDeDatos.insertarDatos(tDatos, nomFest.getText());
 		
-		tDatos.setModel(mDatos);
 		
 		JLabel lblMediaEdad = new JLabel(BaseDeDatos.getMediaEdad(tDatos));
 		lblMediaEdad.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -256,9 +255,11 @@ public class VentanaEstadisticas extends JFrame {
 		tDatos.getColumnModel().getColumn(4).setPreferredWidth(20);
 			
 			
-		
-		tDatos.setBounds(112, 31, 637, 266);
-		panelTable.add(tDatos);
+		JScrollPane scroll = new JScrollPane(tDatos);
+		//tDatos.setBounds(112, 31, 637, 266);
+		//panelTable.add(tDatos);
+		scroll.setBounds(112, 31, 637, 266);
+		panelTable.add(scroll);
 		Border bordepanel12 = BorderFactory.createTitledBorder("Tabla con datos");
 		panelTable.setBorder(bordepanel12);
 		
