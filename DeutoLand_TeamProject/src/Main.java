@@ -16,6 +16,7 @@ import Ventanas.VentanaFestival;
 import Ventanas.VentanaInicioSesion;
 import Ventanas.VentanaPrincipal;
 import Ventanas.VentanaRegistro;
+import Ventanas.vFesti;
 
 public class Main {
 
@@ -35,6 +36,9 @@ public class Main {
 		Gestor gln = new Gestor();
 		VentanaPrincipal vp = new VentanaPrincipal( gln, null );
 		vp.setVisible(true);
+		
+		//vFesti vf = new vFesti(BaseDeDatos.getFestNom("Tomorrowland"), BaseDeDatos.getUser("juanperez@gmail.com", "juanperez23"));
+		//vf.setVisible(true);
 	
 		//VentanaEstadisticas ve = new VentanaEstadisticas();
 		//ve.setVisible(true);
