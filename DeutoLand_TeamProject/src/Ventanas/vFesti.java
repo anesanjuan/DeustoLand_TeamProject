@@ -86,7 +86,7 @@ public class vFesti extends JFrame{
 		bAtras = new JButton("Atrás");
 		arriba.add(bAtras);
 		bAtras.setFont(new Font("Georgia", Font.PLAIN, 16));
-		bAtras.addActionListener(new Action Listener() {
+		bAtras.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
