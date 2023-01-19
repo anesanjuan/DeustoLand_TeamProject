@@ -7,7 +7,8 @@ import java.awt.Font;
 import java.awt.Label;
 import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;import java.util.ArrayList;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Vector;
 
@@ -33,7 +34,6 @@ import DeustoLand.Entrada;
 import DeustoLand.Festival;
 import DeustoLand.TipoEntrada;
 
-
 public class VentanaEstadisticas extends JFrame {
 
 	/**
@@ -46,9 +46,8 @@ public class VentanaEstadisticas extends JFrame {
 	private JTextField tfEdadMax;
 	private JTable tDatos;
 	private DefaultTableModel mDatos;
-	
+
 	private Renderer cellRenderer;
-	
 
 	public VentanaEstadisticas() {
 
@@ -71,9 +70,6 @@ public class VentanaEstadisticas extends JFrame {
 		nomFest.setBounds(352, 11, 144, 53);
 		parteArriba.add(nomFest);
 
-
-		
-
 		JPanel panelPrincipal = new JPanel();
 		panelPrincipal.setBounds(0, 110, 890, 468);
 		getContentPane().add(panelPrincipal);
@@ -86,7 +82,6 @@ public class VentanaEstadisticas extends JFrame {
 		panelPrincipal.add(panelAbajo);
 		panelAbajo.setLayout(null);
 
-		
 		JPanel panel1 = new JPanel();
 		Border bordepanel1 = BorderFactory.createTitledBorder("Datos y Filtros");
 		panel1.setBorder(bordepanel1);
@@ -114,8 +109,6 @@ public class VentanaEstadisticas extends JFrame {
 		CTEc.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		CTEc.setBounds(93, 203, 215, 32);
 		panel1.add(CTEc);
-
-
 
 		JLabel filtros = new JLabel("FILTROS:");
 		filtros.setFont(new Font("Tahoma", Font.PLAIN, 17));
@@ -162,38 +155,31 @@ public class VentanaEstadisticas extends JFrame {
 		tfEdadMax.setBounds(602, 248, 96, 20);
 		panel1.add(tfEdadMax);
 
-
-		
 //___________________________JTable_____________________
-		
+
 		JPanel panelTable = new JPanel();
 		panelTable.setBounds(0, 11, 880, 332);
 		panelPrincipal.add(panelTable);
 		panelTable.setLayout(null);
-		
-		
-		
-		Vector<String> cabeceras = new Vector<String>(Arrays.asList("Nombre", "DNI", "Edad", "Tipo Entrada", "Precio Entrada", "Precio Total"));
+
+		Vector<String> cabeceras = new Vector<String>(
+				Arrays.asList("Nombre", "DNI", "Edad", "Tipo Entrada", "Precio Entrada", "Precio Total"));
 		mDatos = new DefaultTableModel(new Vector<Vector<Object>>(), cabeceras);
 		tDatos = new JTable(mDatos);
 		cellRenderer = new Renderer();
-		
+
 		tDatos.setDefaultRenderer(Object.class, cellRenderer);
-		
+
 		tDatos.getTableHeader().setReorderingAllowed(false);
-	
-		
+
 		BaseDeDatos.borrarDatos(tDatos);
 		BaseDeDatos.insertarDatos(tDatos, nomFest.getText());
-		
-		
+
 		JLabel lblMediaEdad = new JLabel(BaseDeDatos.getMediaEdad(tDatos));
 		lblMediaEdad.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblMediaEdad.setBounds(194, 53, 84, 32);
 		panel1.add(lblMediaEdad);
 
-		
-		
 		JLabel lblCTE = new JLabel(BaseDeDatos.calculoTotalE(tDatos, TipoEntrada.NORMAL));
 		lblCTE.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblCTE.setBounds(253, 99, 84, 32);
@@ -208,15 +194,14 @@ public class VentanaEstadisticas extends JFrame {
 		lblCTEc.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblCTEc.setBounds(317, 203, 84, 32);
 		panel1.add(lblCTEc);
-		
-		
+
 		JButton bAnterior = new JButton("anterior");
 		bAnterior.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				nomFest.setText(BaseDeDatos.FestEstadistica(BaseDeDatos.getFestNom(nomFest.getText()), 0).getNombre());
 				BaseDeDatos.borrarDatos(tDatos);
 				BaseDeDatos.insertarDatos(tDatos, nomFest.getText());
-				
+
 				lblMediaEdad.setText(BaseDeDatos.getMediaEdad(tDatos));
 				lblCTE.setText(BaseDeDatos.calculoTotalE(tDatos, TipoEntrada.NORMAL));
 				lblCTEvip.setText(BaseDeDatos.calculoTotalE(tDatos, TipoEntrada.VIP));
@@ -235,7 +220,7 @@ public class VentanaEstadisticas extends JFrame {
 				nomFest.setText(BaseDeDatos.FestEstadistica(BaseDeDatos.getFestNom(nomFest.getText()), 1).getNombre());
 				BaseDeDatos.borrarDatos(tDatos);
 				BaseDeDatos.insertarDatos(tDatos, nomFest.getText());
-				
+
 				lblMediaEdad.setText(BaseDeDatos.getMediaEdad(tDatos));
 				lblCTE.setText(BaseDeDatos.calculoTotalE(tDatos, TipoEntrada.NORMAL));
 				lblCTEvip.setText(BaseDeDatos.calculoTotalE(tDatos, TipoEntrada.VIP));
@@ -246,24 +231,20 @@ public class VentanaEstadisticas extends JFrame {
 		bSiguiente.setFont(new Font("Georgia", Font.PLAIN, 16));
 		bSiguiente.setBounds(617, 24, 144, 36);
 		parteArriba.add(bSiguiente);
-		
-		
 
-			
 		tDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tDatos.getColumnModel().getColumn(0).setPreferredWidth(40);
 		tDatos.getColumnModel().getColumn(1).setPreferredWidth(40);
 		tDatos.getColumnModel().getColumn(2).setPreferredWidth(20);
 		tDatos.getColumnModel().getColumn(3).setPreferredWidth(50);
 		tDatos.getColumnModel().getColumn(4).setPreferredWidth(20);
-			
-			
+
 		JScrollPane scroll = new JScrollPane(tDatos);
 		scroll.setBounds(112, 31, 637, 266);
 		panelTable.add(scroll);
 		Border bordepanel12 = BorderFactory.createTitledBorder("Tabla con datos");
 		panelTable.setBorder(bordepanel12);
-		
+
 		JButton bEstad = new JButton("Estadisticas numéricas");
 		bEstad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -282,22 +263,19 @@ public class VentanaEstadisticas extends JFrame {
 		bEstad.setFont(new Font("Georgia", Font.PLAIN, 16));
 		bEstad.setBounds(304, 68, 226, 36);
 		parteArriba.add(bEstad);
-		
-		
-		
+
 		JButton btnNormal = new JButton("Normal");
 		btnNormal.setBounds(75, 30, 133, 36);
 		panelAbajo.add(btnNormal);
 		btnNormal.setFont(new Font("Georgia", Font.PLAIN, 16));
 		btnNormal.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				cellRenderer.setEntrada(TipoEntrada.NORMAL);
 				tDatos.repaint();
 			}
 		});
-		
 
 		JButton btnVip = new JButton("VIP");
 		btnVip.setFont(new Font("Georgia", Font.PLAIN, 16));
@@ -305,45 +283,39 @@ public class VentanaEstadisticas extends JFrame {
 		panelAbajo.add(btnVip);
 		btnVip.addActionListener(new ActionListener() {
 
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				cellRenderer.setEntrada(TipoEntrada.VIP);
 				tDatos.repaint();
 			}
 		});
-	
-		
 
 		JButton btnCamping = new JButton("Camping");
 		btnCamping.setFont(new Font("Georgia", Font.PLAIN, 16));
 		btnCamping.setBounds(438, 30, 133, 36);
 		panelAbajo.add(btnCamping);
 		btnCamping.addActionListener(new ActionListener() {
-		
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				cellRenderer.setEntrada(TipoEntrada.CONCAMPING);
 				tDatos.repaint();
 			}
 		});
-		
-		
 
 		JButton btnFiltrar = new JButton("FILTRAR");
 		btnFiltrar.setBounds(530, 296, 89, 23);
 		panel1.add(btnFiltrar);
 		btnFiltrar.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				cellRenderer.setArray(BaseDeDatos.recalcularTabla(tDatos, tfEdadMin.getText(), tfEdadMax.getText(), tfMinP.getText(), tfMaxP.getText()));
+				cellRenderer.setArray(BaseDeDatos.recalcularTabla(tDatos, tfEdadMin.getText(), tfEdadMax.getText(),
+						tfMinP.getText(), tfMaxP.getText()));
 				tDatos.repaint();
 			}
 		});
 
-		
 	}
-	
 
 }

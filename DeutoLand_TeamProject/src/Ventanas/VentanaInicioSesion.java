@@ -106,7 +106,7 @@ public class VentanaInicioSesion extends JFrame {
 				// al pulsar este boton se abre la ventana de regiustro
 				VentanaRegistro vr = new VentanaRegistro(gestor);
 				vr.setVisible(true);
-				
+
 				dispose();
 			}
 		});

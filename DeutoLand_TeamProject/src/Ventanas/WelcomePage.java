@@ -15,7 +15,6 @@ import javax.swing.JLabel;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-
 public class WelcomePage extends JDialog {
 
 	private JLabel lblNewLabel;
@@ -38,7 +37,7 @@ public class WelcomePage extends JDialog {
 				int ancho = getAncho();
 				int alto = getAlto();
 
-				lblNewLabel.setIcon( new ImageIcon( foto.getScaledInstance(ancho, alto, Image.SCALE_SMOOTH)) );
+				lblNewLabel.setIcon(new ImageIcon(foto.getScaledInstance(ancho, alto, Image.SCALE_SMOOTH)));
 
 			}
 		});

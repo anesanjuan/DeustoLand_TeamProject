@@ -1,4 +1,5 @@
 package Ventanas;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -25,35 +26,33 @@ import DeustoLand.Festival;
 import DeustoLand.Gestor;
 import DeustoLand.User;
 
+public class vFesti extends JFrame {
 
-
-public class vFesti extends JFrame{
-	
 	private JPanel principal;
 	private JPanel arriba;
-	
+
 	private JPanel pIzq;
 	private JPanel pDrch;
-	
+
 	private JPanel pIAr;
 	private JPanel pIAb;
-	
+
 	private JPanel pIAb1;
 	private JPanel pIAb2;
-	
+
 	private JPanel pd1;
 	private JPanel pd2;
 	private JPanel pd3;
 	private JPanel pd4;
-	
+
 	private JLabel nomFest;
 	private JButton bAtras;
 	private JButton bIniciarS;
-	
+
 	private JLabel lP;
 	private JLabel lPrecio;
 	private JButton comprar;
-	
+
 	private JLabel lF;
 	private JLabel lFecha;
 	private JLabel lL;
@@ -62,12 +61,11 @@ public class vFesti extends JFrame{
 	private JLabel lArtistas;
 	private JLabel lD;
 	private JLabel lDescripcion;
-	
-	
+
 	public vFesti(Festival festival, User u) {
-		
-		getContentPane().setLayout(new GridLayout(2,1));
-		setSize(1050,800);
+
+		getContentPane().setLayout(new GridLayout(2, 1));
+		setSize(1050, 800);
 		principal = new JPanel();
 		arriba = new JPanel();
 		pIzq = new JPanel();
@@ -80,9 +78,7 @@ public class vFesti extends JFrame{
 		pd4 = new JPanel();
 		pIAb1 = new JPanel();
 		pIAb2 = new JPanel();
-		
-		
-		
+
 		bAtras = new JButton("Atrás");
 		arriba.add(bAtras);
 		bAtras.setFont(new Font("Georgia", Font.PLAIN, 16));
@@ -97,13 +93,13 @@ public class vFesti extends JFrame{
 
 			}
 		});
-		
+
 		nomFest = new JLabel("Festival" + festival.getNombre());
 		nomFest.setFont(new Font("Georgia", Font.PLAIN, 25));
 		arriba.add(nomFest);
-		
+
 		if (u == null) {
-			
+
 			bIniciarS = new JButton("Iniciar sesión");
 			bIniciarS.setFont(new Font("Georgia", Font.PLAIN, 16));
 			arriba.add(bIniciarS);
@@ -117,11 +113,11 @@ public class vFesti extends JFrame{
 					setVisible(false);
 
 				}
-				
+
 			});
-			
-		} 
-		
+
+		}
+
 		ImageIcon fotoFest = null;
 		try {
 			fotoFest = new ImageIcon(ImageIO.read(new File("fotos/" + BaseDeDatos.getFotoFest(festival.getNombre()))));
@@ -131,14 +127,11 @@ public class vFesti extends JFrame{
 
 		JLabelAjustado fotoFest1 = new JLabelAjustado(fotoFest);
 		pIAr.add(fotoFest1);
-		
 
 		lP = new JLabel("Precio:");
 		lPrecio = new JLabel(festival.getPrecio() + "€");
 		comprar = new JButton("Comprar Entrada");
-		
-		
-		
+
 		lF = new JLabel("Fecha:");
 		lFecha = new JLabel("x");
 		lL = new JLabel("Lugar:");
@@ -147,24 +140,24 @@ public class vFesti extends JFrame{
 		lArtistas = new JLabel("x");
 		lD = new JLabel("Descripción:");
 		lDescripcion = new JLabel("x");
-		
+
 		arriba.add(bAtras);
 		arriba.add(nomFest);
-		
+
 		pIAb1.add(lP);
 		pIAb1.add(lPrecio);
 		pIAb2.add(comprar);
-		
-		pIAb.setLayout(new GridLayout(2,1));
+
+		pIAb.setLayout(new GridLayout(2, 1));
 		pIAb.add(pIAb1);
 		pIAb.add(pIAb2);
-		pIzq.setLayout(new GridLayout(2,1));
+		pIzq.setLayout(new GridLayout(2, 1));
 
 		pIzq.add(pIAr);
 		pIzq.add(pIAb);
-		
-		pDrch.setLayout(new GridLayout(4,1));
-		
+
+		pDrch.setLayout(new GridLayout(4, 1));
+
 		pd1.setLayout(new BorderLayout());
 		pd2.setLayout(new BorderLayout());
 		pd3.setLayout(new BorderLayout());
@@ -177,27 +170,24 @@ public class vFesti extends JFrame{
 		pd3.add(lArtistas, BorderLayout.CENTER);
 		pd4.add(lD, BorderLayout.WEST);
 		pd4.add(lDescripcion, BorderLayout.CENTER);
-		
+
 		pDrch.add(pd1);
 		pDrch.add(pd2);
 		pDrch.add(pd3);
 		pDrch.add(pd4);
-		
-		principal.setLayout(new GridLayout(1,2));
+
+		principal.setLayout(new GridLayout(1, 2));
 		principal.add(pIzq);
 		principal.add(pDrch);
-	
-	
+
 		getContentPane().setLayout(new BorderLayout());
-		
 
 		getContentPane().add(arriba, new BorderLayout().NORTH);
 		getContentPane().add(principal, new BorderLayout().CENTER);
-		
+
 		setVisible(true);
 	}
-	
-	
+
 	private static class JLabelAjustado extends JLabel {
 		private ImageIcon imagen;
 		private int tamX;
@@ -253,4 +243,3 @@ public class vFesti extends JFrame{
 		}
 	}
 }
-

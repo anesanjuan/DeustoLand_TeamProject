@@ -68,9 +68,8 @@ public class VentanaFestival extends JFrame {
 			}
 		});
 
-		
 		if (u == null) {
-			
+
 			bInicioSesion = new JButton("Iniciar sesión");
 			bInicioSesion.setFont(new Font("Georgia", Font.PLAIN, 16));
 			bInicioSesion.setBounds(716, 11, 144, 36);
@@ -85,12 +84,10 @@ public class VentanaFestival extends JFrame {
 					setVisible(false);
 
 				}
-				
+
 			});
-			
-		} 
-		
-		
+
+		}
 
 		JPanel panelPrincipal = new JPanel();
 		panelPrincipal.setBounds(0, 51, 890, 527);
