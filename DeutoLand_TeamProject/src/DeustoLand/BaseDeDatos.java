@@ -26,7 +26,6 @@ public class BaseDeDatos {
 	private static Connection con;
 	// private static Logger logger = Logger.getLogger("BaseDatos");
 	private static Logger logger = Logger.getLogger(BaseDeDatos.class.getName());
-	private static Exception lastError;
 
 	public BaseDeDatos() {
 		try (FileInputStream fis = new FileInputStream("logger.properties")) {
