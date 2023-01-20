@@ -27,6 +27,9 @@ public class BaseDeDatos {
 	// private static Logger logger = Logger.getLogger("BaseDatos");
 	private static Logger logger = Logger.getLogger(BaseDeDatos.class.getName());
 
+	/**
+	 * Constructor de la clase y creacion del fichero loggers
+	 */
 	public BaseDeDatos() {
 		try (FileInputStream fis = new FileInputStream("logger.properties")) {
 			LogManager.getLogManager().readConfiguration(fis);
@@ -107,7 +110,7 @@ public class BaseDeDatos {
 		}
 	}
 
-	/////////////////////////////////////////////////////////////// 
+	///////////////////////////////////////////////////////////////
 	// operacion para insertar festivales desde la app
 
 	/**
@@ -212,9 +215,10 @@ public class BaseDeDatos {
 	}
 
 	/**
+	 * Metodo para insertar un cliente en la BD
 	 * 
-	 * @param cliente
-	 * @return
+	 * @param cliente cliente a insertar
+	 * @return true, si se ha añadido correctamente, de lo contrario, false
 	 */
 	public static boolean insertarCliente(Cliente cliente) {
 		try (Statement statement = con.createStatement()) {
@@ -280,6 +284,7 @@ public class BaseDeDatos {
 	// LO HE EMPZADO PERO NO ME HA DADO TIEMPO A ACABAR, LUEGO LO ACABO -- ANE
 
 	/**
+	 * Metodo para recuperar las entradas de la BD
 	 * 
 	 * @return
 	 */
@@ -355,9 +360,11 @@ public class BaseDeDatos {
 	}
 
 	/**
+	 * Metodo para obtener el precio total de una entrada determinada, incluyendo
+	 * los suplementos
 	 * 
-	 * @param e
-	 * @return
+	 * @param e entrada
+	 * @return precio total de la entrada
 	 */
 	public static double getPrecioTotal(Entrada e) {
 		double precio = e.getFestival().getPrecio();
@@ -458,8 +465,9 @@ public class BaseDeDatos {
 	}
 
 	/**
+	 * Metodo para obtener una lista de los administradores
 	 * 
-	 * @return
+	 * @return lista de los administradores
 	 */
 	public static ArrayList<Admin> getAdmins() {
 
@@ -488,8 +496,9 @@ public class BaseDeDatos {
 	}
 
 	/**
+	 * Metodo para obtener una lista de los clientes
 	 * 
-	 * @return
+	 * @return una arraylist de clientes
 	 */
 	public static ArrayList<Cliente> getClientes() {
 
@@ -520,17 +529,19 @@ public class BaseDeDatos {
 	}
 
 	/**
+	 * Obtener un cliente identificado por su correo y contraseña. Si éstas no
+	 * coinciden, el usuario no existe y genera una excepcion
 	 * 
-	 * @param correo
-	 * @param contraseña
-	 * @return
+	 * @param correo     correo del cliente
+	 * @param contrasena contraseña del cliente
+	 * @return un objeto de la clase cliente
 	 */
-	public static Cliente getCliente(String correo, String contraseña) {
+	public static Cliente getCliente(String correo, String contrasena) {
 		Cliente c = null;
 		try {
 			abrirConexion("BaseDatos.db", false);
 			for (Cliente cli : BaseDeDatos.getClientes()) {
-				if (cli.getCorreo().equals(correo) && cli.getContrasena().equals(contraseña)) {
+				if (cli.getCorreo().equals(correo) && cli.getContrasena().equals(contrasena)) {
 					c = new Cliente();
 					c.setCod(cli.getCod());
 					c.setNombre(cli.getNombre());
@@ -554,18 +565,20 @@ public class BaseDeDatos {
 	}
 
 	/**
+	 * Obtener un administrador identificado por su correo y contraseña. Si éstas no
+	 * coinciden, el usuario no existe y genera una excepcion
 	 * 
-	 * @param correo
-	 * @param contraseña
-	 * @return
+	 * @param correo     correo del administrador
+	 * @param contrasena contrasena del administrador
+	 * @return objeto de la clase admin
 	 */
-	public static Admin getAdmin(String correo, String contraseña) {
+	public static Admin getAdmin(String correo, String contrasena) {
 		Admin a = new Admin();
 
 		try {
 			abrirConexion("BaseDatos.db", false);
 			for (Admin ad : BaseDeDatos.getAdmins()) {
-				if (ad.getCorreo() == correo && ad.getContrasena() == contraseña) {
+				if (ad.getCorreo() == correo && ad.getContrasena() == contrasena) {
 					a.setCod(ad.getCod());
 					a.setNombre(ad.getNombre());
 					a.setApellido(ad.getApellido());
@@ -586,10 +599,10 @@ public class BaseDeDatos {
 	}
 
 	/**
+	 * Metodo para obtener los usuarios de la BD
 	 * 
-	 * @return
+	 * @return una arraylist the objetos cliente y admin
 	 */
-	// public static ArrayList<User> getUsers() {
 	public static ArrayList<User> getUsers() {
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
@@ -630,10 +643,11 @@ public class BaseDeDatos {
 	}
 
 	/**
+	 * Obtener un usuario identificado con un correo y contraseña determinados
 	 * 
-	 * @param correo
-	 * @param contraseña
-	 * @return
+	 * @param correo     correo del usuario
+	 * @param contrasena contrasena del usuario
+	 * @return objeto de la clase admin o cliente
 	 */
 	public static User getUser(String correo, String contraseña) {
 
@@ -825,6 +839,12 @@ public class BaseDeDatos {
 
 	}
 
+	/**
+	 * Convertir fechas a milisegundos:
+	 * 
+	 * @param date fecha
+	 * @return fecha convertida a milisegundos de tipo long
+	 */
 	public static long cambiarLong(String date) {
 		SimpleDateFormat formato = new SimpleDateFormat("HH:mm:ss");
 		long milliseconds = 0;
@@ -1236,15 +1256,16 @@ public class BaseDeDatos {
 
 	// INSERTAR CLIENTE ---- VENTANA REGISTRO
 	/**
+	 * Metodo para insertar usuarios:
 	 * 
-	 * @param nombre
-	 * @param apellido
-	 * @param dni
-	 * @param correo
-	 * @param contrasena
-	 * @param direccion
-	 * @param edad
-	 * @param codigoPostal
+	 * @param nombre       nombre del cliente
+	 * @param apellido     apellido del cliente
+	 * @param dni          dni del cliente
+	 * @param correo       correo del cliente
+	 * @param contrasena   contraseña del cliente
+	 * @param direccion    direccion del cliente
+	 * @param edad         edad del cliente
+	 * @param codigoPostal codigo postal del cliente
 	 */
 	public static void insertarUsuario(String nombre, String apellido, String dni, String correo, String contrasena,
 			String direccion, int edad, int codigoPostal) {
