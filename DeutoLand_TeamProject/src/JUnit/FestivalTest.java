@@ -23,7 +23,7 @@ public class FestivalTest {
 		f = new Festival(01, "Tomorrowland", "21-07-2023", "Boom, Bélgica",
 				"Tomorrowland es un festival de música electrónica de baile en el que lo pasarás en grande y difrutaras de 3 días increíbles con tus amigos y lleno de música. El festival tiene una duración de 3 días y cada día empezará sobre las 18:00 horas. Para más información consulte la página oficial del sitio: https://www.tomorrowland.com/",
 				listaConciertos, 150.00, "tomorrowland.png");
-		f2 = new Festival(0, null, null, null, null, listaConciertos, 0, null);
+		f2 = new Festival(0, null, null, null, null, listaConciertos, 160, null);
 	}
 
 	@Test
@@ -44,7 +44,7 @@ public class FestivalTest {
 
 	@Test
 	public void getNombre() {
-		assertEquals("Tomorrowland", f.getCodigoF());
+		assertEquals("Tomorrowland", f.getNombre());
 	}
 
 	@Test
@@ -96,7 +96,8 @@ public class FestivalTest {
 	@Test
 	public void setListaConciertos() {
 		ArrayList<Concierto> listaConciertos2 = new ArrayList<>();
-		Concierto c = new Concierto(13, new Artista(01, "Aitana", TipoGenero.POP), 2022 - 03 - 12, 1.00, new Festival(04, "Mad Cool", "04-07-2023", "Madrid, España",
+		Concierto c = new Concierto(13, new Artista(01, "Aitana", TipoGenero.POP), 2022 - 03 - 12, 1.00, new Festival(
+				04, "Mad Cool", "04-07-2023", "Madrid, España",
 				"Mad Cool es un festival de música que se realiza en Madrid desde el año 2016. El arte, la moda, la gastronomía y el turismo se unen eclécticamente en este festival. Para más información consulte la página oficial del sitio: https://madcoolfestival.es/",
 				120.00, "madcool.jpg"));
 		listaConciertos2.add(c);
@@ -117,7 +118,7 @@ public class FestivalTest {
 
 	@Test
 	public void getFoto() {
-		assertEquals(f.getFoto(), "Tomorrowland.png");
+		assertEquals("tomorrowland.png", f.getFoto() );
 	}
 
 	@Test
@@ -125,10 +126,12 @@ public class FestivalTest {
 		f.setFoto("Holika.jpg");
 		assertEquals("Holika.jpg", f.getFoto());
 	}
-	
+
 	@Test
-	public void compareTo() {
-		//assertTrue((f*100 - f2*100)<0);
+	public void compareToTest() {
+
+		assertTrue(f.compareTo(f2) < 0);
+
 	}
 
 }

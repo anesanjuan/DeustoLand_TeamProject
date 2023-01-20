@@ -2,6 +2,8 @@ package JUnit;
 
 import static org.junit.Assert.*;
 
+import java.sql.Time;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,7 +22,12 @@ public class ConciertoTest {
 	public void setUp() throws Exception {
 
 		a = new Artista(01, "Aitana", TipoGenero.POP);
-		c = new Concierto(13, a, 2022 - 03 - 12, 1.00, new Festival(04, "Mad Cool", "04-07-2023", "Madrid, España",
+
+		Time thora = new Time(19, 0, 0);
+
+		long hora = thora.getTime();
+
+		c = new Concierto(13, a, hora, 1.00, new Festival(04, "Mad Cool", "04-07-2023", "Madrid, España",
 				"Mad Cool es un festival de música que se realiza en Madrid desde el año 2016. El arte, la moda, la gastronomía y el turismo se unen eclécticamente en este festival. Para más información consulte la página oficial del sitio: https://madcoolfestival.es/",
 				120.00, "madcool.jpg"));
 	}
@@ -55,14 +62,16 @@ public class ConciertoTest {
 
 	@Test
 	public void testGetHora() {
-		assertEquals( 2022 - 03 - 12, c.getHora());
+
+		Time thora = new Time(19, 0, 0);
+		assertEquals(thora.getTime(), c.getHora());
 	}
 
 	@Test
 	public void testSetHora() {
 		c.setHora(0);
 		assertEquals(0, c.getHora());
-		
+
 	}
 
 	@Test

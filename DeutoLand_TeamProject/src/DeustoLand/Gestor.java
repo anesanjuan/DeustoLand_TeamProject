@@ -37,8 +37,6 @@ public class Gestor {
 	 */
 	public int comprobarUsuario(String correo, String contrasena) {
 
-		System.out.println(aUsers);
-
 		for (User c : aUsers) {
 
 			if (c instanceof Cliente) {
