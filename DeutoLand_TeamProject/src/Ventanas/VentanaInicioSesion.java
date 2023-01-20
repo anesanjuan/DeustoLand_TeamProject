@@ -124,9 +124,19 @@ public class VentanaInicioSesion extends JFrame {
 		panel.add(btnRegistrarse);
 
 		// evento de la venta: cerrar al asalor
+		//addWindowListener(new WindowAdapter() {
+			//public void windowClosing(WindowEvent e) {
+				//System.exit(0);
+			//}
+		//});
+		
 		addWindowListener(new WindowAdapter() {
+			@Override
 			public void windowClosing(WindowEvent e) {
-				System.exit(0);
+				
+				dispose();
+				new VentanaPrincipal(gestor , null );
+				
 			}
 		});
 
