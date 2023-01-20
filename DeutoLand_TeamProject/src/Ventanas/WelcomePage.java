@@ -8,6 +8,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
@@ -46,6 +48,16 @@ public class WelcomePage extends JDialog {
 	 */
 	public WelcomePage(boolean modal) {
 		/**
+		 * Cuando se cierra la ventana, se cierra la aplicacion.
+		 */
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+
+				System.exit(0);
+			}
+		});
+		/**
 		 * Cuando se produce el evento de redimensionamiento del componente, se invoca
 		 * este método. La imagen es escalada de acuerdo al ancho y alto obtenidos.
 		 */
@@ -60,7 +72,7 @@ public class WelcomePage extends JDialog {
 			}
 		});
 
-		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+		// setDefaultCloseOperation(JDialog.EXIT_ON_CLOSE);
 		setSize(600, 400);
 		setModal(modal);
 		setLocationRelativeTo(null);
