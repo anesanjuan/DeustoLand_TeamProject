@@ -63,6 +63,14 @@ public class VentanaInicioSesion extends JFrame {
 		// ubi y tama�o
 		btnLogin.setBounds(155, 150, 156, 20);
 		// eventos
+
+		/**
+		 * Al pusar el boton de iniciar sesion se compruenba que el usuario existe. Para
+		 * ello, se le llama al metodo "comprabarUsuario" del gestor, que devolvera un
+		 * valor entero: 1 si el usuario es un administrador o 0 si el usuario es un
+		 * cliente. Luego, llama ala ventana principal con el usuario introducido.
+		 * 
+		 */
 		btnLogin.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -81,8 +89,6 @@ public class VentanaInicioSesion extends JFrame {
 					User u = BaseDeDatos.getUser(correo, contrasena);
 					VentanaPrincipal vp = new VentanaPrincipal(gestor, u);
 					vp.setVisible(true);
-					// HCAER VISIBLE EL BOTON
-
 					dispose();
 
 				} else {
@@ -98,7 +104,13 @@ public class VentanaInicioSesion extends JFrame {
 		// ubi
 		btnRegistrarse.setBounds(180, 215, 135, 23);
 		// eventos
+
 		btnRegistrarse.addActionListener(new ActionListener() {
+			/**
+			 * Metodo que al pulsar el boton abre la ventana de registro y cierra la actual
+			 * 
+			 * @param e
+			 */
 			public void actionPerformed(ActionEvent e) {
 
 				// al pulsar este boton se abre la ventana de regiustro
@@ -126,10 +138,9 @@ public class VentanaInicioSesion extends JFrame {
 		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		// a�adir el panel a la ventana
 		getContentPane().add(panel, BorderLayout.CENTER);
-		
+
 		setLocationRelativeTo(null);
 		setResizable(false);
-
 
 	}
 

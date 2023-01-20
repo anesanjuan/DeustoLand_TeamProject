@@ -21,16 +21,34 @@ public class WelcomePage extends JDialog {
 
 	private Image foto;
 
+	/**
+	 * Metodo que devuelve el ancho del panel de la ventana
+	 * 
+	 * @return el ancho del panel de la ventana como un entero
+	 */
 	public int getAncho() {
 		return super.getWidth();
 	}
 
+	/**
+	 * Metodo que devuelve el alto del panel de la ventana
+	 * 
+	 * @return el alto del panel de la ventana como un entero
+	 */
 	public int getAlto() {
 		return super.getHeight();
 	}
 
+	/**
+	 * Constructor de la ventana
+	 * 
+	 * @param modal
+	 */
 	public WelcomePage(boolean modal) {
-
+		/**
+		 * Cuando se produce el evento de redimensionamiento del componente, se invoca
+		 * este método. La imagen es escalada de acuerdo al ancho y alto obtenidos.
+		 */
 		addComponentListener(new ComponentAdapter() {
 			public void componentResized(ComponentEvent componentEvent) {
 
@@ -50,8 +68,12 @@ public class WelcomePage extends JDialog {
 
 		JButton btnNewButton = new JButton("Entrar");
 		btnNewButton.addActionListener(new ActionListener() {
+			/**
+			 * Metodo que cierra la ventana cuando se pulsa el boton "Entrar"
+			 * 
+			 * @param e evento de pulsar el boton
+			 */
 			public void actionPerformed(ActionEvent e) {
-
 				dispose();
 			}
 		});

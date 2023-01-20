@@ -448,7 +448,7 @@ public class VentanaPrincipal extends JFrame {
 		if( u == null )
 		{
 			WelcomePage wp = new WelcomePage(true);
-		}
+		} 
 		
 		setResizable(false);
 	}

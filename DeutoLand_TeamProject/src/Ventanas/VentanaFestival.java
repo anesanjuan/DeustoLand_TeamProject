@@ -48,6 +48,7 @@ public class VentanaFestival extends JFrame {
 		parteArriba.add(nomFest);
 
 		JButton bAtras = new JButton("volver atrás");
+		
 		bAtras.setFont(new Font("Georgia", Font.PLAIN, 16));
 		bAtras.setBounds(387, 11, 133, 36);
 		parteArriba.add(bAtras);
@@ -59,7 +60,7 @@ public class VentanaFestival extends JFrame {
 				VentanaPrincipal vp = new VentanaPrincipal(gn, null);
 				vp.setVisible(true);
 				setVisible(false);
-
+				
 			}
 		});
 

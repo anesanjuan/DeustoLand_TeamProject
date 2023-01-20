@@ -102,6 +102,13 @@ public class VentanaRegistro extends JFrame {
 
 		JButton btnRegistro = new JButton("Registro");
 		btnRegistro.setBounds(449, 339, 89, 23);
+		/**
+		 * Al pulsar el boton "Registro" se inserta en la Base de Datos el cliente con
+		 * los datos introducidos a traves del gestor y abre la ventanaPrincipal como
+		 * cliente. Si los datos del cliente introducidos existen en la base de datos,
+		 * llamara a la excepxion "ClienteRepetidoExcception" mostrando por pantalla un
+		 * mensaje.
+		 */
 		btnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String nombre = txtNombre.getText();
