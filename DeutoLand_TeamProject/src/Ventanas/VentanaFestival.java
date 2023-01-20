@@ -49,7 +49,7 @@ public class VentanaFestival extends JFrame {
 		parteArriba.add(nomFest);
 
 		JButton bAtras = new JButton("volver atrás");
-		
+
 		bAtras.setFont(new Font("Georgia", Font.PLAIN, 16));
 		bAtras.setBounds(387, 11, 133, 36);
 		parteArriba.add(bAtras);
@@ -61,7 +61,7 @@ public class VentanaFestival extends JFrame {
 				VentanaPrincipal vp = new VentanaPrincipal(gn, null);
 				vp.setVisible(true);
 				setVisible(false);
-				
+
 			}
 		});
 
@@ -173,6 +173,10 @@ public class VentanaFestival extends JFrame {
 		principalDrch.add(artistasInv);
 
 		JLabel descripcion = new JLabel(festival.getDescripcion());
+		//JTextArea descripcion = new JTextArea(5, 20);
+		//descripcion.append(festival.getDescripcion());
+		//descripcion.setEditable(false);
+		
 		descripcion.setVerticalAlignment(SwingConstants.TOP);
 		descripcion.setFont(new Font("Georgia", Font.PLAIN, 14));
 		descripcion.setBounds(10, 340, 491, 171);
@@ -191,7 +195,7 @@ public class VentanaFestival extends JFrame {
 
 		setVisible(true);
 		setSize(1000, 1000);
-		
+
 		setLocationRelativeTo(null);
 		setResizable(false);
 
@@ -250,9 +254,7 @@ public class VentanaFestival extends JFrame {
 				g2.drawImage(imagen.getImage(), x, y, (int) (tamX * escala), (int) (tamY * escala), null);
 			}
 		}
-		
-		
+
 	}
-	
 
 }
