@@ -436,8 +436,12 @@ public class VentanaPrincipal extends JFrame {
 
 		setLocationRelativeTo(null);
 
-		WelcomePage wp = new WelcomePage(true);
-
+		if( u == null )
+		{
+			WelcomePage wp = new WelcomePage(true);
+		}
+		
+		setResizable(false);
 	}
 
 	private static class JLabelAjustado extends JLabel {

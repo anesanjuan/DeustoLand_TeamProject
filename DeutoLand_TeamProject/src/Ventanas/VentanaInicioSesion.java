@@ -126,6 +126,11 @@ public class VentanaInicioSesion extends JFrame {
 		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		// a�adir el panel a la ventana
 		getContentPane().add(panel, BorderLayout.CENTER);
+		
+		setLocationRelativeTo(null);
+		setResizable(false);
+
+
 	}
 
 }

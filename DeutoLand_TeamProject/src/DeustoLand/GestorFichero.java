@@ -13,57 +13,7 @@ import java.util.ArrayList;
 
 public class GestorFichero {
 
-	
-	// ESTA HAY QUE BORRAR?
-	
-	/**
-	 * Este es un método que devuelve una ArrayList de objetos "Cliente". Utilizado
-	 * para cargar una lista de objetos de cliente desde un archivo llamado
-	 * "clientes.dat" en el sistema de archivos.
-	 * 
-	 * @return
-	 */
-	public ArrayList<Cliente> cargarClientes() {
 
-		ArrayList<Cliente> clientes = null;
-		try {
-			File f = new File("clientes.dat");
-			FileInputStream fos = new FileInputStream(f);
-			ObjectInputStream oos = new ObjectInputStream(fos);
-			clientes = (ArrayList<Cliente>) oos.readObject();
-			oos.close();
-			return clientes;
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	/**
-	 * Este es un método que toma una ArrayList de
-	 * objetos "Cliente" como parámetro. Utilizado para guardar una lista de
-	 * objetos de cliente en un archivo llamado "clientes.dat" en el sistema de
-	 * archivos.
-	 * 
-	 * @param clientes
-	 */
-	public void guardarClientes(ArrayList<Cliente> clientes) {
-		try {
-			File f = new File("clientes.dat");
-			FileOutputStream fos = new FileOutputStream(f);
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			oos.writeObject(clientes);
-			oos.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * 

@@ -189,6 +189,9 @@ public class VentanaFestival extends JFrame {
 
 		setVisible(true);
 		setSize(1000, 1000);
+		
+		setLocationRelativeTo(null);
+		setResizable(false);
 
 	}
 
@@ -245,6 +248,9 @@ public class VentanaFestival extends JFrame {
 				g2.drawImage(imagen.getImage(), x, y, (int) (tamX * escala), (int) (tamY * escala), null);
 			}
 		}
+		
+		
 	}
+	
 
 }

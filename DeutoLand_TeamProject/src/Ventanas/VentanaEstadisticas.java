@@ -304,6 +304,8 @@ public class VentanaEstadisticas extends JFrame {
 			}
 		});
 
+		setLocationRelativeTo(null);
+		setResizable(false);
 	}
 
 }
