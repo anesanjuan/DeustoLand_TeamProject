@@ -172,12 +172,12 @@ public class VentanaFestival extends JFrame {
 		artistasInv.setBounds(61, 225, 412, 78);
 		principalDrch.add(artistasInv);
 
-		JLabel descripcion = new JLabel(festival.getDescripcion());
-		//JTextArea descripcion = new JTextArea(5, 20);
-		//descripcion.append(festival.getDescripcion());
-		//descripcion.setEditable(false);
+		//JLabel descripcion = new JLabel(festival.getDescripcion());
+		JTextArea descripcion = new JTextArea(5, 20);
+		descripcion.append(festival.getDescripcion());
+		descripcion.setEditable(false);
 		
-		descripcion.setVerticalAlignment(SwingConstants.TOP);
+		//descripcion.setVerticalAlignment(SwingConstants.TOP);
 		descripcion.setFont(new Font("Georgia", Font.PLAIN, 14));
 		descripcion.setBounds(10, 340, 491, 171);
 		principalDrch.add(descripcion);
