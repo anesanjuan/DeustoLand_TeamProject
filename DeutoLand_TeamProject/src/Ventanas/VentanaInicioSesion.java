@@ -123,20 +123,16 @@ public class VentanaInicioSesion extends JFrame {
 		// se a�ade
 		panel.add(btnRegistrarse);
 
-		// evento de la venta: cerrar al asalor
-		//addWindowListener(new WindowAdapter() {
-			//public void windowClosing(WindowEvent e) {
-				//System.exit(0);
-			//}
-		//});
-		
+		/**
+		 * Cuando se cierra la ventana vuelve a la ventana principal
+		 */
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				
+
 				dispose();
-				new VentanaPrincipal(gestor , null );
-				
+				new VentanaPrincipal(gestor, null);
+
 			}
 		});
 

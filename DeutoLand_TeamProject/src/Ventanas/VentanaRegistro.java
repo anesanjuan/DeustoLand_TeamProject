@@ -37,13 +37,16 @@ public class VentanaRegistro extends JFrame {
 	private Gestor gestor;
 
 	public VentanaRegistro(Gestor gestor) {
+		/**
+		 * Cuando se cierra la ventana, vuelve a la ventana principal
+		 */
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				
+
 				dispose();
-				new VentanaPrincipal(gestor , null );
-				
+				new VentanaPrincipal(gestor, null);
+
 			}
 		});
 
