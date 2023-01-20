@@ -29,21 +29,23 @@ public class Renderer extends JLabel implements TableCellRenderer {
 
 		if (tipoE != null) {
 			TipoEntrada tipoV = (TipoEntrada) table.getModel().getValueAt(row, 3);
-			if (tipoV.equals(tipoE)) {
+			if(tipoV.toString().equals(tipoE.toString())) {
 				this.setOpaque(true);
 				this.setBackground(new Color(207, 154, 231));
 			} else {
 				this.setOpaque(false);
 			}
-			tipoE = null;
+			//tipoE = null;
+		}else {
+			this.setOpaque(false);
 		}
-		if (is != null) {
+		/*if (is != null) {
 			if (is.contains(row)) {
 				this.setOpaque(true);
 				this.setBackground(new Color(207, 154, 231));
 			}
 			is = null;
-		}
+		}*/
 		return this;
 	}
 

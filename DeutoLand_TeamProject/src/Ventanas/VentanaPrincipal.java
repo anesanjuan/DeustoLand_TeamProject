@@ -29,6 +29,7 @@ import DeustoLand.Gestor;
 import DeustoLand.Reloj;
 import DeustoLand.User;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
@@ -368,14 +369,22 @@ public class VentanaPrincipal extends JFrame {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-
-		JLabelAjustado lFoto = new JLabelAjustado(foto1);
+		
+		JLabel lFoto = new JLabel();
 		lFoto.setBounds(6, 6, 283, 195);
+		ImageIcon im = new ImageIcon(foto1.getImage().getScaledInstance(lFoto.getWidth(), lFoto.getHeight(), Image.SCALE_DEFAULT));
+		//JLabelAjustado lFoto = new JLabelAjustado(foto1);
+		lFoto.setIcon(im);
 		panelFestv1.add(lFoto);
-
-		JLabelAjustado lfoto2 = new JLabelAjustado(foto2);
-		lfoto2.setBounds(6, 6, 283, 196);
-		panelFestv2.add(lfoto2);
+		
+		JLabel lFoto2 = new JLabel();
+		lFoto2.setBounds(6, 6, 283, 196);
+		ImageIcon im2 = new ImageIcon(foto2.getImage().getScaledInstance(lFoto2.getWidth(), lFoto2.getHeight(), Image.SCALE_DEFAULT));
+		//JLabelAjustado lFoto = new JLabelAjustado(foto1);
+		lFoto2.setIcon(im2);
+		//JLabelAjustado lfoto2 = new JLabelAjustado(foto2);
+		
+		panelFestv2.add(lFoto2);
 
 		JLabelAjustado lfoto3 = new JLabelAjustado(foto3);
 		lfoto3.setBounds(6, 6, 283, 197);
@@ -472,7 +481,7 @@ public class VentanaPrincipal extends JFrame {
 			} else {
 				this.tamX = imagen.getIconWidth();
 				this.tamY = imagen.getIconHeight();
-			}
+			}			
 		}
 
 		protected void paintComponent(Graphics g) {
