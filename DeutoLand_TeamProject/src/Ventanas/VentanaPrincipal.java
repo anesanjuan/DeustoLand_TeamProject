@@ -373,34 +373,43 @@ public class VentanaPrincipal extends JFrame {
 		JLabel lFoto = new JLabel();
 		lFoto.setBounds(6, 6, 283, 195);
 		ImageIcon im = new ImageIcon(foto1.getImage().getScaledInstance(lFoto.getWidth(), lFoto.getHeight(), Image.SCALE_DEFAULT));
-		//JLabelAjustado lFoto = new JLabelAjustado(foto1);
 		lFoto.setIcon(im);
 		panelFestv1.add(lFoto);
 		
 		JLabel lFoto2 = new JLabel();
 		lFoto2.setBounds(6, 6, 283, 196);
 		ImageIcon im2 = new ImageIcon(foto2.getImage().getScaledInstance(lFoto2.getWidth(), lFoto2.getHeight(), Image.SCALE_DEFAULT));
-		//JLabelAjustado lFoto = new JLabelAjustado(foto1);
 		lFoto2.setIcon(im2);
-		//JLabelAjustado lfoto2 = new JLabelAjustado(foto2);
 		
 		panelFestv2.add(lFoto2);
 
-		JLabelAjustado lfoto3 = new JLabelAjustado(foto3);
-		lfoto3.setBounds(6, 6, 283, 197);
-		panelFestv3.add(lfoto3);
+		
+		JLabel lFoto3 = new JLabel();
+		lFoto3.setBounds(6, 6, 283, 197);
+		ImageIcon im3 = new ImageIcon(foto3.getImage().getScaledInstance(lFoto3.getWidth(), lFoto3.getHeight(), Image.SCALE_DEFAULT));
+		lFoto3.setIcon(im3);
+		panelFestv3.add(lFoto3);
 
-		JLabelAjustado lfoto4 = new JLabelAjustado(foto4);
-		lfoto4.setBounds(6, 6, 283, 195);
-		panelFestv4.add(lfoto4);
+		
+		JLabel lFoto4 = new JLabel();
+		lFoto4.setBounds(6, 6, 283, 195);
+		ImageIcon im4 = new ImageIcon(foto4.getImage().getScaledInstance(lFoto4.getWidth(), lFoto4.getHeight(), Image.SCALE_DEFAULT));
+		lFoto4.setIcon(im4);
+		panelFestv4.add(lFoto4);
 
-		JLabelAjustado lfoto5 = new JLabelAjustado(foto5);
-		lfoto5.setBounds(6, 6, 283, 195);
-		panelFestv5.add(lfoto5);
+		
+		JLabel lFoto5 = new JLabel();
+		lFoto5.setBounds(6, 6, 283, 195);
+		ImageIcon im5 = new ImageIcon(foto5.getImage().getScaledInstance(lFoto5.getWidth(), lFoto5.getHeight(), Image.SCALE_DEFAULT));
+		lFoto5.setIcon(im5);
+		panelFestv5.add(lFoto5);
 
-		JLabelAjustado lfoto6 = new JLabelAjustado(foto6);
-		lfoto6.setBounds(6, 6, 283, 195);
-		panelFestv6.add(lfoto6);
+		
+		JLabel lFoto6 = new JLabel();
+		lFoto6.setBounds(6, 6, 283, 195);
+		ImageIcon im6 = new ImageIcon(foto6.getImage().getScaledInstance(lFoto6.getWidth(), lFoto6.getHeight(), Image.SCALE_DEFAULT));
+		lFoto6.setIcon(im6);
+		panelFestv6.add(lFoto6);
 
 		setVisible(true);
 
