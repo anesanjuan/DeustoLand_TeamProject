@@ -25,12 +25,16 @@ public class Reloj extends SwingWorker<Void, Void> {
 	 */
 	@Override
 	protected Void doInBackground() throws Exception {
+
 		while (!isCancelled()) {
+
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 			String hora = LocalDateTime.now().format(formatter);
 			frame.setTitle("Fecha y hora del sistema: " + hora);
 			Thread.sleep(1000);
+
 		}
+
 		return null;
 	}
 
