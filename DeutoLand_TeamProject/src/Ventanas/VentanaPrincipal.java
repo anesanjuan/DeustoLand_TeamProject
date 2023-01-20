@@ -35,6 +35,8 @@ import java.awt.Insets;
 
 public class VentanaPrincipal extends JFrame {
 
+	private static int veces = 0;
+	
 	// HILO
 	private Reloj reloj;
 
@@ -454,8 +456,9 @@ public class VentanaPrincipal extends JFrame {
 
 		setLocationRelativeTo(null);
 
-		if( u == null )
+		if( u == null && veces == 0 )
 		{
+			veces = 1;
 			WelcomePage wp = new WelcomePage(true);
 		} 
 		

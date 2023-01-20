@@ -19,6 +19,8 @@ import Excepciones.ClienteRepetidoException;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class VentanaRegistro extends JFrame {
 
@@ -35,9 +37,18 @@ public class VentanaRegistro extends JFrame {
 	private Gestor gestor;
 
 	public VentanaRegistro(Gestor gestor) {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				
+				dispose();
+				new VentanaPrincipal(gestor , null );
+				
+			}
+		});
 
 		this.gestor = gestor;
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setTitle("Registrarse:");
 
 		// inicializar los campos editables
