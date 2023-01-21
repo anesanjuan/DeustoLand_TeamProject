@@ -301,6 +301,8 @@ public class VentanaEstadisticas extends JFrame {
 				cellRenderer.setArray(BaseDeDatos.recalcularTabla(tDatos,tfEdadMin.getText(), tfEdadMax.getText(),
 						tfMinP.getText(), tfMaxP.getText()));
 				tDatos.repaint();
+				panel1.setVisible(false);
+				panelTable.setVisible(true);
 			}
 		});
 

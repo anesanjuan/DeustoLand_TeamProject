@@ -35,7 +35,7 @@ public class Renderer extends JLabel implements TableCellRenderer {
 			} else {
 				this.setOpaque(false);
 			}
-			// tipoE = null;
+			
 		} else {
 			this.setOpaque(false);
 		}
@@ -44,7 +44,7 @@ public class Renderer extends JLabel implements TableCellRenderer {
 				this.setOpaque(true);
 				this.setBackground(new Color(207, 154, 231));
 			}
-			is = null;
+			
 		}
 		return this;
 	}
@@ -58,7 +58,6 @@ public class Renderer extends JLabel implements TableCellRenderer {
 	}
 
 	// acabar por maria -- no va
-	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 		 
 		if(columnIndex==0||columnIndex==2||columnIndex==3||columnIndex==4||columnIndex==5) {

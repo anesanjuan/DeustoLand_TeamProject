@@ -1569,11 +1569,10 @@ public class BaseDeDatos {
 		ArrayList<Integer> filas = new ArrayList<>();
 
 		for (int i = 0; i < t.getRowCount(); i++) {
-
-			if ((Integer.parseInt((String) t.getValueAt(i, 2))) >= minE
-					&& (Integer.parseInt((String) t.getValueAt(i, 2))) <= maxE
-					&& (Double.parseDouble((String) t.getValueAt(i, 5))) >= minP
-					&& (Double.parseDouble((String) t.getValueAt(i, 5))) <= maxP) {
+			if ((Integer) t.getValueAt(i, 2) >= minE
+					&& (Integer) t.getValueAt(i, 2) <= maxE
+					&& (Double) t.getValueAt(i, 5) >= minP
+					&& (Double) t.getValueAt(i, 5) <= maxP) {
 				filas.add(i);
 			}
 		}
