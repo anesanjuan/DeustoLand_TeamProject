@@ -80,7 +80,7 @@ public class VentanaCompra extends JFrame {
 		titulo = new JLabel("COMPRA ENTRADA FESTIVAL");
 
 		// quiero poner el boton a la izquierda
-		JButton bAtras = new JButton("volver atrás");
+		JButton bAtras = new JButton("Volver atrás");
 		bAtras.setFont(new Font("Georgia", Font.PLAIN, 16));
 		bAtras.setBounds(387, 11, 133, 36);
 		parteArriba.add(bAtras);
