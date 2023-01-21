@@ -57,9 +57,15 @@ public class Renderer extends JLabel implements TableCellRenderer {
 		this.is = is;
 	}
 
-	// acabar por maria
-	public void isCellEditable(int rowIndex, int colIndex) {
-
+	// acabar por maria -- no va
+	@Override
+	public boolean isCellEditable(int rowIndex, int columnIndex) {
+		 
+		if(columnIndex==0||columnIndex==2||columnIndex==3||columnIndex==4||columnIndex==5) {
+			return true;
+		 }
+		    return false;
 	}
+	
 
 }
