@@ -173,7 +173,8 @@ public class VentanaPrincipal extends JFrame {
 		panelFestv1.setLayout(null);
 
 		btnFestv1 = new JButton("Tomorrowland");
-		btnFestv1.setBounds(6, 213, 117, 29);
+		//btnFestv1.setBounds(6, 213, 117, 29);
+		btnFestv1.setBounds(6, 213, 122, 32);
 		btnFestv1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for (Festival festival : BaseDeDatos.getFestivales()) {
