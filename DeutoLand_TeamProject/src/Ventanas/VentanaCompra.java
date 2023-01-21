@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import DeustoLand.BaseDeDatos;
@@ -26,6 +27,8 @@ public class VentanaCompra extends JFrame {
 	/**
 	 * 
 	 */
+	
+	
 	private static final long serialVersionUID = 1L;
 
 	private JPanel parteArriba;
@@ -40,7 +43,7 @@ public class VentanaCompra extends JFrame {
 
 	// Componentes del panel principal1
 	private JLabel nombreFest;
-	private JLabel infoFest;
+	private JTextArea infoFest;
 
 	// Componentes del panel principal1
 	private JLabel nombre;
@@ -63,10 +66,15 @@ public class VentanaCompra extends JFrame {
 	private JButton comprar;
 
 	public VentanaCompra(Festival festival, User u) {
-		// parteArriba.setBounds(0, 0, 890, 47);
-		// partePrincipal.setBounds(0, 0, 890, 47);
-		// pInfoFestival.setBounds(0, 0, 890, 47);
-		// parteAbajo.setBounds(0, 0, 890, 47);
+	
+		setBounds(100, 100, 901, 615);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getContentPane().setLayout(null);
+		
+		parteArriba = new JPanel();
+		parteArriba.setBounds(0, 0, 890, 47);
+		getContentPane().add(parteArriba);
+		
 
 		System.out.println(festival);
 		System.out.println(u);
@@ -81,8 +89,8 @@ public class VentanaCompra extends JFrame {
 
 		// quiero poner el boton a la izquierda
 		JButton bAtras = new JButton("Volver atrás");
-		bAtras.setFont(new Font("Georgia", Font.PLAIN, 16));
-		bAtras.setBounds(387, 11, 133, 36);
+		bAtras.setFont(new Font("Georgia", Font.PLAIN, 20));
+		bAtras.setBounds(0, 0, 100, 400);
 		parteArriba.add(bAtras);
 		bAtras.addActionListener(new ActionListener() {
 
@@ -94,10 +102,29 @@ public class VentanaCompra extends JFrame {
 
 			}
 		});
-		nombreFest = new JLabel("Festival seleccionado: " + festival.getNombre());
-		infoFest = new JLabel("Info: " + festival.getDescripcion());
+		nombreFest = new JLabel("Festival " + festival.getNombre());
+		nombreFest.setFont(new Font("Georgia", Font.PLAIN, 25));
+		nombreFest.setBounds(10, 11, 299, 36);
+		parteArriba.add(nombreFest);
+		
+		infoFest = new JTextArea(5, 20);
+		String texto = String.valueOf(festival.getDescripcion().charAt(0));
+		for(int i=1;i<festival.getDescripcion().length();i++) {
+			texto = texto + festival.getDescripcion().charAt(i);
+			if(i%64==0) {
+				texto = texto + "\n";
+			}
+		}
+		infoFest.append(texto);
+		infoFest.setEditable(false);
+		
+		
 
 		nombre = new JLabel("Nombre: ");
+		nombre.setFont(new Font("Georgia", Font.PLAIN, 15));
+		nombre.setBounds(22, 270, 75, 42);
+		parteAbajo.add(nombre);
+		
 		textnombre = new JLabel(u.getNombre());
 		mail = new JLabel("Mail :");
 		textmail = new JLabel(u.getCorreo());
@@ -159,6 +186,7 @@ public class VentanaCompra extends JFrame {
 			@SuppressWarnings("unlikely-arg-type")
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				// TODO Auto-generated method stub
 
 				if (((TipoEntrada) tipoEntrada.getSelectedItem()).equals(TipoEntrada.NORMAL)) {
