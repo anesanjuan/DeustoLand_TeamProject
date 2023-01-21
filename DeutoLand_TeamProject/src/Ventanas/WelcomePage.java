@@ -72,7 +72,7 @@ public class WelcomePage extends JDialog {
 			}
 		});
 
-		// setDefaultCloseOperation(JDialog.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		setSize(600, 400);
 		setModal(modal);
 		setLocationRelativeTo(null);
