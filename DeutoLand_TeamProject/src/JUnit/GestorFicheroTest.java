@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import DeustoLand.GestorFichero;
+import DeustoLand.GestorCsv;
 import DeustoLand.Tarjeta;
 
 public class GestorFicheroTest {
@@ -15,13 +15,13 @@ public class GestorFicheroTest {
 
 	@Test
 	public void cargarTarjetasCreditoTest() {
-		ts = GestorFichero.cargarTarjetasCredito();
+		ts = GestorCsv.cargarTarjetasCredito();
 		assertNotNull(ts);
 	}
 
 	@Test
 	public void comprobarTarjetaTest() {
-		assertEquals(true, GestorFichero.comprobarTarjeta("5540500001000004", "180"));
+		assertEquals(true, GestorCsv.comprobarTarjeta("5540500001000004", "180"));
 	}
 
 }

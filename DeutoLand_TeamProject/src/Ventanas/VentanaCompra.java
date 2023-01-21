@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 import DeustoLand.BaseDeDatos;
 import DeustoLand.Cliente;
 import DeustoLand.Festival;
-import DeustoLand.GestorFichero;
+import DeustoLand.GestorCsv;
 import DeustoLand.TipoEntrada;
 import DeustoLand.User;
 
@@ -170,7 +170,7 @@ public class VentanaCompra extends JFrame {
 					} else {
 						if (textnumeroTarjeta.getSelectionEnd() == 16 && textFechaCaducidad1.getText().length() == 2
 								&& textFechaCaducidad2.getText().length() == 2 && textcv.getText().length() == 3) {
-							if (GestorFichero.comprobarTarjeta(textnumeroTarjeta.getText(), textcv.getText())) {
+							if (GestorCsv.comprobarTarjeta(textnumeroTarjeta.getText(), textcv.getText())) {
 								Cliente c = BaseDeDatos.getCliente(u.getCorreo(), u.getContrasena());
 								BaseDeDatos.crearEntrada(festival, c, TipoEntrada.NORMAL);
 								JOptionPane.showMessageDialog(null, "La entrada se ha comprado correctamente");
@@ -191,7 +191,7 @@ public class VentanaCompra extends JFrame {
 					} else {
 						if (textnumeroTarjeta.getText().length() == 16 && textFechaCaducidad1.getText().length() == 2
 								&& textFechaCaducidad2.getText().length() == 2 && textcv.getText().length() == 3) {
-							if (GestorFichero.comprobarTarjeta(textnumeroTarjeta.getText(), textcv.getText())) {
+							if (GestorCsv.comprobarTarjeta(textnumeroTarjeta.getText(), textcv.getText())) {
 								Cliente c = BaseDeDatos.getCliente(u.getCorreo(), u.getContrasena());
 								BaseDeDatos.crearEntrada(festival, c, TipoEntrada.VIP);
 								JOptionPane.showMessageDialog(null, "La entrada se ha comprado correctamente");
@@ -211,7 +211,7 @@ public class VentanaCompra extends JFrame {
 					} else {
 						if (textnumeroTarjeta.getText().length() == 16 && textFechaCaducidad1.getText().length() == 2
 								&& textFechaCaducidad2.getText().length() == 2 && textcv.getText().length() == 3) {
-							if (GestorFichero.comprobarTarjeta(textnumeroTarjeta.getText(), textcv.getText())) {
+							if (GestorCsv.comprobarTarjeta(textnumeroTarjeta.getText(), textcv.getText())) {
 
 								Cliente c = BaseDeDatos.getCliente(u.getCorreo(), u.getContrasena());
 								Random numAleatorio = new Random();

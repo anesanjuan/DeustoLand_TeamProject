@@ -6,7 +6,7 @@ import java.io.FileReader;
 
 import java.util.ArrayList;
 
-public class GestorFichero {
+public class GestorCsv {
 
 	/**
 	 * 
@@ -44,7 +44,7 @@ public class GestorFichero {
 		long numTarjetaLong = Long.parseLong(numTarjeta);
 		int cvvInt = Integer.parseInt(cvv);
 
-		for (Tarjeta tarjeta : GestorFichero.cargarTarjetasCredito()) {
+		for (Tarjeta tarjeta : GestorCsv.cargarTarjetasCredito()) {
 			if (tarjeta.getNumTarjeta() == numTarjetaLong && tarjeta.getCvv() == cvvInt) {
 				return true;
 			}
