@@ -21,45 +21,18 @@ import Ventanas.vFesti;
 public class Main {
 
 	public static void main(String[] args) throws SQLException {
-		
-		 	
-		
-		
-		BaseDeDatos.abrirConexion("BaseDatos.db", false);
-		//BaseDeDatos.insertarArtistas();
-		//BaseDeDatos.insertarFestivales();
-		//BaseDeDatos.insertarConciertos();
-		//BaseDeDatos.insertarUsuarios();
-		//BaseDeDatos.insertarEntradas();
-		
-		Gestor gln = new Gestor();
-		VentanaPrincipal vp = new VentanaPrincipal( gln, null );
-		vp.setVisible(true);
-		
-		//vFesti vf = new vFesti(BaseDeDatos.getFestNom("Tomorrowland"), BaseDeDatos.getUser("juanperez@gmail.com", "juanperez23"));
-		//vf.setVisible(true);
-	
-		//VentanaEstadisticas ve = new VentanaEstadisticas();
-		//ve.setVisible(true);
-		
-		//BaseDeDatos.cerrarConexion();
 
-		//VentanaFestival vf = new VentanaFestival(fest1);
-		//vf.setVisible(true);
-		
-		//VentanaRegistro vr = new VentanaRegistro(gln);
-		//vr.setVisible(true);
-		
-		//VentanaPrincipal vp = new VentanaPrincipal( gln );
-		//vp.frame.setVisible(true);
-		
-		//Cliente cliente = new Cliente("Manuel", "Garcia", "28881910", "8474929", 0, "84894", "86352");
-		//Festival festival = new Festival();
-		
-		
-		//VentanaCompra vc = new VentanaCompra(festival, cliente);
-		//vc.setVisible(true);
-		
+		BaseDeDatos.abrirConexion("BaseDatos.db", false);
+		// BaseDeDatos.insertarArtistas();
+		// BaseDeDatos.insertarFestivales();
+		// BaseDeDatos.insertarConciertos();
+		// BaseDeDatos.insertarUsuarios();
+		// BaseDeDatos.insertarEntradas();
+
+		Gestor gln = new Gestor();
+		VentanaPrincipal vp = new VentanaPrincipal(gln, null);
+		vp.setVisible(true);
+
 	}
 
 }

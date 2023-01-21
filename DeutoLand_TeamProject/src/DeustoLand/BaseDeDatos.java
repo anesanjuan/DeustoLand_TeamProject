@@ -1081,12 +1081,6 @@ public class BaseDeDatos {
 
 		}
 
-		// String nombre, String apellido, String dni, String correo, String contraseña,
-		// String direccion, int edad, int codigoPostal
-
-		// el dni no tiene 9 caracteres y tendria mas sentido. La mayus de vitoria? :(
-
-		// Cliente de prueba DESPUES ELIMINAR!!!!!!!!!!
 		Cliente clienteP = new Cliente("marina", "m", "m", "m", "m", "m", 0, 0);
 
 		Cliente cliente = new Cliente("Juan", "Gonzalez", "567899", "juangon@gmail.com", "1234", "vitoria", 18, 48980);
@@ -1217,34 +1211,47 @@ public class BaseDeDatos {
 	public static void insertarEntradas() {
 		Entrada e1 = new Entrada(BaseDeDatos.getClientes().get(33), BaseDeDatos.getFestivales().get(0),
 				TipoEntrada.NORMAL);
-		EntradaVIP e2 = new EntradaVIP(BaseDeDatos.getClientes().get(35), BaseDeDatos.getFestivales().get(1),
+		Entrada e2 = new EntradaVIP(BaseDeDatos.getClientes().get(35), BaseDeDatos.getFestivales().get(1),
 				TipoEntrada.VIP, 40.5, 03);
-		EntradaVIP e3 = new EntradaVIP(BaseDeDatos.getClientes().get(37), BaseDeDatos.getFestivales().get(2),
+		Entrada e3 = new EntradaVIP(BaseDeDatos.getClientes().get(37), BaseDeDatos.getFestivales().get(2),
 				TipoEntrada.VIP, 65, 01);
-		EntradaConCamping e4 = new EntradaConCamping(BaseDeDatos.getClientes().get(38),
-				BaseDeDatos.getFestivales().get(3), TipoEntrada.CONCAMPING, 30, 1345);
-		EntradaConCamping e5 = new EntradaConCamping(BaseDeDatos.getClientes().get(40),
-				BaseDeDatos.getFestivales().get(4), TipoEntrada.CONCAMPING, 25.50, 85);
+		Entrada e4 = new EntradaConCamping(BaseDeDatos.getClientes().get(38), BaseDeDatos.getFestivales().get(3),
+				TipoEntrada.CONCAMPING, 30, 1345);
+		Entrada e5 = new EntradaConCamping(BaseDeDatos.getClientes().get(40), BaseDeDatos.getFestivales().get(4),
+				TipoEntrada.CONCAMPING, 25.50, 85);
 		Entrada e6 = new Entrada(BaseDeDatos.getClientes().get(16), BaseDeDatos.getFestivales().get(5),
 				TipoEntrada.NORMAL);
-		EntradaVIP e7 = new EntradaVIP(BaseDeDatos.getClientes().get(17), BaseDeDatos.getFestivales().get(0),
+		Entrada e7 = new EntradaVIP(BaseDeDatos.getClientes().get(17), BaseDeDatos.getFestivales().get(0),
 				TipoEntrada.VIP, 40.5, 04);
-		EntradaVIP e8 = new EntradaVIP(BaseDeDatos.getClientes().get(18), BaseDeDatos.getFestivales().get(1),
+		Entrada e8 = new EntradaVIP(BaseDeDatos.getClientes().get(18), BaseDeDatos.getFestivales().get(1),
 				TipoEntrada.VIP, 65, 02);
-		EntradaConCamping e9 = new EntradaConCamping(BaseDeDatos.getClientes().get(19),
-				BaseDeDatos.getFestivales().get(2), TipoEntrada.CONCAMPING, 25, 264);
-		EntradaConCamping e10 = new EntradaConCamping(BaseDeDatos.getClientes().get(20),
-				BaseDeDatos.getFestivales().get(3), TipoEntrada.CONCAMPING, 25.50, 768);
+		Entrada e9 = new EntradaConCamping(BaseDeDatos.getClientes().get(19), BaseDeDatos.getFestivales().get(2),
+				TipoEntrada.CONCAMPING, 25, 264);
+		Entrada e10 = new EntradaConCamping(BaseDeDatos.getClientes().get(20), BaseDeDatos.getFestivales().get(3),
+				TipoEntrada.CONCAMPING, 25.50, 768);
 		Entrada e11 = new Entrada(BaseDeDatos.getClientes().get(21), BaseDeDatos.getFestivales().get(4),
 				TipoEntrada.NORMAL);
-		EntradaVIP e12 = new EntradaVIP(BaseDeDatos.getClientes().get(22), BaseDeDatos.getFestivales().get(5),
+		Entrada e12 = new EntradaVIP(BaseDeDatos.getClientes().get(22), BaseDeDatos.getFestivales().get(5),
 				TipoEntrada.VIP, 50, 01);
-		EntradaVIP e13 = new EntradaVIP(BaseDeDatos.getClientes().get(23), BaseDeDatos.getFestivales().get(0),
+		Entrada e13 = new EntradaVIP(BaseDeDatos.getClientes().get(23), BaseDeDatos.getFestivales().get(0),
 				TipoEntrada.VIP, 65, 03);
-		EntradaConCamping e14 = new EntradaConCamping(BaseDeDatos.getClientes().get(24),
-				BaseDeDatos.getFestivales().get(1), TipoEntrada.CONCAMPING, 28, 142);
-		EntradaConCamping e15 = new EntradaConCamping(BaseDeDatos.getClientes().get(25),
-				BaseDeDatos.getFestivales().get(2), TipoEntrada.CONCAMPING, 29.25, 1879);
+		Entrada e14 = new EntradaConCamping(BaseDeDatos.getClientes().get(24), BaseDeDatos.getFestivales().get(1),
+				TipoEntrada.CONCAMPING, 28, 142);
+		Entrada e15 = new EntradaConCamping(BaseDeDatos.getClientes().get(25), BaseDeDatos.getFestivales().get(2),
+				TipoEntrada.CONCAMPING, 29.25, 1879);
+
+		Entrada e16 = new Entrada(BaseDeDatos.getClientes().get(1), BaseDeDatos.getFestivales().get(4),
+				TipoEntrada.NORMAL);
+		Entrada e17 = new Entrada(BaseDeDatos.getClientes().get(24), BaseDeDatos.getFestivales().get(3),
+				TipoEntrada.NORMAL);
+		Entrada e18 = new EntradaConCamping(BaseDeDatos.getClientes().get(13), BaseDeDatos.getFestivales().get(2),
+				TipoEntrada.CONCAMPING, 39, 045);
+		Entrada e19 = new EntradaConCamping(BaseDeDatos.getClientes().get(7), BaseDeDatos.getFestivales().get(1),
+				TipoEntrada.CONCAMPING, 45, 236);
+		Entrada e20 = new EntradaVIP(BaseDeDatos.getClientes().get(4), BaseDeDatos.getFestivales().get(0),
+				TipoEntrada.VIP, 70, 06);
+		Entrada e21 = new EntradaVIP(BaseDeDatos.getClientes().get(36), BaseDeDatos.getFestivales().get(1),
+				TipoEntrada.VIP, 60, 34);
 
 		ArrayList<Entrada> entradas = new ArrayList<>();
 
@@ -1263,6 +1270,13 @@ public class BaseDeDatos {
 		entradas.add(e13);
 		entradas.add(e14);
 		entradas.add(e15);
+
+		entradas.add(e16);
+		entradas.add(e17);
+		entradas.add(e18);
+		entradas.add(e19);
+		entradas.add(e20);
+		entradas.add(e21);
 
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
