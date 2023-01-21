@@ -1424,7 +1424,7 @@ public class BaseDeDatos {
 			sumatorio += Double.valueOf((Integer) e);
 			divisor += 1;
 		}
-		double mediaE = sumatorio / divisor;
+		int mediaE = (int) (sumatorio / divisor);
 		return String.valueOf(mediaE);
 
 	}
@@ -1464,7 +1464,6 @@ public class BaseDeDatos {
 		ArrayList<Integer> filas = new ArrayList<>();
 
 		for (int i = 0; i < t.getRowCount(); i++) {
-			//Object sdjfhds = t.getValueAt(i, 2);
 
 			if ((Integer.parseInt((String) t.getValueAt(i, 2))) >= minE
 					&& (Integer.parseInt((String) t.getValueAt(i, 2))) <= maxE

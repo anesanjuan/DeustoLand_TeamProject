@@ -298,7 +298,7 @@ public class VentanaEstadisticas extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				cellRenderer.setArray(BaseDeDatos.recalcularTabla(tDatos, tfEdadMin.getText(), tfEdadMax.getText(),
+				cellRenderer.setArray(BaseDeDatos.recalcularTabla(tDatos,tfEdadMin.getText(), tfEdadMax.getText(),
 						tfMinP.getText(), tfMaxP.getText()));
 				tDatos.repaint();
 			}
