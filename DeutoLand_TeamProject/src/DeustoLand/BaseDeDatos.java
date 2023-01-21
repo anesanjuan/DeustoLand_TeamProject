@@ -1454,15 +1454,18 @@ public class BaseDeDatos {
 
 	public static ArrayList<Integer> recalcularTabla(JTable t, String edadMin, String edadMax, String minPrecio,
 			String maxPrecio) {
-		System.out.println(edadMin);
+		//System.out.println(edadMin);
 		int minE = Integer.parseInt(edadMin);
 		int maxE = Integer.parseInt(edadMax);
 		double minP = Double.parseDouble(minPrecio);
 		double maxP = Double.parseDouble(maxPrecio);
+		
 
 		ArrayList<Integer> filas = new ArrayList<>();
 
 		for (int i = 0; i < t.getRowCount(); i++) {
+			//Object sdjfhds = t.getValueAt(i, 2);
+
 			if ((Integer.parseInt((String) t.getValueAt(i, 2))) >= minE
 					&& (Integer.parseInt((String) t.getValueAt(i, 2))) <= maxE
 					&& (Double.parseDouble((String) t.getValueAt(i, 5))) >= minP
