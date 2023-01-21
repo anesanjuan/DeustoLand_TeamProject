@@ -97,7 +97,7 @@ public class WelcomePage extends JDialog {
 			int ancho = super.getWidth();
 			int alto = super.getHeight();
 
-			foto = ImageIO.read(new File("fotos/welcomePage.jpg")).getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
+			foto = ImageIO.read(new File("fotos/holika.jpg")).getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
 
 			lblNewLabel.setIcon(new ImageIcon(foto));
 		} catch (IOException e1) {
