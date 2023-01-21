@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -14,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 
 import DeustoLand.BaseDeDatos;
 import DeustoLand.Cliente;
@@ -32,7 +34,7 @@ public class VentanaCompra extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JPanel parteArriba;
-	private JPanel partePrincipal;
+	private JPanel panelPrincipal;
 	private JPanel pInfoFestival;
 	private JPanel partePrincipal1;
 	private JPanel partePrincipal2;
@@ -71,15 +73,24 @@ public class VentanaCompra extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 		
-		parteArriba = new JPanel();
-		parteArriba.setBounds(0, 0, 890, 47);
-		getContentPane().add(parteArriba);
 		
+		parteArriba = new JPanel();
+		Border bordeFestival = BorderFactory.createTitledBorder("Festival");
+		parteArriba.setBorder(bordeFestival);
+		parteArriba.setBounds(0, 0, 890, 104);
+		getContentPane().add(parteArriba);
+		parteArriba.setLayout(null);
+		
+		panelPrincipal = new JPanel();
+		panelPrincipal.setBounds(0, 110, 890, 468);
+		getContentPane().add(panelPrincipal);
+		panelPrincipal.setLayout(null);
 
 		System.out.println(festival);
 		System.out.println(u);
-		parteArriba = new JPanel();
-		partePrincipal = new JPanel();
+		
+		
+		
 		pInfoFestival = new JPanel();
 		partePrincipal1 = new JPanel();
 		partePrincipal2 = new JPanel();
@@ -87,13 +98,21 @@ public class VentanaCompra extends JFrame {
 
 		titulo = new JLabel("COMPRA ENTRADA FESTIVAL");
 
+		parteAbajo = new JPanel();
+		Border bordeAbajo = BorderFactory.createTitledBorder("Datos personales:");
+		parteAbajo.setBorder(bordeAbajo);
+		parteAbajo.setBounds(0, 364, 880, 104);
+		panelPrincipal.add(parteAbajo);
+		parteAbajo.setLayout(null);
+		
+	
 		// quiero poner el boton a la izquierda
 		JButton bAtras = new JButton("Volver atrás");
 		bAtras.setFont(new Font("Georgia", Font.PLAIN, 20));
 		bAtras.setBounds(0, 0, 100, 400);
-		parteArriba.add(bAtras);
+		parteAbajo.add(bAtras);
+		
 		bAtras.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				VentanaFestival vf = new VentanaFestival(festival, u);
@@ -103,9 +122,11 @@ public class VentanaCompra extends JFrame {
 			}
 		});
 		nombreFest = new JLabel("Festival " + festival.getNombre());
-		nombreFest.setFont(new Font("Georgia", Font.PLAIN, 25));
-		nombreFest.setBounds(10, 11, 299, 36);
+		nombreFest.setFont(new Font("Georgia", Font.PLAIN, 20));
+		//nombreFest.setBounds(10, 11, 299, 36);
 		parteArriba.add(nombreFest);
+		
+		
 		
 		infoFest = new JTextArea(5, 20);
 		String texto = String.valueOf(festival.getDescripcion().charAt(0));
@@ -147,19 +168,20 @@ public class VentanaCompra extends JFrame {
 		comprar = new JButton("Comprar");
 
 		setSize(1050, 800);
-		getContentPane().setLayout(new GridLayout(3, 1));
+		//getContentPane().setLayout(new GridLayout(3, 1));
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		parteArriba.setSize(1050, 200);
-		partePrincipal.setSize(1050, 500);
-		parteAbajo.setSize(1050, 100);
+		
+		//parteArriba.setSize(1050, 200);
+		//panelPrincipal.setSize(1050, 500);
+		//parteAbajo.setSize(1050, 100);
 
 		parteArriba.add(titulo);
 
-		partePrincipal.setLayout(new GridLayout(4, 1));
-		partePrincipal.add(pInfoFestival);
-		partePrincipal.add(partePrincipal1);
-		partePrincipal.add(partePrincipal2);
+		panelPrincipal.setLayout(new GridLayout(4, 1));
+		panelPrincipal.add(pInfoFestival);
+		panelPrincipal.add(partePrincipal1);
+		panelPrincipal.add(partePrincipal2);
 
 		pInfoFestival.add(nombreFest);
 		pInfoFestival.add(infoFest);
@@ -264,7 +286,7 @@ public class VentanaCompra extends JFrame {
 		});
 
 		getContentPane().add(parteArriba);
-		getContentPane().add(partePrincipal);
+		getContentPane().add(panelPrincipal);
 		getContentPane().add(parteAbajo);
 
 		setVisible(true);
