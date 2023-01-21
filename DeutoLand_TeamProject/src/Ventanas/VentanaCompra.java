@@ -1,6 +1,5 @@
 package Ventanas;
 
-import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -27,22 +26,15 @@ import DeustoLand.User;
 
 public class VentanaCompra extends JFrame {
 
-	/**
-	 * 
-	 */
-	
 	private static final long serialVersionUID = 1L;
 
+	private JPanel panelP;
 	private JPanel parteArriba;
 	private JPanel panelPrincipal;
-	//private JPanel pInfoFestival;
 	private JPanel partePrincipal1;
 	private JPanel partePrincipal2;
 	private JPanel parteAbajo;
-
-	// Componentes del panel de arriba
-	private JLabel titulo;
-
+	
 	// Componentes del panel principal1
 	private JLabel nombreFest;
 	private JTextArea infoFest;
@@ -68,63 +60,49 @@ public class VentanaCompra extends JFrame {
 	private JButton comprar;
 
 	public VentanaCompra(Festival festival, User u) {
-	
+
+		System.out.println(festival);
+		System.out.println(u);
+
 		setBounds(100, 100, 901, 615);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		getContentPane().setLayout(null);
 		
+		String titulo = "COMPRA ENTRADA FESTIVAL";
+		
+		panelP = new JPanel();
 		
 		parteArriba = new JPanel();
 		Border bordeFestival = BorderFactory.createTitledBorder("Festival");
 		parteArriba.setBorder(bordeFestival);
 		parteArriba.setBounds(0, 0, 1050, 125);
-		getContentPane().add(parteArriba);
+		
 		
 		panelPrincipal = new JPanel();
 		panelPrincipal.setBounds(0, 130, 890, 468);
-		getContentPane().add(panelPrincipal);
-
-		System.out.println(festival);
-		System.out.println(u);
 		
-		
-		
-		//pInfoFestival = new JPanel();
 		partePrincipal1 = new JPanel();
+		//Border bordeMedio1 = BorderFactory.createTitledBorder("Datos personales:");
+		//parteAbajo.setBorder(bordeMedio1);
+		parteAbajo.setBounds(0, 0, 1300, 150);
+		
+		
 		partePrincipal2 = new JPanel();
-		parteAbajo = new JPanel();
-
-		//titulo = new JLabel("COMPRA ENTRADA FESTIVAL");
-		String titulo = "COMPRA ENTRADA FESTIVAL";
-		
-		parteAbajo = new JPanel();
-		Border bordeAbajo = BorderFactory.createTitledBorder("Datos personales:");
-		parteAbajo.setBorder(bordeAbajo);
-		parteAbajo.setBounds(0, 364, 880, 104);
-		panelPrincipal.add(parteAbajo);
-		
+		Border bordeMedio2 = BorderFactory.createTitledBorder(" ");
+		parteAbajo.setBorder(bordeMedio2);
+		parteAbajo.setBounds(0, 0, 1300, 150);
 	
-		// quiero poner el boton a la izquierda
-		JButton bAtras = new JButton("Volver atrás");
-		bAtras.setFont(new Font("Georgia", Font.PLAIN, 20));
-		bAtras.setBounds(0, 0, 100, 400);
-		//parteAbajo.add(bAtras);
 		
-		bAtras.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				VentanaFestival vf = new VentanaFestival(festival, u);
-				vf.setVisible(true);
-				setVisible(false);
+		parteAbajo = new JPanel();
+		Border bordeAbajo = BorderFactory.createTitledBorder("Acción:");
+		parteAbajo.setBorder(bordeAbajo);
+		parteAbajo.setBounds(0, 0, 1200, 125);
+		
+		
 
-			}
-		});
 		nombreFest = new JLabel("Festival " + festival.getNombre());
 		nombreFest.setFont(new Font("Georgia", Font.PLAIN, 20));
 		//nombreFest.setBounds(10, 11, 299, 36);
 		parteArriba.add(nombreFest);
-
-		
 		
 		infoFest = new JTextArea(5, 20);
 		String texto = String.valueOf(festival.getDescripcion().charAt(0));
@@ -137,71 +115,69 @@ public class VentanaCompra extends JFrame {
 		infoFest.append(texto);
 		infoFest.setEditable(false);
 		parteArriba.add(infoFest);
-		//parteArriba.add(nombreFest, BorderLayout.WEST);
-
-		
-
+	
 		nombre = new JLabel("Nombre: ");
 		nombre.setFont(new Font("Georgia", Font.PLAIN, 15));
 		nombre.setBounds(22, 270, 75, 42);
-		parteAbajo.add(nombre);
+		partePrincipal1.add(nombre);
 		
 		textnombre = new JLabel(u.getNombre());
 		mail = new JLabel("Mail :");
 		textmail = new JLabel(u.getCorreo());
+		partePrincipal1.add(textnombre);
+		partePrincipal1.add(mail);
+		partePrincipal1.add(textmail);
+		
+		
 		entradaVip = new JLabel("Tipo entrada :");
 		tipoEntrada = new JComboBox<TipoEntrada>();
 		tipoEntrada.addItem(TipoEntrada.CONCAMPING);
 		tipoEntrada.addItem(TipoEntrada.VIP);
 		tipoEntrada.addItem(TipoEntrada.NORMAL);
-
+		
 		precioTotal = new JLabel("Precio total :");
-
 		numeroTarjeta = new JLabel("Número de tarjeta :");
 		textnumeroTarjeta = new JTextField(16);
-		fechaCaducidad = new JLabel("Fecha de caducidad :");
+		fechaCaducidad = new JLabel("Fecha de caducidad (mes/año):");
 		textFechaCaducidad1 = new JTextField(2);
 		textFechaCaducidad2 = new JTextField(2);
 		cv = new JLabel("C.V. :");
 		textcv = new JTextField(3);
+		
+		partePrincipal2.add(entradaVip);
+		partePrincipal2.add(tipoEntrada);
+		partePrincipal2.add(precioTotal);
+		partePrincipal2.add(numeroTarjeta);
+		partePrincipal2.add(textnumeroTarjeta);
+		partePrincipal2.add(fechaCaducidad);
+		partePrincipal2.add(textFechaCaducidad1);
+		partePrincipal2.add(textFechaCaducidad2);
+		partePrincipal2.add(cv);
+		partePrincipal2.add(textcv);
+		
 
+		panelPrincipal.setLayout(new GridLayout(2, 1));
+		panelPrincipal.add(partePrincipal1);
+		panelPrincipal.add(partePrincipal2);
+		
 		comprar = new JButton("Comprar");
-
-		setSize(1050, 800);
-		//getContentPane().setLayout(new GridLayout(3, 1));
-		setVisible(true);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setTitle(titulo);
-	
-
-
-//		panelPrincipal.setLayout(new GridLayout(4, 1));
-//mal
-//		panelPrincipal.add(pInfoFestival);
-//		panelPrincipal.add(partePrincipal1);
-//		panelPrincipal.add(partePrincipal2);
-//
-//mal
-//		pInfoFestival.add(nombreFest);
-//		pInfoFestival.add(infoFest);
-//
-//		partePrincipal1.add(nombre);
-//		partePrincipal1.add(textnombre);
-//		partePrincipal1.add(mail);
-//		partePrincipal1.add(textmail);
-//		partePrincipal1.add(entradaVip);
-//		partePrincipal1.add(tipoEntrada);
-//		partePrincipal1.add(precioTotal);
-//
-//		partePrincipal2.add(numeroTarjeta);
-//		partePrincipal2.add(textnumeroTarjeta);
-//		partePrincipal2.add(fechaCaducidad);
-//		partePrincipal2.add(textFechaCaducidad1);
-//		partePrincipal2.add(textFechaCaducidad2);
-//		partePrincipal2.add(cv);
-//		partePrincipal2.add(textcv);
-//
 		parteAbajo.add(comprar);
+
+		JButton bAtras = new JButton("Volver atrás");
+		bAtras.setFont(new Font("Georgia", Font.PLAIN, 20));
+		bAtras.setBounds(0, 0, 100, 400);
+		parteAbajo.add(bAtras);
+		bAtras.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaFestival vf = new VentanaFestival(festival, u);
+				vf.setVisible(true);
+				setVisible(false);
+
+			}
+		});
+		
+		//////////////////////////////////////////////////////////////////
 
 		comprar.addActionListener(new ActionListener() {
 			@SuppressWarnings("unlikely-arg-type")
@@ -283,11 +259,19 @@ public class VentanaCompra extends JFrame {
 				}
 			}
 		});
+		
+		setSize(1050, 800);
+		//getContentPane().setLayout(new GridLayout(3, 1));
+		setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setTitle(titulo);
 
-		getContentPane().add(parteArriba);
-		//getContentPane().add(panelPrincipal);
-		//getContentPane().add(parteAbajo);
-
+		panelP.add(parteArriba);
+		panelP.add(panelPrincipal);
+		panelP.add(parteAbajo);
+	
+		getContentPane().add(panelP);
+	
 		setVisible(true);
 
 	}
