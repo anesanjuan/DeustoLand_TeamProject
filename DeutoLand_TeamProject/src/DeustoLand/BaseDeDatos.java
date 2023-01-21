@@ -797,6 +797,12 @@ public class BaseDeDatos {
 		Artista art19 = new Artista(19, "Taylor Swift", TipoGenero.POP);
 		Artista art20 = new Artista(20, "Daniel Caesar", TipoGenero.POP);
 
+		Artista art21 = new Artista(21, "Dani Martin", TipoGenero.POP);
+		Artista art22 = new Artista(22, "Sebastiian Yatra", TipoGenero.REGGAETON);
+		Artista art23 = new Artista(23, "Omar Montes", TipoGenero.REGGAETON);
+		Artista art24 = new Artista(24, "Bad Bunny", TipoGenero.REGGAETON);
+		Artista art25 = new Artista(25, "Morat", TipoGenero.POP);
+
 		ArrayList<Artista> artistas = new ArrayList<>();
 		artistas.add(art1);
 		artistas.add(art2);
@@ -818,6 +824,12 @@ public class BaseDeDatos {
 		artistas.add(art18);
 		artistas.add(art19);
 		artistas.add(art20);
+
+		artistas.add(art21);
+		artistas.add(art22);
+		artistas.add(art23);
+		artistas.add(art24);
+		artistas.add(art25);
 
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
@@ -885,6 +897,61 @@ public class BaseDeDatos {
 		Concierto conc9 = new Concierto(10, BaseDeDatos.getArtistas().get(19), BaseDeDatos.cambiarLong("02:00:00"),
 				1.00, BaseDeDatos.getFestivales().get(0));
 
+		Concierto conc10 = new Concierto(11, BaseDeDatos.getArtistas().get(2), BaseDeDatos.cambiarLong("20:00:00"), 2.0,
+				BaseDeDatos.getFestivales().get(1));
+		Concierto conc11 = new Concierto(12, BaseDeDatos.getArtistas().get(3), BaseDeDatos.cambiarLong("21:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(1));
+		Concierto conc12 = new Concierto(13, BaseDeDatos.getArtistas().get(6), BaseDeDatos.cambiarLong("22:00:00"), 1.5,
+				BaseDeDatos.getFestivales().get(1));
+		Concierto conc13 = new Concierto(14, BaseDeDatos.getArtistas().get(13), BaseDeDatos.cambiarLong("23:00:00"),
+				1.3, BaseDeDatos.getFestivales().get(1));
+		Concierto conc14 = new Concierto(15, BaseDeDatos.getArtistas().get(19), BaseDeDatos.cambiarLong("00:00:00"),
+				1.0, BaseDeDatos.getFestivales().get(1));
+
+		Concierto conc15 = new Concierto(16, BaseDeDatos.getArtistas().get(17), BaseDeDatos.cambiarLong("21:30:00"),
+				2.0, BaseDeDatos.getFestivales().get(2));
+		Concierto conc16 = new Concierto(17, BaseDeDatos.getArtistas().get(22), BaseDeDatos.cambiarLong("23:30:00"),
+				1.0, BaseDeDatos.getFestivales().get(2));
+		Concierto conc17 = new Concierto(18, BaseDeDatos.getArtistas().get(15), BaseDeDatos.cambiarLong("00:30:00"),
+				1.5, BaseDeDatos.getFestivales().get(2));
+		Concierto conc18 = new Concierto(19, BaseDeDatos.getArtistas().get(6), BaseDeDatos.cambiarLong("01:30:00"), 1.5,
+				BaseDeDatos.getFestivales().get(2));
+		Concierto conc19 = new Concierto(20, BaseDeDatos.getArtistas().get(1), BaseDeDatos.cambiarLong("02:30:00"), 2.2,
+				BaseDeDatos.getFestivales().get(2));
+
+		Concierto conc20 = new Concierto(21, BaseDeDatos.getArtistas().get(11), BaseDeDatos.cambiarLong("17:30:00"),
+				2.0, BaseDeDatos.getFestivales().get(3));
+		Concierto conc21 = new Concierto(22, BaseDeDatos.getArtistas().get(3), BaseDeDatos.cambiarLong("20:30:00"), 2.0,
+				BaseDeDatos.getFestivales().get(3));
+		Concierto conc22 = new Concierto(23, BaseDeDatos.getArtistas().get(22), BaseDeDatos.cambiarLong("21:30:00"),
+				2.0, BaseDeDatos.getFestivales().get(3));
+		Concierto conc23 = new Concierto(24, BaseDeDatos.getArtistas().get(19), BaseDeDatos.cambiarLong("22:30:00"),
+				2.0, BaseDeDatos.getFestivales().get(3));
+		Concierto conc24 = new Concierto(25, BaseDeDatos.getArtistas().get(4), BaseDeDatos.cambiarLong("00:30:00"), 2.0,
+				BaseDeDatos.getFestivales().get(3));
+
+		Concierto conc25 = new Concierto(26, BaseDeDatos.getArtistas().get(14), BaseDeDatos.cambiarLong("20:00:00"),
+				1.5, BaseDeDatos.getFestivales().get(4));
+		Concierto conc26 = new Concierto(27, BaseDeDatos.getArtistas().get(10), BaseDeDatos.cambiarLong("21:30:00"),
+				2.2, BaseDeDatos.getFestivales().get(4));
+		Concierto conc27 = new Concierto(28, BaseDeDatos.getArtistas().get(20), BaseDeDatos.cambiarLong("22:30:00"),
+				1.5, BaseDeDatos.getFestivales().get(4));
+		Concierto conc28 = new Concierto(29, BaseDeDatos.getArtistas().get(8), BaseDeDatos.cambiarLong("00:00:00"), 2.0,
+				BaseDeDatos.getFestivales().get(4));
+		Concierto conc29 = new Concierto(30, BaseDeDatos.getArtistas().get(6), BaseDeDatos.cambiarLong("01:30:00"), 1.9,
+				BaseDeDatos.getFestivales().get(4));
+
+		Concierto conc30 = new Concierto(31, BaseDeDatos.getArtistas().get(5), BaseDeDatos.cambiarLong("20:00:00"), 1.5,
+				BaseDeDatos.getFestivales().get(5));
+		Concierto conc31 = new Concierto(32, BaseDeDatos.getArtistas().get(8), BaseDeDatos.cambiarLong("21:30:00"), 2.2,
+				BaseDeDatos.getFestivales().get(5));
+		Concierto conc32 = new Concierto(33, BaseDeDatos.getArtistas().get(24), BaseDeDatos.cambiarLong("22:30:00"),
+				1.5, BaseDeDatos.getFestivales().get(5));
+		Concierto conc33 = new Concierto(34, BaseDeDatos.getArtistas().get(15), BaseDeDatos.cambiarLong("00:00:00"),
+				2.0, BaseDeDatos.getFestivales().get(5));
+		Concierto conc34 = new Concierto(35, BaseDeDatos.getArtistas().get(7), BaseDeDatos.cambiarLong("01:30:00"), 1.9,
+				BaseDeDatos.getFestivales().get(5));
+
 		ArrayList<Concierto> conciertos = new ArrayList<>();
 		conciertos.add(conc0);
 		conciertos.add(conc1);
@@ -896,6 +963,36 @@ public class BaseDeDatos {
 		conciertos.add(conc7);
 		conciertos.add(conc8);
 		conciertos.add(conc9);
+
+		conciertos.add(conc10);
+		conciertos.add(conc11);
+		conciertos.add(conc12);
+		conciertos.add(conc13);
+		conciertos.add(conc14);
+
+		conciertos.add(conc15);
+		conciertos.add(conc16);
+		conciertos.add(conc17);
+		conciertos.add(conc18);
+		conciertos.add(conc19);
+
+		conciertos.add(conc20);
+		conciertos.add(conc21);
+		conciertos.add(conc22);
+		conciertos.add(conc23);
+		conciertos.add(conc24);
+
+		conciertos.add(conc25);
+		conciertos.add(conc26);
+		conciertos.add(conc27);
+		conciertos.add(conc28);
+		conciertos.add(conc29);
+
+		conciertos.add(conc30);
+		conciertos.add(conc31);
+		conciertos.add(conc32);
+		conciertos.add(conc33);
+		conciertos.add(conc34);
 
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
@@ -923,12 +1020,7 @@ public class BaseDeDatos {
 	 */
 	public static void insertarUsuarios() {
 
-		// String nombre, String apellido, String dni, String correo, String contraseña,
-		// String fechaUltimaMod
-
-		// este habrá q cambiar los datos digo yo
 		Admin admin = new Admin("admin", "admin", "admin", "admin", "admin", "27/12/2022");
-
 		Admin admin2 = new Admin("Juan", "Perez", "23423762A", "juanperez@gmail.com", "juanperez23", "27/10/2022");
 		Admin admin3 = new Admin("Natalia", "Rodriguez", "29753197B", "natarod@gmail.com", "natrodri34", "05/11/2022");
 		Admin admin4 = new Admin("Aitana", "Eguren", "2864286C", "aitanaeg@gmail.com", "casaeguren234", "15/11/2022");
@@ -1454,12 +1546,11 @@ public class BaseDeDatos {
 
 	public static ArrayList<Integer> recalcularTabla(JTable t, String edadMin, String edadMax, String minPrecio,
 			String maxPrecio) {
-		//System.out.println(edadMin);
+		// System.out.println(edadMin);
 		int minE = Integer.parseInt(edadMin);
 		int maxE = Integer.parseInt(edadMax);
 		double minP = Double.parseDouble(minPrecio);
 		double maxP = Double.parseDouble(maxPrecio);
-		
 
 		ArrayList<Integer> filas = new ArrayList<>();
 
@@ -1515,11 +1606,5 @@ public class BaseDeDatos {
 		return e;
 
 	}
-
-/////////////////////////////////////////////////////////////////////
-//                      Logging                                    //
-/////////////////////////////////////////////////////////////////////
-
-	// private static Logger logger = null;
 
 }
