@@ -1,5 +1,6 @@
 package Ventanas;
 
+import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -30,12 +31,11 @@ public class VentanaCompra extends JFrame {
 	 * 
 	 */
 	
-	
 	private static final long serialVersionUID = 1L;
 
 	private JPanel parteArriba;
 	private JPanel panelPrincipal;
-	private JPanel pInfoFestival;
+	//private JPanel pInfoFestival;
 	private JPanel partePrincipal1;
 	private JPanel partePrincipal2;
 	private JPanel parteAbajo;
@@ -77,40 +77,38 @@ public class VentanaCompra extends JFrame {
 		parteArriba = new JPanel();
 		Border bordeFestival = BorderFactory.createTitledBorder("Festival");
 		parteArriba.setBorder(bordeFestival);
-		parteArriba.setBounds(0, 0, 890, 104);
+		parteArriba.setBounds(0, 0, 1050, 125);
 		getContentPane().add(parteArriba);
-		parteArriba.setLayout(null);
 		
 		panelPrincipal = new JPanel();
-		panelPrincipal.setBounds(0, 110, 890, 468);
+		panelPrincipal.setBounds(0, 130, 890, 468);
 		getContentPane().add(panelPrincipal);
-		panelPrincipal.setLayout(null);
 
 		System.out.println(festival);
 		System.out.println(u);
 		
 		
 		
-		pInfoFestival = new JPanel();
+		//pInfoFestival = new JPanel();
 		partePrincipal1 = new JPanel();
 		partePrincipal2 = new JPanel();
 		parteAbajo = new JPanel();
 
-		titulo = new JLabel("COMPRA ENTRADA FESTIVAL");
-
+		//titulo = new JLabel("COMPRA ENTRADA FESTIVAL");
+		String titulo = "COMPRA ENTRADA FESTIVAL";
+		
 		parteAbajo = new JPanel();
 		Border bordeAbajo = BorderFactory.createTitledBorder("Datos personales:");
 		parteAbajo.setBorder(bordeAbajo);
 		parteAbajo.setBounds(0, 364, 880, 104);
 		panelPrincipal.add(parteAbajo);
-		parteAbajo.setLayout(null);
 		
 	
 		// quiero poner el boton a la izquierda
 		JButton bAtras = new JButton("Volver atrás");
 		bAtras.setFont(new Font("Georgia", Font.PLAIN, 20));
 		bAtras.setBounds(0, 0, 100, 400);
-		parteAbajo.add(bAtras);
+		//parteAbajo.add(bAtras);
 		
 		bAtras.addActionListener(new ActionListener() {
 			@Override
@@ -125,7 +123,7 @@ public class VentanaCompra extends JFrame {
 		nombreFest.setFont(new Font("Georgia", Font.PLAIN, 20));
 		//nombreFest.setBounds(10, 11, 299, 36);
 		parteArriba.add(nombreFest);
-		
+
 		
 		
 		infoFest = new JTextArea(5, 20);
@@ -138,7 +136,9 @@ public class VentanaCompra extends JFrame {
 		}
 		infoFest.append(texto);
 		infoFest.setEditable(false);
-		
+		parteArriba.add(infoFest);
+		//parteArriba.add(nombreFest, BorderLayout.WEST);
+
 		
 
 		nombre = new JLabel("Nombre: ");
@@ -171,37 +171,36 @@ public class VentanaCompra extends JFrame {
 		//getContentPane().setLayout(new GridLayout(3, 1));
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
-		//parteArriba.setSize(1050, 200);
-		//panelPrincipal.setSize(1050, 500);
-		//parteAbajo.setSize(1050, 100);
+		setTitle(titulo);
+	
 
-		parteArriba.add(titulo);
 
-		panelPrincipal.setLayout(new GridLayout(4, 1));
-		panelPrincipal.add(pInfoFestival);
-		panelPrincipal.add(partePrincipal1);
-		panelPrincipal.add(partePrincipal2);
-
-		pInfoFestival.add(nombreFest);
-		pInfoFestival.add(infoFest);
-
-		partePrincipal1.add(nombre);
-		partePrincipal1.add(textnombre);
-		partePrincipal1.add(mail);
-		partePrincipal1.add(textmail);
-		partePrincipal1.add(entradaVip);
-		partePrincipal1.add(tipoEntrada);
-		partePrincipal1.add(precioTotal);
-
-		partePrincipal2.add(numeroTarjeta);
-		partePrincipal2.add(textnumeroTarjeta);
-		partePrincipal2.add(fechaCaducidad);
-		partePrincipal2.add(textFechaCaducidad1);
-		partePrincipal2.add(textFechaCaducidad2);
-		partePrincipal2.add(cv);
-		partePrincipal2.add(textcv);
-
+//		panelPrincipal.setLayout(new GridLayout(4, 1));
+//mal
+//		panelPrincipal.add(pInfoFestival);
+//		panelPrincipal.add(partePrincipal1);
+//		panelPrincipal.add(partePrincipal2);
+//
+//mal
+//		pInfoFestival.add(nombreFest);
+//		pInfoFestival.add(infoFest);
+//
+//		partePrincipal1.add(nombre);
+//		partePrincipal1.add(textnombre);
+//		partePrincipal1.add(mail);
+//		partePrincipal1.add(textmail);
+//		partePrincipal1.add(entradaVip);
+//		partePrincipal1.add(tipoEntrada);
+//		partePrincipal1.add(precioTotal);
+//
+//		partePrincipal2.add(numeroTarjeta);
+//		partePrincipal2.add(textnumeroTarjeta);
+//		partePrincipal2.add(fechaCaducidad);
+//		partePrincipal2.add(textFechaCaducidad1);
+//		partePrincipal2.add(textFechaCaducidad2);
+//		partePrincipal2.add(cv);
+//		partePrincipal2.add(textcv);
+//
 		parteAbajo.add(comprar);
 
 		comprar.addActionListener(new ActionListener() {
@@ -286,8 +285,8 @@ public class VentanaCompra extends JFrame {
 		});
 
 		getContentPane().add(parteArriba);
-		getContentPane().add(panelPrincipal);
-		getContentPane().add(parteAbajo);
+		//getContentPane().add(panelPrincipal);
+		//getContentPane().add(parteAbajo);
 
 		setVisible(true);
 
