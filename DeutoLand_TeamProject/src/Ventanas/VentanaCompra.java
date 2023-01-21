@@ -83,6 +83,7 @@ public class VentanaCompra extends JFrame {
 		partePrincipal1 = new JPanel();
 		//Border bordeMedio1 = BorderFactory.createTitledBorder("Datos personales:");
 		//parteAbajo.setBorder(bordeMedio1);
+		parteAbajo = new JPanel();
 		parteAbajo.setBounds(0, 0, 1300, 150);
 		
 		
@@ -92,7 +93,7 @@ public class VentanaCompra extends JFrame {
 		parteAbajo.setBounds(0, 0, 1300, 150);
 	
 		
-		parteAbajo = new JPanel();
+		
 		Border bordeAbajo = BorderFactory.createTitledBorder("Acción:");
 		parteAbajo.setBorder(bordeAbajo);
 		parteAbajo.setBounds(0, 0, 1200, 125);
