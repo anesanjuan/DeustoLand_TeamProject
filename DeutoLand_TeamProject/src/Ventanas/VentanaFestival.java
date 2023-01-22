@@ -34,7 +34,7 @@ public class VentanaFestival extends JFrame {
 	private JButton bInicioSesion;
 
 	public VentanaFestival(Festival festival, User u) {
-		
+
 		getContentPane().setBackground(new Color(237, 245, 244));
 
 		setBounds(100, 100, 901, 615);
@@ -173,13 +173,11 @@ public class VentanaFestival extends JFrame {
 			listaA = listaA + "," + artista;
 		}
 
-		
-		
 		JTextArea artistasInv = new JTextArea(5, 25);
 		String nombres = String.valueOf(listaA.charAt(0));
-		for(int i=1;i<listaA.length();i++) {
+		for (int i = 1; i < listaA.length(); i++) {
 			nombres = nombres + listaA.charAt(i);
-			if(i%64==0) {
+			if (i % 64 == 0) {
 				nombres = nombres + "\n";
 			}
 		}
@@ -189,24 +187,23 @@ public class VentanaFestival extends JFrame {
 		artistasInv.setFont(new Font("Georgia", Font.PLAIN, 10));
 		artistasInv.setBounds(61, 225, 412, 78);
 		principalDrch.add(artistasInv);
-		
-		
+
 		JTextArea descripcion = new JTextArea(5, 25);
 		String texto = String.valueOf(festival.getDescripcion().charAt(0));
-		for(int i=1; i<festival.getDescripcion().length(); i++) {
+		for (int i = 1; i < festival.getDescripcion().length(); i++) {
 			texto = texto + festival.getDescripcion().charAt(i);
-			if(i%64==0) {
+			if (i % 64 == 0) {
 				texto = texto + "\n";
 			}
 		}
+
 		descripcion.append(texto);
 		descripcion.setEditable(false);
 		descripcion.setBackground(new Color(237, 245, 244));
-				
+
 		descripcion.setFont(new Font("Georgia", Font.PLAIN, 14));
 		descripcion.setBounds(10, 340, 491, 171);
 		principalDrch.add(descripcion);
-		
 
 		ImageIcon fotoFest = null;
 		try {
@@ -214,13 +211,14 @@ public class VentanaFestival extends JFrame {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		JLabel lFoto = new JLabel();
 		lFoto.setBounds(21, 11, 352, 243);
-		ImageIcon im = new ImageIcon(fotoFest.getImage().getScaledInstance(lFoto.getWidth(), lFoto.getHeight(), Image.SCALE_DEFAULT));
+		ImageIcon im = new ImageIcon(
+				fotoFest.getImage().getScaledInstance(lFoto.getWidth(), lFoto.getHeight(), Image.SCALE_DEFAULT));
 		lFoto.setIcon(im);
 		principalIzq.add(lFoto);
-		
+
 		setVisible(true);
 		setSize(1000, 1000);
 
