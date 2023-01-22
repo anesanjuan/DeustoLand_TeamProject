@@ -1490,6 +1490,11 @@ public class BaseDeDatos {
 				TipoEntrada.VIP, 70, 06);
 		Entrada e21 = new EntradaVIP(BaseDeDatos.getClientes().get(36), BaseDeDatos.getFestivales().get(1),
 				TipoEntrada.VIP, 60, 34);
+		//no se insertan :( a mi por lo menos
+		Entrada e22 = new EntradaVIP(BaseDeDatos.getClientes().get(5), BaseDeDatos.getFestivales().get(4),
+				TipoEntrada.CONCAMPING, 60, 34);
+		Entrada e23 = new EntradaVIP(BaseDeDatos.getClientes().get(6), BaseDeDatos.getFestivales().get(0),
+				TipoEntrada.VIP, 60, 10);
 
 		ArrayList<Entrada> entradas = new ArrayList<>();
 
@@ -1515,6 +1520,9 @@ public class BaseDeDatos {
 		entradas.add(e19);
 		entradas.add(e20);
 		entradas.add(e21);
+		
+		entradas.add(e22);
+		entradas.add(e23);
 
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
@@ -1598,7 +1606,7 @@ public class BaseDeDatos {
 
 	}
 
-	// INSERTAR CLIENTE ---- VENTANA REGISTRO
+	
 	/**
 	 * Metodo para insertar usuarios:
 	 * 
@@ -1632,9 +1640,9 @@ public class BaseDeDatos {
 	///////////////////////////////////////////////////
 
 	/**
-	 * 
+	 * Metodo para acceder a festivales
 	 * @param festival
-	 * @return
+	 * @return el festival requerido
 	 */
 	public static Festival getFestival(Festival festival) {
 		Festival f = new Festival();
@@ -1667,9 +1675,9 @@ public class BaseDeDatos {
 	}
 
 	/**
-	 * 
+	 * Metodo para acceder a los nombres de los festivales
 	 * @param nombre
-	 * @return
+	 * @return el nombre del festival al que se quiere acceder
 	 */
 	public static Festival getFestNom(String nombre) {
 		Festival f = new Festival();
@@ -1702,9 +1710,9 @@ public class BaseDeDatos {
 	}
 
 	/**
-	 * 
+	 * Metodo para acceder a las fotos de los festivales
 	 * @param nombreF
-	 * @return
+	 * @return foto del festival
 	 */
 	public static String getFotoFest(String nombreF) {
 		String fotoFestival = "";
@@ -1718,6 +1726,11 @@ public class BaseDeDatos {
 
 	}
 
+	/**
+	 * 
+	 * @param nomFest
+	 * @return
+	 */
 	public static ArrayList<Entrada> search(String nomFest) {
 		Festival fest = BaseDeDatos.getFestNom(nomFest);
 		ArrayList<Entrada> entradas = new ArrayList<>();
@@ -1730,6 +1743,10 @@ public class BaseDeDatos {
 		return entradas;
 	}
 
+	/**
+	 * 
+	 * @param tDatos
+	 */
 	public static void borrarDatos(JTable tDatos) {
 		try {
 			DefaultTableModel mDatos = (DefaultTableModel) tDatos.getModel();
@@ -1742,6 +1759,11 @@ public class BaseDeDatos {
 		}
 	}
 
+	/**
+	 * 
+	 * @param tDatos
+	 * @param nomFest
+	 */
 	public static void insertarDatos(JTable tDatos, String nomFest) {
 		try {
 			DefaultTableModel mDatos = (DefaultTableModel) tDatos.getModel();
@@ -1756,6 +1778,11 @@ public class BaseDeDatos {
 		}
 	}
 
+	/**
+	 * 
+	 * @param t
+	 * @return
+	 */
 	public static String getMediaEdad(JTable t) {
 		ArrayList<Object> edades = new ArrayList<>();
 		for (int i = 0; i < t.getRowCount(); i++) {
@@ -1773,6 +1800,12 @@ public class BaseDeDatos {
 
 	}
 
+	/**
+	 * 
+	 * @param t
+	 * @param tipoE
+	 * @return
+	 */
 	public static String calculoTotalE(JTable t, TipoEntrada tipoE) {
 		int entradas = 0;
 		if (tipoE.equals(TipoEntrada.NORMAL)) {
@@ -1796,6 +1829,15 @@ public class BaseDeDatos {
 
 	}
 
+	/**
+	 * 
+	 * @param t
+	 * @param edadMin
+	 * @param edadMax
+	 * @param minPrecio
+	 * @param maxPrecio
+	 * @return
+	 */
 	public static ArrayList<Integer> recalcularTabla(JTable t, String edadMin, String edadMax, String minPrecio,
 			String maxPrecio) {
 		// System.out.println(edadMin);
@@ -1817,6 +1859,13 @@ public class BaseDeDatos {
 		return filas;
 	}
 
+	/**
+	 * 
+	 * @param f
+	 * @param c
+	 * @param tipoE
+	 * @return
+	 */
 	public static Entrada crearEntrada(Festival f, Cliente c, TipoEntrada tipoE) {
 		Entrada e = new Entrada();
 		if (tipoE.equals(TipoEntrada.NORMAL)) {
@@ -1835,6 +1884,14 @@ public class BaseDeDatos {
 		return e;
 	}
 
+	/**
+	 * Metodo para crear una entrada con camping
+	 * 
+	 * @param f festival
+	 * @param c cliente
+	 * @param r 
+	 * @return la entrada creada
+	 */
 	public static Entrada crearEntradaConCamping(Festival f, Cliente c, Random r) {
 		double suplemento = f.getPrecio() * 0.15;
 
