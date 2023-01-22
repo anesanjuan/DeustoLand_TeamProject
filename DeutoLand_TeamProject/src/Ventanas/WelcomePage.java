@@ -2,6 +2,7 @@ package Ventanas;
 
 import javax.swing.JDialog;
 import java.awt.BorderLayout;
+import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.JButton;
@@ -10,6 +11,8 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
 import java.io.File;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
@@ -64,6 +67,8 @@ public class WelcomePage extends JDialog {
 		addComponentListener(new ComponentAdapter() {
 			public void componentResized(ComponentEvent componentEvent) {
 
+				
+				
 				int ancho = getAncho();
 				int alto = getAlto();
 
