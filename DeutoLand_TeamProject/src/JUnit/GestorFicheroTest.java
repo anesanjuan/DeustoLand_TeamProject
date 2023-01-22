@@ -3,6 +3,7 @@ package JUnit;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.junit.Test;
 
@@ -11,6 +12,7 @@ import DeustoLand.Tarjeta;
 
 public class GestorFicheroTest {
 
+	//private HashMap<Integer, Tarjeta> ts;
 	private ArrayList<Tarjeta> ts;
 
 	@Test

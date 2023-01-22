@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,12 +34,15 @@ public class VentanaFestival extends JFrame {
 	private JButton bInicioSesion;
 
 	public VentanaFestival(Festival festival, User u) {
+		
+		getContentPane().setBackground(new Color(237, 245, 244));
 
 		setBounds(100, 100, 901, 615);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 
 		JPanel parteArriba = new JPanel();
+		parteArriba.setBackground(new Color(237, 245, 244));
 		parteArriba.setBounds(0, 0, 890, 47);
 		getContentPane().add(parteArriba);
 		// parteArriba.setLayout(new GridLayout(1,4));
@@ -87,11 +91,13 @@ public class VentanaFestival extends JFrame {
 		}
 
 		JPanel panelPrincipal = new JPanel();
+		panelPrincipal.setBackground(new Color(237, 245, 244));
 		panelPrincipal.setBounds(0, 51, 890, 527);
 		getContentPane().add(panelPrincipal);
 		panelPrincipal.setLayout(new GridLayout(1, 2));
 
 		JPanel principalIzq = new JPanel();
+		principalIzq.setBackground(new Color(237, 245, 244));
 		principalIzq.setBounds(0, 5, 375, 522);
 		panelPrincipal.add(principalIzq);
 		principalIzq.setLayout(null);
@@ -126,6 +132,7 @@ public class VentanaFestival extends JFrame {
 		principalIzq.add(precio);
 
 		JPanel principalDrch = new JPanel();
+		principalDrch.setBackground(new Color(237, 245, 244));
 		principalDrch.setBounds(379, 5, 511, 522);
 		panelPrincipal.add(principalDrch);
 		principalDrch.setLayout(null);
@@ -166,28 +173,27 @@ public class VentanaFestival extends JFrame {
 			listaA = listaA + "," + artista;
 		}
 
-		JLabel artistasInv = new JLabel(listaA);
-		artistasInv.setVerticalAlignment(SwingConstants.TOP);
-		artistasInv.setFont(new Font("Georgia", Font.PLAIN, 9));
+		
+		
+		JTextArea artistasInv = new JTextArea(5, 25);
+		String nombres = String.valueOf(listaA.charAt(0));
+		for(int i=1;i<listaA.length();i++) {
+			nombres = nombres + listaA.charAt(i);
+			if(i%64==0) {
+				nombres = nombres + "\n";
+			}
+		}
+		artistasInv.append(nombres);
+		artistasInv.setBackground(new Color(237, 245, 244));
+		artistasInv.setEditable(false);
+		artistasInv.setFont(new Font("Georgia", Font.PLAIN, 10));
 		artistasInv.setBounds(61, 225, 412, 78);
 		principalDrch.add(artistasInv);
 		
-		//JTextArea artistasInv = new JTextArea(5, 20);
-		//String nombres = String.valueOf(listaA.charAt(0));
-		//for(int i=1;i<listaA.length();i++) {
-			//nombres = nombres + listaA.charAt(i);
-			//if(i%64==0) {
-				//nombres = nombres + "\n";
-			//}
-		//}
-		//artistasInv.append(nombres);
-		//artistasInv.setEditable(false);
-		//principalDrch.add(artistasInv);
 		
-		//JLabel descripcion = new JLabel(festival.getDescripcion());
-		JTextArea descripcion = new JTextArea(5, 20);
+		JTextArea descripcion = new JTextArea(5, 25);
 		String texto = String.valueOf(festival.getDescripcion().charAt(0));
-		for(int i=1;i<festival.getDescripcion().length();i++) {
+		for(int i=1; i<festival.getDescripcion().length(); i++) {
 			texto = texto + festival.getDescripcion().charAt(i);
 			if(i%64==0) {
 				texto = texto + "\n";
@@ -195,11 +201,12 @@ public class VentanaFestival extends JFrame {
 		}
 		descripcion.append(texto);
 		descripcion.setEditable(false);
+		descripcion.setBackground(new Color(237, 245, 244));
 				
-		//descripcion.setVerticalAlignment(SwingConstants.TOP);
 		descripcion.setFont(new Font("Georgia", Font.PLAIN, 14));
 		descripcion.setBounds(10, 340, 491, 171);
 		principalDrch.add(descripcion);
+		
 
 		ImageIcon fotoFest = null;
 		try {
@@ -207,72 +214,18 @@ public class VentanaFestival extends JFrame {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		JLabelAjustado fotoFest1 = new JLabelAjustado(fotoFest);
-		fotoFest1.setBounds(21, 11, 352, 243);
-		principalIzq.add(fotoFest1);
-
+		
+		JLabel lFoto = new JLabel();
+		lFoto.setBounds(21, 11, 352, 243);
+		ImageIcon im = new ImageIcon(fotoFest.getImage().getScaledInstance(lFoto.getWidth(), lFoto.getHeight(), Image.SCALE_DEFAULT));
+		lFoto.setIcon(im);
+		principalIzq.add(lFoto);
+		
 		setVisible(true);
 		setSize(1000, 1000);
 
 		setLocationRelativeTo(null);
 		setResizable(false);
-
-	}
-
-	private static class JLabelAjustado extends JLabel {
-		private ImageIcon imagen;
-		private int tamX;
-		private int tamY;
-
-		/**
-		 * Crea un jlabel que ajusta una imagen cualquiera con fondo blanco a su tamaño
-		 * (a la que ajuste más de las dos escalas, horizontal o vertical)
-		 * 
-		 * @param imagen Imagen a visualizar en el label
-		 */
-		public JLabelAjustado(ImageIcon imagen) {
-			setImagen(imagen);
-		}
-
-		/**
-		 * Modifica la imagen
-		 * 
-		 * @param imagen Nueva imagen a visualizar en el label
-		 */
-		public void setImagen(ImageIcon imagen) {
-			this.imagen = imagen;
-			if (imagen == null) {
-				tamX = 0;
-				tamY = 0;
-			} else {
-				this.tamX = imagen.getIconWidth();
-				this.tamY = imagen.getIconHeight();
-			}
-		}
-
-		protected void paintComponent(Graphics g) {
-			Graphics2D g2 = (Graphics2D) g; // El Graphics realmente es Graphics2D
-			g2.setColor(Color.WHITE);
-			g2.fillRect(0, 0, getWidth(), getHeight());
-			if (imagen != null && tamX > 0 && tamY > 0) {
-				g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-				g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-				g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-				double escalaX = 1.0 * getWidth() / tamX;
-				double escalaY = 1.0 * getHeight() / tamY;
-				double escala = escalaX;
-				int x = 0;
-				int y = 0;
-				if (escalaY < escala) {
-					escala = escalaY;
-					x = (int) ((getWidth() - (tamX * escala)) / 2);
-				} else {
-					y = (int) ((getHeight() - (tamY * escala)) / 2);
-				}
-				g2.drawImage(imagen.getImage(), x, y, (int) (tamX * escala), (int) (tamY * escala), null);
-			}
-		}
 
 	}
 

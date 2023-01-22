@@ -20,6 +20,13 @@ public class Artista {
 		this.nombre = nombre;
 		this.tipogenero = tipogenero;
 	}
+	
+	public Artista(String nombre, TipoGenero tipogenero) {
+		super();
+		this.nombre = nombre;
+		this.tipogenero = tipogenero;
+	}
+
 
 	/**
 	 * Crea un Artista vacio.

@@ -100,9 +100,11 @@ public class VentanaPrincipal extends JFrame {
 		setBounds(100, 100, 901, 615);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
+		getContentPane().setBackground(new Color(237, 245, 244));
 
 		// panel de arriba
 		panelArriba = new JPanel();
+		panelArriba.setBackground(new Color(237, 245, 244));
 		panelArriba.setBounds(6, 6, 889, 47);
 		getContentPane().add(panelArriba);
 		GridBagLayout gbl_panelArriba = new GridBagLayout();
@@ -156,6 +158,7 @@ public class VentanaPrincipal extends JFrame {
 
 //PANEL PRINCIAPAL EN EL QUE HAY 6 PANELES
 		panelPrincipal = new JPanel();
+		panelPrincipal.setBackground(new Color(237, 245, 244));
 		panelPrincipal.setBounds(6, 51, 889, 530);
 		getContentPane().add(panelPrincipal);
 		panelPrincipal.setLayout(null);
@@ -168,6 +171,7 @@ public class VentanaPrincipal extends JFrame {
 //dentro del panel principal
 		// panel del primer festival
 		panelFestv1 = new JPanel();
+		panelFestv1.setBackground(new Color(237, 245, 244));
 		panelFestv1.setBounds(0, 0, 295, 264);
 		panelPrincipal.add(panelFestv1);
 		panelFestv1.setLayout(null);
@@ -200,6 +204,7 @@ public class VentanaPrincipal extends JFrame {
 
 		// panel del segundo festival
 		panelFestv2 = new JPanel();
+		panelFestv2.setBackground(new Color(237, 245, 244));
 		panelFestv2.setBounds(296, 0, 295, 264);
 		panelPrincipal.add(panelFestv2);
 		panelFestv2.setLayout(null);
@@ -231,6 +236,7 @@ public class VentanaPrincipal extends JFrame {
 
 		// panel del tercer festival
 		panelFestv3 = new JPanel();
+		panelFestv3.setBackground(new Color(237, 245, 244));
 		panelFestv3.setBounds(594, 0, 295, 264);
 		panelPrincipal.add(panelFestv3);
 		panelFestv3.setLayout(null);
@@ -263,6 +269,7 @@ public class VentanaPrincipal extends JFrame {
 
 		// panel del cuarto festival
 		panelFestv4 = new JPanel();
+		panelFestv4.setBackground(new Color(237, 245, 244));
 		panelFestv4.setBounds(0, 263, 295, 264);
 		panelPrincipal.add(panelFestv4);
 		panelFestv4.setLayout(null);
@@ -294,6 +301,7 @@ public class VentanaPrincipal extends JFrame {
 
 		// panel del quinto festival
 		panelFestv5 = new JPanel();
+		panelFestv5.setBackground(new Color(237, 245, 244));
 		panelFestv5.setBounds(296, 263, 295, 264);
 		panelPrincipal.add(panelFestv5);
 		panelFestv5.setLayout(null);
@@ -325,6 +333,7 @@ public class VentanaPrincipal extends JFrame {
 
 		// panel del sexto festival
 		panelFestv6 = new JPanel();
+		panelFestv6.setBackground(new Color(237, 245, 244));
 		panelFestv6.setBounds(594, 263, 295, 264);
 		panelPrincipal.add(panelFestv6);
 		panelFestv6.setLayout(null);
@@ -416,34 +425,6 @@ public class VentanaPrincipal extends JFrame {
 
 		setVisible(true);
 
-		ArrayList<Festival> festivales = new ArrayList<>();
-		panelPrincipal.addMouseListener(new MouseAdapter() {
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				int anchoP = panelPrincipal.getPreferredSize().width;
-				int largoP = panelPrincipal.getPreferredSize().height;
-				int posy = 1;
-				int posx = 1;
-				if (e.getX() > 0 && e.getX() < anchoP && e.getY() > 0 && e.getY() < largoP) {
-					if (e.getY() < largoP && e.getY() > (largoP / 2) + 1) {
-						posy = 2;
-					}
-					if (e.getX() < largoP && e.getX() > (largoP / 3) * 2) {
-						posx = 3;
-
-					} else if (e.getX() < (largoP / 3) * 2 && e.getX() > (largoP / 3) + 1) {
-						posx = 2;
-					}
-
-				}
-				int festivalSelec = posy + posx;
-				if (festivalSelec == 2) {
-
-				}
-
-			}
-		});
 
 		setVisible(true);
 
@@ -466,59 +447,5 @@ public class VentanaPrincipal extends JFrame {
 		setResizable(false);
 	}
 
-	private static class JLabelAjustado extends JLabel {
-		private ImageIcon imagen;
-		private int tamX;
-		private int tamY;
-
-		/**
-		 * Crea un jlabel que ajusta una imagen cualquiera con fondo blanco a su tamaño
-		 * (a la que ajuste más de las dos escalas, horizontal o vertical)
-		 * 
-		 * @param imagen Imagen a visualizar en el label
-		 */
-		public JLabelAjustado(ImageIcon imagen) {
-			setImagen(imagen);
-		}
-
-		/**
-		 * Modifica la imagen
-		 * 
-		 * @param imagen Nueva imagen a visualizar en el label
-		 */
-		public void setImagen(ImageIcon imagen) {
-			this.imagen = imagen;
-			if (imagen == null) {
-				tamX = 0;
-				tamY = 0;
-			} else {
-				this.tamX = imagen.getIconWidth();
-				this.tamY = imagen.getIconHeight();
-			}			
-		}
-
-		protected void paintComponent(Graphics g) {
-			Graphics2D g2 = (Graphics2D) g; // El Graphics realmente es Graphics2D
-			g2.setColor(Color.WHITE);
-			g2.fillRect(0, 0, getWidth(), getHeight());
-			if (imagen != null && tamX > 0 && tamY > 0) {
-				g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-				g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-				g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-				double escalaX = 1.0 * getWidth() / tamX;
-				double escalaY = 1.0 * getHeight() / tamY;
-				double escala = escalaX;
-				int x = 0;
-				int y = 0;
-				if (escalaY < escala) {
-					escala = escalaY;
-					x = (int) ((getWidth() - (tamX * escala)) / 2);
-				} else {
-					y = (int) ((getHeight() - (tamY * escala)) / 2);
-				}
-				g2.drawImage(imagen.getImage(), x, y, (int) (tamX * escala), (int) (tamY * escala), null);
-			}
-		}
-	}
 
 }

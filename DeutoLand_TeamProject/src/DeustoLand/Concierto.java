@@ -26,6 +26,14 @@ public class Concierto {
 		this.duracion = duracion;
 		this.festival = festival;
 	}
+	
+	public Concierto(Artista artista, long hora, double duracion, Festival festival) {
+		super();
+		this.artista = artista;
+		this.hora = hora;
+		this.duracion = duracion;
+		this.festival = festival;
+	}
 
 	/**
 	 * Crea un concierto vacio

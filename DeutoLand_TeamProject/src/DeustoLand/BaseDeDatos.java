@@ -65,14 +65,14 @@ public class BaseDeDatos {
 				sent = "DROP TABLE IF EXISTS artista";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
-				sent = "CREATE TABLE artista (codA INTEGER PRIMARY KEY, nombreA char(25), generoA char(25));";
+				sent = "CREATE TABLE artista (codA INTEGER PRIMARY KEY AUTOINCREMENT, nombreA char(25), generoA char(25));";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
 
 				sent = "DROP TABLE IF EXISTS concierto";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
-				sent = "CREATE TABLE concierto (codC INTEGER PRIMARY KEY, codA int(3) REFERENCES artista (codA), horaC date, duracionC dec(3,2), codF int(3) REFERENCES festival (codF));";
+				sent = "CREATE TABLE concierto (codC INTEGER PRIMARY KEY AUTOINCREMENT, codA int(3) REFERENCES artista (codA), horaC date, duracionC dec(3,2), codF int(3) REFERENCES festival (codF));";
 				logger.log(Level.INFO, "Statement: " + sent);
 				statement.executeUpdate(sent);
 
@@ -776,32 +776,67 @@ public class BaseDeDatos {
 	 * Festivales ya establecidos una vez se abre el programa ?? redactarlo mejor
 	 */
 	public static void insertarArtistas() {
-		Artista art1 = new Artista(01, "Aitana", TipoGenero.POP);
-		Artista art2 = new Artista(02, "Mora", TipoGenero.URBANOLATINO);
-		Artista art3 = new Artista(03, "Taburete", TipoGenero.ROCKESP);
-		Artista art4 = new Artista(04, "Eladio Carrion", TipoGenero.URBANOLATINO);
-		Artista art5 = new Artista(05, "One Direction", TipoGenero.POP);
-		Artista art6 = new Artista(06, "La Oreja de Van Gogh", TipoGenero.POP);
-		Artista art7 = new Artista(07, "Tini", TipoGenero.POP);
-		Artista art8 = new Artista(8, "Rels B", TipoGenero.URBANOLATINO);
-		Artista art9 = new Artista(9, "Juan Magan", TipoGenero.REGGAETON);
-		Artista art10 = new Artista(10, "Myke Towers", TipoGenero.REGGAETON);
-		Artista art11 = new Artista(11, "Afro Jack", TipoGenero.TECHNO);
-		Artista art12 = new Artista(12, "La MODA", TipoGenero.ROCKESP);
-		Artista art13 = new Artista(13, "Morad", TipoGenero.REGGAETON);
-		Artista art14 = new Artista(14, "Belén Aguilera", TipoGenero.POP);
-		Artista art15 = new Artista(15, "Amber Broose", TipoGenero.TECHNO);
-		Artista art16 = new Artista(16, "Dom Dolla", TipoGenero.TECHNO);
-		Artista art17 = new Artista(17, "Harry Styles", TipoGenero.POP);
-		Artista art18 = new Artista(18, "Billie Eilish", TipoGenero.POP);
-		Artista art19 = new Artista(19, "Taylor Swift", TipoGenero.POP);
-		Artista art20 = new Artista(20, "Daniel Caesar", TipoGenero.POP);
-
-		Artista art21 = new Artista(21, "Dani Martin", TipoGenero.POP);
-		Artista art22 = new Artista(22, "Sebastiian Yatra", TipoGenero.REGGAETON);
-		Artista art23 = new Artista(23, "Omar Montes", TipoGenero.REGGAETON);
-		Artista art24 = new Artista(24, "Bad Bunny", TipoGenero.REGGAETON);
-		Artista art25 = new Artista(25, "Morat", TipoGenero.POP);
+		Artista art1 = new Artista(0, "Aitana", TipoGenero.POP);
+		Artista art2 = new Artista(1, "Mora", TipoGenero.URBANOLATINO);
+		Artista art3 = new Artista(2, "Taburete", TipoGenero.ROCKESP);
+		Artista art4 = new Artista(3, "Eladio Carrion", TipoGenero.URBANOLATINO);
+		Artista art5 = new Artista(4, "One Direction", TipoGenero.POP);
+		Artista art6 = new Artista(5, "La Oreja de Van Gogh", TipoGenero.POP);
+		Artista art7 = new Artista(6, "Tini", TipoGenero.POP);
+		Artista art8 = new Artista(7, "Rels B", TipoGenero.URBANOLATINO);
+		Artista art9 = new Artista(8, "Juan Magan", TipoGenero.REGGAETON);
+		Artista art10 = new Artista(9, "Myke Towers", TipoGenero.REGGAETON);
+		Artista art11 = new Artista(10, "Afro Jack", TipoGenero.TECHNO);
+		Artista art12 = new Artista(11, "La MODA", TipoGenero.ROCKESP);
+		Artista art13 = new Artista(12, "Morad", TipoGenero.REGGAETON);
+		Artista art14 = new Artista(13, "Belén Aguilera", TipoGenero.POP);
+		Artista art15 = new Artista(14, "Amber Broose", TipoGenero.TECHNO);
+		Artista art16 = new Artista(15, "Dom Dolla", TipoGenero.TECHNO);
+		Artista art17 = new Artista(16, "Harry Styles", TipoGenero.POP);
+		Artista art18 = new Artista(17, "Billie Eilish", TipoGenero.POP);
+		Artista art19 = new Artista(18, "Taylor Swift", TipoGenero.POP);
+		Artista art20 = new Artista(19, "Daniel Caesar", TipoGenero.POP);
+		Artista art21 = new Artista(20, "Dani Martin", TipoGenero.POP);
+		Artista art22 = new Artista(21, "Sebastian Yatra", TipoGenero.REGGAETON);
+		Artista art23 = new Artista(22, "Omar Montes", TipoGenero.REGGAETON);
+		Artista art24 = new Artista(23, "Bad Bunny", TipoGenero.REGGAETON);
+		Artista art25 = new Artista(24, "Morat", TipoGenero.POP);
+		Artista art26 = new Artista(25, "Luis Fonsi", TipoGenero.REGGAETON);
+		Artista art27 = new Artista(26, "Bad Bunny", TipoGenero.REGGAETON);
+		Artista art28 = new Artista(27, "Feid", TipoGenero.REGGAETON);
+		Artista art29 = new Artista(28, "Shakira", TipoGenero.POP);
+		Artista art30 = new Artista(29, "Rauw Alejandro", TipoGenero.REGGAETON);
+		Artista art31 = new Artista(30, "Sidecars", TipoGenero.POP);
+		Artista art32 = new Artista(31, "Taburete", TipoGenero.ROCKESP);
+		Artista art33 = new Artista(32, "La Húngara", TipoGenero.POP);
+		Artista art34 = new Artista(33, "DVicio", TipoGenero.POP);
+		Artista art35 = new Artista(34, "David Otero", TipoGenero.ROCKESP);
+		Artista art36 = new Artista(35, "café Quijano", TipoGenero.POP);
+		Artista art37 = new Artista(36, "Marlon", TipoGenero.POP);
+		Artista art38 = new Artista(37, "Ana Fernandez", TipoGenero.POP);
+		Artista art39 = new Artista(38, "Marlena", TipoGenero.ROCKESP);
+		Artista art40 = new Artista(39, "Bombai", TipoGenero.TECHNO);
+		Artista art41 = new Artista(40, "The Weekend", TipoGenero.POP);
+		Artista art42 = new Artista(41, "José de Rico", TipoGenero.URBANOLATINO);
+		Artista art43 = new Artista(42, "Jay Santos", TipoGenero.URBANOLATINO);
+		Artista art44 = new Artista(43, "Henry Mendez", TipoGenero.URBANOLATINO);
+		Artista art45 = new Artista(44, "Demarco Flamenco", TipoGenero.REGGAETON);
+		Artista art46 = new Artista(45, "Tones and I", TipoGenero.TECHNO);
+		Artista art47 = new Artista(46, "Ed Sheeran", TipoGenero.POP);
+		Artista art48 = new Artista(47, "Post Malone", TipoGenero.POP);
+		Artista art49 = new Artista(48, "Lewis Capaldi", TipoGenero.POP);
+		Artista art50 = new Artista(49, "Swae Lee", TipoGenero.TECHNO);
+		Artista art51 = new Artista(50, "Drake", TipoGenero.TECHNO);
+		Artista art52 = new Artista(51, "Imagine Dragons", TipoGenero.POP);
+		Artista art53 = new Artista(52, "The Chainsmokers", TipoGenero.POP);
+		Artista art54 = new Artista(53, "Camila Cabello", TipoGenero.URBANOLATINO);
+		Artista art55 = new Artista(54, "James Arthur", TipoGenero.POP);
+		Artista art56 = new Artista(55, "Juice WRLD", TipoGenero.TECHNO);
+		Artista art57 = new Artista(56, "Dua Lipa", TipoGenero.POP);
+		Artista art58 = new Artista(57, "Queen", TipoGenero.POP);
+		Artista art59 = new Artista(58, "ColdPlay", TipoGenero.POP);
+		Artista art60 = new Artista(59, "Lady Gaga", TipoGenero.POP);
+		
 
 		ArrayList<Artista> artistas = new ArrayList<>();
 		artistas.add(art1);
@@ -824,18 +859,52 @@ public class BaseDeDatos {
 		artistas.add(art18);
 		artistas.add(art19);
 		artistas.add(art20);
-
 		artistas.add(art21);
 		artistas.add(art22);
 		artistas.add(art23);
 		artistas.add(art24);
 		artistas.add(art25);
+		artistas.add(art26);
+		artistas.add(art27);
+		artistas.add(art28);
+		artistas.add(art29);
+		artistas.add(art30);
+		artistas.add(art31);
+		artistas.add(art32);
+		artistas.add(art33);
+		artistas.add(art34);
+		artistas.add(art35);
+		artistas.add(art36);
+		artistas.add(art37);
+		artistas.add(art38);
+		artistas.add(art39);
+		artistas.add(art40);
+		artistas.add(art41);
+		artistas.add(art42);
+		artistas.add(art43);
+		artistas.add(art44);
+		artistas.add(art45);
+		artistas.add(art46);
+		artistas.add(art47);
+		artistas.add(art48);
+		artistas.add(art49);
+		artistas.add(art50);
+		artistas.add(art51);
+		artistas.add(art52);
+		artistas.add(art53);
+		artistas.add(art54);
+		artistas.add(art55);
+		artistas.add(art56);
+		artistas.add(art57);
+		artistas.add(art58);
+		artistas.add(art59);
+		artistas.add(art60);
 
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
 
 			for (Artista art : artistas) {
-				String sent = "insert into artista values ( " + art.getCodigoA() + " , ' " + art.getNombre() + "' , '"
+				String sent = "insert into artista values ( "+ art.getCodigoA() + " , '"  + art.getNombre() + "' , '"
 						+ art.getTipogenero() + "');";
 
 				logger.log(Level.INFO, "Statement: " + sent);
@@ -857,11 +926,11 @@ public class BaseDeDatos {
 	 * @param date fecha
 	 * @return fecha convertida a milisegundos de tipo long
 	 */
-	public static long cambiarLong(String date) {
+	public static long cambiarLong(String hora) {
 		SimpleDateFormat formato = new SimpleDateFormat("HH:mm:ss");
 		long milliseconds = 0;
 		try {
-			java.util.Date d = formato.parse(date);
+			java.util.Date d = formato.parse(hora);
 			milliseconds += d.getTime();
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -876,81 +945,198 @@ public class BaseDeDatos {
 	 */
 	public static void insertarConciertos() {
 
-		Concierto conc0 = new Concierto(01, BaseDeDatos.getArtistas().get(0), BaseDeDatos.cambiarLong("17:00:00"), 1.00,
+		Concierto conc0 = new Concierto(0, BaseDeDatos.getArtistas().get(0), BaseDeDatos.cambiarLong("17:00:00"), 1.00,
 				BaseDeDatos.getFestivales().get(0));
-		Concierto conc1 = new Concierto(02, BaseDeDatos.getArtistas().get(1), BaseDeDatos.cambiarLong("18:00:00"), 1.00,
+		Concierto conc1 = new Concierto(1, BaseDeDatos.getArtistas().get(1), BaseDeDatos.cambiarLong("18:00:00"), 1.00,
 				BaseDeDatos.getFestivales().get(0));
-		Concierto conc2 = new Concierto(03, BaseDeDatos.getArtistas().get(3), BaseDeDatos.cambiarLong("19:00:00"), 1.00,
+		Concierto conc2 = new Concierto(2, BaseDeDatos.getArtistas().get(3), BaseDeDatos.cambiarLong("19:00:00"), 1.00,
 				BaseDeDatos.getFestivales().get(0));
-		Concierto conc3 = new Concierto(04, BaseDeDatos.getArtistas().get(7), BaseDeDatos.cambiarLong("20:00:00"), 1.00,
+		Concierto conc3 = new Concierto(3, BaseDeDatos.getArtistas().get(7), BaseDeDatos.cambiarLong("20:00:00"), 1.00,
 				BaseDeDatos.getFestivales().get(0));
-		Concierto conc4 = new Concierto(05, BaseDeDatos.getArtistas().get(8), BaseDeDatos.cambiarLong("21:00:00"), 1.00,
+		Concierto conc4 = new Concierto(4, BaseDeDatos.getArtistas().get(8), BaseDeDatos.cambiarLong("21:00:00"), 1.00,
 				BaseDeDatos.getFestivales().get(0));
-		Concierto conc5 = new Concierto(06, BaseDeDatos.getArtistas().get(9), BaseDeDatos.cambiarLong("22:00:00"), 1.00,
+		Concierto conc5 = new Concierto(5, BaseDeDatos.getArtistas().get(9), BaseDeDatos.cambiarLong("22:00:00"), 1.00,
 				BaseDeDatos.getFestivales().get(0));
-		Concierto conc6 = new Concierto(07, BaseDeDatos.getArtistas().get(10), BaseDeDatos.cambiarLong("23:00:00"),
+		Concierto conc6 = new Concierto(6, BaseDeDatos.getArtistas().get(10), BaseDeDatos.cambiarLong("23:00:00"),
 				1.00, BaseDeDatos.getFestivales().get(0));
-		Concierto conc7 = new Concierto(8, BaseDeDatos.getArtistas().get(14), BaseDeDatos.cambiarLong("00:00:00"), 1.00,
+		Concierto conc7 = new Concierto(7, BaseDeDatos.getArtistas().get(14), BaseDeDatos.cambiarLong("00:00:00"), 1.00,
 				BaseDeDatos.getFestivales().get(0));
-		Concierto conc8 = new Concierto(9, BaseDeDatos.getArtistas().get(15), BaseDeDatos.cambiarLong("01:00:00"), 1.00,
+		Concierto conc8 = new Concierto(8, BaseDeDatos.getArtistas().get(15), BaseDeDatos.cambiarLong("01:00:00"), 1.00,
 				BaseDeDatos.getFestivales().get(0));
-		Concierto conc9 = new Concierto(10, BaseDeDatos.getArtistas().get(19), BaseDeDatos.cambiarLong("02:00:00"),
+		Concierto conc9 = new Concierto(9, BaseDeDatos.getArtistas().get(19), BaseDeDatos.cambiarLong("19:00:00"),
 				1.00, BaseDeDatos.getFestivales().get(0));
+		Concierto conc10 = new Concierto(10, BaseDeDatos.getArtistas().get(25), BaseDeDatos.cambiarLong("20:00:00"),
+				1.00, BaseDeDatos.getFestivales().get(0));
+		Concierto conc11 = new Concierto(11, BaseDeDatos.getArtistas().get(29), BaseDeDatos.cambiarLong("23:00:00"),
+				1.00, BaseDeDatos.getFestivales().get(0));
+		Concierto conc12 = new Concierto(12, BaseDeDatos.getArtistas().get(31), BaseDeDatos.cambiarLong("00:00:00"),
+				1.00, BaseDeDatos.getFestivales().get(0));
+		Concierto conc13 = new Concierto(13, BaseDeDatos.getArtistas().get(33), BaseDeDatos.cambiarLong("01:00:00"),
+				1.00, BaseDeDatos.getFestivales().get(0));
+		Concierto conc14 = new Concierto(14, BaseDeDatos.getArtistas().get(40), BaseDeDatos.cambiarLong("02:00:00"),
+				1.00, BaseDeDatos.getFestivales().get(0));
+		Concierto conc15 = new Concierto(15, BaseDeDatos.getArtistas().get(56), BaseDeDatos.cambiarLong("03:00:00"),
+				1.00, BaseDeDatos.getFestivales().get(0));
+		
 
-		Concierto conc10 = new Concierto(11, BaseDeDatos.getArtistas().get(2), BaseDeDatos.cambiarLong("20:00:00"), 2.0,
+		Concierto conc16 = new Concierto(16, BaseDeDatos.getArtistas().get(25), BaseDeDatos.cambiarLong("17:00:00"), 2.0,
 				BaseDeDatos.getFestivales().get(1));
-		Concierto conc11 = new Concierto(12, BaseDeDatos.getArtistas().get(3), BaseDeDatos.cambiarLong("21:00:00"), 1.0,
+		Concierto conc17 = new Concierto(17, BaseDeDatos.getArtistas().get(30), BaseDeDatos.cambiarLong("19:00:00"), 1.0,
 				BaseDeDatos.getFestivales().get(1));
-		Concierto conc12 = new Concierto(13, BaseDeDatos.getArtistas().get(6), BaseDeDatos.cambiarLong("22:00:00"), 1.5,
+		Concierto conc18 = new Concierto(18, BaseDeDatos.getArtistas().get(35), BaseDeDatos.cambiarLong("20:00:00"), 1.5,
 				BaseDeDatos.getFestivales().get(1));
-		Concierto conc13 = new Concierto(14, BaseDeDatos.getArtistas().get(13), BaseDeDatos.cambiarLong("23:00:00"),
-				1.3, BaseDeDatos.getFestivales().get(1));
-		Concierto conc14 = new Concierto(15, BaseDeDatos.getArtistas().get(19), BaseDeDatos.cambiarLong("00:00:00"),
+		Concierto conc19 = new Concierto(19, BaseDeDatos.getArtistas().get(38), BaseDeDatos.cambiarLong("21:30:00"),
+				1.5, BaseDeDatos.getFestivales().get(1));
+		Concierto conc20 = new Concierto(20, BaseDeDatos.getArtistas().get(50), BaseDeDatos.cambiarLong("23:00:00"),
 				1.0, BaseDeDatos.getFestivales().get(1));
+		Concierto conc21 = new Concierto(21, BaseDeDatos.getArtistas().get(2), BaseDeDatos.cambiarLong("00:00:00"),
+				1.0, BaseDeDatos.getFestivales().get(1));
+		Concierto conc22 = new Concierto(22, BaseDeDatos.getArtistas().get(6), BaseDeDatos.cambiarLong("01:00:00"),
+				1.0, BaseDeDatos.getFestivales().get(1));
+		Concierto conc23 = new Concierto(23, BaseDeDatos.getArtistas().get(15), BaseDeDatos.cambiarLong("02:00:00"),
+				1.0, BaseDeDatos.getFestivales().get(1));
+		Concierto conc24 = new Concierto(24, BaseDeDatos.getArtistas().get(43), BaseDeDatos.cambiarLong("03:00:00"),
+				1.0, BaseDeDatos.getFestivales().get(1));
+		Concierto conc25 = new Concierto(25, BaseDeDatos.getArtistas().get(46), BaseDeDatos.cambiarLong("04:00:00"),
+				1.0, BaseDeDatos.getFestivales().get(1));
+		Concierto conc26 = new Concierto(26, BaseDeDatos.getArtistas().get(59), BaseDeDatos.cambiarLong("05:00:00"),
+				1.0, BaseDeDatos.getFestivales().get(1));
+		Concierto conc27 = new Concierto(27, BaseDeDatos.getArtistas().get(8), BaseDeDatos.cambiarLong("22:00:00"),
+				1.0, BaseDeDatos.getFestivales().get(1));
+		Concierto conc28 = new Concierto(28, BaseDeDatos.getArtistas().get(1), BaseDeDatos.cambiarLong("23:00:00"),
+				1.0, BaseDeDatos.getFestivales().get(1));
+		Concierto conc29 = new Concierto(29, BaseDeDatos.getArtistas().get(22), BaseDeDatos.cambiarLong("00:00:00"),
+				1.0, BaseDeDatos.getFestivales().get(1));
+		Concierto conc30 = new Concierto(30, BaseDeDatos.getArtistas().get(27), BaseDeDatos.cambiarLong("01:00:00"),
+				1.0, BaseDeDatos.getFestivales().get(1));
+		
 
-		Concierto conc15 = new Concierto(16, BaseDeDatos.getArtistas().get(17), BaseDeDatos.cambiarLong("21:30:00"),
+		Concierto conc31 = new Concierto(31, BaseDeDatos.getArtistas().get(51), BaseDeDatos.cambiarLong("21:30:00"),
 				2.0, BaseDeDatos.getFestivales().get(2));
-		Concierto conc16 = new Concierto(17, BaseDeDatos.getArtistas().get(22), BaseDeDatos.cambiarLong("23:30:00"),
+		Concierto conc32 = new Concierto(32, BaseDeDatos.getArtistas().get(52), BaseDeDatos.cambiarLong("23:30:00"),
 				1.0, BaseDeDatos.getFestivales().get(2));
-		Concierto conc17 = new Concierto(18, BaseDeDatos.getArtistas().get(15), BaseDeDatos.cambiarLong("00:30:00"),
+		Concierto conc33 = new Concierto(33, BaseDeDatos.getArtistas().get(59), BaseDeDatos.cambiarLong("00:30:00"),
 				1.5, BaseDeDatos.getFestivales().get(2));
-		Concierto conc18 = new Concierto(19, BaseDeDatos.getArtistas().get(6), BaseDeDatos.cambiarLong("01:30:00"), 1.5,
+		Concierto conc34 = new Concierto(34, BaseDeDatos.getArtistas().get(34), BaseDeDatos.cambiarLong("02:00:00"), 1.0,
 				BaseDeDatos.getFestivales().get(2));
-		Concierto conc19 = new Concierto(20, BaseDeDatos.getArtistas().get(1), BaseDeDatos.cambiarLong("02:30:00"), 2.2,
+		Concierto conc35 = new Concierto(35, BaseDeDatos.getArtistas().get(54), BaseDeDatos.cambiarLong("03:00:00"), 1.0,
 				BaseDeDatos.getFestivales().get(2));
+		Concierto conc36 = new Concierto(36, BaseDeDatos.getArtistas().get(56), BaseDeDatos.cambiarLong("04:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(2));
+		Concierto conc37 = new Concierto(37, BaseDeDatos.getArtistas().get(48), BaseDeDatos.cambiarLong("19:30:00"), 1.0,
+				BaseDeDatos.getFestivales().get(2));
+		Concierto conc38 = new Concierto(38, BaseDeDatos.getArtistas().get(12), BaseDeDatos.cambiarLong("20:30:00"), 1.0,
+				BaseDeDatos.getFestivales().get(2));
+		Concierto conc39 = new Concierto(39, BaseDeDatos.getArtistas().get(31), BaseDeDatos.cambiarLong("21:30:00"), 1.0,
+				BaseDeDatos.getFestivales().get(2));
+		Concierto conc40 = new Concierto(40, BaseDeDatos.getArtistas().get(1), BaseDeDatos.cambiarLong("22:30:00"), 1.0,
+				BaseDeDatos.getFestivales().get(2));
+		Concierto conc41 = new Concierto(41, BaseDeDatos.getArtistas().get(2), BaseDeDatos.cambiarLong("23:30:00"), 1.0,
+				BaseDeDatos.getFestivales().get(2));
+		Concierto conc42 = new Concierto(42, BaseDeDatos.getArtistas().get(3), BaseDeDatos.cambiarLong("00:30:00"), 1.0,
+				BaseDeDatos.getFestivales().get(2));
+		Concierto conc43 = new Concierto(43, BaseDeDatos.getArtistas().get(4), BaseDeDatos.cambiarLong("01:30:00"), 1.0,
+				BaseDeDatos.getFestivales().get(2));
+		Concierto conc44 = new Concierto(44, BaseDeDatos.getArtistas().get(5), BaseDeDatos.cambiarLong("02:30:00"), 1.0,
+				BaseDeDatos.getFestivales().get(2));
+		Concierto conc45 = new Concierto(45, BaseDeDatos.getArtistas().get(6), BaseDeDatos.cambiarLong("03:30:00"), 1.0,
+				BaseDeDatos.getFestivales().get(2));
+		
 
-		Concierto conc20 = new Concierto(21, BaseDeDatos.getArtistas().get(11), BaseDeDatos.cambiarLong("17:30:00"),
+		Concierto conc46 = new Concierto(46, BaseDeDatos.getArtistas().get(52), BaseDeDatos.cambiarLong("17:30:00"),
 				2.0, BaseDeDatos.getFestivales().get(3));
-		Concierto conc21 = new Concierto(22, BaseDeDatos.getArtistas().get(3), BaseDeDatos.cambiarLong("20:30:00"), 2.0,
+		Concierto conc47 = new Concierto(47, BaseDeDatos.getArtistas().get(53), BaseDeDatos.cambiarLong("19:30:00"), 1.5,
 				BaseDeDatos.getFestivales().get(3));
-		Concierto conc22 = new Concierto(23, BaseDeDatos.getArtistas().get(22), BaseDeDatos.cambiarLong("21:30:00"),
-				2.0, BaseDeDatos.getFestivales().get(3));
-		Concierto conc23 = new Concierto(24, BaseDeDatos.getArtistas().get(19), BaseDeDatos.cambiarLong("22:30:00"),
-				2.0, BaseDeDatos.getFestivales().get(3));
-		Concierto conc24 = new Concierto(25, BaseDeDatos.getArtistas().get(4), BaseDeDatos.cambiarLong("00:30:00"), 2.0,
+		Concierto conc48 = new Concierto(48, BaseDeDatos.getArtistas().get(57), BaseDeDatos.cambiarLong("21:00:00"),
+				1.0, BaseDeDatos.getFestivales().get(3));
+		Concierto conc49 = new Concierto(49, BaseDeDatos.getArtistas().get(41), BaseDeDatos.cambiarLong("22:00:00"),
+				1.0, BaseDeDatos.getFestivales().get(3));
+		Concierto conc50 = new Concierto(50, BaseDeDatos.getArtistas().get(25), BaseDeDatos.cambiarLong("23:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(3));
+		Concierto conc51 = new Concierto(51, BaseDeDatos.getArtistas().get(26), BaseDeDatos.cambiarLong("00:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(3));
+		Concierto conc52 = new Concierto(52, BaseDeDatos.getArtistas().get(18), BaseDeDatos.cambiarLong("01:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(3));
+		Concierto conc53 = new Concierto(53, BaseDeDatos.getArtistas().get(12), BaseDeDatos.cambiarLong("02:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(3));
+		Concierto conc54 = new Concierto(54, BaseDeDatos.getArtistas().get(14), BaseDeDatos.cambiarLong("19:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(3));
+		Concierto conc55 = new Concierto(55, BaseDeDatos.getArtistas().get(48), BaseDeDatos.cambiarLong("20:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(3));
+		Concierto conc56 = new Concierto(56, BaseDeDatos.getArtistas().get(1), BaseDeDatos.cambiarLong("21:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(3));
+		Concierto conc57 = new Concierto(57, BaseDeDatos.getArtistas().get(3), BaseDeDatos.cambiarLong("22:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(3));
+		Concierto conc58 = new Concierto(58, BaseDeDatos.getArtistas().get(20), BaseDeDatos.cambiarLong("23:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(3));
+		Concierto conc59 = new Concierto(59, BaseDeDatos.getArtistas().get(0), BaseDeDatos.cambiarLong("00:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(3));
+		Concierto conc60 = new Concierto(60, BaseDeDatos.getArtistas().get(15), BaseDeDatos.cambiarLong("01:00:00"), 1.0,
 				BaseDeDatos.getFestivales().get(3));
 
-		Concierto conc25 = new Concierto(26, BaseDeDatos.getArtistas().get(14), BaseDeDatos.cambiarLong("20:00:00"),
+		Concierto conc61 = new Concierto(61, BaseDeDatos.getArtistas().get(14), BaseDeDatos.cambiarLong("20:00:00"),
 				1.5, BaseDeDatos.getFestivales().get(4));
-		Concierto conc26 = new Concierto(27, BaseDeDatos.getArtistas().get(10), BaseDeDatos.cambiarLong("21:30:00"),
-				2.2, BaseDeDatos.getFestivales().get(4));
-		Concierto conc27 = new Concierto(28, BaseDeDatos.getArtistas().get(20), BaseDeDatos.cambiarLong("22:30:00"),
+		Concierto conc62 = new Concierto(62, BaseDeDatos.getArtistas().get(10), BaseDeDatos.cambiarLong("21:30:00"),
+				2.0, BaseDeDatos.getFestivales().get(4));
+		Concierto conc63 = new Concierto(63, BaseDeDatos.getArtistas().get(20), BaseDeDatos.cambiarLong("23:30:00"),
 				1.5, BaseDeDatos.getFestivales().get(4));
-		Concierto conc28 = new Concierto(29, BaseDeDatos.getArtistas().get(8), BaseDeDatos.cambiarLong("00:00:00"), 2.0,
+		Concierto conc64 = new Concierto(64, BaseDeDatos.getArtistas().get(8), BaseDeDatos.cambiarLong("01:00:00"), 2.0,
 				BaseDeDatos.getFestivales().get(4));
-		Concierto conc29 = new Concierto(30, BaseDeDatos.getArtistas().get(6), BaseDeDatos.cambiarLong("01:30:00"), 1.9,
+		Concierto conc65 = new Concierto(65, BaseDeDatos.getArtistas().get(6), BaseDeDatos.cambiarLong("02:00:00"), 1.0,
 				BaseDeDatos.getFestivales().get(4));
-
-		Concierto conc30 = new Concierto(31, BaseDeDatos.getArtistas().get(5), BaseDeDatos.cambiarLong("20:00:00"), 1.5,
+		Concierto conc66 = new Concierto(66, BaseDeDatos.getArtistas().get(21), BaseDeDatos.cambiarLong("03:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(4));
+		Concierto conc67 = new Concierto(67, BaseDeDatos.getArtistas().get(27), BaseDeDatos.cambiarLong("04:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(4));
+		Concierto conc68 = new Concierto(68, BaseDeDatos.getArtistas().get(30), BaseDeDatos.cambiarLong("21:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(4));
+		Concierto conc69 = new Concierto(69, BaseDeDatos.getArtistas().get(32), BaseDeDatos.cambiarLong("22:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(4));
+		Concierto conc70 = new Concierto(70, BaseDeDatos.getArtistas().get(40), BaseDeDatos.cambiarLong("23:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(4));
+		Concierto conc71 = new Concierto(71, BaseDeDatos.getArtistas().get(45), BaseDeDatos.cambiarLong("00:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(4));
+		Concierto conc72 = new Concierto(72, BaseDeDatos.getArtistas().get(46), BaseDeDatos.cambiarLong("01:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(4));
+		Concierto conc73 = new Concierto(73, BaseDeDatos.getArtistas().get(56), BaseDeDatos.cambiarLong("02:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(4));
+		Concierto conc74 = new Concierto(74, BaseDeDatos.getArtistas().get(57), BaseDeDatos.cambiarLong("03:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(4));
+		Concierto conc75 = new Concierto(75, BaseDeDatos.getArtistas().get(43), BaseDeDatos.cambiarLong("04:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(4));
+		
+		Concierto conc76 = new Concierto(76, BaseDeDatos.getArtistas().get(5), BaseDeDatos.cambiarLong("20:00:00"), 1.5,
 				BaseDeDatos.getFestivales().get(5));
-		Concierto conc31 = new Concierto(32, BaseDeDatos.getArtistas().get(8), BaseDeDatos.cambiarLong("21:30:00"), 2.2,
+		Concierto conc77 = new Concierto(77, BaseDeDatos.getArtistas().get(8), BaseDeDatos.cambiarLong("21:30:00"), 2.0,
 				BaseDeDatos.getFestivales().get(5));
-		Concierto conc32 = new Concierto(33, BaseDeDatos.getArtistas().get(24), BaseDeDatos.cambiarLong("22:30:00"),
+		Concierto conc78 = new Concierto(78, BaseDeDatos.getArtistas().get(24), BaseDeDatos.cambiarLong("23:30:00"),
+				1.0, BaseDeDatos.getFestivales().get(5));
+		Concierto conc79 = new Concierto(79, BaseDeDatos.getArtistas().get(15), BaseDeDatos.cambiarLong("00:30:00"),
 				1.5, BaseDeDatos.getFestivales().get(5));
-		Concierto conc33 = new Concierto(34, BaseDeDatos.getArtistas().get(15), BaseDeDatos.cambiarLong("00:00:00"),
-				2.0, BaseDeDatos.getFestivales().get(5));
-		Concierto conc34 = new Concierto(35, BaseDeDatos.getArtistas().get(7), BaseDeDatos.cambiarLong("01:30:00"), 1.9,
+		Concierto conc80 = new Concierto(80, BaseDeDatos.getArtistas().get(7), BaseDeDatos.cambiarLong("03:00:00"), 1.0,
 				BaseDeDatos.getFestivales().get(5));
+		Concierto conc81 = new Concierto(81, BaseDeDatos.getArtistas().get(25), BaseDeDatos.cambiarLong("04:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(5));
+		Concierto conc82 = new Concierto(82, BaseDeDatos.getArtistas().get(29), BaseDeDatos.cambiarLong("19:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(5));
+		Concierto conc83 = new Concierto(83, BaseDeDatos.getArtistas().get(31), BaseDeDatos.cambiarLong("20:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(5));
+		Concierto conc84 = new Concierto(84, BaseDeDatos.getArtistas().get(32), BaseDeDatos.cambiarLong("21:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(5));
+		Concierto conc85 = new Concierto(85, BaseDeDatos.getArtistas().get(33), BaseDeDatos.cambiarLong("22:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(5));
+		Concierto conc86 = new Concierto(86, BaseDeDatos.getArtistas().get(39), BaseDeDatos.cambiarLong("23:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(5));
+		Concierto conc87 = new Concierto(87, BaseDeDatos.getArtistas().get(40), BaseDeDatos.cambiarLong("00:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(5));
+		Concierto conc88 = new Concierto(88, BaseDeDatos.getArtistas().get(41), BaseDeDatos.cambiarLong("01:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(5));
+		Concierto conc89 = new Concierto(89, BaseDeDatos.getArtistas().get(53), BaseDeDatos.cambiarLong("02:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(5));
+		Concierto conc90 = new Concierto(90, BaseDeDatos.getArtistas().get(7), BaseDeDatos.cambiarLong("03:00:00"), 1.0,
+				BaseDeDatos.getFestivales().get(5));
+		
+		
 
 		ArrayList<Concierto> conciertos = new ArrayList<>();
 		conciertos.add(conc0);
@@ -963,36 +1149,88 @@ public class BaseDeDatos {
 		conciertos.add(conc7);
 		conciertos.add(conc8);
 		conciertos.add(conc9);
-
 		conciertos.add(conc10);
 		conciertos.add(conc11);
 		conciertos.add(conc12);
 		conciertos.add(conc13);
 		conciertos.add(conc14);
-
 		conciertos.add(conc15);
 		conciertos.add(conc16);
 		conciertos.add(conc17);
 		conciertos.add(conc18);
 		conciertos.add(conc19);
-
 		conciertos.add(conc20);
 		conciertos.add(conc21);
 		conciertos.add(conc22);
 		conciertos.add(conc23);
 		conciertos.add(conc24);
-
 		conciertos.add(conc25);
 		conciertos.add(conc26);
 		conciertos.add(conc27);
 		conciertos.add(conc28);
 		conciertos.add(conc29);
-
 		conciertos.add(conc30);
 		conciertos.add(conc31);
 		conciertos.add(conc32);
 		conciertos.add(conc33);
 		conciertos.add(conc34);
+		conciertos.add(conc35);
+		conciertos.add(conc36);
+		conciertos.add(conc37);
+		conciertos.add(conc38);
+		conciertos.add(conc39);
+		conciertos.add(conc40);
+		conciertos.add(conc41);
+		conciertos.add(conc42);
+		conciertos.add(conc43);
+		conciertos.add(conc44);
+		conciertos.add(conc45);
+		conciertos.add(conc46);
+		conciertos.add(conc47);
+		conciertos.add(conc48);
+		conciertos.add(conc49);
+		conciertos.add(conc50);
+		conciertos.add(conc51);
+		conciertos.add(conc52);
+		conciertos.add(conc53);
+		conciertos.add(conc54);
+		conciertos.add(conc55);
+		conciertos.add(conc56);
+		conciertos.add(conc57);
+		conciertos.add(conc58);
+		conciertos.add(conc59);
+		conciertos.add(conc60);
+		conciertos.add(conc61);
+		conciertos.add(conc62);
+		conciertos.add(conc63);
+		conciertos.add(conc64);
+		conciertos.add(conc65);
+		conciertos.add(conc66);
+		conciertos.add(conc67);
+		conciertos.add(conc68);
+		conciertos.add(conc69);
+		conciertos.add(conc70);
+		conciertos.add(conc71);
+		conciertos.add(conc72);
+		conciertos.add(conc73);
+		conciertos.add(conc74);
+		conciertos.add(conc75);
+		conciertos.add(conc76);
+		conciertos.add(conc77);
+		conciertos.add(conc78);
+		conciertos.add(conc79);
+		conciertos.add(conc80);
+		conciertos.add(conc81);
+		conciertos.add(conc82);
+		conciertos.add(conc83);
+		conciertos.add(conc84);
+		conciertos.add(conc85);
+		conciertos.add(conc86);
+		conciertos.add(conc87);
+		conciertos.add(conc88);
+		conciertos.add(conc89);
+		conciertos.add(conc90);
+		
 
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);
