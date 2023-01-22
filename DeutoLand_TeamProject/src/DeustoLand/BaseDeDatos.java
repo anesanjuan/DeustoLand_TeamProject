@@ -381,6 +381,22 @@ public class BaseDeDatos {
 		}
 
 	}
+	
+	public static double getPrecioTotalEntrada(String festival, TipoEntrada tipo) {
+		Festival fest = BaseDeDatos.getFestNom(festival);
+		double precio = fest.getPrecio();
+		if ( tipo.equals(TipoEntrada.NORMAL)) {
+			return precio;
+		} else if (tipo.equals(TipoEntrada.CONCAMPING)) {
+			
+			double precioTotal = precio + precio*0.15;
+			return precioTotal;
+		} else {
+			double precioTotal = precio + precio*0.2;
+			return precioTotal;
+		}
+
+	}
 
 	/**
 	 * Lee los artistas de la conexion de base de datos abierta (debe abrirse
@@ -1478,22 +1494,24 @@ public class BaseDeDatos {
 		Entrada e15 = new EntradaConCamping(BaseDeDatos.getClientes().get(25), BaseDeDatos.getFestivales().get(2),
 				TipoEntrada.CONCAMPING, 29.25, 1879);
 
-		Entrada e16 = new Entrada(BaseDeDatos.getClientes().get(1), BaseDeDatos.getFestivales().get(4),
+		Entrada e16 = new Entrada(BaseDeDatos.getClientes().get(37), BaseDeDatos.getFestivales().get(4),
 				TipoEntrada.NORMAL);
 		Entrada e17 = new Entrada(BaseDeDatos.getClientes().get(24), BaseDeDatos.getFestivales().get(3),
 				TipoEntrada.NORMAL);
-		Entrada e18 = new EntradaConCamping(BaseDeDatos.getClientes().get(13), BaseDeDatos.getFestivales().get(2),
+		Entrada e18 = new EntradaConCamping(BaseDeDatos.getClientes().get(25), BaseDeDatos.getFestivales().get(2),
 				TipoEntrada.CONCAMPING, 39, 045);
-		Entrada e19 = new EntradaConCamping(BaseDeDatos.getClientes().get(7), BaseDeDatos.getFestivales().get(1),
+		Entrada e19 = new EntradaConCamping(BaseDeDatos.getClientes().get(19), BaseDeDatos.getFestivales().get(1),
 				TipoEntrada.CONCAMPING, 45, 236);
-		Entrada e20 = new EntradaVIP(BaseDeDatos.getClientes().get(4), BaseDeDatos.getFestivales().get(0),
+		Entrada e20 = new EntradaVIP(BaseDeDatos.getClientes().get(22), BaseDeDatos.getFestivales().get(0),
 				TipoEntrada.VIP, 70, 06);
 		Entrada e21 = new EntradaVIP(BaseDeDatos.getClientes().get(36), BaseDeDatos.getFestivales().get(1),
 				TipoEntrada.VIP, 60, 34);
-		//no se insertan :( a mi por lo menos
-		Entrada e22 = new EntradaVIP(BaseDeDatos.getClientes().get(5), BaseDeDatos.getFestivales().get(4),
+		
+		Entrada e22 = new EntradaVIP(BaseDeDatos.getClientes().get(34), BaseDeDatos.getFestivales().get(4),
 				TipoEntrada.CONCAMPING, 60, 34);
-		Entrada e23 = new EntradaVIP(BaseDeDatos.getClientes().get(6), BaseDeDatos.getFestivales().get(0),
+		Entrada e23 = new EntradaVIP(BaseDeDatos.getClientes().get(18), BaseDeDatos.getFestivales().get(0),
+				TipoEntrada.VIP, 60, 10);
+		Entrada e24 = new EntradaVIP(BaseDeDatos.getClientes().get(33), BaseDeDatos.getFestivales().get(0),
 				TipoEntrada.VIP, 60, 10);
 
 		ArrayList<Entrada> entradas = new ArrayList<>();
@@ -1523,6 +1541,7 @@ public class BaseDeDatos {
 		
 		entradas.add(e22);
 		entradas.add(e23);
+		entradas.add(e24);
 
 		try (Statement statement = con.createStatement()) {
 			abrirConexion("BaseDatos.db", false);

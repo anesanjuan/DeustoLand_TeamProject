@@ -188,17 +188,24 @@ public class VentanaFestival extends JFrame {
 		artistasInv.setBounds(61, 225, 412, 78);
 		principalDrch.add(artistasInv);
 
-		JTextArea descripcion = new JTextArea(5, 25);
+		JTextArea descripcion = new JTextArea(5, 20);
 		String texto = String.valueOf(festival.getDescripcion().charAt(0));
-		for (int i = 1; i < festival.getDescripcion().length(); i++) {
+		for(int i=1;i<festival.getDescripcion().length();i++) {
 			texto = texto + festival.getDescripcion().charAt(i);
-			if (i % 64 == 0) {
+			if(i%64==0) {
+				String s = festival.getDescripcion().substring(i+1);
+				int pos = s.indexOf(' ');
+				if(pos!=-1) {
+					String pal = festival.getDescripcion().substring(i+1, i+1+pos);
+					texto = texto + pal;
+					i += pal.length();
+				}
 				texto = texto + "\n";
 			}
 		}
-
 		descripcion.append(texto);
 		descripcion.setEditable(false);
+		
 		descripcion.setBackground(new Color(237, 245, 244));
 
 		descripcion.setFont(new Font("Georgia", Font.PLAIN, 14));

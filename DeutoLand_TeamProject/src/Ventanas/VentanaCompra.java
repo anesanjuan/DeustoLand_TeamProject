@@ -1,5 +1,6 @@
 package Ventanas;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -33,6 +34,8 @@ public class VentanaCompra extends JFrame {
 	private JPanel panelPrincipal;
 	private JPanel partePrincipal1;
 	private JPanel partePrincipal2;
+	private JPanel partePrincipal3;
+	private JPanel partePrincipal4;
 	private JPanel parteAbajo;
 	
 	// Componentes del panel principal1
@@ -47,6 +50,7 @@ public class VentanaCompra extends JFrame {
 	private JLabel entradaVip;
 	private JComboBox<TipoEntrada> tipoEntrada;
 	private JLabel precioTotal;
+	private JLabel textPrecioT;
 
 	private JLabel numeroTarjeta;
 	private JTextField textnumeroTarjeta;
@@ -64,7 +68,7 @@ public class VentanaCompra extends JFrame {
 		System.out.println(festival);
 		System.out.println(u);
 
-		setBounds(100, 100, 901, 615);
+		setBounds(100, 100, 2000, 900);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		String titulo = "COMPRA ENTRADA FESTIVAL";
@@ -74,32 +78,39 @@ public class VentanaCompra extends JFrame {
 		parteArriba = new JPanel();
 		Border bordeFestival = BorderFactory.createTitledBorder("Festival");
 		parteArriba.setBorder(bordeFestival);
-		parteArriba.setBounds(0, 0, 1050, 125);
+		parteArriba.setBounds(100, 150, 800, 100);
 		
 		
 		panelPrincipal = new JPanel();
-		panelPrincipal.setBounds(0, 130, 890, 468);
+		panelPrincipal.setBounds(100, 150, 1000, 400);
 		
 		partePrincipal1 = new JPanel();
-		//Border bordeMedio1 = BorderFactory.createTitledBorder("Datos personales:");
-		//parteAbajo.setBorder(bordeMedio1);
 		parteAbajo = new JPanel();
-		parteAbajo.setBounds(0, 0, 1300, 150);
+		Border bordeMedio1 = BorderFactory.createTitledBorder("Datos personales:");
+		partePrincipal1.setBorder(bordeMedio1);
+		partePrincipal1.setBounds(100, 150, 900, 600);
 		
 		
 		partePrincipal2 = new JPanel();
-		Border bordeMedio2 = BorderFactory.createTitledBorder(" ");
-		parteAbajo.setBorder(bordeMedio2);
-		parteAbajo.setBounds(0, 0, 1300, 150);
+		//Border bordeMedio2 = BorderFactory.createTitledBorder("");
+		//partePrincipal2.setBorder(bordeMedio2);
+		partePrincipal2.setBounds(100, 150, 900, 600);
 	
+		partePrincipal3 = new JPanel();
+		//Border bordeMedio3 = BorderFactory.createTitledBorder("");
+		//partePrincipal3.setBorder(bordeMedio3);
+		partePrincipal3.setBounds(100, 150, 900, 600);
 		
-		
-		Border bordeAbajo = BorderFactory.createTitledBorder("Acción:");
+		partePrincipal4 = new JPanel();
+		Border bordeMedio4 = BorderFactory.createTitledBorder("");
+		partePrincipal4.setBorder(bordeMedio4);
+		partePrincipal4.setBounds(100, 150, 900, 600);
+	
+		Border bordeAbajo = BorderFactory.createTitledBorder("");
 		parteAbajo.setBorder(bordeAbajo);
-		parteAbajo.setBounds(0, 0, 1200, 125);
+		parteAbajo.setBounds(0, 0, 100, 90);
 		
 		
-
 		nombreFest = new JLabel("Festival " + festival.getNombre());
 		nombreFest.setFont(new Font("Georgia", Font.PLAIN, 20));
 		//nombreFest.setBounds(10, 11, 299, 36);
@@ -110,12 +121,21 @@ public class VentanaCompra extends JFrame {
 		for(int i=1;i<festival.getDescripcion().length();i++) {
 			texto = texto + festival.getDescripcion().charAt(i);
 			if(i%64==0) {
+				String s = festival.getDescripcion().substring(i+1);
+				int pos = s.indexOf(' ');
+				if(pos!=-1) {
+					String pal = festival.getDescripcion().substring(i+1, i+1+pos);
+					texto = texto + pal;
+					i += pal.length();
+				}
 				texto = texto + "\n";
 			}
 		}
+		
 		infoFest.append(texto);
 		infoFest.setEditable(false);
 		parteArriba.add(infoFest);
+		
 	
 		nombre = new JLabel("Nombre: ");
 		nombre.setFont(new Font("Georgia", Font.PLAIN, 15));
@@ -123,50 +143,94 @@ public class VentanaCompra extends JFrame {
 		partePrincipal1.add(nombre);
 		
 		textnombre = new JLabel(u.getNombre());
+		textnombre.setFont(new Font("Georgia", Font.PLAIN, 15));
+		textnombre.setBounds(22, 270, 75, 42);
+		
 		mail = new JLabel("Mail :");
+		mail.setFont(new Font("Georgia", Font.PLAIN, 15));
+		mail.setBounds(22, 270, 75, 42);
+		
 		textmail = new JLabel(u.getCorreo());
+		textmail.setFont(new Font("Georgia", Font.PLAIN, 15));
+		textmail.setBounds(22, 270, 75, 42);
+		
 		partePrincipal1.add(textnombre);
 		partePrincipal1.add(mail);
 		partePrincipal1.add(textmail);
 		
 		
 		entradaVip = new JLabel("Tipo entrada :");
+		entradaVip.setFont(new Font("Georgia", Font.PLAIN, 15));
+		entradaVip.setBounds(22, 270, 75, 42);
+		
 		tipoEntrada = new JComboBox<TipoEntrada>();
+		tipoEntrada.setFont(new Font("Georgia", Font.PLAIN, 15));
+		tipoEntrada.setBounds(22, 270, 75, 42);
 		tipoEntrada.addItem(TipoEntrada.CONCAMPING);
 		tipoEntrada.addItem(TipoEntrada.VIP);
 		tipoEntrada.addItem(TipoEntrada.NORMAL);
 		
 		precioTotal = new JLabel("Precio total :");
+		precioTotal.setFont(new Font("Georgia", Font.PLAIN, 20));
+		precioTotal.setBounds(22, 270, 75, 42);
+		
+		double preciototalEntrada = BaseDeDatos.getPrecioTotalEntrada(festival.getNombre(), (TipoEntrada)tipoEntrada.getSelectedItem());
+		textPrecioT = new JLabel(String.valueOf(preciototalEntrada));
+		textPrecioT.setFont(new Font("Georgia", Font.PLAIN, 25));
+		textPrecioT.setBounds(22, 270, 75, 42);
+		
+		
 		numeroTarjeta = new JLabel("Número de tarjeta :");
+		numeroTarjeta.setFont(new Font("Georgia", Font.PLAIN, 15));
+		numeroTarjeta.setBounds(22, 270, 75, 42);
+		
 		textnumeroTarjeta = new JTextField(16);
+		textnumeroTarjeta.setFont(new Font("Georgia", Font.PLAIN, 15));
+		textnumeroTarjeta.setBounds(22, 270, 75, 42);
+		
 		fechaCaducidad = new JLabel("Fecha de caducidad (mes/año):");
+		fechaCaducidad.setFont(new Font("Georgia", Font.PLAIN, 15));
+		fechaCaducidad.setBounds(22, 270, 75, 42);
+		
 		textFechaCaducidad1 = new JTextField(2);
 		textFechaCaducidad2 = new JTextField(2);
+		
 		cv = new JLabel("C.V. :");
+		cv.setFont(new Font("Georgia", Font.PLAIN, 15));
+		cv.setBounds(22, 270, 75, 42);
+		
 		textcv = new JTextField(3);
+		textcv.setFont(new Font("Georgia", Font.PLAIN, 15));
+		textcv.setBounds(22, 270, 75, 42);
 		
 		partePrincipal2.add(entradaVip);
 		partePrincipal2.add(tipoEntrada);
-		partePrincipal2.add(precioTotal);
-		partePrincipal2.add(numeroTarjeta);
-		partePrincipal2.add(textnumeroTarjeta);
-		partePrincipal2.add(fechaCaducidad);
-		partePrincipal2.add(textFechaCaducidad1);
-		partePrincipal2.add(textFechaCaducidad2);
-		partePrincipal2.add(cv);
-		partePrincipal2.add(textcv);
+	
+		partePrincipal3.add(numeroTarjeta);
+		partePrincipal3.add(textnumeroTarjeta);
+		partePrincipal3.add(fechaCaducidad);
+		partePrincipal3.add(textFechaCaducidad1);
+		partePrincipal3.add(textFechaCaducidad2);
+		partePrincipal3.add(cv);
+		partePrincipal3.add(textcv);
 		
-
-		panelPrincipal.setLayout(new GridLayout(2, 1));
+		partePrincipal4.add(precioTotal);
+		partePrincipal4.add(textPrecioT);
+		
+		panelPrincipal.setLayout(new GridLayout(4, 1));
 		panelPrincipal.add(partePrincipal1);
 		panelPrincipal.add(partePrincipal2);
+		panelPrincipal.add(partePrincipal3);
+		panelPrincipal.add(partePrincipal4);
 		
 		comprar = new JButton("Comprar");
+		comprar.setFont(new Font("Georgia", Font.PLAIN, 15));
+		comprar.setBounds(0, 0, 90, 400);
 		parteAbajo.add(comprar);
 
 		JButton bAtras = new JButton("Volver atrás");
-		bAtras.setFont(new Font("Georgia", Font.PLAIN, 20));
-		bAtras.setBounds(0, 0, 100, 400);
+		bAtras.setFont(new Font("Georgia", Font.PLAIN, 15));
+		bAtras.setBounds(0, 0, 90, 400);
 		parteAbajo.add(bAtras);
 		bAtras.addActionListener(new ActionListener() {
 			@Override
@@ -261,8 +325,8 @@ public class VentanaCompra extends JFrame {
 			}
 		});
 		
-		setSize(1050, 800);
-		//getContentPane().setLayout(new GridLayout(3, 1));
+		setSize(1050, 400);
+	
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle(titulo);
@@ -272,6 +336,35 @@ public class VentanaCompra extends JFrame {
 		panelP.add(parteAbajo);
 	
 		getContentPane().add(panelP);
+		
+		
+		parteArriba.setBackground(new Color(237, 245, 244));
+		panelPrincipal.setBackground(new Color(237, 245, 244));
+		parteAbajo.setBackground(new Color(237, 245, 244));
+		partePrincipal1.setBackground(new Color(237, 245, 244));
+		partePrincipal2.setBackground(new Color(237, 245, 244));
+		partePrincipal3.setBackground(new Color(237, 245, 244));
+		partePrincipal4.setBackground(new Color(237, 245, 244));
+		panelP.setBackground(new Color(237, 245, 244));
+		
+		
+		entradaVip.setBackground(new Color(237, 245, 244));
+		tipoEntrada.setBackground(new Color(237, 245, 244));
+		numeroTarjeta.setBackground(new Color(237, 245, 244));
+		textnumeroTarjeta.setBackground(new Color(237, 245, 244));
+		fechaCaducidad.setBackground(new Color(237, 245, 244));
+		textFechaCaducidad1.setBackground(new Color(237, 245, 244));
+		textFechaCaducidad2.setBackground(new Color(237, 245, 244));
+		cv.setBackground(new Color(237, 245, 244));
+		textcv.setBackground(new Color(237, 245, 244));
+		precioTotal.setBackground(new Color(237, 245, 244));
+		textPrecioT.setBackground(new Color(237, 245, 244));
+		textFechaCaducidad1.setBackground(new Color(237, 245, 244));
+		textFechaCaducidad2.setBackground(new Color(237, 245, 244));
+		cv.setBackground(new Color(237, 245, 244));
+		textcv.setBackground(new Color(237, 245, 244));
+		precioTotal.setBackground(new Color(237, 245, 244));
+
 	
 		setVisible(true);
 

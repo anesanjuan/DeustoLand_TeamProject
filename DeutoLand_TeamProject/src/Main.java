@@ -22,12 +22,12 @@ public class Main {
 
 	public static void main(String[] args) throws SQLException {
 
-		BaseDeDatos.abrirConexion("BaseDatos.db", false);
-		//BaseDeDatos.insertarArtistas();
-		//BaseDeDatos.insertarFestivales();
-		//BaseDeDatos.insertarConciertos();
-		//BaseDeDatos.insertarUsuarios();
-		//BaseDeDatos.insertarEntradas();
+		BaseDeDatos.abrirConexion("BaseDatos.db", true);
+		BaseDeDatos.insertarArtistas();
+		BaseDeDatos.insertarFestivales();
+		BaseDeDatos.insertarConciertos();
+		BaseDeDatos.insertarUsuarios();
+		BaseDeDatos.insertarEntradas();
 
 		Gestor gln = new Gestor();
 		VentanaPrincipal vp = new VentanaPrincipal(gln, null);
