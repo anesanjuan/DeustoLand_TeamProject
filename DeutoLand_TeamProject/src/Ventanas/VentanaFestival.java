@@ -45,7 +45,7 @@ public class VentanaFestival extends JFrame {
 		parteArriba.setBackground(new Color(237, 245, 244));
 		parteArriba.setBounds(0, 0, 890, 47);
 		getContentPane().add(parteArriba);
-		// parteArriba.setLayout(new GridLayout(1,4));
+		
 
 		JLabel nomFest = new JLabel("Festival " + festival.getNombre());
 		nomFest.setFont(new Font("Georgia", Font.PLAIN, 25));

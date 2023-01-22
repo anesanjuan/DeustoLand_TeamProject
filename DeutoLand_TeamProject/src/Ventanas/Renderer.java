@@ -26,7 +26,7 @@ public class Renderer extends JLabel implements TableCellRenderer {
 
 		this.setText(value.toString());
 		this.setFont(new Font("Helvetica Bold", Font.PLAIN, 12));
-
+		
 		if (tipoE != null) {
 			TipoEntrada tipoV = (TipoEntrada) table.getModel().getValueAt(row, 3);
 			if (tipoV.toString().equals(tipoE.toString())) {
@@ -57,14 +57,5 @@ public class Renderer extends JLabel implements TableCellRenderer {
 		this.is = is;
 	}
 
-	// acabar por maria -- no va
-	public boolean isCellEditable(int rowIndex, int columnIndex) {
-		 
-		if(columnIndex==0||columnIndex==2||columnIndex==3||columnIndex==4||columnIndex==5) {
-			return true;
-		 }
-		    return false;
-	}
-	
 
 }

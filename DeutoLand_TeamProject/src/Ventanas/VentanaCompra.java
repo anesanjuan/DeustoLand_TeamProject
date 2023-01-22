@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.font.TextHitInfo;
 import java.util.Random;
 
 import javax.swing.BorderFactory;
@@ -92,13 +93,9 @@ public class VentanaCompra extends JFrame {
 		
 		
 		partePrincipal2 = new JPanel();
-		//Border bordeMedio2 = BorderFactory.createTitledBorder("");
-		//partePrincipal2.setBorder(bordeMedio2);
 		partePrincipal2.setBounds(100, 150, 900, 600);
 	
 		partePrincipal3 = new JPanel();
-		//Border bordeMedio3 = BorderFactory.createTitledBorder("");
-		//partePrincipal3.setBorder(bordeMedio3);
 		partePrincipal3.setBounds(100, 150, 900, 600);
 		
 		partePrincipal4 = new JPanel();
@@ -113,7 +110,6 @@ public class VentanaCompra extends JFrame {
 		
 		nombreFest = new JLabel("Festival " + festival.getNombre());
 		nombreFest.setFont(new Font("Georgia", Font.PLAIN, 20));
-		//nombreFest.setBounds(10, 11, 299, 36);
 		parteArriba.add(nombreFest);
 		
 		infoFest = new JTextArea(5, 20);
@@ -346,25 +342,8 @@ public class VentanaCompra extends JFrame {
 		partePrincipal3.setBackground(new Color(237, 245, 244));
 		partePrincipal4.setBackground(new Color(237, 245, 244));
 		panelP.setBackground(new Color(237, 245, 244));
+		infoFest.setBackground(new Color(237, 245, 244));
 		
-		
-		entradaVip.setBackground(new Color(237, 245, 244));
-		tipoEntrada.setBackground(new Color(237, 245, 244));
-		numeroTarjeta.setBackground(new Color(237, 245, 244));
-		textnumeroTarjeta.setBackground(new Color(237, 245, 244));
-		fechaCaducidad.setBackground(new Color(237, 245, 244));
-		textFechaCaducidad1.setBackground(new Color(237, 245, 244));
-		textFechaCaducidad2.setBackground(new Color(237, 245, 244));
-		cv.setBackground(new Color(237, 245, 244));
-		textcv.setBackground(new Color(237, 245, 244));
-		precioTotal.setBackground(new Color(237, 245, 244));
-		textPrecioT.setBackground(new Color(237, 245, 244));
-		textFechaCaducidad1.setBackground(new Color(237, 245, 244));
-		textFechaCaducidad2.setBackground(new Color(237, 245, 244));
-		cv.setBackground(new Color(237, 245, 244));
-		textcv.setBackground(new Color(237, 245, 244));
-		precioTotal.setBackground(new Color(237, 245, 244));
-
 	
 		setVisible(true);
 
