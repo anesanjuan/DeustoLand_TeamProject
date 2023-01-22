@@ -13,7 +13,7 @@ public class GestorCsv {
 	 * 
 	 * @return
 	 */
-	public static ArrayList<Tarjeta> cargarTarjetasCredito() {
+	/*public static ArrayList<Tarjeta> cargarTarjetasCredito() {
 
 		ArrayList<Tarjeta> tarjetas = new ArrayList<>();
 
@@ -33,9 +33,9 @@ public class GestorCsv {
 		}
 
 		return tarjetas;
-	}
+	}*/
 	
-	/*public static HashMap<Integer ,Tarjeta> cargarTarjetasCredito() {
+	public static HashMap<Integer ,Tarjeta> cargarTarjetasCredito() {
 
 		HashMap<Integer, Tarjeta> tarjetas = new HashMap<>();
 
@@ -55,7 +55,7 @@ public class GestorCsv {
 		}
 
 		return tarjetas;
-	}*/
+	}
 
 	/**
 	 * 
@@ -67,7 +67,7 @@ public class GestorCsv {
 		long numTarjetaLong = Long.parseLong(numTarjeta);
 		int cvvInt = Integer.parseInt(cvv);
 
-		for (Tarjeta tarjeta : GestorCsv.cargarTarjetasCredito()) {
+		for (Tarjeta tarjeta : GestorCsv.cargarTarjetasCredito().values()) {
 			if (tarjeta.getNumTarjeta() == numTarjetaLong && tarjeta.getCvv() == cvvInt) {
 				return true;
 			}

@@ -12,8 +12,8 @@ import DeustoLand.Tarjeta;
 
 public class GestorFicheroTest {
 
-	//private HashMap<Integer, Tarjeta> ts;
-	private ArrayList<Tarjeta> ts;
+	private HashMap<Integer, Tarjeta> ts;
+	//private ArrayList<Tarjeta> ts;
 
 	@Test
 	public void cargarTarjetasCreditoTest() {
